@@ -31,13 +31,4 @@
     </div>
     
 </div>
-
-
-
-    <form action="" method="post">
-    
-
-
-    {{csrf_field()}}
-    </form>
 @endsection

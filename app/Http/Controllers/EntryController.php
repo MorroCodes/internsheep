@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class EntryController extends Controller
 {
     public function login()
@@ -22,5 +24,57 @@ class EntryController extends Controller
     public function companySignup()
     {
         return view('entry/company_signup');
+    }
+
+    public function handleStudentSignup(Request $request)
+    {
+        // get input values
+        $credentials = $request->only(['firstname', 'lastname', 'email', 'school', 'field_of_study', 'password', 'password_repeat']);
+        $data['user'] = $credentials;
+        // check if any fields were left empty
+        if (in_array(null, $credentials, true)) {
+            $data['error'] = 'Gelieve geen velden leeg te laten.';
+
+            return view('entry/student_signup', $data);
+        }
+
+        // check if email address is available
+        if ($this->checkEmailAvailability($credentials['email']) == false) {
+            $error = 'Dit e-mail adres is reeds in gebruik. Probeer opnieuw.';
+
+            return view('entry/student_signup', $data);
+        }
+
+        // check if password and password repeat match
+        if ($request->input($credentials['password']) !== $credentials['password_repeat']) {
+            $error = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
+
+            return view('entry/student_signup', $data);
+        }
+    }
+
+    public function saveUser()
+    {
+    }
+
+    public function saveStudent()
+    {
+    }
+
+    public function checkEmailAvailability($email)
+    {
+        $this->getUserFromEmail($email);
+        if (empty($user) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getUserFromEmail($email)
+    {
+        $user = \DB::table('users')->where('email', $email)->first();
+
+        return $user;
     }
 }
