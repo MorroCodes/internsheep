@@ -29,3 +29,5 @@ Route::post('/company_signup', 'EntryController@handleCompanySignup');
 // survey routes
 Route::get('/student_survey', 'SurveyController@studentSurvey');
 Route::post('/student_survey', 'SurveyController@handleStudentSurvey');
+Route::get('/company_survey', 'SurveyController@companySurvey');
+Route::post('/company_survey', 'SurveyController@handleCompanySurvey');

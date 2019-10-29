@@ -12,4 +12,13 @@ class SurveyController extends Controller
     public function handleStudentSurvey(Request $request)
     {
     }
+
+    public function companySurvey()
+    {
+        return view('survey/company');
+    }
+
+    public function handleCompanySurvey(Request $request)
+    {
+    }
 }
