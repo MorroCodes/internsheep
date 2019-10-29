@@ -26,6 +26,22 @@ class EntryController extends Controller
         return view('entry/company_signup');
     }
 
+    public function handleLogin(Request $request)
+    {
+        $credentials = $request->only(['email', 'password']);
+        if (\Auth::attempt($credentials)) {
+            $user = $this->getUserFromEmail($credentials['email']);
+            $this->setSessionData($user);
+
+            return redirect('/');
+        } else {
+            $data['error'] = 'Er is iets fout gegaan. Probeer opnieuw.';
+            $data['email'] = $credentials['email'];
+
+            return view('entry/login', $data);
+        }
+    }
+
     public function handleCompanySignup(Request $request)
     {
         // get input values

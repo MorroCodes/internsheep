@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', 'EntryController@login');
+Route::post('/login', 'EntryController@handleLogin');
 Route::get('/signup', 'EntryController@signup');
 Route::get('/student_signup', 'EntryController@studentSignup');
 Route::post('/student_signup', 'EntryController@handleStudentSignup');
