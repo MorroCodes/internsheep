@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', 'EntryController@login');
+Route::get('/signup', 'EntryController@signup');
+Route::get('/student_signup', 'EntryController@studentSignup');
+Route::get('/company_signup', 'EntryController@companySignup');
