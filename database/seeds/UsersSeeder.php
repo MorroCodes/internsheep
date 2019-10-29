@@ -16,6 +16,7 @@ class UsersSeeder extends Seeder
         $annelies->email = 'annelies@hotmail.com';
         $annelies->email_verified_at = now();
         $annelies->password = bcrypt('annelies');
+        $annelies->type = 'student';
         $annelies->save();
 
         $dielan = new \App\User();
@@ -24,6 +25,7 @@ class UsersSeeder extends Seeder
         $dielan->email = 'dielan@hotmail.com';
         $dielan->email_verified_at = now();
         $dielan->password = bcrypt('dielan');
+        $dielan->type = 'student';
         $dielan->save();
 
         $aqsa = new \App\User();
@@ -32,6 +34,7 @@ class UsersSeeder extends Seeder
         $aqsa->email = 'aqsa@hotmail.com';
         $aqsa->email_verified_at = now();
         $aqsa->password = bcrypt('aqsa');
+        $aqsa->type = 'student';
         $aqsa->save();
 
         $mauro = new \App\User();
@@ -40,6 +43,7 @@ class UsersSeeder extends Seeder
         $mauro->email = 'mauro@hotmail.com';
         $mauro->email_verified_at = now();
         $mauro->password = bcrypt('mauro');
+        $mauro->type = 'student';
         $mauro->save();
 
         factory(\App\User::class, 20)->create();
