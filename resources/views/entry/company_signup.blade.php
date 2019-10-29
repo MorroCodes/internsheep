@@ -1,10 +1,14 @@
 @extends('layouts/entry')
 @section('content')
     <div>
-        <h2>Registreer als student</h2>
+        <h2>Registreer als bedrijf</h2>
         <a href="">Registreer met facebook</a>
 
-        <form>
+        <form action="{{action('EntryController@handleCompanySignup')}}" method="post">
+
+            @if(!empty($error))
+                <div class="alert alert-danger">{{$error}}</div>
+            @endif
             <div class="form-group">
                 <label for="firstname">Voornaam</label>
                 <input type="text" placeholder="Voornaam" name="firstname" class="form-control">

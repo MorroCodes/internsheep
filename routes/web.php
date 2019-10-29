@@ -20,3 +20,4 @@ Route::get('/signup', 'EntryController@signup');
 Route::get('/student_signup', 'EntryController@studentSignup');
 Route::post('/student_signup', 'EntryController@handleStudentSignup');
 Route::get('/company_signup', 'EntryController@companySignup');
+Route::post('/company_signup', 'EntryController@handleCompanySignup');

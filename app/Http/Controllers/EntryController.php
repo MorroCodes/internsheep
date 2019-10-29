@@ -26,11 +26,55 @@ class EntryController extends Controller
         return view('entry/company_signup');
     }
 
+    public function handleCompanySignup(Request $request)
+    {
+        // get input values
+        $credentials = $request->only(['firstname', 'lastname', 'email', 'company_name', 'company_bio', 'password', 'password_repeat']);
+        $type = 'company';
+        $data['user'] = $credentials;
+
+        //DRY FIX!!
+        // check if any fields were left empty
+        if (in_array(null, $credentials, true)) {
+            $data['error'] = 'Gelieve geen velden leeg te laten.';
+
+            return view('entry/company_signup', $data);
+        }
+
+        // check if email address is available
+        if ($this->checkEmailAvailability($credentials['email']) == false) {
+            $data['error'] = 'Dit e-mail adres is reeds in gebruik. Probeer opnieuw.';
+
+            return view('entry/company_signup', $data);
+        }
+
+        // check if password and password repeat match
+        if ($credentials['password'] !== $credentials['password_repeat']) {
+            $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
+
+            return view('entry/company_signup', $data);
+        }
+
+        // save general user info
+        $this->saveUser($credentials, $type);
+
+        // get user information
+        $user = $this->getUserFromEmail($credentials['email']);
+
+        // save info specific to student profile
+        $this->saveCompany($credentials, $user->id);
+
+        // give user session data (name, type of user)
+        $this->setSessionData($user);
+    }
+
     public function handleStudentSignup(Request $request)
     {
         // get input values
         $credentials = $request->only(['firstname', 'lastname', 'email', 'school', 'field_of_study', 'password', 'password_repeat']);
+        $type = 'student';
         $data['user'] = $credentials;
+
         // check if any fields were left empty
         if (in_array(null, $credentials, true)) {
             $data['error'] = 'Gelieve geen velden leeg te laten.';
@@ -46,19 +90,52 @@ class EntryController extends Controller
         }
 
         // check if password and password repeat match
-        if ($request->input($credentials['password']) !== $credentials['password_repeat']) {
+        if ($credentials['password'] !== $credentials['password_repeat']) {
             $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
 
             return view('entry/student_signup', $data);
         }
+
+        // save general user info
+        $this->saveUser($credentials, $type);
+
+        // get user information
+        $user = $this->getUserFromEmail($credentials['email']);
+
+        // save info specific to student profile
+        $this->saveStudent($credentials, $user->id);
+
+        // give user session data (name, type of user)
+        $this->setSessionData($user);
     }
 
-    public function saveUser()
+    public function saveUser($credentials, $type)
     {
+        $user = new \App\User();
+        $user->firstname = $credentials['firstname'];
+        $user->lastname = $credentials['lastname'];
+        $user->email = $credentials['email'];
+        $user->password = \Hash::make($credentials['password']);
+        $user->type = $type;
+        $user->save();
     }
 
-    public function saveStudent()
+    public function saveCompany($credentials, $id)
     {
+        $company = new \App\Company();
+        $company->user_id = $id;
+        $company->company_name = $credentials['company_name'];
+        $company->company_bio = $credentials['company_bio'];
+        $company->save();
+    }
+
+    public function saveStudent($credentials, $id)
+    {
+        $student = new \App\Student();
+        $student->user_id = $id;
+        $student->school = $credentials['school'];
+        $student->field_of_study = $credentials['field_of_study'];
+        $student->save();
     }
 
     public function checkEmailAvailability($email)
@@ -78,5 +155,10 @@ class EntryController extends Controller
         $user = \DB::table('users')->where('email', $email)->first();
 
         return $user;
+    }
+
+    public function setSessionData($user)
+    {
+        session(['id' => $user->id, 'type' => $user->type]);
     }
 }
