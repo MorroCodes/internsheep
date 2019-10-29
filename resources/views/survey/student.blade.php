@@ -12,7 +12,7 @@
                 <label for="vibe">Welk type werksfeer heeft jouw voorkeur?</label>
                 <div>
                     <span class="col">Informeel</span>
-                    <input type="range" class="custom-range col-4" min="1" max="5" id="vibe">
+                    <input type="range" class="custom-range col-4" min="1" max="5" id="vibe" name="vibe">
                     <span class="col">Formeel</span>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <label for="size">Welke bedrijfsgrootte krijgt jouw voorkeur?</label>
                 <div>
                     <span class="col">Klein (KMO)</span>
-                    <input type="range" class="custom-range col-4" min="1" max="5" id="size">
+                    <input type="range" class="custom-range col-4" min="1" max="5" id="size" name="size">
                     <span class="col">Groot (Multinational)</span>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <label for="age">Wat voor bedrijf zoek je?</label>
                 <div>
                     <span class="col">Jong</span>
-                    <input type="range" class="custom-range col-4" min="1" max="5" id="age">
+                    <input type="range" class="custom-range col-4" min="1" max="5" id="age" name="age">
                     <span class="col">Established</span>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <label for="type">Wat voor stage zoek je?</label>
                 <div>
                     <span class="col">Kijkstage</span>
-                    <input type="range" class="custom-range col-4" min="1" max="5" id="type">
+                    <input type="range" class="custom-range col-4" min="1" max="5" id="type" name="type">
                     <span class="col">Hands-on</span>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <label for="distance">Hoe ver wil je gaan voor je stage?</label>
                 <div>
                     <span class="col">In de buurt (&lt; 10km)</span>
-                    <input type="range" class="custom-range col-4" min="1" max="5" id="distance">
+                    <input type="range" class="custom-range col-4" min="1" max="5" id="distance" name="distance">
                     <span class="col">Verder (&gt; 60km)</span>
                 </div>
             </div>
