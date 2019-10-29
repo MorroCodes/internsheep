@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class SurveyController extends Controller
 {
     public function studentSurvey()
@@ -11,6 +13,15 @@ class SurveyController extends Controller
 
     public function handleStudentSurvey(Request $request)
     {
+        $data = $request->only(['vibe', 'size', 'age', 'type', 'distance']);
+        $survey = new \App\StudentSurvey();
+        $survey->user_id = session('id');
+        $survey->vibe = $data['vibe'];
+        $survey->size = $data['size'];
+        $survey->age = $data['age'];
+        $survey->type = $data['type'];
+        $survey->distance = $data['distance'];
+        $survey->save();
     }
 
     public function companySurvey()
