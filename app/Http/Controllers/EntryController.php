@@ -95,7 +95,7 @@ class EntryController extends Controller
         // give user session data (name, type of user)
         $this->setSessionData($user);
 
-        return redirect('/');
+        return redirect('/company_survey');
     }
 
     public function handleStudentSignup(Request $request)
@@ -125,7 +125,7 @@ class EntryController extends Controller
         // give user session data (name, type of user)
         $this->setSessionData($user);
 
-        return redirect('/');
+        return redirect('/student_survey');
     }
 
     public function saveUser($credentials, $type)

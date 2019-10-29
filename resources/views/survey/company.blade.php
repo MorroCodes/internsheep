@@ -12,7 +12,7 @@
                 <label for="vibe">Welk type werksfeer leeft er op de werkvloer?</label>
                 <div>
                     <span class="col">Informeel</span>
-                    <input type="range" class="custom-range col-4" min="1" max="5" id="vibe">
+                    <input type="range" class="custom-range col-4" min="1" max="5" id="vibe" name="vibe">
                     <span class="col">Formeel</span>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <label for="size">Hoe zou je de bedrijfsgrootte omschrijven?</label>
                 <div>
                     <span class="col">Klein (KMO)</span>
-                    <input type="range" class="custom-range col-4" min="1" max="5" id="size">
+                    <input type="range" class="custom-range col-4" min="1" max="5" id="size" name="size">
                     <span class="col">Groot (Multinational)</span>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <label for="age">Hoe zou je jouw bedrijf beschrijven?</label>
                 <div>
                     <span class="col">Jong</span>
-                    <input type="range" class="custom-range col-4" min="1" max="5" id="age">
+                    <input type="range" class="custom-range col-4" min="1" max="5" id="age" name="age">
                     <span class="col">Established</span>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <label for="type">Welke stages bied je aan?</label>
                 <div>
                     <span class="col">Kijkstage</span>
-                    <input type="range" class="custom-range col-4" min="1" max="5" id="type">
+                    <input type="range" class="custom-range col-4" min="1" max="5" id="type" name="type">
                     <span class="col">Hands-on</span>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <label for="transport">Hoe is de bereikbaarheid van het openbaar vervoer naar jouw bedrijf?</label>
                 <div>
                     <span class="col">Makkelijk bereikbaar</span>
-                    <input type="range" class="custom-range col-4" min="1" max="5" id="transport">
+                    <input type="range" class="custom-range col-4" min="1" max="5" id="transport" name="transport">
                     <span class="col">Moeilijker bereikbaar</span>
                 </div>
             </div>

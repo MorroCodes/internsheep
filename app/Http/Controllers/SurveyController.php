@@ -22,6 +22,8 @@ class SurveyController extends Controller
         $survey->type = $data['type'];
         $survey->distance = $data['distance'];
         $survey->save();
+
+        return redirect('/');
     }
 
     public function companySurvey()
@@ -31,5 +33,16 @@ class SurveyController extends Controller
 
     public function handleCompanySurvey(Request $request)
     {
+        $data = $request->only(['vibe', 'size', 'age', 'type', 'transport']);
+        $survey = new \App\CompanySurvey();
+        $survey->user_id = session('id');
+        $survey->vibe = $data['vibe'];
+        $survey->size = $data['size'];
+        $survey->age = $data['age'];
+        $survey->type = $data['type'];
+        $survey->transport = $data['transport'];
+        $survey->save();
+
+        return redirect('/');
     }
 }
