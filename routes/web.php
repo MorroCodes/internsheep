@@ -15,10 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// login routes
 Route::get('/login', 'EntryController@login');
 Route::post('/login', 'EntryController@handleLogin');
+
+// signup routes
 Route::get('/signup', 'EntryController@signup');
 Route::get('/student_signup', 'EntryController@studentSignup');
 Route::post('/student_signup', 'EntryController@handleStudentSignup');
 Route::get('/company_signup', 'EntryController@companySignup');
 Route::post('/company_signup', 'EntryController@handleCompanySignup');
+
+// survey routes
+Route::get('/student_survey', 'SurveyController@studentSurvey');
+Route::post('/student_survey', 'SurveyController@handleStudentSurvey');
