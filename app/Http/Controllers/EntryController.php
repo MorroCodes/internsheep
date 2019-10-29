@@ -40,14 +40,14 @@ class EntryController extends Controller
 
         // check if email address is available
         if ($this->checkEmailAvailability($credentials['email']) == false) {
-            $error = 'Dit e-mail adres is reeds in gebruik. Probeer opnieuw.';
+            $data['error'] = 'Dit e-mail adres is reeds in gebruik. Probeer opnieuw.';
 
             return view('entry/student_signup', $data);
         }
 
         // check if password and password repeat match
         if ($request->input($credentials['password']) !== $credentials['password_repeat']) {
-            $error = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
+            $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
 
             return view('entry/student_signup', $data);
         }
@@ -63,10 +63,12 @@ class EntryController extends Controller
 
     public function checkEmailAvailability($email)
     {
-        $this->getUserFromEmail($email);
+        $user = $this->getUserFromEmail($email);
         if (empty($user) == true) {
+            // email is not used yet
             return true;
         } else {
+            // email is already registered
             return false;
         }
     }
