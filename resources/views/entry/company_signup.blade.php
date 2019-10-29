@@ -11,27 +11,27 @@
             @endif
             <div class="form-group">
                 <label for="firstname">Voornaam</label>
-                <input type="text" placeholder="Voornaam" name="firstname" class="form-control">
+                <input type="text" placeholder="Voornaam" name="firstname" class="form-control" value="{{$user['firstname'] ?? ''}}">
             </div>
 
             <div class="form-group">
                 <label for="lastname">Achternaam</label>
-                <input type="text" placeholder="Achternaam" name="lastname" class="form-control">
+                <input type="text" placeholder="Achternaam" name="lastname" class="form-control" value="{{$user['lastname'] ?? ''}}">
             </div>
 
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="email" placeholder="E-mail" name="email" class="form-control">
+                <input type="email" placeholder="E-mail" name="email" class="form-control" value="{{$user['email'] ?? ''}}">
             </div>
 
             <div class="form-group">
                 <label for="company_name">Bedrijfsnaam</label>
-                <input type="text" placeholder="Bedrijfsnaam" name="company_name" class="form-control">
+                <input type="text" placeholder="Bedrijfsnaam" name="company_name" class="form-control" value="{{$user['company_name'] ?? ''}}">
             </div>
 
             <div class="form-group">
                 <label for="company_bio">Korte bedrijfsomschrijving</label>
-                <input type="text" placeholder="Omschrijving" name="company_bio" class="form-control">
+                <input type="text" placeholder="Omschrijving" name="company_bio" class="form-control" value="{{$user['company_bio'] ?? ''}}">
             </div>
 
             <div class="form-group">
