@@ -42,6 +42,32 @@ class EntryController extends Controller
         }
     }
 
+    public function signupDataCheck($credentials)
+    {
+        // check if any fields were left empty
+        if (in_array(null, $credentials, true)) {
+            $data['error'] = 'Gelieve geen velden leeg te laten.';
+
+            return $data;
+        }
+
+        // check if email address is available
+        if ($this->checkEmailAvailability($credentials['email']) == false) {
+            $data['error'] = 'Dit e-mail adres is reeds in gebruik. Probeer opnieuw.';
+
+            return $data;
+        }
+
+        // check if password and password repeat match
+        if ($credentials['password'] !== $credentials['password_repeat']) {
+            $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
+
+            return $data;
+        }
+
+        return true;
+    }
+
     public function handleCompanySignup(Request $request)
     {
         // get input values
@@ -49,24 +75,10 @@ class EntryController extends Controller
         $type = 'company';
         $data['user'] = $credentials;
 
-        //DRY FIX!!
-        // check if any fields were left empty
-        if (in_array(null, $credentials, true)) {
-            $data['error'] = 'Gelieve geen velden leeg te laten.';
-
-            return view('entry/company_signup', $data);
-        }
-
-        // check if email address is available
-        if ($this->checkEmailAvailability($credentials['email']) == false) {
-            $data['error'] = 'Dit e-mail adres is reeds in gebruik. Probeer opnieuw.';
-
-            return view('entry/company_signup', $data);
-        }
-
-        // check if password and password repeat match
-        if ($credentials['password'] !== $credentials['password_repeat']) {
-            $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
+        // check for signup errors
+        $result = $this->signupDataCheck($credentials);
+        if ($result !== true) {
+            $data['error'] = $result['error'];
 
             return view('entry/company_signup', $data);
         }
@@ -82,6 +94,8 @@ class EntryController extends Controller
 
         // give user session data (name, type of user)
         $this->setSessionData($user);
+
+        return redirect('/');
     }
 
     public function handleStudentSignup(Request $request)
@@ -91,23 +105,10 @@ class EntryController extends Controller
         $type = 'student';
         $data['user'] = $credentials;
 
-        // check if any fields were left empty
-        if (in_array(null, $credentials, true)) {
-            $data['error'] = 'Gelieve geen velden leeg te laten.';
-
-            return view('entry/student_signup', $data);
-        }
-
-        // check if email address is available
-        if ($this->checkEmailAvailability($credentials['email']) == false) {
-            $data['error'] = 'Dit e-mail adres is reeds in gebruik. Probeer opnieuw.';
-
-            return view('entry/student_signup', $data);
-        }
-
-        // check if password and password repeat match
-        if ($credentials['password'] !== $credentials['password_repeat']) {
-            $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
+        // check for signup errors
+        $result = $this->signupDataCheck($credentials);
+        if ($result !== true) {
+            $data['error'] = $result['error'];
 
             return view('entry/student_signup', $data);
         }
@@ -123,6 +124,8 @@ class EntryController extends Controller
 
         // give user session data (name, type of user)
         $this->setSessionData($user);
+
+        return redirect('/');
     }
 
     public function saveUser($credentials, $type)

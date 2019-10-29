@@ -38,12 +38,12 @@
 
             <div class="form-group">
                 <label for="password">Wachtwoord</label>
-                <input type="password" placeholder="********" name="password" class="form-control">
+                <input type="password" name="password" class="form-control">
             </div>
 
             <div class="form-group">
                 <label for="password_repeat">Herhaal wachtwoord</label>
-                <input type="password" placeholder="********" name="password_repeat" class="form-control">
+                <input type="password" name="password_repeat" class="form-control">
             </div>
 
             <a href="/login">Heb je al een profiel? Meld hier aan.</a>

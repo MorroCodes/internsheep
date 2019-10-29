@@ -18,6 +18,8 @@
             <input type="password" placeholder="Wachtwoord" name="password" class="form-control">
         </div>
 
+        <a href="/signup">Heb je nog geen profiel? Registreer hier.</a>
+
         <div class="form-group">
             <input type="submit" value="Aanmelden" class="btn btn-primary">
         </div>
