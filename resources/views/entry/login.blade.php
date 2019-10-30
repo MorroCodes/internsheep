@@ -1,7 +1,7 @@
 @extends('layouts/entry')
 @section('content')
     <h2>Meld aan</h2>
-    <a href="">Meld aan via facebook</a>
+    <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary">Meld aan via facebook</a>
 
     <form action="{{action('EntryController@handleLogin')}}" method="post">
         @if(!empty($error))

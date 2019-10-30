@@ -2,7 +2,7 @@
 @section('content')
     <div>
         <h2>Registreer als bedrijf</h2>
-        <a href="">Registreer met facebook</a>
+        <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary">Registreer met facebook</a>
 
         <form action="{{action('EntryController@handleCompanySignup')}}" method="post">
 
