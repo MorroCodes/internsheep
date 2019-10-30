@@ -3,7 +3,11 @@
     <div>
 
         <h2>Registreer als student</h2>
-        <a href="" class="btn btn-primary">Registreer met facebook</a>
+
+        <!-- <div class="col-md-8 col-md-offset-4">
+            <a href="{{url('/redirect')}}" class="btn btn-primary">Login with Facebook</a>
+        </div> -->
+        <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary">Registreer met facebook</a>
 
         <form action="{{action('EntryController@handleStudentSignup')}}" method="post">
 

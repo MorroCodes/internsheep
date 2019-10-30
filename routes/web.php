@@ -31,3 +31,14 @@ Route::get('/student_survey', 'SurveyController@studentSurvey');
 Route::post('/student_survey', 'SurveyController@handleStudentSurvey');
 Route::get('/company_survey', 'SurveyController@companySurvey');
 Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+  Route::get('/callback/{provider}', 'SocialController@callback');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
