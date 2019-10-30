@@ -180,4 +180,14 @@ class EntryController extends Controller
     {
         session(['id' => $user->id, 'type' => $user->type]);
     }
+
+    public function completeStudentSignup()
+    {
+        return view('entry/complete_student_signup');
+    }
+
+    public function completeCompanySignup()
+    {
+        return view('entry/complete_company_signup');
+    }
 }
