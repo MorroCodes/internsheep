@@ -3,7 +3,7 @@
     <div>
         <h2>vervolledig registratie als bedrijf</h2>
 
-        <form action="{{action('EntryController@handleCompanySignup')}}" method="post">
+        <form action="{{action('EntryController@handleCompleteCompanySignup')}}" method="post">
 
             @if(!empty($error))
                 <div class="alert alert-danger">{{$error}}</div>

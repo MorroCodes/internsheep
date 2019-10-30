@@ -47,8 +47,10 @@ class SocialController extends Controller
 
         if ($type == 'student') {
             // save user_id in student table from $newUser
+            $this->createStudentRecord($newUser->id);
         } else {
             // save user_id in company table from $newUser
+            $this->createCompanyRecord($newUser->id);
         }
 
         $this->setSessionData($newUser);
@@ -95,5 +97,19 @@ class SocialController extends Controller
     public function setSessionData($user)
     {
         session(['id' => $user->id, 'type' => $user->type]);
+    }
+
+    public function createStudentRecord($id)
+    {
+        $student = new \App\Student();
+        $student->user_id = $id;
+        $student->save();
+    }
+
+    public function createCompanyRecord($id)
+    {
+        $company = new \App\Company();
+        $company->user_id = $id;
+        $company->save();
     }
 }

@@ -4,7 +4,7 @@
 
         <h2>Vervolledig registratie als student</h2>
 
-        <form action="{{action('EntryController@handleStudentSignup')}}" method="post">
+        <form action="{{action('EntryController@handleCompleteStudentSignup')}}" method="post">
 
             @if(!empty($error))
                 <div class="alert alert-danger">{{$error}}</div>

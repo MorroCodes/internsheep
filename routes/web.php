@@ -38,7 +38,9 @@ Route::get('/callback/{provider}', 'SocialController@callback');
 
 // complete signup after facebook signup
 Route::get('/complete_student_signup', 'EntryController@completeStudentSignup');
+Route::post('/complete_student_signup', 'EntryController@handleCompleteStudentSignup');
 Route::get('/complete_company_signup', 'EntryController@completeCompanySignup');
+Route::post('/complete_company_signup', 'EntryController@handleCompleteCompanySignup');
 
 // survey routes
 Route::get('/student_survey', 'SurveyController@studentSurvey');

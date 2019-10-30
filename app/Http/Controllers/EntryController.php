@@ -190,4 +190,40 @@ class EntryController extends Controller
     {
         return view('entry/complete_company_signup');
     }
+
+    public function handleCompleteCompanySignup(Request $request)
+    {
+        $credentials = $request->only(['company_name', 'company_bio']);
+
+        // check if any fields were left empty
+        if (in_array(null, $credentials, true)) {
+            $data['error'] = 'Gelieve geen velden leeg te laten.';
+
+            return view('entry/complete_company_signup', $data);
+        }
+
+        \DB::table('companies')
+              ->where('user_id', session('id'))
+              ->update(['company_name' => $credentials['company_name'], 'company_bio' => $credentials['company_bio']]);
+
+        return redirect('/company_survey');
+    }
+
+    public function handleCompleteStudentSignup(Request $request)
+    {
+        $credentials = $request->only(['school', 'field_of_study']);
+
+        // check if any fields were left empty
+        if (in_array(null, $credentials, true)) {
+            $data['error'] = 'Gelieve geen velden leeg te laten.';
+
+            return view('entry/complete_student_signup', $data);
+        }
+
+        \DB::table('students')
+              ->where('user_id', session('id'))
+              ->update(['school' => $credentials['school'], 'field_of_study' => $credentials['field_of_study']]);
+
+        return redirect('/student_survey');
+    }
 }
