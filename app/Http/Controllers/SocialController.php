@@ -19,8 +19,16 @@ class SocialController extends Controller
         // get referer link to decide type of user
         $referer = Request::server('HTTP_REFERER');
 
+        // if redirect comes from login -> redirect to signup to choose account type
         if (strpos($referer, 'login') == true) {
             return redirect()->to('/signup');
+        }
+
+        // save type of user in variable
+        if (strpos($referer, 'student_signup') == true) {
+            $type = 'student';
+        } else {
+            $type = 'company';
         }
 
         $getInfo = Socialite::driver($provider)->user();
@@ -32,28 +40,35 @@ class SocialController extends Controller
             return redirect()->to('/');
         }
 
-        $user = $this->createUser($getInfo, $provider, $referer);
+        $user = $this->createUser($getInfo, $provider, $type);
 
         // get user now saved in db to be able to set session data
         $newUser = $this->getUserFromEmail($getInfo->email);
+
+        if ($type == 'student') {
+            // save user_id in student table from $newUser
+        } else {
+            // save user_id in company table from $newUser
+        }
+
         $this->setSessionData($newUser);
 
         auth()->login($user);
 
-        return redirect()->to('/');
+        // redirect to profile completion page for student/company
+        if ($type == 'student') {
+            return redirect()->to('/complete_student_signup');
+        } else {
+            return redirect()->to('/complete_company_signup');
+        }
     }
 
-    public function createUser($getInfo, $provider, $referer)
+    public function createUser($getInfo, $provider, $type)
     {
         // split name property from facebook into firstname and lastname
         $firstname = strstr($getInfo->name, ' ', true);
         $lastname = str_replace($firstname.' ', '', $getInfo->name);
 
-        if (strpos($referer, 'student_signup') == true) {
-            $type = 'student';
-        } else {
-            $type = 'company';
-        }
         //dd($provider);
         $user = User::where('provider_id', $getInfo->id)->first();
         if (!$user) {
