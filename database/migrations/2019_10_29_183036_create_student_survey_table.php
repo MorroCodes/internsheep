@@ -14,11 +14,11 @@ class CreateStudentSurveyTable extends Migration
         Schema::create('student_surveys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->integer('vibe');
-            $table->integer('size');
-            $table->integer('age');
-            $table->integer('type');
-            $table->integer('distance');
+            $table->integer('vibe')->nullable();
+            $table->integer('size')->nullable();
+            $table->integer('age')->nullable();
+            $table->integer('type')->nullable();
+            $table->integer('distance')->nullable();
             $table->timestamps();
         });
     }
