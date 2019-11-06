@@ -5,6 +5,7 @@
         <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary">Registreer met facebook</a>
 
         <form action="{{action('EntryController@handleCompanySignup')}}" method="post">
+        @csrf
 
             @if(!empty($error))
                 <div class="alert alert-danger">{{$error}}</div>
