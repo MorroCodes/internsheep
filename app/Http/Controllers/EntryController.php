@@ -33,7 +33,7 @@ class EntryController extends Controller
             $user = $this->getUserFromEmail($credentials['email']);
             $this->setSessionData($user);
 
-            return redirect('/');
+            return redirect('/yourCompany', $user);
         } else {
             $data['error'] = 'Er is iets fout gegaan. Probeer opnieuw.';
             $data['email'] = $credentials['email'];
