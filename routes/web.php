@@ -57,3 +57,5 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 // TODO: reroute to index page! Change to correct controller
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/youraccount', 'AccountController@show');
