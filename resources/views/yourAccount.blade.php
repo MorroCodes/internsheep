@@ -25,7 +25,7 @@
                                 <input type="text" class="form-control" id="firstname" value="{{Auth::user()->firstname}}">
                             </div>
                             <div class="col">
-                                <label for="firstname">Achternaam</label>
+                                <label for="lastname">Achternaam</label>
                                 <input type="text" class="form-control" id="lastname" value="{{Auth::user()->lastname}}">
                             </div>
                         </div>
@@ -37,12 +37,12 @@
                         <br>
                         <h2>Nieuw wachtwoord instellen</h2>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Nieuw wachtwoord</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="inputPassword1">Nieuw wachtwoord</label>
+                            <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Herhaal nieuw wachtwoord</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label for="inputPassword2">Herhaal nieuw wachtwoord</label>
+                            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
                         </div>
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                     </form>
