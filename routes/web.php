@@ -59,3 +59,5 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('youraccount', 'AccountController@show')->name('youraccount');
+Route::post('youraccount/data', 'AccountController@handleData');
+Route::post('youraccount/password', 'AccountController@handleNewPassword');

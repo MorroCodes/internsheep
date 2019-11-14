@@ -10,4 +10,12 @@ class AccountController extends Controller
     {
         return view('youraccount');
     }
+
+    public function handleData(){
+
+    }
+
+    public function handleNewPassword(){
+        
+    }
 }
