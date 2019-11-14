@@ -1,1 +1,54 @@
-<h1>{{Auth::user()->id}}</h1>
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <form>
+                        <h2>Wijzig gegevens</h2>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email adres</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->email}}">
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <label for="firstname">Voornaam</label>
+                                <input type="text" class="form-control" id="firstname" value="{{Auth::user()->firstname}}">
+                            </div>
+                            <div class="col">
+                                <label for="firstname">Achternaam</label>
+                                <input type="text" class="form-control" id="lastname" value="{{Auth::user()->lastname}}">
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Aanpassen</button>
+                    </form>
+                    <form>
+                        <br>
+                        <br>
+                        <h2>Nieuw wachtwoord instellen</h2>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Nieuw wachtwoord</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Herhaal nieuw wachtwoord</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Aanpassen</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
