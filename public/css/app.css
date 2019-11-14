@@ -11100,98 +11100,96 @@ a.text-dark:focus {
   }
 }
 
-.entry-page {
-  background-image: url("/images/wave4.svg");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: cover;
-  min-height: 120vh;
-  background-color: white;
+.company-page {
+  -webkit-border-image: none;
+       -o-border-image: none;
+          border-image: none;
 }
 
-.entry-content {
-  width: 90%;
-  margin: 0 5%;
-  position: absolute;
-  padding: 2em;
-  border-radius: 1em;
-  background-color: white;
+.bg {
+  width: 650px;
+  margin-left: 140px;
 }
 
-.logo-entry-container {
-  text-align: center;
+h1 {
+  margin-left: 400px;
+  color: grey;
 }
 
-.logo-entry {
-  width: 100px;
+h2 {
+  margin-left: 30px;
 }
 
-.entry-content h2 {
-  margin-top: 2em;
-  text-align: center;
-  color: #12396A;
-}
-
-.btn-social {
-  text-decoration: none;
-}
-
-.btn-social span {
-  text-decoration: underline;
-}
-
-.link-redirect {
-  color: #12396A;
-  text-decoration: none;
-}
-
-.link-redirect-container {
-  text-align: center;
-}
-
-.btn-container {
-  text-align: center;
-}
-
-.btn-primary {
-  border: 1px solid #12396A;
-  background-color: #12396A;
-  color: white;
-  border-radius: 2em;
-}
-
-.link-redirect-container {
-  margin-bottom: 3em;
-}
-
-.form-group label {
-  padding-left: 0.8em;
-  margin-top: 1em;
-  margin-bottom: 0.2em;
-  color: #12396A;
-}
-
-.form-group input[type=email],
-.form-group input[type=password] {
-  background-color: #F0F3F5;
-  border-radius: 2em;
-  border: 1px solid #F0F3F5;
-}
-
-.list-group {
-  margin-bottom: 2em;
-}
-
-.signup-section {
-  margin-top: 1.5em;
-}
-
-.signup-section h3 {
-  color: #12396A;
+.flex {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  align-content: center;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 body {
-  font-family: "Work Sans", sans-serif;
-  color: #12396A;
+  max-width: 100%;
+}
+
+.card-deck {
+  margin-bottom: 500px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#nav {
+  margin-top: 20px;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+h5 {
+  color: #3a84b7;
+}
+
+.flex {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-box-pack: right;
+          justify-content: right;
+  align-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#nav2 {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  flex-wrap: nowrap;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+  align-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  margin-top: -30px;
+  font-size: 25px;
+  margin-right: 30px;
+  padding-left: 20px;
+}
+
+.icon {
+  width: 40px;
+  border-radius: 30%;
+  margin-right: 10px;
+  margin-top: -15px;
 }
 

@@ -4,12 +4,7 @@
 // Variables
 @import 'variables';
 
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-@import 'components/entry';
-
-body{
-    font-family: 'Work Sans', sans-serif;
-    color: $blue;
-}
-
+@import 'company';
