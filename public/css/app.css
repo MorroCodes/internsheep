@@ -11106,14 +11106,18 @@ a.text-dark:focus {
           border-image: none;
 }
 
-img {
-  width: 700px;
-  margin-left: 120px;
+.bg {
+  width: 650px;
+  margin-left: 140px;
 }
 
 h1 {
-  margin-left: 260px;
+  margin-left: 400px;
   color: grey;
+}
+
+h2 {
+  margin-left: 30px;
 }
 
 .flex {
@@ -11128,5 +11132,57 @@ h1 {
   align-content: center;
   -webkit-box-align: center;
           align-items: center;
+}
+
+body {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.card-deck {
+  margin-bottom: 500px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#nav {
+  margin-top: 20px;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+h5 {
+  color: #3a84b7;
+}
+
+.flex {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-box-pack: right;
+          justify-content: right;
+  align-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#nav2 {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  flex-wrap: nowrap;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+  align-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  margin-top: -30px;
+  font-size: 25px;
+  margin-right: 30px;
 }
 

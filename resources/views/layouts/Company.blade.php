@@ -12,10 +12,6 @@
 
 @yield('nav')
 
-<div class="flex">
-<h1>Jouw vacatures</h1>
-  <img src="/img/bg.png" alt="bg">
-</div>
 @yield('gallerij')
 </body>
 </html>
