@@ -1,0 +1,78 @@
+.entry-page {
+    background-image: url("/images/wave4.svg");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    min-height: 100vh;
+    background-color: white;
+}
+
+.entry-content {
+    width: 90%;
+    margin: 0 5%;
+    position: absolute;
+    padding: 2em;
+    top: 35%;
+    transform: translateY(-35%);
+    border-radius: 1em;
+    background-color: white;
+}
+
+.logo-entry-container {
+    text-align: center;
+}
+
+.logo-entry {
+    width: 100px;
+}
+
+.entry-content h2 {
+    margin-top: 2em;
+    text-align: center;
+    color: $blue
+}
+
+.btn-social {
+
+    text-decoration: none;
+
+}
+
+.btn-social span{
+    text-decoration: underline;
+}
+
+.link-redirect {
+    color: $blue;
+    text-decoration: none;
+}
+
+.link-redirect-container{
+    text-align: center;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+.btn-primary {
+    border: 1px solid $blue;
+    background-color: $blue;
+    color: white;
+    border-radius: 2em;
+    margin-top: 4em;
+}
+
+.form-group label {
+    padding-left: 0.8em;
+    margin-top: 1em;
+    margin-bottom: 0.2em;
+    color: $blue;
+}
+
+.form-group input[type=email],
+.form-group input[type=password] {
+    background-color: $grey;
+    border-radius: 2em;
+    border: 1px solid $grey;
+}
