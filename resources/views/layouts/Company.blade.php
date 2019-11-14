@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <title>Document</title>
 </head>
-<body>
+<body class="company-page">
 
-  @yield('nav')
-@yield('header')
-    
+@yield('nav')
+
+<div class="flex">
+<h1>Jouw vacatures</h1>
+  <img src="/img/bg.png" alt="bg">
+</div>
+@yield('gallerij')
 </body>
 </html>

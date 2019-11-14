@@ -11100,3 +11100,33 @@ a.text-dark:focus {
   }
 }
 
+.company-page {
+  -webkit-border-image: none;
+       -o-border-image: none;
+          border-image: none;
+}
+
+img {
+  width: 700px;
+  margin-left: 120px;
+}
+
+h1 {
+  margin-left: 260px;
+  color: grey;
+}
+
+.flex {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  align-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
