@@ -30,7 +30,7 @@
 </ul>
 
 <div class="nav" id="nav2">
-    <img src="#" alt="profile pic">
+    <img src="/img/intr.png" alt="profile pic" class="icon">
     <p>Interacto</p>
 </div>
 

@@ -33,7 +33,7 @@ h2{
 }
 body{
     max-width: 100%;
-    overflow: hidden;
+
 }
 .card-deck{
     margin-bottom: 500px;
@@ -89,5 +89,12 @@ h5{
     margin-top: -30px;
     font-size: 25px;
     margin-right: 30px;
+    padding-left: 20px;
+}
+.icon{
+    width: 40px;
+    border-radius: 30%;
+    margin-right: 10px;
+    margin-top: -15px;
 }
 
