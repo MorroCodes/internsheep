@@ -1,9 +1,9 @@
 .entry-page {
     background-image: url("/images/wave4.svg");
     background-repeat: no-repeat;
-    background-position: bottom center;
+    background-position: center bottom;
     background-size: cover;
-    min-height: 100vh;
+    min-height: 120vh;
     background-color: white;
 }
 
@@ -12,8 +12,8 @@
     margin: 0 5%;
     position: absolute;
     padding: 2em;
-    top: 35%;
-    transform: translateY(-35%);
+    // top: 35%;
+    // transform: translateY(-35%);
     border-radius: 1em;
     background-color: white;
 }
@@ -33,12 +33,10 @@
 }
 
 .btn-social {
-
     text-decoration: none;
-
 }
 
-.btn-social span{
+.btn-social span {
     text-decoration: underline;
 }
 
@@ -47,7 +45,7 @@
     text-decoration: none;
 }
 
-.link-redirect-container{
+.link-redirect-container {
     text-align: center;
 }
 
@@ -60,7 +58,10 @@
     background-color: $blue;
     color: white;
     border-radius: 2em;
-    margin-top: 4em;
+}
+
+.link-redirect-container {
+    margin-bottom: 3em;
 }
 
 .form-group label {
@@ -75,4 +76,16 @@
     background-color: $grey;
     border-radius: 2em;
     border: 1px solid $grey;
+}
+
+.list-group {
+    margin-bottom: 2em;
+}
+
+.signup-section {
+    margin-top: 1.5em;
+}
+
+.signup-section h3{
+    color: $blue;
 }
