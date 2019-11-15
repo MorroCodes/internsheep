@@ -41,9 +41,11 @@
   </div>
   <div class="card-body">
     <h1 id="title_vacature">Webdeveloper</h1>
-    <div = class="flex">
+    <div class="flex">
         <h3 class="plaats">Plaats</h3>
-        <p class="location">Antwerpen</p>
+        <p class="location">Antwpen</p>
+        <a href="#"><img src="/img/edit.png" class='edit'></a>
+        <img src="/img/delete.png" class='delete'>
     </div class="vacatureBody">
     <h3 class="space">bedrijfsbeschrijving</h3>
     <p>Flux is een webdesign bedrijf dat websites en IT oplossingen aanbiedt aan middelgrote bedrijven. Onze klanten zijn voornamelijk gebaseerd in Antwerpen maar we werken ook voor bedrijven in London en China. We zijn een jong snelgroeiend bedrijf gebaseerd in Idealabs. Dit is een leuke omgeving vol met snelgroeiende technologiebedrijven.</p>

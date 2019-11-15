@@ -11230,3 +11230,16 @@ h3 {
   margin-top: 20px;
 }
 
+div a .edit {
+  width: 20px;
+  position: absolute;
+  margin-left: 550px;
+}
+
+.delete {
+  width: 20px;
+  position: absolute;
+  margin-left: 720px;
+  margin-top: 7px;
+}
+
