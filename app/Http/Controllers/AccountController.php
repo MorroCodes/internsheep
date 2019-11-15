@@ -22,7 +22,7 @@ class AccountController extends Controller
         return redirect('/changeStudentData');
     }
 
-    public function andleStudentNewPassword(Request $request){
+    public function handleStudentNewPassword(Request $request){
         $password1 = $request->input('password1');
         $password2 = $request->input('password2');
         $id = \Auth::user()->id;
