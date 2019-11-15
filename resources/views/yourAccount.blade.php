@@ -13,24 +13,25 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form>
+                    <form action="{{ action('AccountController@handleData') }}" method="post">
                         <h2>Wijzig gegevens</h2>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email adres</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->email}}">
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->email}}">
                         </div>
                         <div class="form-row">
                             <div class="col">
                                 <label for="firstname">Voornaam</label>
-                                <input type="text" class="form-control" id="firstname" value="{{Auth::user()->firstname}}">
+                                <input type="text" name="firstname" class="form-control" id="firstname" value="{{Auth::user()->firstname}}">
                             </div>
                             <div class="col">
                                 <label for="lastname">Achternaam</label>
-                                <input type="text" class="form-control" id="lastname" value="{{Auth::user()->lastname}}">
+                                <input type="text" name="lastname" class="form-control" id="lastname" value="{{Auth::user()->lastname}}">
                             </div>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
+                        {{csrf_field()}}
                     </form>
                     <form>
                         <br>
@@ -45,6 +46,7 @@
                             <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
                         </div>
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
+                        {{csrf_field()}}
                     </form>
                 </div>
             </div>
