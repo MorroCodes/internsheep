@@ -1,9 +1,4 @@
 @extends('layouts/company')
-<!DOCTYPE html>
-<html lang="en">
-<body>
-    
-</body>
 @section('nav')
 <ul class="nav" id="nav">
   <li class="nav-item">
@@ -61,4 +56,3 @@
   </div>
 </div>
 @endsection
-</html>
