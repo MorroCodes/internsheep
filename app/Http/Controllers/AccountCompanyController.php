@@ -19,6 +19,9 @@ class AccountCompanyController extends Controller
 
         return redirect('/companyAccount');
     }
+    public function handleNewPassword(){
+
+    }
    
 
 }

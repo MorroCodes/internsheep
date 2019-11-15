@@ -64,6 +64,6 @@ Route::post('/youraccount/data', 'AccountController@handleData');
 Route::put('/youraccount/password', 'AccountController@handleNewPassword');
 
 //edit profile company
-Route::get('/companyaccount', 'AccountController@show')->name('youraccount');
+Route::get('/companyaccount', 'AccountController@show')->name('companyAccount');
 Route::post('/companyaccount/data', 'AccountController@handleData');
 Route::put('/company/password', 'AccountController@handleNewPassword');
