@@ -61,7 +61,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/changeStudentData', 'AccountController@show')->name('changeStudentData');
 Route::post('/changeStudentData/data', 'AccountController@handleStudentData');
-Route::put('/changeStudentData/password', 'AccountController@handleStudentNewPassword');
+Route::post('/changeStudentData/password', 'AccountController@handleStudentNewPassword');
 
 //edit profile company
 Route::get('/companyaccount', 'AccountController@show')->name('youraccount');

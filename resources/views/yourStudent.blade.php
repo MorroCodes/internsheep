@@ -33,7 +33,7 @@
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
-                    <form action="{{ action('AccountController@handleNewPassword') }}" method="post">
+                    <form action="{{ action('AccountController@handleStudentNewPassword') }}" method="post">
                         <br>
                         <br>
                         <h2>Nieuw wachtwoord instellen</h2>
