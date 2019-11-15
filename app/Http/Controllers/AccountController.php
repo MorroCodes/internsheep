@@ -8,10 +8,10 @@ class AccountController extends Controller
 {
     public function show()
     {
-        return view('youraccount');
+        return view('yourStudent');
     }
 
-    public function handleData(Request $request){
+    public function handleStudentData(Request $request){
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
         $email = $request->input('email');
@@ -19,18 +19,17 @@ class AccountController extends Controller
 
         $user = \App\User::where('id', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
 
-        return redirect('/youraccount');
+        return redirect('/changeStudentData');
     }
 
-    public function handleNewPassword(Request $request){
+    public function andleStudentNewPassword(Request $request){
         $password1 = $request->input('password1');
         $password2 = $request->input('password2');
         $id = \Auth::user()->id;
 
         if($password1 === $password2){
-            echo 'hi';
             $user = \App\User::where('id', $id)->update(['password' => \Hash::make($request->input('password1'))]);
-            return redirect('/youraccount');
+            return redirect('/changeStudentData');
         }
     }
 }

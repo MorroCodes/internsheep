@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{ action('AccountController@handleData') }}" method="post">
+                    <form action="{{ action('AccountController@handleStudentData') }}" method="post">
                         <h2>Wijzig gegevens</h2>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email adres</label>
