@@ -1,4 +1,5 @@
 @extends('layouts/company')
+@extends('layouts/vacature')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,6 @@
 <body>
     
 </body>
-</html>
 @section('nav')
 <ul class="nav" id="nav">
   <li class="nav-item">
@@ -70,3 +70,4 @@
   </div>
 </div>
 @endsection
+</html>

@@ -49,6 +49,7 @@ Route::get('/company_survey', 'SurveyController@companySurvey');
 Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 
 Route::get('/yourCompany', 'CompanyController@show');
+Route::get('/vacature', 'vacatureCompany@show');
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');

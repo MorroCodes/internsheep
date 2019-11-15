@@ -11193,3 +11193,13 @@ h5 {
   margin-top: -15px;
 }
 
+.card {
+  width: 50%;
+  margin-left: 25%;
+}
+
+#title_vacature {
+  text-align: left;
+  margin: 0px;
+}
+
