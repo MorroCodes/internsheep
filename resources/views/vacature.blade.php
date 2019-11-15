@@ -41,7 +41,7 @@
   </div>
   <div class="card-body">
     <h1 id="title_vacature">Webdeveloper</h1>
-    <div class="flex">
+    <div class="flex2">
         <h3 class="plaats">Plaats</h3>
         <p class="location">Antwpen</p>
         <a href="#"><img src="/img/edit.png" class='edit'></a>

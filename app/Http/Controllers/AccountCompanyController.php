@@ -27,7 +27,7 @@ class AccountCompanyController extends Controller
         if($password1 === $password2){
             echo 'hi';
             $user = \App\User::where('id', $id)->update(['password' => \Hash::make($request->input('password1'))]);
-            return redirect('/youraccount');
+            return redirect('/companyaccount');
         }
     }
    
