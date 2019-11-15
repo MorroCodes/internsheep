@@ -15,13 +15,14 @@ class AccountController extends Controller
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
         $email = $request->input('email');
+        $id = \Auth::user()->id;
 
-        $user = \App\User::where('id', 2)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
+        $user = \App\User::where('id', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
 
         return redirect('/youraccount');
     }
 
-    public function handleNewPassword(){
-
+    public function handleNewPassword(Request $request){
+        
     }
 }
