@@ -11203,3 +11203,30 @@ h5 {
   margin: 0px;
 }
 
+.location {
+  width: 150px;
+  text-align: left;
+  font-size: 20px;
+  color: #3a84b7;
+  margin: 0px;
+}
+
+.plaats {
+  margin: 0px;
+  text-align: left;
+  font-size: 20px;
+  width: 70px;
+}
+
+p {
+  text-align: left;
+}
+
+h3 {
+  text-align: left;
+}
+
+.space {
+  margin-top: 20px;
+}
+

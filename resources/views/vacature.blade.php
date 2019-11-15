@@ -41,15 +41,17 @@
   </div>
   <div class="card-body">
     <h1 id="title_vacature">Webdeveloper</h1>
-    <h3>Plaats</h3>
-    <p>Antwerpen</p>
-    <h2>bedrijfsbeschrijving</h2>
+    <div = class="flex">
+        <h3 class="plaats">Plaats</h3>
+        <p class="location">Antwerpen</p>
+    </div class="vacatureBody">
+    <h3 class="space">bedrijfsbeschrijving</h3>
     <p>Flux is een webdesign bedrijf dat websites en IT oplossingen aanbiedt aan middelgrote bedrijven. Onze klanten zijn voornamelijk gebaseerd in Antwerpen maar we werken ook voor bedrijven in London en China. We zijn een jong snelgroeiend bedrijf gebaseerd in Idealabs. Dit is een leuke omgeving vol met snelgroeiende technologiebedrijven.</p>
-    <h2>Functieomschrijving</h2>
+    <h3>Functieomschrijving</h3>
     <p>Ben jij nog op zoek naar een stageplaats of een job als webdesigner? Stuur ons dan vlug een email, want wij breiden uit. Wij zijn een webdesign bedrijf in het hartje van Antwerpen. Wij zijn gevestigd in Idealabs, een co-working space vlakbij de Meir. Naast het maken van websites proberen wij een totaaloplossing voor onze klanten te bieden.Wil jij graag bij ons solliciteren? Stuur dan een bericht naar hello@flux.be. Voeg gelijk je portfolio toe en/of een voorbeeld van een website (of ander project) die je al gemaakt hebt. Je kunt de startdatum van je stage zelf bepalen!</p>
-    <h2>Profiel</h2>
+    <h3>Profiel</h3>
     <p>een coole kikker</p>
-    <h2>Wat bieden wij aan ?</h2>
+    <h3>Wat bieden wij aan ?</h3>
     <p>Flux is een webdesign bedrijf dat websites en IT oplossingen aanbiedt aan middelgrote bedrijven. Onze klanten zijn voornamelijk gebaseerd in Antwerpen maar we werken ook voor bedrijven in London en China.We zijn een jong snelgroeiend bedrijf gebaseerd in Idealabs. Dit is een leuke omgeving vol met snelgroeiende technologiebedrijven. Je krijgt ook koffie</p>
   </div>
   <div class="card-footer text-muted">
