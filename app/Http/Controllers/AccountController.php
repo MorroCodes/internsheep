@@ -19,7 +19,7 @@ class AccountController extends Controller
 
         $user = \App\User::where('id', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
 
-        return redirect('/changeStudentData');
+        return redirect('/change_student_data');
     }
 
     public function handleStudentNewPassword(Request $request){
@@ -29,7 +29,7 @@ class AccountController extends Controller
 
         if($password1 === $password2){
             $user = \App\User::where('id', $id)->update(['password' => \Hash::make($request->input('password1'))]);
-            return redirect('/changeStudentData');
+            return redirect('/change_student_data');
         }
     }
 }
