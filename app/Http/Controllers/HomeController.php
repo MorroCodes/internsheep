@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['internships'] = \DB::table('internships')->orderBy('id', 'desc')->limit(6)->get();
+        return view('home', $data);
     }
 }
