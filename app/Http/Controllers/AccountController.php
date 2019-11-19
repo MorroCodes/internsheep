@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    public function show()
+    public function changeStudentData()
     {
-        return view('yourStudent');
+        return view('studentData');
     }
 
     public function handleStudentData(Request $request){

@@ -59,8 +59,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 // TODO: reroute to index page! Change to correct controller
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/student_account', 'AccountController@show')->name('studentAccount');
-Route::get('/change_student_data', 'AccountController@show')->name('changeStudentData');
+Route::get('/change_student_data', 'AccountController@changeStudentData')->name('changeStudentData');
 Route::post('/change_student_data/data', 'AccountController@handleStudentData');
 Route::post('/change_student_data/password', 'AccountController@handleStudentNewPassword');
 
