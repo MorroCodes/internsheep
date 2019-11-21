@@ -17,7 +17,8 @@ class AccountController extends Controller
         $email = $request->input('email');
         $id = \Auth::user()->id;
 
-        $user = \App\User::where('id', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
+        $user = \App\User::where('id', $id);
+        $user->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
 
         return redirect('/change_student_data');
     }
@@ -28,7 +29,9 @@ class AccountController extends Controller
         $id = \Auth::user()->id;
 
         if($password1 === $password2){
-            $user = \App\User::where('id', $id)->update(['password' => \Hash::make($request->input('password1'))]);
+            $user = \App\User::where('id', $id);
+            $user->update(['password' => \Hash::make($request->input('password1'))]);
+
             return redirect('/change_student_data');
         }
     }
