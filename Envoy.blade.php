@@ -8,7 +8,7 @@ php artisan down
 git reset --hard HEAD
     # wijzigingen even opzij zetten (permissie wijzigingen, ...)
 git pull origin master
-php composer.json dump-autoload
+php composer.phar dump-autoload
     # dependencies updaten
 php artisan migrate --force
     # databank updaten
@@ -18,8 +18,5 @@ php artisan up
     # website terug online plaatsen
 @endtask
 
-#cd ..
-#chown -R spammelies:apache internsheep/
-#chmod -R 750 internsheep/
-#cd internsheep/
-#chmod -R 770 storage/
+
+#composer install toevoegen
