@@ -64,6 +64,6 @@ Route::post('/change_student_data/data', 'AccountController@handleStudentData');
 Route::post('/change_student_data/password', 'AccountController@handleStudentNewPassword');
 
 //edit profile company
-Route::get('/companyaccount', 'AccountController@show')->name('companyAccount');
-Route::post('/companyaccount/data', 'AccountController@handleData');
-Route::put('/company/password', 'AccountController@handleNewPassword');
+Route::get('/companyaccount', 'AccountCompanyController@changeCompanyData')->name('changeCompanyData');
+Route::post('/companyaccount/data', 'AccountCompanyController@handleCompanyData');
+Route::post('/companyaccount/password', 'AccountCompanyController@handleCompanyNewPassword');

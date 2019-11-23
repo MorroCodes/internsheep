@@ -13,8 +13,21 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{ action('AccountController@handleData') }}" method="post">
+                    <form action="{{ action('AccountCompanyController@handleCompanyData2') }}" method="post">
                         <h2>Wijzig gegevens</h2>
+                        <div class="form-group">
+                            <label for="exampleInputNameCompany">Naam bedrijf</label>
+                            <input type="text" name="nameCompany" class="form-control" id="exampleInputNameCompany" value="{{Auth::user()->email}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputDescriptionCompany">Naam bedrijf</label>
+                            <input type="text" name="descriptionCompany" class="form-control" id="exampleInputDescriptionCompany" value="{{Auth::user()->email}}">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Aanpassen</button>
+                        {{csrf_field()}}
+                    </form>
+                    <form action="{{ action('AccountCompanyController@handleCompanyData') }}" method="post">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email adres</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->email}}">
