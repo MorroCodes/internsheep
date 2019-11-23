@@ -4,8 +4,10 @@
 // Variables
 @import 'variables';
 
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import 'company';
 @import 'components/entry';
 @import 'components/survey';
 @import 'components/buttons';

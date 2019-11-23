@@ -7,6 +7,7 @@
         <h2>Registreer als bedrijf | <a href="{{ url('/auth/redirect/facebook') }}" class="btn-social">via face<span>bok</span></a></h2>
         <div class="manual-signup-container">
         <form action="{{action('EntryController@handleCompanySignup')}}" method="post">
+        @csrf
 
             @if(!empty($error))
                 <div class="alert alert-danger">{{$error}}</div>

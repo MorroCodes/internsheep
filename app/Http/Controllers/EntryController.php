@@ -33,7 +33,7 @@ class EntryController extends Controller
             $user = $this->getUserFromEmail($credentials['email']);
             $this->setSessionData($user);
 
-            return redirect('/');
+            return redirect('/yourCompany');
         } else {
             $data['error'] = 'Er is iets fout gegaan. Probeer opnieuw.';
             $data['email'] = $credentials['email'];
@@ -79,7 +79,7 @@ class EntryController extends Controller
         $result = $this->signupDataCheck($credentials);
         if ($result !== true) {
             $data['error'] = $result['error'];
-
+            
             return view('entry/company_signup', $data);
         }
 

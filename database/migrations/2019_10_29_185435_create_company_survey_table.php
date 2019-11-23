@@ -14,11 +14,11 @@ class CreateCompanySurveyTable extends Migration
         Schema::create('company_surveys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->integer('vibe');
-            $table->integer('size');
-            $table->integer('age');
-            $table->integer('type');
-            $table->integer('transport');
+            $table->integer('vibe')->nullable();
+            $table->integer('size')->nullable();
+            $table->integer('age')->nullable();
+            $table->integer('type')->nullable();
+            $table->integer('transport')->nullable();
             $table->timestamps();
         });
     }
