@@ -1,9 +1,9 @@
 @extends('layouts/entry')
 @section('content')
-    <div>
-        <h2>Registreer als bedrijf</h2>
-        <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary">Registreer met facebook</a>
-
+    <div class="entry-content">
+        <h2>Registreer als bedrijf | <a href="{{ url('/auth/redirect/facebook') }}" class="btn-social">via face<span>bok</span></a></h2>
+        <!-- <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary">Registreer met facebook</a> -->
+        <div class="manual-signup-container">
         <form action="{{action('EntryController@handleCompanySignup')}}" method="post">
 
             @if(!empty($error))
@@ -11,27 +11,27 @@
             @endif
             <div class="form-group">
                 <label for="firstname">Voornaam</label>
-                <input type="text" placeholder="Voornaam" name="firstname" class="form-control" value="{{$user['firstname'] ?? ''}}">
+                <input type="text" name="firstname" class="form-control" value="{{$user['firstname'] ?? ''}}">
             </div>
 
             <div class="form-group">
                 <label for="lastname">Achternaam</label>
-                <input type="text" placeholder="Achternaam" name="lastname" class="form-control" value="{{$user['lastname'] ?? ''}}">
+                <input type="text" name="lastname" class="form-control" value="{{$user['lastname'] ?? ''}}">
             </div>
 
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="email" placeholder="E-mail" name="email" class="form-control" value="{{$user['email'] ?? ''}}">
+                <input type="email" name="email" class="form-control" value="{{$user['email'] ?? ''}}">
             </div>
 
             <div class="form-group">
                 <label for="company_name">Bedrijfsnaam</label>
-                <input type="text" placeholder="Bedrijfsnaam" name="company_name" class="form-control" value="{{$user['company_name'] ?? ''}}">
+                <input type="text" name="company_name" class="form-control" value="{{$user['company_name'] ?? ''}}">
             </div>
 
             <div class="form-group">
                 <label for="company_bio">Korte bedrijfsomschrijving</label>
-                <input type="text" placeholder="Omschrijving" name="company_bio" class="form-control" value="{{$user['company_bio'] ?? ''}}">
+                <input type="text" name="company_bio" class="form-control" value="{{$user['company_bio'] ?? ''}}">
             </div>
 
             <div class="form-group">
@@ -46,12 +46,13 @@
 
             <a href="/login">Heb je al een profiel? Meld hier aan.</a>
 
-            <div class="form-group">
+            <div class="form-group form-group-buttons">
                 <a href="/signup" class="btn btn-light">Vorige</a>
                 <input type="submit" value="Registreer als bedrijf" class="btn btn-primary">
             </div>
 
             {{csrf_field()}}
         </form>
+        </div>  
     </div>
 @endsection
