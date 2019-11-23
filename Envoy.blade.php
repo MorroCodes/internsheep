@@ -1,4 +1,6 @@
+
 @servers(['production' => 'spammelies@139.162.160.45', 'staging' =>'spammelies@139.162.160.45'])
+
 
 @task('deploy-production', ['on' =>'production'])
 cd /home/internsheep/internsheep
@@ -19,6 +21,7 @@ php artisan up
     # website terug online plaatsen
 @endtask
 
+
 @task('deploy-staging', ['on' =>'staging'])
 cd /home/internsheepbeta/internsheep
 php artisan down
@@ -30,3 +33,4 @@ php artisan migrate --force
 php artisan cache:clear
 php artisan up
 @endtask
+
