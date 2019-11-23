@@ -1,8 +1,10 @@
 @extends('layouts/entry')
 @section('content')
     <div class="entry-content">
+        <div class=logo-entry-container>
+            <img src="/images/logo.svg" alt="Internsheep logo" class="logo logo-entry">
+        </div>
         <h2>Registreer als bedrijf | <a href="{{ url('/auth/redirect/facebook') }}" class="btn-social">via face<span>bok</span></a></h2>
-        <!-- <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary">Registreer met facebook</a> -->
         <div class="manual-signup-container">
         <form action="{{action('EntryController@handleCompanySignup')}}" method="post">
 

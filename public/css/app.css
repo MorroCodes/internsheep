@@ -11212,6 +11212,11 @@ a.text-dark:focus {
   border-radius: 2em;
 }
 
+.form-group-button {
+  margin-top: 3em;
+  text-align: center;
+}
+
 @media (min-width: 750px) {
   .login-container {
     max-width: 700px;
@@ -11244,6 +11249,59 @@ a.text-dark:focus {
 
   .entry-content p {
     text-align: center;
+  }
+}
+
+.survey-content {
+  width: 95%;
+  margin: 0 2.5%;
+  position: absolute;
+  padding: 2em;
+  border-radius: 1em;
+  background-color: white;
+}
+
+.survey-container {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-group div span {
+  font-size: 0.8em;
+}
+
+.form-group div {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.form-group div span:last-child {
+  text-align: right;
+}
+
+.survey-content .form-group label {
+  margin-bottom: 1.5em;
+}
+
+.survey-content .form-group {
+  margin-bottom: 2em;
+}
+
+.survey-container .form-group-buttons {
+  margin-top: 4em;
+}
+
+@media (min-width: 600px) {
+  .survey-content h2,
+  .survey-content p {
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
