@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form action="{{ action('AccountController@handleData') }}" method="post">
+                    <form action="{{ action('AccountController@handleStudentData') }}" method="post">
                         <h2>Wijzig gegevens</h2>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email adres</label>
@@ -33,7 +33,7 @@
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
-                    <form action="{{ action('AccountController@handleNewPassword') }}" method="post">
+                    <form action="{{ action('AccountController@handleStudentNewPassword') }}" method="post">
                         <br>
                         <br>
                         <h2>Nieuw wachtwoord instellen</h2>
