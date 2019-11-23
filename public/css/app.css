@@ -11132,38 +11132,6 @@ a.text-dark:focus {
   color: #12396A;
 }
 
-.btn-social {
-  text-decoration: none;
-}
-
-.btn-social span {
-  text-decoration: underline;
-}
-
-.link-redirect {
-  color: #12396A;
-  text-decoration: none;
-}
-
-.link-redirect-container {
-  text-align: center;
-}
-
-.btn-container {
-  text-align: center;
-}
-
-.btn-primary {
-  border: 1px solid #12396A;
-  background-color: #12396A;
-  color: white;
-  border-radius: 2em;
-}
-
-.link-redirect-container {
-  margin-bottom: 3em;
-}
-
 .form-group label {
   padding-left: 0.8em;
   margin-top: 1em;
@@ -11187,34 +11155,8 @@ a.text-dark:focus {
   margin-top: 1.5em;
 }
 
-.link-redirect-container-signup {
-  margin-top: 1.5em;
-}
-
 .signup-section h3 {
   color: #12396A;
-}
-
-.form-group-buttons {
-  margin-top: 1.5em;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: justify;
-          justify-content: space-between;
-}
-
-.form-group-buttons a,
-.form-group-buttons input[type=submit] {
-  width: 47%;
-}
-
-.btn-light {
-  border-radius: 2em;
-}
-
-.form-group-button {
-  margin-top: 3em;
-  text-align: center;
 }
 
 @media (min-width: 750px) {
@@ -11291,10 +11233,6 @@ a.text-dark:focus {
   margin-bottom: 2em;
 }
 
-.survey-container .form-group-buttons {
-  margin-top: 4em;
-}
-
 @media (min-width: 600px) {
   .survey-content h2,
   .survey-content p {
@@ -11303,6 +11241,68 @@ a.text-dark:focus {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+.btn-social {
+  text-decoration: none;
+}
+
+.btn-social span {
+  text-decoration: underline;
+}
+
+.link-redirect {
+  color: #12396A;
+  text-decoration: none;
+}
+
+.link-redirect-container {
+  text-align: center;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+.btn-primary {
+  border: 1px solid #12396A;
+  background-color: #12396A;
+  color: white;
+  border-radius: 2em;
+}
+
+.link-redirect-container {
+  margin-bottom: 3em;
+}
+
+.link-redirect-container-signup {
+  margin-top: 1.5em;
+}
+
+.form-group-buttons {
+  margin-top: 1.5em;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.form-group-buttons a,
+.form-group-buttons input[type=submit] {
+  width: 47%;
+}
+
+.btn-light {
+  border-radius: 2em;
+}
+
+.form-group-button {
+  margin-top: 3em;
+  text-align: center;
+}
+
+.survey-container .form-group-buttons {
+  margin-top: 4em;
 }
 
 body {
