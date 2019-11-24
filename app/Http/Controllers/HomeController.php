@@ -26,4 +26,10 @@ class HomeController extends Controller
         $data['internships'] = \DB::table('internships')->orderBy('id', 'desc')->limit(6)->get();
         return view('home', $data);
     }
+
+    public function internshipDetail($internship){
+        $data['internship'] = \App\Internship::where('id', $internship)->first();
+
+        return view('internshipData', $data);
+    }
 }
