@@ -10,3 +10,10 @@
 @import 'company';
 @import 'components/entry';
 @import 'components/home';
+@import 'components/survey';
+@import 'components/buttons';
+
+body{
+    font-family: 'Work Sans', sans-serif;
+    color: $blue;
+}

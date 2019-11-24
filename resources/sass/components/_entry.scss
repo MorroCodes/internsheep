@@ -32,38 +32,6 @@
     color: $blue
 }
 
-.btn-social {
-    text-decoration: none;
-}
-
-.btn-social span {
-    text-decoration: underline;
-}
-
-.link-redirect {
-    color: $blue;
-    text-decoration: none;
-}
-
-.link-redirect-container {
-    text-align: center;
-}
-
-.btn-container {
-    text-align: center;
-}
-
-.btn-primary {
-    border: 1px solid $blue;
-    background-color: $blue;
-    color: white;
-    border-radius: 2em;
-}
-
-.link-redirect-container {
-    margin-bottom: 3em;
-}
-
 .form-group label {
     padding-left: 0.8em;
     margin-top: 1em;
@@ -72,7 +40,8 @@
 }
 
 .form-group input[type=email],
-.form-group input[type=password] {
+.form-group input[type=password],
+.form-group input[type=text] {
     background-color: $grey;
     border-radius: 2em;
     border: 1px solid $grey;
@@ -86,6 +55,42 @@
     margin-top: 1.5em;
 }
 
-.signup-section h3{
+.signup-section h3 {
     color: $blue;
+}
+
+
+@media(min-width: 750px) {
+    .login-container {
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .manual-signup-container {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .signup-container {
+        display: flex;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .signup-section {
+        width: 50%;
+        padding: 0.5em;
+    }
+
+    .signup-section h3 {
+        text-align: center;
+    }
+
+    .entry-content p {
+        text-align: center;
+    }
 }
