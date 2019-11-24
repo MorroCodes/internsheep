@@ -32,4 +32,13 @@ class HomeController extends Controller
 
         return view('internshipData', $data);
     }
+
+    public function redirect(){
+        $type = \Auth::user()->type;
+        if($type == "student"){
+            return redirect('/home');
+        }else{
+            return redirect('/yourCompany');
+        }
+    }
 }

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@redirect');
 
 // login routes
 Route::get('/login', 'EntryController@login');
