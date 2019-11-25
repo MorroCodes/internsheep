@@ -35,4 +35,11 @@ class AccountController extends Controller
             return redirect('/change_student_data');
         }
     }
+
+    public function StudentProfile(){
+        $id = \Auth::user()->id;
+        $data['user'] = \App\User::where('id', $id)->first();
+
+        return view('student/student', $data);
+    }
 }
