@@ -8,7 +8,7 @@ class AccountController extends Controller
 {
     public function changeStudentData()
     {
-        return view('studentData');
+        return view('student/studentData');
     }
 
     public function handleStudentData(Request $request){

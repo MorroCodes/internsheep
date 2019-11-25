@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function internshipDetail($internship){
         $data['internship'] = \App\Internship::where('id', $internship)->first();
 
-        return view('internshipData', $data);
+        return view('student/internshipData', $data);
     }
 
     public function redirect(){
