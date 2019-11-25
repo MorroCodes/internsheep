@@ -133,6 +133,8 @@ class EntryController extends Controller
         $user = new \App\User();
         $user->firstname = $credentials['firstname'];
         $user->lastname = $credentials['lastname'];
+        $user->description = 'Dit is mijn beschrijving.';
+        $user->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
         $user->email = $credentials['email'];
         $user->password = \Hash::make($credentials['password']);
         $user->type = $type;
