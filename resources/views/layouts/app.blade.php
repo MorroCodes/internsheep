@@ -78,5 +78,14 @@
             @yield('content')
         </main>
     </div>
+    <script type="text/javascript">
+        var span = document.createElement("span");
+        document.querySelector("h2").appendChild(span);
+
+
+        document.querySelector("h2").addEventListener('click', function() {
+            alert('Hello world');
+        });
+    </script>
 </body>
 </html>
