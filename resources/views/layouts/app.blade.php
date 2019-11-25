@@ -82,9 +82,13 @@
         var span = document.createElement("span");
         document.querySelector("h2").appendChild(span);
 
-
-        document.querySelector("h2").addEventListener('click', function() {
-            alert('Hello world');
+        let body = document.querySelector("body");
+        
+        body.addEventListener('click', function(e) {
+            if(e.target.matches("h2")){
+                alert('Hello world');
+            }
+          
         });
     </script>
 </body>
