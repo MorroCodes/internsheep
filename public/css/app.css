@@ -11489,11 +11489,29 @@ div a .edit {
   margin-top: 4em;
 }
 
-h3 span {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+h1 span,
+h2 span,
+h3 span,
+h4 span,
+h5 span,
+h6 span {
   height: 20px;
   width: 20px;
-  background: red;
   position: absolute;
+  background: url(/images/speaker.svg?8d387a89f711fe4a2bbd276ed73f06db);
+  background-position: center;
+  background-size: cover;
+  margin-left: 5px;
+  bottom: 5px;
 }
 
 body {

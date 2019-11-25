@@ -78,22 +78,6 @@
             @yield('content')
         </main>
     </div>
-    <script type="text/javascript">
-
-        var divs = document.querySelectorAll('h3'), i;
-        for (i = 0; i < divs.length; ++i) {
-            var span = document.createElement("span");
-          divs[i].appendChild(span);
-        }
-
-        let body = document.querySelector("body");
-        body.addEventListener('click', function(e) {
-            if(e.target.matches("span")){
-                var text = e.target.parentNode.innerHTML.replace('<span></span>','');;
-                responsiveVoice.speak(text, "Dutch Female");
-            }
-
-        });
-    </script>
+    <script type="text/javascript" src="{{ URL::asset('js/components/voice_api.js') }}"></script>
 </body>
 </html>
