@@ -79,16 +79,20 @@
         </main>
     </div>
     <script type="text/javascript">
-        var span = document.createElement("span");
-        document.querySelector("h2").appendChild(span);
+
+        var divs = document.querySelectorAll('h3'), i;
+        for (i = 0; i < divs.length; ++i) {
+            var span = document.createElement("span");
+          divs[i].appendChild(span);
+        }
 
         let body = document.querySelector("body");
-        
         body.addEventListener('click', function(e) {
-            if(e.target.matches("h2")){
-                alert('Hello world');
+            if(e.target.matches("span")){
+                var text = e.target.parentNode.innerHTML.replace('<span></span>','');;
+                responsiveVoice.speak(text, "Dutch Female");
             }
-          
+
         });
     </script>
 </body>
