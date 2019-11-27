@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function show()
+    public function show(\App\Company $company)
     {
-        
-        return view('yourcompany');
+     
+      dd($company);
     }
 }

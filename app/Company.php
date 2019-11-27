@@ -11,8 +11,10 @@ class Company extends Model
         return $this->belongsTo('\App\User');
     }
 
+protected $with = ['internships'];
+
     public function internship()
     {
-        return $this->belongsTo('\App\Internship');
+        return $this->hasMany('\App\Internship');
     }
 }
