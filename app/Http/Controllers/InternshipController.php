@@ -44,9 +44,10 @@ class InternshipController extends Controller
      * @param  \App\Internship  $internship
      * @return \Illuminate\Http\Response
      */
-    public function show(Internship $internship)
+    public function show()
     {
-        //
+        
+
     }
 
     /**
