@@ -17,7 +17,7 @@
                         <h2>Wijzig gegevens</h2>
                         <div class="form-group">
                             <label for="exampleInputNameCompany">Naam bedrijf</label>
-                            <input type="text" name="nameCompany" class="form-control" id="exampleInputNameCompany" value="{{Auth::user()->email}}">
+                            <input type="text" name="nameCompany" class="form-control" id="exampleInputNameCompany" value="{{Auth::user()->company_name}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputDescriptionCompany">Naam bedrijf</label>

@@ -10,4 +10,9 @@ class Company extends Model
     {
         return $this->belongsTo('\App\User');
     }
+
+    public function internship()
+    {
+        return $this->belongsTo('\App\Internship');
+    }
 }

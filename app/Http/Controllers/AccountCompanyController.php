@@ -11,7 +11,7 @@ class AccountCompanyController extends Controller
         return view('companyAccount');
     }
 
-    public function handleStudentData(Request $request){
+    public function handleCompanyData(Request $request){
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
         $email = $request->input('email');
@@ -21,7 +21,14 @@ class AccountCompanyController extends Controller
 
         return redirect('/companyaccount');
     }
-    
+    public function handleCompanytData2(Request $request){
+        $nameCompany = $request->input('nameCompany');
+        $description = $request->input('descriptionCompany');
+        $id = \Auth::user()->id;
+
+        $user = \App\Company::where('id', $id)->update(['company_name' => $nameCompany, 'company_bio' => $description]);
+        return redirect('/companyaccount');
+    }
 
     public function handleCompanyNewPassword(Request $request){
         $password1 = $request->input('password1');
