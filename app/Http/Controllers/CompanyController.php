@@ -13,7 +13,12 @@ class CompanyController extends Controller
         $internship = Internship::paginate(3);
         return view('yourCompany',compact('internship'));
     }
-
+    
+    public function index(\App\Company $internship) {
+        $internship = $internship;
+        return view('vacature',compact('internship'));
+        
+}
    
 
 

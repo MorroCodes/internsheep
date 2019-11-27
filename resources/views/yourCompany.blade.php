@@ -30,21 +30,21 @@
 </div>
 <h2>+</h2>
 <div class="card-deck">
-@forelse($internship as $i)
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">{{$i->title}}</h5>
-      <p class="card-text">{{$i->description}}</p>
-      <button>View</button>
+  @forelse($internship as $i)
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{$i->title}}</h5>
+        <p class="card-text">{{$i->description}}</p>
+        <a href="/yourCompany/{{$i->id}}">
+        <button>view</button>
+        </a>
+      </div>
     </div>
-  </div>
-
-  @empty
-  <h1>Je hebt nog geen vacatures!</h1>
-  
+      @empty
+      <h1>Je hebt nog geen vacatures!</h1>
   @endforelse
-  </div>
-  {{$internship->links()}}
+    </div>
+    {{$internship->links()}}
 @endsection
 
 

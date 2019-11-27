@@ -15,6 +15,6 @@ protected $with = ['internships'];
 
     public function internship()
     {
-        return $this->hasMany('\App\Internship');
+        return $this->hasMany('App\Internship');
     }
 }
