@@ -99,6 +99,9 @@ class EntryController extends Controller
 
         // give user session data (name, type of user)
         $this->setSessionData($user);
+        if (\Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']], $user)) {
+            // The user is being remembered...
+        }
 
         return redirect('/company_survey');
     }
@@ -129,6 +132,10 @@ class EntryController extends Controller
 
         // give user session data (name, type of user)
         $this->setSessionData($user);
+
+        if (\Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']], $user)) {
+            // The user is being remembered...
+        }
 
         return redirect('/student_survey');
     }
