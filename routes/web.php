@@ -67,3 +67,6 @@ Route::post('/change_student_data/password', 'AccountController@handleStudentNew
 Route::get('/companyaccount', 'AccountController@show')->name('youraccount');
 Route::post('/companyaccount/data', 'AccountController@handleData');
 Route::put('/company/password', 'AccountController@handleNewPassword');
+
+//match students with companies
+Route::get('/testMatching', 'MatchController@matchStudentWithCompanies')->name('Match with company');
