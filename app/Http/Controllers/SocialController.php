@@ -14,24 +14,47 @@ class SocialController extends Controller
         return Socialite::driver($provider)->redirect();
     }
 
-    public function callback($provider)
+    public function redirectFacebook($provider, $type)
+    {
+        session(['signup_type' => $type]);
+
+        return Socialite::driver($provider)->redirect();
+    }
+
+    public function callback(Request $request, $provider)
     {
         // get referer link to decide type of user
         $referer = Request::server('HTTP_REFERER');
+        // $object = $request->query('type');
 
         // if redirect comes from login -> redirect to signup to choose account type
         if (strpos($referer, 'login') == true) {
-            // TODO: check if user has account
-            // If user has account -> login
-            // If user has no account -> show page to sign up as ...
-            return redirect()->to('/signup');
+            // check if user has account
+            $getInfo = Socialite::driver($provider)->user();
+            $result = $this->getUserFromEmail($getInfo->email);
+
+            // if user has no account yet -> redirect to page where they can choose
+            if ($result == null) {
+                return redirect()->to('/facebook_signup');
+            }
+
+            // check if user has signed up with facebook in the past
+            if ($result->provider == 'facebook') {
+                $this->setSessionData($result);
+
+                return redirect()->to('/');
+            }
+            // if user has an account but not with facebook -> error
+            dd('if user has an account but not with facebook -> error');
         }
 
         // save type of user in variable
         if (strpos($referer, 'student_signup') == true) {
             $type = 'student';
-        } else {
+        } elseif (strpos($referer, 'company_signup') == true) {
             $type = 'company';
+        } elseif (strpos($referer, 'facebook_signup') == true) {
+            $type = session('signup_type');
         }
 
         $getInfo = Socialite::driver($provider)->user();
