@@ -11356,7 +11356,7 @@ div a .edit {
     top: 35%;
     -webkit-transform: translateY(-35%);
             transform: translateY(-35%);
-    width: 90%;
+    width: 80%;
     margin: 0 5%;
     max-width: none;
   }
