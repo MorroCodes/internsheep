@@ -185,7 +185,7 @@ class EntryController extends Controller
 
     public function getUserFromEmail($email)
     {
-        $user = \DB::table('users')->where('email', $email)->first();
+        $user = \App\User::where('email', $email)->first();
 
         return $user;
     }
@@ -216,9 +216,9 @@ class EntryController extends Controller
             return view('entry/complete_company_signup', $data);
         }
 
-        \DB::table('companies')
-              ->where('user_id', session('id'))
-              ->update(['company_name' => $credentials['company_name'], 'company_bio' => $credentials['company_bio']]);
+        $company = \App\Company::where('user_id', session('id'));
+        $company->update(['company_name' => $credentials['company_name'], 'company_bio' => $credentials['company_bio']]);
+
 
         return redirect('/company_survey');
     }
@@ -234,9 +234,8 @@ class EntryController extends Controller
             return view('entry/complete_student_signup', $data);
         }
 
-        \DB::table('students')
-              ->where('user_id', session('id'))
-              ->update(['school' => $credentials['school'], 'field_of_study' => $credentials['field_of_study']]);
+        $student = \App\Student::where('user_id', session('id'));
+        $student->update(['school' => $credentials['school'], 'field_of_study' => $credentials['field_of_study']]);
 
         return redirect('/student_survey');
     }
