@@ -1,10 +1,10 @@
 .entry-page {
-    background-image: url("/images/wave4.svg");
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: cover;
-    min-height: 120vh;
-    background-color: white;
+    // background-image: url("/images/wave4.svg");
+    // background-repeat: no-repeat;
+    // background-position: center bottom;
+    // background-size: cover;
+    // min-height: 120vh;
+    background-color: #B4F1E3;
 }
 
 .entry-content {
@@ -12,10 +12,17 @@
     margin: 0 5%;
     position: absolute;
     padding: 2em;
-    // top: 35%;
-    // transform: translateY(-35%);
     border-radius: 1em;
     background-color: white;
+}
+
+.entry-content-login, .entry-content-complete{
+    top: 35%;
+    transform: translateY(-35%);
+}
+
+.entry-content-signup {
+    margin: 2em 5%;
 }
 
 .logo-entry-container {
@@ -92,5 +99,13 @@
 
     .entry-content p {
         text-align: center;
+    }
+}
+
+@media(min-width: 900px){
+    .entry-content{
+        max-width: 900px;
+        position: relative;
+        margin: 2em auto 2em auto;
     }
 }

@@ -1,6 +1,6 @@
 .survey-content{
     width: 95%;
-    margin: 0 2.5%;
+    margin: 2em 2.5%;
     position: absolute;
     padding: 2em;
     border-radius: 1em;
@@ -35,11 +35,23 @@
     margin-bottom: 2em;
 }
 
+.survey-content .logo-entry-container{
+    margin-bottom: 2em;
+}
+
 @media(min-width:600px){
     .survey-content h2, .survey-content p{
         text-align: center;
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+@media(min-width: 800px){
+    .survey-content{
+        max-width: 750px;
+        position: relative;
+        margin: 2em auto 2em auto;
     }
 }
