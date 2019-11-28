@@ -21,6 +21,9 @@ class SocialController extends Controller
 
         // if redirect comes from login -> redirect to signup to choose account type
         if (strpos($referer, 'login') == true) {
+            // TODO: check if user has account
+            // If user has account -> login
+            // If user has no account -> show page to sign up as ...
             return redirect()->to('/signup');
         }
 
@@ -78,6 +81,8 @@ class SocialController extends Controller
          'firstname' => $firstname,
          'lastname' => $lastname,
          'email' => $getInfo->email,
+         'profile_image' => 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg',
+         'description' => '',
          'type' => $type,
          'provider' => $provider,
          'provider_id' => $getInfo->id,
