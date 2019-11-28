@@ -11244,12 +11244,7 @@ div a .edit {
 }
 
 .entry-page {
-  background-image: url("/images/wave4.svg");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: cover;
-  min-height: 120vh;
-  background-color: white;
+  background-color: #B4F1E3;
 }
 
 .entry-content {
@@ -11259,6 +11254,17 @@ div a .edit {
   padding: 2em;
   border-radius: 1em;
   background-color: white;
+}
+
+.entry-content-login,
+.entry-content-complete {
+  top: 35%;
+  -webkit-transform: translateY(-35%);
+          transform: translateY(-35%);
+}
+
+.entry-content-signup {
+  margin: 2em 5%;
 }
 
 .logo-entry-container {
@@ -11337,6 +11343,14 @@ div a .edit {
   }
 }
 
+@media (min-width: 900px) {
+  .entry-content {
+    max-width: 900px;
+    position: relative;
+    margin: 2em auto 2em auto;
+  }
+}
+
 .internships {
   display: -webkit-box;
   display: flex;
@@ -11380,7 +11394,7 @@ div a .edit {
 
 .survey-content {
   width: 95%;
-  margin: 0 2.5%;
+  margin: 2em 2.5%;
   position: absolute;
   padding: 2em;
   border-radius: 1em;
@@ -11417,6 +11431,10 @@ div a .edit {
   margin-bottom: 2em;
 }
 
+.survey-content .logo-entry-container {
+  margin-bottom: 2em;
+}
+
 @media (min-width: 600px) {
   .survey-content h2,
   .survey-content p {
@@ -11424,6 +11442,14 @@ div a .edit {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+@media (min-width: 800px) {
+  .survey-content {
+    max-width: 750px;
+    position: relative;
+    margin: 2em auto 2em auto;
   }
 }
 

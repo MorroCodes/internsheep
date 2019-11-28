@@ -1,6 +1,6 @@
 @extends('layouts/entry')
 @section('content')
-<div class="entry-content">
+<div class="entry-content entry-content-signup">
     <div class=logo-entry-container>
         <img src="/images/logo.svg" alt="Internsheep logo" class="logo logo-entry">
     </div>
