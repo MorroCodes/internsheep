@@ -26,6 +26,11 @@ class EntryController extends Controller
         return view('entry/company_signup');
     }
 
+    public function facebookSignup()
+    {
+        return view('entry/facebook_signup');
+    }
+
     public function handleLogin(Request $request)
     {
         $credentials = $request->only(['email', 'password']);

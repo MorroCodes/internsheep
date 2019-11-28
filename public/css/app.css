@@ -11489,6 +11489,12 @@ div a .edit {
   margin-top: 4em;
 }
 
+.entry-content .alert {
+  max-width: 1000px;
+  text-align: center;
+  margin: auto;
+}
+
 body {
   font-family: "Work Sans", sans-serif;
   color: #12396A;
