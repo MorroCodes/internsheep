@@ -108,4 +108,13 @@
         position: relative;
         margin: 2em auto 2em auto;
     }
+
+    .entry-content-login, .entry-content-complete{
+        position: absolute;
+        top: 35%;
+        transform: translateY(-35%);
+        width: 90%;
+        margin: 0 5%;
+        max-width: none;
+    }
 }
