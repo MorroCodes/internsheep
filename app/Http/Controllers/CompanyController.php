@@ -14,6 +14,7 @@ class CompanyController extends Controller
         return view('yourCompany',compact('internship'));
     }
     
+    
     public function index(\App\Company $internship) {
         $internship = $internship;
         return view('vacature',compact('internship'));
