@@ -219,7 +219,6 @@ class EntryController extends Controller
         $company = \App\Company::where('user_id', session('id'));
         $company->update(['company_name' => $credentials['company_name'], 'company_bio' => $credentials['company_bio']]);
 
-
         return redirect('/company_survey');
     }
 

@@ -38,14 +38,19 @@ class SocialController extends Controller
                 return redirect()->to('/facebook_signup');
             }
 
+            // if user has an account but not with facebook -> error
+            if ($result != null && $result->provider != 'facebook') {
+                $data['error'] = 'Dit e-mail adres is niet gekoppeld aan een Facebook profiel. Gelieve handmatig aan te melden.';
+
+                return view('entry/login', $data);
+            }
+
             // check if user has signed up with facebook in the past
             if ($result->provider == 'facebook') {
                 $this->setSessionData($result);
 
                 return redirect()->to('/');
             }
-            // if user has an account but not with facebook -> error
-            dd('if user has an account but not with facebook -> error');
         }
 
         // save type of user in variable
