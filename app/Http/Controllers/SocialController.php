@@ -14,21 +14,52 @@ class SocialController extends Controller
         return Socialite::driver($provider)->redirect();
     }
 
-    public function callback($provider)
+    public function redirectFacebook($provider, $type)
+    {
+        session(['signup_type' => $type]);
+
+        return Socialite::driver($provider)->redirect();
+    }
+
+    public function callback(Request $request, $provider)
     {
         // get referer link to decide type of user
         $referer = Request::server('HTTP_REFERER');
+        // $object = $request->query('type');
 
         // if redirect comes from login -> redirect to signup to choose account type
         if (strpos($referer, 'login') == true) {
-            return redirect()->to('/signup');
+            // check if user has account
+            $getInfo = Socialite::driver($provider)->user();
+            $result = $this->getUserFromEmail($getInfo->email);
+
+            // if user has no account yet -> redirect to page where they can choose
+            if ($result == null) {
+                return redirect()->to('/facebook_signup');
+            }
+
+            // if user has an account but not with facebook -> error
+            if ($result != null && $result->provider != 'facebook') {
+                $data['error'] = 'Dit e-mail adres is niet gekoppeld aan een Facebook profiel. Gelieve handmatig aan te melden.';
+
+                return view('entry/login', $data);
+            }
+
+            // check if user has signed up with facebook in the past
+            if ($result->provider == 'facebook') {
+                $this->setSessionData($result);
+
+                return redirect()->to('/');
+            }
         }
 
         // save type of user in variable
         if (strpos($referer, 'student_signup') == true) {
             $type = 'student';
-        } else {
+        } elseif (strpos($referer, 'company_signup') == true) {
             $type = 'company';
+        } elseif (strpos($referer, 'facebook_signup') == true) {
+            $type = session('signup_type');
         }
 
         $getInfo = Socialite::driver($provider)->user();
@@ -78,6 +109,8 @@ class SocialController extends Controller
          'firstname' => $firstname,
          'lastname' => $lastname,
          'email' => $getInfo->email,
+         'profile_image' => 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg',
+         'description' => '',
          'type' => $type,
          'provider' => $provider,
          'provider_id' => $getInfo->id,

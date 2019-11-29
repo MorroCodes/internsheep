@@ -26,6 +26,11 @@ class EntryController extends Controller
         return view('entry/company_signup');
     }
 
+    public function facebookSignup()
+    {
+        return view('entry/facebook_signup');
+    }
+
     public function handleLogin(Request $request)
     {
         $credentials = $request->only(['email', 'password']);
@@ -33,7 +38,7 @@ class EntryController extends Controller
             $user = $this->getUserFromEmail($credentials['email']);
             $this->setSessionData($user);
 
-            return redirect('/yourCompany');
+            return redirect('/');
         } else {
             $data['error'] = 'Er is iets fout gegaan. Probeer opnieuw.';
             $data['email'] = $credentials['email'];
@@ -79,7 +84,7 @@ class EntryController extends Controller
         $result = $this->signupDataCheck($credentials);
         if ($result !== true) {
             $data['error'] = $result['error'];
-            
+
             return view('entry/company_signup', $data);
         }
 
@@ -94,6 +99,9 @@ class EntryController extends Controller
 
         // give user session data (name, type of user)
         $this->setSessionData($user);
+        if (\Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']], $user)) {
+            // The user is being remembered...
+        }
 
         return redirect('/company_survey');
     }
@@ -125,6 +133,10 @@ class EntryController extends Controller
         // give user session data (name, type of user)
         $this->setSessionData($user);
 
+        if (\Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']], $user)) {
+            // The user is being remembered...
+        }
+
         return redirect('/student_survey');
     }
 
@@ -133,6 +145,8 @@ class EntryController extends Controller
         $user = new \App\User();
         $user->firstname = $credentials['firstname'];
         $user->lastname = $credentials['lastname'];
+        $user->description = 'Dit is mijn beschrijving.';
+        $user->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
         $user->email = $credentials['email'];
         $user->password = \Hash::make($credentials['password']);
         $user->type = $type;
@@ -171,7 +185,7 @@ class EntryController extends Controller
 
     public function getUserFromEmail($email)
     {
-        $user = \DB::table('users')->where('email', $email)->first();
+        $user = \App\User::where('email', $email)->first();
 
         return $user;
     }
@@ -202,9 +216,8 @@ class EntryController extends Controller
             return view('entry/complete_company_signup', $data);
         }
 
-        \DB::table('companies')
-              ->where('user_id', session('id'))
-              ->update(['company_name' => $credentials['company_name'], 'company_bio' => $credentials['company_bio']]);
+        $company = \App\Company::where('user_id', session('id'));
+        $company->update(['company_name' => $credentials['company_name'], 'company_bio' => $credentials['company_bio']]);
 
         return redirect('/company_survey');
     }
@@ -220,9 +233,8 @@ class EntryController extends Controller
             return view('entry/complete_student_signup', $data);
         }
 
-        \DB::table('students')
-              ->where('user_id', session('id'))
-              ->update(['school' => $credentials['school'], 'field_of_study' => $credentials['field_of_study']]);
+        $student = \App\Student::where('user_id', session('id'));
+        $student->update(['school' => $credentials['school'], 'field_of_study' => $credentials['field_of_study']]);
 
         return redirect('/student_survey');
     }

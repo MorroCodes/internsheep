@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@redirect');
 
 // login routes
 Route::get('/login', 'EntryController@login');
@@ -25,6 +23,7 @@ Route::get('/student_signup', 'EntryController@studentSignup');
 Route::post('/student_signup', 'EntryController@handleStudentSignup');
 Route::get('/company_signup', 'EntryController@companySignup');
 Route::post('/company_signup', 'EntryController@handleCompanySignup');
+Route::get('/facebook_signup', 'EntryController@facebookSignup');
 
 // auth routes redirect
 Route::get('login', 'EntryController@login')->name('login');
@@ -34,6 +33,7 @@ Route::get('signup', 'EntryController@signup')->name('signup');
 
 // facebook signup redirect and callback
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/auth/redirect/{provider}/{type}', 'SocialController@redirectFacebook');
 Route::get('/callback/{provider}', 'SocialController@callback');
 
 // complete signup after facebook signup
@@ -60,7 +60,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 // TODO: reroute to index page! Change to correct controller
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/internship/{internship}', 'HomeController@internshipDetail')->name('home');
 
+Route::get('/student', 'AccountController@StudentProfile')->name('StudentProfile');
 Route::get('/change_student_data', 'AccountController@changeStudentData')->name('changeStudentData');
 Route::post('/change_student_data/data', 'AccountController@handleStudentData');
 Route::post('/change_student_data/password', 'AccountController@handleStudentNewPassword');

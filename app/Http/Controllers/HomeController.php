@@ -23,6 +23,23 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data['internship'] = \App\Internship::orderBy('id', 'desc')->take(6)->get();
+
+        return view('home', $data);
+    }
+
+    public function internshipDetail($internship){
+        $data['internship'] = \App\Internship::where('id', $internship)->first();
+
+        return view('student/internshipData', $data);
+    }
+
+    public function redirect(){
+        $type = \Auth::user()->type;
+        if($type == "student"){
+            return redirect('/home');
+        }else{
+            return redirect('/yourCompany');
+        }
     }
 }

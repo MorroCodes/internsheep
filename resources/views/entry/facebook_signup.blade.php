@@ -7,6 +7,8 @@
     <h2>Registreer</h2>
     <p>Ga mee op zoek naar de perfecte stage-match!</p>
 
+    <div class="alert alert-warning">Je hebt nog geen profiel aangemaakt via facebook. Kies hier het soort profiel dat je wil aanmaken.</div>
+
     <div class="signup-container">
         <div class="signup-section">
             <h3>Ik zoek een stage</h3>
@@ -17,7 +19,7 @@
                 <li class="list-group-item">Bla</li>
             </ul>
             <div class="btn-container">
-                <a href="/student_signup" class="btn btn-primary">Registreer als student</a>
+                <a href="{{ url('/auth/redirect/facebook/student') }}" class="btn btn-primary">Registreer als student</a>
             </div>
         </div>
 
@@ -30,13 +32,13 @@
                 <li class="list-group-item">Bla</li>
             </ul>
             <div class="btn-container">
-                <a href="/company_signup" class="btn btn-primary">Registreer als bedrijf</a>
+                <a href="{{ url('/auth/redirect/facebook/company') }}" class="btn btn-primary">Registreer als bedrijf</a>
             </div>
         </div>
 
     </div>
     <div class="link-redirect-container link-redirect-container-signup">
-        <a href="/login" class="link-redirect">Ben je al lid? Meld hier aan!</a>
+        <a href="/login" class="link-redirect">Heb je al aan profiel? Meld aan via e-mail en wachtwoord!</a>
     </div>
     
 </div>

@@ -9,3 +9,12 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'company';
 @import 'components/entry';
+@import 'components/home';
+@import 'components/survey';
+@import 'components/buttons';
+@import 'components/alerts';
+
+body{
+    font-family: 'Work Sans', sans-serif;
+    color: $blue;
+}

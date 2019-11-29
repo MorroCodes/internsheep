@@ -2,22 +2,18 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
+    <h1>Vind hier een stage die op jouw lijf geschreven staat!</h1>
+    <div class="internships">
+        <h2>Vacatures</h2>
+        @foreach($internship as $i)
+            <div class="card internship_container">
+                <img src="{{ $i->img }}" class="card-img-top">
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+                    <h3 class="card-title">{{ $i->title }}</h3>
+                    <a href="/internship/{{ $i->id }}" class="btn btn-primary">Meer info</a>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection
