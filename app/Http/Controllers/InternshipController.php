@@ -43,14 +43,7 @@ class InternshipController extends Controller
      * @param  \App\Internship  $internship
      * @return \Illuminate\Http\Response
      */
-    
-        public function index(\App\Company $internship) {
 
-            $internship = $internship;
-            return view('vacature',compact('internship'));
-            
-    }
-    
 
     
 

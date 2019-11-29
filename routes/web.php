@@ -50,7 +50,7 @@ Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 
 //companie
 Route::get('/yourCompany', 'CompanyController@show');
-Route::get('/yourCompany/{id}', 'CompanyController@index')->name('index');
+Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('show');
 Route::get('/vacature', 'vacatureCompany@show');
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');

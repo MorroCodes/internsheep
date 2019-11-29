@@ -15,16 +15,13 @@ class CompanyController extends Controller
     }
     
     
-    public function index(\App\Company $internship) {
-        $internship = $internship;
-        return view('vacature',compact('internship'));
+    public function index($id, $internship) {
+        $internship = Internship::find($id);
+        
+        return view('show',compact('internship'));
         
 }
    
-
-
-    
-
 }
 
 
