@@ -19,6 +19,7 @@ class CreateInternshipsTable extends Migration
             $table->text('description');
             $table->text('address');
             $table->text('img');
+            $table->String('slug');
             $table->timestamps();
         });
     }

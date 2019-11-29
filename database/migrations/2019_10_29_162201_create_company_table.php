@@ -15,6 +15,7 @@ class CreateCompanyTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->string('company_name')->nullable();
+            $table->string('slug')->nullable();
             $table->text('company_bio')->nullable();
             $table->timestamps();
         });
