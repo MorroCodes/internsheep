@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="survey-content">
+        <div class=logo-entry-container>
+            <img src="/images/logo.svg" alt="Internsheep logo" class="logo logo-entry">
+        </div>
         <h2>Internsheep wil jouw bedrijf leren kennen!</h2>
         <p>Door onderstaande vragen in te vullen kunnen wij studenten beter met jouw bedrijf matchen.</p>
     

@@ -5,7 +5,7 @@
     <h1>Vind hier een stage die op jouw lijf geschreven staat!</h1>
     <div class="internships">
         <h2>Vacatures</h2>
-        @foreach($internships as $i)
+        @foreach($internship as $i)
             <div class="card internship_container">
                 <img src="{{ $i->img }}" class="card-img-top">
                 <div class="card-body">

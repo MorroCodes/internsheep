@@ -23,6 +23,7 @@ Route::get('/student_signup', 'EntryController@studentSignup');
 Route::post('/student_signup', 'EntryController@handleStudentSignup');
 Route::get('/company_signup', 'EntryController@companySignup');
 Route::post('/company_signup', 'EntryController@handleCompanySignup');
+Route::get('/facebook_signup', 'EntryController@facebookSignup');
 
 // auth routes redirect
 Route::get('login', 'EntryController@login')->name('login');
@@ -32,6 +33,7 @@ Route::get('signup', 'EntryController@signup')->name('signup');
 
 // facebook signup redirect and callback
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/auth/redirect/{provider}/{type}', 'SocialController@redirectFacebook');
 Route::get('/callback/{provider}', 'SocialController@callback');
 
 // complete signup after facebook signup
