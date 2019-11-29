@@ -18,6 +18,7 @@ class CreateCompanySurveyTable extends Migration
             $table->integer('size')->nullable();
             $table->integer('age')->nullable();
             $table->integer('type')->nullable();
+            $table->string('slug')->nullable();
             $table->integer('transport')->nullable();
             $table->timestamps();
         });

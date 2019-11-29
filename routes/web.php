@@ -48,7 +48,9 @@ Route::post('/student_survey', 'SurveyController@handleStudentSurvey');
 Route::get('/company_survey', 'SurveyController@companySurvey');
 Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 
+//companie
 Route::get('/yourCompany', 'CompanyController@show');
+Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('show');
 Route::get('/vacature', 'vacatureCompany@show');
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
@@ -66,6 +68,7 @@ Route::post('/change_student_data/data', 'AccountController@handleStudentData');
 Route::post('/change_student_data/password', 'AccountController@handleStudentNewPassword');
 
 //edit profile company
-Route::get('/companyaccount', 'AccountController@show')->name('youraccount');
-Route::post('/companyaccount/data', 'AccountController@handleData');
-Route::put('/company/password', 'AccountController@handleNewPassword');
+Route::get('/companyaccount', 'AccountCompanyController@changeCompanyData')->name('changeCompanyData');
+Route::post('/companyaccount/data', 'AccountCompanyController@handleCompanyData');
+Route::post('/companyaccount/data2', 'AccountCompanyController@handleCompanyData2');
+Route::post('/companyaccount/password', 'AccountCompanyController@handleCompanyNewPassword');

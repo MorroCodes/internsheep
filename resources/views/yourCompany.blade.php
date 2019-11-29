@@ -30,29 +30,21 @@
 </div>
 <h2>+</h2>
 <div class="card-deck">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Front-end Developer</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+  @forelse($internship as $i)
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{$i->title}}</h5>
+        <p class="card-text">{{$i->description}}</p>
+        <a href="{{route('show',[$i->id,$i->slug])}}">
+        <button>view</button>
+        </a>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">UX/UI designer</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      @empty
+      <h1>Je hebt nog geen vacatures!</h1>
+  @endforelse
     </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">PHP developer</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Full stack developer</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-  </div>
-</div>
+    {{$internship->links()}}
 @endsection
+
+
