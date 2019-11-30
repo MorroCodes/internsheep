@@ -1,4 +1,4 @@
-@extends('layouts/yourCompany')
+@extends('layouts/company')
 
 @section('nav')
 <ul class="nav" id="nav">
