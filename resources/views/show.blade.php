@@ -39,27 +39,27 @@
   <div class="card-header">
     Flux
   </div>
-  <div class="card-body">
-    <h1 id="title_vacature">{{$internship->title}}</h1>
-    <div class="flex2">
-        <h3 class="plaats">Plaats</h3>
-        <p class="location">Antwpen</p>
-        <a href="#"><img src="/img/edit.png" class='edit'></a>
-        <img src="/img/delete.png" class='delete'>
-    </div class="vacatureBody">
-    <h3 class="space">bedrijfsbeschrijving</h3>
-    <p>Flux is een webdesign bedrijf dat websites en IT oplossingen aanbiedt aan middelgrote bedrijven. Onze klanten zijn voornamelijk gebaseerd in Antwerpen maar we werken ook voor bedrijven in London en China. We zijn een jong snelgroeiend bedrijf gebaseerd in Idealabs. Dit is een leuke omgeving vol met snelgroeiende technologiebedrijven.</p>
-    <h3>Functieomschrijving</h3>
-    <p>Ben jij nog op zoek naar een stageplaats of een job als webdesigner? Stuur ons dan vlug een email, want wij breiden uit. Wij zijn een webdesign bedrijf in het hartje van Antwerpen. Wij zijn gevestigd in Idealabs, een co-working space vlakbij de Meir. Naast het maken van websites proberen wij een totaaloplossing voor onze klanten te bieden.Wil jij graag bij ons solliciteren? Stuur dan een bericht naar hello@flux.be. Voeg gelijk je portfolio toe en/of een voorbeeld van een website (of ander project) die je al gemaakt hebt. Je kunt de startdatum van je stage zelf bepalen!</p>
-    <h3>Profiel</h3>
-    <p>een coole kikker</p>
-    <h3>Wat bieden wij aan ?</h3>
-    <p>Flux is een webdesign bedrijf dat websites en IT oplossingen aanbiedt aan middelgrote bedrijven. Onze klanten zijn voornamelijk gebaseerd in Antwerpen maar we werken ook voor bedrijven in London en China.We zijn een jong snelgroeiend bedrijf gebaseerd in Idealabs. Dit is een leuke omgeving vol met snelgroeiende technologiebedrijven. Je krijgt ook koffie</p>
-  </div>
-  <div class="card-footer text-muted">
-    2 days ago
-  </div>
-</div>
+  <form action="{{ action('VacatureController@handleCompanyData') }}" method="post">
+    <div class="card-body">
+      <div class="form-group">
+        <h3>Titel</h3>
+          <input type="text" class="form-control" id="title_vacature" value="{{$internship->title}}">
+              <h3>Plaats</h3>
+              <input type="text" class="form-control" value="{{$internship->address}}">
+          <h3 class="space">bedrijfsbeschrijving</h3>
+          <input type="textarea" class="form-control" rows="8" cols="50" value="{{$internship->description}}">
+          <h3>Functieomschrijving</h3>
+          <input type="textarea" class="form-control" rows="8" cols="50" value="{{$internship->functie_omschrijving}}">
+          <h3>Wat bieden wij aan ?</h3>
+          <input type="textarea" class="form-control" rows="8" cols="50" value="{{$internship->aanbod}}">
+      </div>
+      <button type="submit" class="btn btn-primary">Aanpassen</button>
+      {{csrf_field()}}
+    </div>
+  </form>
+        <div class="card-footer text-muted">
+        {{$internship->created_at}}
+        </div>
 @endsection
 </body>
 </html>
