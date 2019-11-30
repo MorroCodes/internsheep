@@ -22,7 +22,9 @@ class vacatureCompany extends Controller
 
     public function update(Request $request,$id)
     {
-       dd($request->all());
+       $internship = Internship::find($id);
+       $internship->update($request->all());
+       return redirect()->back()->with('message', 'succes!');
     }
 
     
