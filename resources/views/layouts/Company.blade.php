@@ -12,6 +12,6 @@
 
 @yield('nav')
 
-@yield('gallerij')
+@yield('content')
 </body>
 </html>

@@ -11,19 +11,21 @@
     <a class="nav-link" href="#">Meldingen</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Profiel</a>
+  <a class="nav-link" href="#">Meldingen</a>
   </li>
 </ul>
 
 <div class="nav" id="nav2">
     <img src="/img/intr.png" alt="profile pic" class="icon">
-    <p>Interacto</p>
+    <p>{{Auth::user()->company_name}}</p>
 </div>
 
 
 @endsection
 
-@section('gallerij')
+
+
+@section('content')
 <div class="flex">
 <h1>Jouw vacatures</h1>
   <img src="/img/bg.png" alt="bg" class="bg">
@@ -46,5 +48,3 @@
     </div>
     {{$internship->links()}}
 @endsection
-
-

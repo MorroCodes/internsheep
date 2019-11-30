@@ -10,6 +10,8 @@ class CompanyController extends Controller
 {
    public function show(\App\Company $company)
 {
+  
+    
        $internship = Internship::paginate(3);
        return view('yourCompany',compact('internship'));
    }
@@ -20,6 +22,9 @@ class CompanyController extends Controller
         
         return view('show',compact('internship'));
        
+}
+public function hello(){
+
 }
 
    

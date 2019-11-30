@@ -50,6 +50,7 @@ Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 
 //companie
 Route::get('/yourCompany', 'CompanyController@show');
+Route::get('/homeCompany', 'CompanyController@hello');
 Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('show');
 
 //edit vacature
