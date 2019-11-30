@@ -54,7 +54,10 @@ Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('show'
 
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');
-Route::get('/vacature/create', 'VacatureController@handleCompanyData');
+Route::get('/vacature/{id}/edit', 'vacatureCompany@edit')->name('internship.edit');
+
+
+
 
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');

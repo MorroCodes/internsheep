@@ -3,26 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Company;
+use \App\Internship;
 
 class vacatureCompany extends Controller
 {
-    public function show()
+    public function index()
     {
         
         return view('vacature');
     }
-    public function handleCompanyData(Request $request){
-        $firstname = $request->input('firstname');
-        $lastname = $request->input('lastname');
-        $email = $request->input('email');
-        $id = \Auth::user()->id;
 
-        $user = \App\Internship::where('id', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
-
-        return redirect('/companyaccount');
-    }
-    public function changeCompanyData()
+    public function edit($id)
     {
-        return view('companyAccount');
+       $internship = Internship::find($id);
+       return view('internship.edit', compact('internship'));
     }
+
+    
+
+
 }
