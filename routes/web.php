@@ -55,7 +55,7 @@ Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('show'
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');
 Route::get('/vacature/{id}/edit', 'vacatureCompany@edit')->name('internship.edit');
-
+Route::post('/vacature/{id}/edit', 'vacatureCompany@update')->name('internship.update');
 
 
 

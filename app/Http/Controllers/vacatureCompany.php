@@ -20,6 +20,11 @@ class vacatureCompany extends Controller
        return view('internship.edit', compact('internship'));
     }
 
+    public function update(Request $request,$id)
+    {
+       dd($request->all());
+    }
+
     
 
 
