@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -25,21 +21,23 @@ class HomeController extends Controller
     {
         $data['internship'] = \App\Internship::orderBy('id', 'desc')->take(6)->get();
 
-        return view('home', $data);
+        return view('index/home', $data);
     }
 
-    public function internshipDetail($internship){
+    public function internshipDetail($internship)
+    {
         $data['internship'] = \App\Internship::where('id', $internship)->first();
 
         return view('student/internshipData', $data);
     }
 
-    public function redirect(){
+    public function redirect()
+    {
         $type = \Auth::user()->type;
-        if($type == "student"){
+        if ($type == 'student') {
             return redirect('/home');
-        }else{
-            return redirect('/yourCompany');
+        } else {
+            return redirect('/yourcompany');
         }
     }
 }

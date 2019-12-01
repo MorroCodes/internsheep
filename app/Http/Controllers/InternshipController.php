@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Internship;
 use Illuminate\Http\Request;
+use \App\Company;
+use \App\Internship;
 
 class InternshipController extends Controller
 {
@@ -12,10 +14,7 @@ class InternshipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+   
 
     /**
      * Show the form for creating a new resource.
@@ -44,10 +43,9 @@ class InternshipController extends Controller
      * @param  \App\Internship  $internship
      * @return \Illuminate\Http\Response
      */
-    public function show(Internship $internship)
-    {
-        //
-    }
+
+
+    
 
     /**
      * Show the form for editing the specified resource.
