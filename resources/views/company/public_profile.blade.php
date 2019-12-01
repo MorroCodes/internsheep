@@ -44,8 +44,21 @@
     </div>
 
     <div class="company-profile-internships-container">
+        <h2>Vacatures</h2>
         @foreach($vacatures as $v)
-            <p>{{$v->title}}</p>
+        <a href="/internship/{{ $v->id }}">
+                <div class="company-internships-card">
+                    <div>
+                        <img src="/{{ $v->img }}" class="card-img-side">
+                    </div>
+                    <div class="company-internship-description">
+                        
+                            <h3>{{ $v->title }}</h3>
+                        
+                        <p>{{ substr($v->functie_omschrijving, 0, 95) . '...' }}</p>
+                    </div>
+                </div>
+            </a>
         @endforeach
     </div>
 </div>

@@ -11237,6 +11237,38 @@ a .edit {
   padding: 1em;
 }
 
+.company-profile-internships-container .company-internships-card {
+  display: -webkit-box;
+  display: flex;
+  padding: 0.5em;
+  margin: 1em;
+}
+
+.company-profile-internships-container .company-internships-card div h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.company-profile-internships-container .company-internships-card div img {
+  max-width: 80px;
+}
+
+.company-profile-internships-container .company-internships-card .company-internship-description {
+  padding-left: 1em;
+}
+
+.company-profile-internships-container .company-internships-card .company-internship-description h3 {
+  font-size: 1.3em;
+}
+
+.company-profile-internships-container a {
+  text-decoration: none;
+}
+
+.company-profile-internships-container a:hover {
+  text-decoration: none;
+}
+
 .entry-page {
   background-color: #B4F1E3;
 }
