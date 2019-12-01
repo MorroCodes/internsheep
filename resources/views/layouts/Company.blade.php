@@ -27,7 +27,7 @@
 </ul>
 
 <div class="nav" id="nav2">
-    <img src="{{ Auth::user()->profile_image}}" alt="profile pic" class="icon">
+    <img src="{{asset(Auth::user()->profile_image)}}" alt="profile pic" class="icon" width="100px">
     <p>{{ Auth::user()->firstname}} {{ Auth::user()->lastname}}</p>
 </div>
 
