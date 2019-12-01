@@ -45,6 +45,7 @@ Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('inter
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');
 Route::get('/vacature1/create', 'vacatureCompany@create')->name('internship.create');
+Route::post('/vacature1/create', 'vacatureCompany@store')->name('internship.store');
 Route::get('/vacature/{id}/edit', 'vacatureCompany@edit')->name('internship.edit');
 Route::post('/vacature/{id}/edit', 'vacatureCompany@update')->name('internship.update');
 // Password Reset Routes...
