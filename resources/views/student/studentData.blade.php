@@ -36,6 +36,17 @@
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
+                    <form action="{{ action('AccountController@handleCV') }}" method="post" enctype="multipart/form-data">
+                        <br>
+                        <br>
+                        <h2>CV uploaden</h2>
+                        <div class="form-group">
+                            <label for="cv">CV</label>
+                            <input type="file" class="form-control-file" name="cv" id="cv" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Uploaden</button>
+                        {{csrf_field()}}
+                    </form>
                     <form action="{{ action('AccountController@handleProfilePicture') }}" method="post" enctype="multipart/form-data">
                         <br>
                         <br>
