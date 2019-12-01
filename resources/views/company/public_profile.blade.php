@@ -85,9 +85,20 @@
             </div>
         </div>
         @endif
+
+        @if($vacatures->isEmpty())  
+
+        <div class="company-profile-internships-container">
+            <h2>Vacatures</h2>
+            <div>
+                <p>Dit bedrijf heeft momenteel geen vacatures.</p>
+            </div>
+        </div>
+        @else
     
         <div class="company-profile-internships-container">
             <h2>Vacatures</h2>
+
             @foreach($vacatures as $v)
             <a href="/internship/{{ $v->id }}">
                     <div class="company-internships-card">
@@ -101,8 +112,8 @@
                     </div>
                 </a>
             @endforeach
-       
         </div>
+        @endif
     </div>
 </div>
 @endsection
