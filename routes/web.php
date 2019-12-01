@@ -40,7 +40,7 @@ Route::post('/student_survey', 'SurveyController@handleStudentSurvey');
 Route::get('/company_survey', 'SurveyController@companySurvey');
 Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 //companie
-Route::get('/yourCompany', 'CompanyController@show')->name('yourCompany');
+Route::get('/yourcompany', 'CompanyController@show')->name('yourcompany');
 Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('show');
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');

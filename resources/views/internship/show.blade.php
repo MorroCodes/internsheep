@@ -42,7 +42,7 @@
     <p>{{$internship->aanbod}}</p>
     <a href="{{route('internship.edit', [$internship->id])}}">
       <button>
-      edit
+      Aanpassen
       </button>
     </a>
   </div>

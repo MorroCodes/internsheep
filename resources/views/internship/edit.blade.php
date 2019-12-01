@@ -1,5 +1,5 @@
 
-@extends('layouts/vacature')
+@extends('layouts/company')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +34,7 @@
 
 
 @endsection
-@section('vacature')
+@section('content')
 <div class="card text-center">
   <div class="card-header">
     Flux
