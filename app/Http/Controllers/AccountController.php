@@ -8,17 +8,22 @@ class AccountController extends Controller
 {
     public function changeStudentData()
     {
-        return view('student/studentData');
+        if(\Auth::user()->type == "student"){
+            return view('/student/studentData');
+        }else{
+            return redirect('/');
+        }
     }
 
     public function handleStudentData(Request $request){
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
         $email = $request->input('email');
+        $bio = $request->input('bio');
         $id = \Auth::user()->id;
 
         $user = \App\User::where('id', $id);
-        $user->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
+        $user->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'description' => $bio]);
 
         return redirect('/change_student_data');
     }
@@ -41,5 +46,17 @@ class AccountController extends Controller
         $data['user'] = \App\User::where('id', $id)->first();
 
         return view('student/student', $data);
+    }
+
+    public function StudentProfilePublic($id){
+        $data['user'] = \App\User::where('id', $id)->first();
+
+        if($data['user']->type == "student"){
+            return view('student/studentPublic', $data);
+        }else{
+            return redirect('/');
+        }
+
+
     }
 }

@@ -56,6 +56,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/internship/{internship}', 'HomeController@internshipDetail')->name('home');
 Route::get('/student', 'AccountController@StudentProfile')->name('StudentProfile');
+Route::get('/student/{id}', 'AccountController@StudentProfilePublic')->name('StudentProfilePublic');
 Route::get('/change_student_data', 'AccountController@changeStudentData')->name('changeStudentData');
 Route::post('/change_student_data/data', 'AccountController@handleStudentData');
 Route::post('/change_student_data/password', 'AccountController@handleStudentNewPassword');
