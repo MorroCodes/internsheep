@@ -19,26 +19,41 @@
 
         <div>
             <p>Werksfeer (informeel-formeel)</p>
+            <div class="survey-result-container">
+                <div class="vibe-check survey-slider" data-score="{{$surveyInfo->vibe}}"></div>
+            </div>
             <p>{{$surveyInfo->vibe}}</p>
         </div>
           
         <div>
             <p>Bedrijfsgrootte (Klein KMO - Groot Multinational)</p>
+            <div class="survey-result-container">
+                <div class="size-check survey-slider" data-score="{{$surveyInfo->size}}"></div>
+            </div>
             <p>{{$surveyInfo->size}}</p>
         </div>
         
         <div>
             <p>Omschrijving (Jong - Established)</p>
+            <div class="survey-result-container">
+                <div class="age-check survey-slider" data-score="{{$surveyInfo->age}}"></div>
+            </div>
             <p>{{$surveyInfo->age}}</p>
         </div>
 
         <div>
             <p>Soort stages in aanbieding (Kijkstage - hands-on)</p>
+            <div class="survey-result-container">
+                <div class="type-check survey-slider" data-score="{{$surveyInfo->type}}"></div>
+            </div>
             <p>{{$surveyInfo->type}}</p>
         </div>
 
         <div>
             <p>Bereikbaaarheid openbaar vervoer (Makkelijk - moeilijker)</p>
+            <div class="survey-result-container">
+                <div class="transport-check survey-slider" data-score="{{$surveyInfo->transport}}"></div>
+            </div>
             <p>{{$surveyInfo->transport}}</p>
         </div>
     </div>

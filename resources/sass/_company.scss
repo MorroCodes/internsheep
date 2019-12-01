@@ -207,3 +207,16 @@ a .edit {
 .company-profile-internships-container a:hover{
     text-decoration: none;
 }
+
+.survey-result-container{
+    width: 100%;
+    border: 1px solid grey;
+    height: 15px;
+    border-radius: 1em;
+}
+
+.survey-slider{
+    background-color: $blue;
+    height: 100%;
+    width: 0%;
+}

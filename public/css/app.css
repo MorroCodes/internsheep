@@ -11269,6 +11269,19 @@ a .edit {
   text-decoration: none;
 }
 
+.survey-result-container {
+  width: 100%;
+  border: 1px solid grey;
+  height: 15px;
+  border-radius: 1em;
+}
+
+.survey-slider {
+  background-color: #12396A;
+  height: 100%;
+  width: 0%;
+}
+
 .entry-page {
   background-color: #B4F1E3;
 }
