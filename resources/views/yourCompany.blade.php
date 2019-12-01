@@ -1,29 +1,4 @@
 @extends('layouts/company')
-@section('nav')
-<ul class="nav" id="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Students</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Meldingen</a>
-  </li>
-  <li class="nav-item">
-  <a class="nav-link" href="#">Meldingen</a>
-  </li>
-</ul>
-
-<div class="nav" id="nav2">
-    <img src="/img/intr.png" alt="profile pic" class="icon">
-    <p></p>
-</div>
-
-
-@endsection
-
-
 
 @section('content')
 <div class="flex">
@@ -31,14 +6,14 @@
   <img src="/img/bg.png" alt="bg" class="bg">
 </div>
 <h2>+</h2>
-<div class="card-deck">
+<div class="internships">
   @forelse($internship as $i)
-    <div class="card">
+  <div class="card internship_container">
       <div class="card-body">
         <h5 class="card-title">{{$i->title}}</h5>
         <p class="card-text">{{$i->description}}</p>
         <a href="{{route('show',[$i->id,$i->slug])}}">
-        <button>view</button>
+        <button class="btn btn-primary">view</button>
         </a>
       </div>
     </div>
@@ -48,3 +23,6 @@
     </div>
 
 @endsection
+
+
+

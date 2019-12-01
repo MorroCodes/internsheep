@@ -146,7 +146,7 @@ class EntryController extends Controller
         $user->firstname = $credentials['firstname'];
         $user->lastname = $credentials['lastname'];
         $user->description = 'Dit is mijn beschrijving.';
-        $user->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
+        $user->profile_image = 'img/intr.png';
         $user->email = $credentials['email'];
         $user->password = \Hash::make($credentials['password']);
         $user->type = $type;

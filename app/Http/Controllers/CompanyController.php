@@ -11,7 +11,7 @@ class CompanyController extends Controller
     public function show()
     {
         $id = \Auth::user()->id;
-        $data['internship'] = \App\Internship::where('company_id', $id)->take(3)->get();
+        $data['internship'] = \App\Internship::where('company_id', $id)->take(6)->get();
 
         return view('yourCompany', $data);
     }
@@ -22,6 +22,8 @@ class CompanyController extends Controller
         
         return view('show',compact('internship'));    
 }
+
+
 
    
 }
