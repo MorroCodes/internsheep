@@ -1,0 +1,40 @@
+.popup{
+    width:100vw;
+    height: 100vh;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 10;
+    top:0;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+    form{
+        width: 500px;
+        background: $grey;
+        padding:20px;
+
+        .form-group{
+            margin-bottom: 0;
+
+            label{
+                margin-top: 0;
+            }
+        }
+
+        textarea{
+            height: 100px;
+        }
+
+        button{
+            margin-top: 10px;
+        }
+    }
+
+    img{
+        position: absolute;
+        right:20px;
+        top:20px;
+        width:30px;
+    }
+}
