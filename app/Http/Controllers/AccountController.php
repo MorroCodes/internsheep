@@ -81,9 +81,27 @@ class AccountController extends Controller
             $this->checkType($picture_name);
             $this->fileSize($picture_size);
             $directory = $this->createDirectory($picture_name);
-            $newDirectory = $this->uploadProfileImage($directory, $picture_name, $picture_path);
+            $newDirectory = $this->uploadFile($directory, $picture_name, $picture_path);
 
             $this->InsertProfileImage($newDirectory);
+            return redirect('/student');
+        } else {
+            echo 'no file!';
+        }
+    }
+
+    public function handleCV(Request $request){
+        if ($request->hasFile('cv')) {
+            $cv_name = $request->file('cv')->getClientOriginalName();
+            $cv_size = $request->file('cv')->getSize();
+            $cv_path = $request->file('cv')->getPathName();
+
+            $this->checkTypePDF($cv_name);
+            $this->fileSize($cv_size);
+            $directory = $this->createDirectory($cv_name);
+            $newDirectory = $this->uploadFile($directory, $cv_name, $cv_path);
+
+            $this->InsertCV($newDirectory);
             return redirect('/student');
         } else {
             echo 'no file!';
@@ -99,12 +117,21 @@ class AccountController extends Controller
         }
     }
 
+    public function checkTypePDF($cv){
+        $cvType = strtolower(pathinfo($cv, PATHINFO_EXTENSION));
+        if ($cvType != 'pdf') {
+            echo "use an image!";
+        } else {
+            echo $cvType;
+        }
+    }
+
     public function fileSize($picture_size)
     {
-        if ($picture_size > 5000000) {
+        if ($picture_size > 500000) {
             echo "File is too big!";
         } else {
-            // echo $picture_size;
+            echo $picture_size;
         }
     }
 
@@ -122,7 +149,7 @@ class AccountController extends Controller
         return $newDirectory;
     }
 
-    public function uploadProfileImage($directory, $picture_name, $picture_path)
+    public function uploadFile($directory, $picture_name, $picture_path)
     {
         $target_dir = $directory;
         $target_file = $target_dir.DIRECTORY_SEPARATOR.basename($picture_name);
@@ -135,5 +162,11 @@ class AccountController extends Controller
         $id = \Auth::user()->id;
         $user = \App\User::where('id', $id);
         $user->update(['profile_image' => $newDirectory]);
+    }
+
+    public function InsertCV($newDirectory){
+        $id = \Auth::user()->id;
+        $user = \App\User::where('id', $id);
+        $user->update(['cv' => $newDirectory]);
     }
 }

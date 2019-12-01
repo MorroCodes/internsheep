@@ -15,6 +15,7 @@ class UsersSeeder extends Seeder
         $annelies->lastname = 'Bellon';
         $annelies->description = 'Ik ben Annelies';
         $annelies->profile_image = '/images/studiohyperdrive.png';
+        $annelies->cv = '';
         $annelies->email = 'annelies@hotmail.com';
         $annelies->email_verified_at = now();
         $annelies->password = bcrypt('annelies');
@@ -37,6 +38,7 @@ class UsersSeeder extends Seeder
         $dielan->lastname = 'Ophals';
         $dielan->description = 'Ik ben Dielan';
         $dielan->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
+        $dielan->cv = '';
         $dielan->email = 'dielan@hotmail.com';
         $dielan->email_verified_at = now();
         $dielan->password = bcrypt('dielan');
@@ -60,6 +62,7 @@ class UsersSeeder extends Seeder
         $aqsa->lastname = 'Intizar';
         $aqsa->description = 'Ik ben Aqsa';
         $aqsa->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
+        $aqsa->cv = '';
         $aqsa->email = 'aqsa@hotmail.com';
         $aqsa->email_verified_at = now();
         $aqsa->password = bcrypt('aqsa');
@@ -82,6 +85,7 @@ class UsersSeeder extends Seeder
         $mauro->lastname = 'Esposito';
         $mauro->description = 'Ik ben Mauro';
         $mauro->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
+        $mauro->cv = '';
         $mauro->email = 'mauro@hotmail.com';
         $mauro->email_verified_at = now();
         $mauro->password = bcrypt('mauro');
