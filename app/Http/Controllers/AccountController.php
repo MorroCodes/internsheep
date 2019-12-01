@@ -56,7 +56,9 @@ class AccountController extends Controller
         }else{
             return redirect('/');
         }
+    }
 
-
+    public function ApplyInternship(Request $request){
+        $reason = $request->input('reason');
     }
 }

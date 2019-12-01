@@ -11573,6 +11573,7 @@ textarea {
           justify-content: center;
   -webkit-box-align: center;
           align-items: center;
+  display: none;
 }
 
 .popup form {
