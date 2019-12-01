@@ -11111,15 +11111,6 @@ a.text-dark:focus {
   margin-left: 140px;
 }
 
-h1 {
-  margin-left: 400px;
-  color: grey;
-}
-
-h2 {
-  margin-left: 30px;
-}
-
 .flex {
   display: -webkit-box;
   display: flex;
@@ -11148,10 +11139,6 @@ body {
   margin-top: 20px;
   margin-left: 10px;
   font-size: 25px;
-}
-
-h5 {
-  color: #3a84b7;
 }
 
 .flex {
@@ -11218,14 +11205,6 @@ h5 {
   width: 70px;
 }
 
-p {
-  text-align: left;
-}
-
-h3 {
-  text-align: left;
-}
-
 .space {
   margin-top: 20px;
 }
@@ -11239,6 +11218,23 @@ a .edit {
 .delete {
   width: 20px;
   margin-top: 7px;
+}
+
+.company-profile-image-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.company-profile-image-container img {
+  border-radius: 100%;
+  max-width: 150px;
+}
+
+.company-profile-title-container {
+  text-align: center;
+  padding: 1em;
 }
 
 .entry-page {

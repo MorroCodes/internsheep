@@ -25,6 +25,8 @@ class CompanyController extends Controller
     {
         $data['companyInfo'] = \App\Company::where('id', $id)->first();
         $data['userInfo'] = \App\User::where('id', $data['companyInfo']->user_id)->first();
+        $data['surveyInfo'] = \App\CompanySurvey::where('user_id', $data['userInfo']->id)->first();
+        $data['vacatures'] = \App\Internship::where('company_id', $id)->get();
 
         return view('company/public_profile', $data);
     }
