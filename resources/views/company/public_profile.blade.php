@@ -15,6 +15,16 @@
     </div>
 
     <div class="company-profile-content-flex">
+        @if($surveyInfo == null)  
+        <div class="company-profile-survey-container">
+            <h2>Leer ons kennen!</h2>
+
+            <div>
+                <p>Dit bedrijf heeft nog geen survey ingevuld.</p>
+            </div>
+        </div>
+        @else
+
         <div class="company-profile-survey-container">
             <h2>Leer ons kennen!</h2>
 
@@ -74,6 +84,7 @@
                 </div>
             </div>
         </div>
+        @endif
     
         <div class="company-profile-internships-container">
             <h2>Vacatures</h2>
