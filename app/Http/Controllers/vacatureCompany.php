@@ -27,6 +27,10 @@ class vacatureCompany extends Controller
        return redirect()->back()->with('message', 'succes!');
     }
 
+    public function create(){
+        return('internship.create');
+    }
+
     
 
 
