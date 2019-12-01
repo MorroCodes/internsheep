@@ -8,7 +8,11 @@ class AccountController extends Controller
 {
     public function changeStudentData()
     {
-        return view('student/studentData');
+        if(\Auth::user()->type == "student"){
+            return view('/student/studentData');
+        }else{
+            return redirect('/');
+        }
     }
 
     public function handleStudentData(Request $request){

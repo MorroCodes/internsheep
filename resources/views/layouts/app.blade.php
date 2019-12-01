@@ -78,6 +78,6 @@
             @yield('content')
         </main>
     </div>
-    <script type="text/javascript" src="{{ URL::asset('js/components/voice_api.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ URL::asset('js/components/voice_api.js') }}"></script> --}}
 </body>
 </html>
