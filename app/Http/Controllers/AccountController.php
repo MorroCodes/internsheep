@@ -47,4 +47,16 @@ class AccountController extends Controller
 
         return view('student/student', $data);
     }
+
+    public function StudentProfilePublic($id){
+        $data['user'] = \App\User::where('id', $id)->first();
+
+        if($data['user']->type == "student"){
+            return view('student/studentPublic', $data);
+        }else{
+            return redirect('/');
+        }
+
+
+    }
 }
