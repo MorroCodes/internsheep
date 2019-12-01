@@ -33,7 +33,17 @@
                                 <textarea name="bio" class="form-control" id="bio">{{Auth::user()->description}}</textarea>
                             </div>
                         </div>
+                        <button type="submit" class="btn btn-primary">Aanpassen</button>
+                        {{csrf_field()}}
+                    </form>
+                    <form action="{{ action('AccountController@handleProfilePicture') }}" method="post" enctype="multipart/form-data">
                         <br>
+                        <br>
+                        <h2>Profielfoto wijzigen</h2>
+                        <div class="form-group">
+                            <label for="profile">Profielfoto</label>
+                            <input type="file" class="form-control-file" name="profile" id="profile" required>
+                        </div>
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
