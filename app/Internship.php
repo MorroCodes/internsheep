@@ -13,8 +13,11 @@ class Internship extends Model
     public function company(){
         return $this->belongsTo('App\Company');
     }
-
     public function getRouteKeyName(){
         return 'slug';
+    }
+    public function companySurvey()
+    {
+        return $this->belongsTo('\App\CompanySurvey');
     }
 }

@@ -10,5 +10,6 @@ class InternshipSeeder extends Seeder
     public function run()
     {
         factory(\App\Internship::class, 20)->create();
+        factory(\App\CompanySurvey::class, 20)->create();
     }
 }
