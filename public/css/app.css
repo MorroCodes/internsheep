@@ -11557,6 +11557,11 @@ h6 span {
   margin: auto;
 }
 
+textarea {
+  width: 100%;
+  resize: none;
+}
+
 body {
   font-family: "Work Sans", sans-serif;
   color: #12396A;

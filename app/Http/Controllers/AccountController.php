@@ -19,10 +19,11 @@ class AccountController extends Controller
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
         $email = $request->input('email');
+        $bio = $request->input('bio');
         $id = \Auth::user()->id;
 
         $user = \App\User::where('id', $id);
-        $user->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
+        $user->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'description' => $bio]);
 
         return redirect('/change_student_data');
     }
