@@ -41,10 +41,16 @@ Route::get('/company_survey', 'SurveyController@companySurvey');
 Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 //companie
 Route::get('/yourcompany', 'CompanyController@show')->name('yourcompany');
-Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('show');
+
+
 Route::get('/company/{id}', 'CompanyController@publicCompanyProfile');
+
+Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('internship.show');
+
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');
+Route::get('/vacature1/create', 'vacatureCompany@create')->name('internship.create');
+Route::post('/vacature1/create', 'vacatureCompany@store')->name('internship.store');
 Route::get('/vacature/{id}/edit', 'vacatureCompany@edit')->name('internship.edit');
 Route::post('/vacature/{id}/edit', 'vacatureCompany@update')->name('internship.update');
 // Password Reset Routes...
@@ -56,6 +62,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/internship/{internship}', 'HomeController@internshipDetail')->name('home');
 Route::get('/student', 'AccountController@StudentProfile')->name('StudentProfile');
+Route::get('/student/{id}', 'AccountController@StudentProfilePublic')->name('StudentProfilePublic');
 Route::get('/change_student_data', 'AccountController@changeStudentData')->name('changeStudentData');
 Route::post('/change_student_data/data', 'AccountController@handleStudentData');
 Route::post('/change_student_data/password', 'AccountController@handleStudentNewPassword');
@@ -64,3 +71,5 @@ Route::get('/companyaccount', 'AccountCompanyController@changeCompanyData')->nam
 Route::post('/companyaccount/data', 'AccountCompanyController@handleCompanyData');
 Route::post('/companyaccount/data2', 'AccountCompanyController@handleCompanyData2');
 Route::post('/companyaccount/password', 'AccountCompanyController@handleCompanyNewPassword');
+//match students with companies
+Route::get('/testMatching', 'MatchController@matchStudentWithCompanies')->name('Match with company');

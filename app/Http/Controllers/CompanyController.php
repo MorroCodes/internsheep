@@ -11,7 +11,7 @@ class CompanyController extends Controller
         $id = \Auth::user()->id;
         $data['internship'] = \App\Internship::where('company_id', $id)->take(6)->get();
 
-        return view('company/yourCompany', $data);
+        return view('company/yourcompany', $data);
     }
 
     public function index($id, $internship)
