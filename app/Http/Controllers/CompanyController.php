@@ -20,8 +20,7 @@ class CompanyController extends Controller
     public function index($id, $internship) {
         $internship = Internship::find($id);
         
-        return view('show',compact('internship'));
-       
+        return view('show',compact('internship'));    
 }
 
    
