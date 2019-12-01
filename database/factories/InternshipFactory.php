@@ -16,7 +16,7 @@ $factory->define(Internship::class, function (Faker $faker) {
         'functie_omschrijving' => $faker->realText(200),
         'aanbod' => $faker->realText(300),
         'address' => $faker->address,
-        'img' => ('img/intr.png'),
+
     ];
 });
 

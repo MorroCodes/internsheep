@@ -1,28 +1,5 @@
 @extends('layouts/company')
 
-@section('nav')
-<ul class="nav" id="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Students</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Meldingen</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Profiel</a>
-  </li>
-</ul>
-
-<div class="nav" id="nav2">
-    <img src="/img/intr.png" alt="profile pic" class="icon">
-    <p>Interacto</p>
-</div>
-
-
-@endsection
 @section('content')
 <div class="card text-center">
   <div class="card-header">

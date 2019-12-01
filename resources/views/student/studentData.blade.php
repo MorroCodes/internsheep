@@ -28,6 +28,10 @@
                                 <label for="lastname">Achternaam</label>
                                 <input type="text" name="lastname" class="form-control" id="lastname" value="{{Auth::user()->lastname}}">
                             </div>
+                            <div class="form-group">
+                                <label for="bio">Bio</label>
+                                <textarea name="bio" class="form-control" id="bio">{{Auth::user()->description}}</textarea>
+                            </div>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Aanpassen</button>

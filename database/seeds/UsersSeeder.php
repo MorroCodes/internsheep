@@ -14,7 +14,7 @@ class UsersSeeder extends Seeder
         $annelies->firstname = 'Annelies';
         $annelies->lastname = 'Bellon';
         $annelies->description = 'Ik ben Annelies';
-        $annelies->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
+        $annelies->profile_image = '/images/studiohyperdrive.png';
         $annelies->email = 'annelies@hotmail.com';
         $annelies->email_verified_at = now();
         $annelies->password = bcrypt('annelies');
