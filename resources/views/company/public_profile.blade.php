@@ -52,9 +52,7 @@
                         <img src="/{{ $v->img }}" class="card-img-side">
                     </div>
                     <div class="company-internship-description">
-                        
                             <h3>{{ $v->title }}</h3>
-                        
                         <p>{{ substr($v->functie_omschrijving, 0, 95) . '...' }}</p>
                     </div>
                 </div>
