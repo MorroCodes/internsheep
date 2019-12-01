@@ -11269,6 +11269,62 @@ a .edit {
   text-decoration: none;
 }
 
+.survey-result-container-flex {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.survey-result-container-flex div:nth-child(1),
+.survey-result-container-flex div:nth-child(3) {
+  width: 45%;
+  padding: 0.4em;
+  font-size: 0.8em;
+}
+
+.survey-result-container-flex div:nth-child(3) {
+  text-align: right;
+}
+
+.survey-result-container {
+  width: 100%;
+  border: 1px solid grey;
+  background-color: red;
+  height: 10px;
+  border-radius: 1em;
+}
+
+.survey-slider {
+  background-color: #12396A;
+  height: 100%;
+  width: 0%;
+  border-radius: 1em;
+}
+
+.company-profile-survey-container,
+.company-profile-internships-container {
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1160px) {
+  .company-profile-content-flex {
+    display: -webkit-box;
+    display: flex;
+  }
+
+  .company-profile-survey-container,
+  .company-profile-internships-container {
+    max-width: none;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+  }
+}
+
 .entry-page {
   background-color: #B4F1E3;
 }
