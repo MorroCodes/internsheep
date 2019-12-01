@@ -84,6 +84,7 @@ class AccountController extends Controller
             $newDirectory = $this->uploadProfileImage($directory, $picture_name, $picture_path);
 
             $this->InsertProfileImage($newDirectory);
+            return redirect('/student');
         } else {
             echo 'no file!';
         }
@@ -128,5 +129,11 @@ class AccountController extends Controller
         move_uploaded_file($picture_path, $target_file);
 
         return $target_file;
+    }
+
+    public function InsertProfileImage($newDirectory){
+        $id = \Auth::user()->id;
+        $user = \App\User::where('id', $id);
+        $user->update(['profile_image' => $newDirectory]);
     }
 }
