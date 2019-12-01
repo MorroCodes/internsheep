@@ -8,13 +8,13 @@ use \App\Internship;
 
 class CompanyController extends Controller
 {
-   public function show(\App\Company $company)
-{
-  
-    
-       $internship = Internship::paginate(3);
-       return view('yourCompany',compact('internship'));
-   }
+    public function show()
+    {
+        $id = \Auth::user()->id;
+        $data['internship'] = \App\Internship::where('company_id', $id)->take(3)->get();
+
+        return view('yourCompany', $data);
+    }
     
     
     public function index($id, $internship) {
@@ -22,9 +22,6 @@ class CompanyController extends Controller
         
         return view('show',compact('internship'));
        
-}
-public function hello(){
-
 }
 
    

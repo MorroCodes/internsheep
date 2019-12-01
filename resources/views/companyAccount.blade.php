@@ -16,12 +16,12 @@
                     <form action="{{ action('AccountCompanyController@handleCompanyData2') }}" method="post">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="company_name" class="form-control" id="company_name" value="{{Auth::user()->company_name}}">
+                            <input type="text" name="company_name" class="form-control" id="company_name" value="{{$id->company_name}}">
                         </div>
                         <div class="form-row">
                             <div class="col">
                                 <label for="firstname">Omschrijving</label>
-                                <input type="text" name="company_bio" class="form-control" id="company_bio" value="{{Auth::user()->company->company_bio}}">
+                                <input type="text" name="company_bio" class="form-control" id="company_bio" value="">
                             </div>
                         </div>
                         <br>

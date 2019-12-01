@@ -17,7 +17,7 @@
 
 <div class="nav" id="nav2">
     <img src="/img/intr.png" alt="profile pic" class="icon">
-    <p>{{Auth::user()->company_name}}</p>
+    <p></p>
 </div>
 
 
@@ -46,5 +46,5 @@
       <h1>Je hebt nog geen vacatures!</h1>
   @endforelse
     </div>
-    {{$internship->links()}}
+
 @endsection

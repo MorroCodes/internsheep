@@ -21,14 +21,16 @@ class AccountCompanyController extends Controller
 
         return redirect('/companyaccount');
     }
-    public function handleCompanytData2(Request $request){
+    public function handleCompanyData2(Request $request){
         $nameCompany = $request->input('company_name');
         $description = $request->input('company_bio');
         $id = \Auth::user()->id;
 
-        $user = \App\Company::where('user_id', $id);
+        $data['user'] = \App\Company::where('user_id', $id);
         $user->update(['company_name' => $nameCompany, 'company_bio' => $description]);
-        return redirect('/companyaccount');
+
+
+        return redirect('/companyaccount',$data);
     }
 
     public function handleCompanyNewPassword(Request $request){

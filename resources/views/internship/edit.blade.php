@@ -39,7 +39,7 @@
   <div class="card-header">
     Flux
   </div>
-  <form action="{{route('internship.update',[$internship->id])}}" method="post">
+  <form action="{{route('internship.update',[$internship->giid])}}" method="post">
     <div class="card-body">
       <div class="form-group">
         <h3>Titel</h3>

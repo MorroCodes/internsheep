@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Company;
 
 class Internship extends Model
 {
@@ -16,5 +17,4 @@ class Internship extends Model
     public function getRouteKeyName(){
         return 'slug';
     }
-
 }
