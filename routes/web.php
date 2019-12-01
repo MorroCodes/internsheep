@@ -49,9 +49,16 @@ Route::get('/company_survey', 'SurveyController@companySurvey');
 Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 
 //companie
-Route::get('/yourCompany', 'CompanyController@show');
+Route::get('/yourCompany', 'CompanyController@show')->name('yourCompany');
 Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('show');
-Route::get('/vacature', 'vacatureCompany@show');
+
+//edit vacature
+Route::get('/vacature', 'vacatureCompany@index');
+Route::get('/vacature/{id}/edit', 'vacatureCompany@edit')->name('internship.edit');
+Route::post('/vacature/{id}/edit', 'vacatureCompany@update')->name('internship.update');
+
+
+
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');

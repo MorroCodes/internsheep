@@ -10,8 +10,27 @@
 </head>
 <body class="company-page">
 
-@yield('nav')
 
-@yield('gallerij')
+<ul class="nav" id="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Students</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Meldingen</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="#">Meldingen</a>
+  </li>
+</ul>
+
+<div class="nav" id="nav2">
+    <img src="{{ Auth::user()->profile_image}}" alt="profile pic" class="icon">
+    <p>{{ Auth::user()->firstname}} {{ Auth::user()->lastname}}</p>
+</div>
+
+@yield('content')
 </body>
 </html>

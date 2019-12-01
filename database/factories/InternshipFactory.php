@@ -13,8 +13,10 @@ $factory->define(Internship::class, function (Faker $faker) {
         'catch_phrase' => $faker->catchPhrase,
         'company_id' => $faker->randomDigit,
         'description' => $faker->realText(200),
+        'functie_omschrijving' => $faker->realText(200),
+        'aanbod' => $faker->realText(300),
         'address' => $faker->address,
-        'img' => $faker->imageUrl(382, 216, 'business'),
+        'img' => ('img/intr.png'),
     ];
 });
 

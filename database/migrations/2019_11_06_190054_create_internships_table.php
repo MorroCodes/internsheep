@@ -17,6 +17,8 @@ class CreateInternshipsTable extends Migration
             $table->text('catch_phrase')->nullable();
             $table->integer('company_id');
             $table->text('description');
+            $table->text('functie_omschrijving');
+            $table->text('aanbod');
             $table->text('address');
             $table->text('img');
             $table->String('slug');
