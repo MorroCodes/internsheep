@@ -6,6 +6,9 @@ class MatchController extends Controller
 {
     public function matchStudentWithCompanies()
     {
+        if (session('id') == null) {
+            return view('entry/login');
+        }
         //Get survey of student
         $userSurvey = \App\StudentSurvey::where('user_id', session('id'))->first();
         //Get surveys of companies with similar results

@@ -10,6 +10,5 @@
             <img src="{{$internship->img}}" alt="{{$internship->title}}" width="300px" height="200px">
         @endforeach
     @endforeach
-    
 </div>
 @endsection
