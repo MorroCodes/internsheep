@@ -1,11 +1,8 @@
 
-<<<<<<< HEAD
+
 @extends('layouts/Company')
-||||||| merged common ancestors
-@extends('layouts/vacature')
-=======
-@extends('layouts/company')
->>>>>>> a72ee4bf7ebbe72af2b591b6dce9e56287c1055e
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
