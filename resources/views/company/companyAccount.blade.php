@@ -16,7 +16,7 @@
                     <form action="{{ action('AccountCompanyController@handleCompanyData2') }}" method="post">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="company_name" class="form-control" id="company_name" value="{{$id->company_name}}">
+                            <input type="text" name="company_name" class="form-control" id="company_name" value="">
                         </div>
                         <div class="form-row">
                             <div class="col">
