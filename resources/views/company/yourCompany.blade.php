@@ -5,7 +5,9 @@
 <h1>Jouw vacatures</h1>
   <img src="/img/bg.png" alt="bg" class="bg">
 </div>
-<h2>+</h2>
+<a href="{{route('internship.create')}}">
+        <button class="btn btn-primary">Toevoegen</button>
+        </a>
 <div class="internships">
   @forelse($internship as $i)
   <div class="card internship_container">
