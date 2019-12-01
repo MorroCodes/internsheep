@@ -28,7 +28,8 @@ class vacatureCompany extends Controller
     }
 
     public function create(){
-        return('internship.create');
+
+        return view('internship/create');
     }
 
     

@@ -1,6 +1,6 @@
 
 
-@extends('layouts/Company')
+@extends('layouts/company')
 
 @section('content')
 <div class="card text-center">
@@ -29,5 +29,3 @@
         {{$internship->created_at}}
         </div>
 @endsection
-</body>
-</html>
