@@ -11111,15 +11111,6 @@ a.text-dark:focus {
   margin-left: 140px;
 }
 
-h1 {
-  margin-left: 400px;
-  color: grey;
-}
-
-h2 {
-  margin-left: 30px;
-}
-
 .flex {
   display: -webkit-box;
   display: flex;
@@ -11148,10 +11139,6 @@ body {
   margin-top: 20px;
   margin-left: 10px;
   font-size: 25px;
-}
-
-h5 {
-  color: #3a84b7;
 }
 
 .flex {
@@ -11218,14 +11205,6 @@ h5 {
   width: 70px;
 }
 
-p {
-  text-align: left;
-}
-
-h3 {
-  text-align: left;
-}
-
 .space {
   margin-top: 20px;
 }
@@ -11239,6 +11218,111 @@ a .edit {
 .delete {
   width: 20px;
   margin-top: 7px;
+}
+
+.company-profile-image-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.company-profile-image-container img {
+  border-radius: 100%;
+  max-width: 150px;
+}
+
+.company-profile-title-container {
+  text-align: center;
+  padding: 1em;
+}
+
+.company-profile-internships-container .company-internships-card {
+  display: -webkit-box;
+  display: flex;
+  padding: 0.5em;
+  margin: 1em;
+}
+
+.company-profile-internships-container .company-internships-card div h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.company-profile-internships-container .company-internships-card div img {
+  max-width: 80px;
+}
+
+.company-profile-internships-container .company-internships-card .company-internship-description {
+  padding-left: 1em;
+}
+
+.company-profile-internships-container .company-internships-card .company-internship-description h3 {
+  font-size: 1.3em;
+}
+
+.company-profile-internships-container a {
+  text-decoration: none;
+}
+
+.company-profile-internships-container a:hover {
+  text-decoration: none;
+}
+
+.survey-result-container-flex {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.survey-result-container-flex div:nth-child(1),
+.survey-result-container-flex div:nth-child(3) {
+  width: 45%;
+  padding: 0.4em;
+  font-size: 0.8em;
+}
+
+.survey-result-container-flex div:nth-child(3) {
+  text-align: right;
+}
+
+.survey-result-container {
+  width: 100%;
+  border: 1px solid grey;
+  background-color: red;
+  height: 10px;
+  border-radius: 1em;
+}
+
+.survey-slider {
+  background-color: #12396A;
+  height: 100%;
+  width: 0%;
+  border-radius: 1em;
+}
+
+.company-profile-survey-container,
+.company-profile-internships-container {
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1160px) {
+  .company-profile-content-flex {
+    display: -webkit-box;
+    display: flex;
+  }
+
+  .company-profile-survey-container,
+  .company-profile-internships-container {
+    max-width: none;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+  }
 }
 
 .entry-page {
@@ -11528,6 +11612,56 @@ a .edit {
   max-width: 1000px;
   text-align: center;
   margin: auto;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+.popup {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 10;
+  top: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  display: none;
+}
+
+.popup form {
+  width: 500px;
+  background: #F0F3F5;
+  padding: 20px;
+}
+
+.popup form .form-group {
+  margin-bottom: 0;
+}
+
+.popup form .form-group label {
+  margin-top: 0;
+}
+
+.popup form textarea {
+  height: 100px;
+}
+
+.popup form button {
+  margin-top: 10px;
+}
+
+.popup img {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
 }
 
 body {

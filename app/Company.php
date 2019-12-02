@@ -3,18 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\User;
 class Company extends Model
 {
-    public function users()
+    public function user()
     {
         return $this->belongsTo('\App\User');
     }
-
-protected $with = ['internships'];
-
-    public function internship()
+    public function internships()
     {
-        return $this->hasMany('App\Internship');
+        return $this->hasMany('\App\Internship');
     }
 }

@@ -56,7 +56,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('changeStudentData') }}">Account</a>
+                                    <a class="dropdown-item" href="{{ route('StudentProfile') }}">Account</a>
+                                    <a class="dropdown-item" href="{{ route('changeStudentData') }}">Settings</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -78,5 +79,7 @@
             @yield('content')
         </main>
     </div>
+    {{-- <script type="text/javascript" src="{{ URL::asset('js/components/voice_api.js') }}"></script> --}}
+    <script src="{{ URL::asset('js/components/apply.js') }}"></script>
 </body>
 </html>
