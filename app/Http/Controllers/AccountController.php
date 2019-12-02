@@ -16,6 +16,10 @@ class AccountController extends Controller
     }
 
     public function handleStudentData(Request $request){
+        if(!empty($request->only(['firstname', 'lastname', 'email', 'bio']))){
+            $request->session()->flash('status', 'Gegevens zijn aangepast!');
+        }
+
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
         $email = $request->input('email');
@@ -29,6 +33,10 @@ class AccountController extends Controller
     }
 
     public function handleStudentNewPassword(Request $request){
+        if(!empty($request->only(['password1', 'password2']))){
+            $request->session()->flash('status', 'Gegevens zijn aangepast!');
+        }
+
         $password1 = $request->input('password1');
         $password2 = $request->input('password2');
         $id = \Auth::user()->id;
@@ -84,7 +92,27 @@ class AccountController extends Controller
             $newDirectory = $this->uploadFile($directory, $picture_name, $picture_path);
 
             $this->InsertProfileImage($newDirectory);
-            return redirect('/student');
+            $request->session()->flash('status', 'Gegevens zijn aangepast');
+            return redirect('/change_student_data');
+        } else {
+            echo 'no file!';
+        }
+    }
+
+    public function handleCV(Request $request){
+        if ($request->hasFile('cv')) {
+            $cv_name = $request->file('cv')->getClientOriginalName();
+            $cv_size = $request->file('cv')->getSize();
+            $cv_path = $request->file('cv')->getPathName();
+
+            $this->checkTypePDF($cv_name);
+            $this->fileSize($cv_size);
+            $directory = $this->createDirectory($cv_name);
+            $newDirectory = $this->uploadFile($directory, $cv_name, $cv_path);
+
+            $this->InsertCV($newDirectory);
+            $request->session()->flash('status', 'Gegevens zijn aangepast');
+            return redirect('/change_student_data');
         } else {
             echo 'no file!';
         }
