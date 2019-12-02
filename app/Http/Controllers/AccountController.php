@@ -171,12 +171,12 @@ class AccountController extends Controller
     public function InsertProfileImage($newDirectory){
         $id = \Auth::user()->id;
         $user = \App\User::where('id', $id);
-        $user->update(['profile_image' => $newDirectory]);
+        $user->update(['profile_image' => DIRECTORY_SEPARATOR.$newDirectory]);
     }
 
     public function InsertCV($newDirectory){
         $id = \Auth::user()->id;
         $user = \App\Student::where('id', $id);
-        $user->update(['cv' => $newDirectory]);
+        $user->update(['cv' => DIRECTORY_SEPARATOR.$newDirectory]);
     }
 }
