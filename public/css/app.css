@@ -11608,31 +11608,6 @@ a .edit {
   margin-top: 4em;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  position: relative;
-}
-
-h1 span,
-h2 span,
-h3 span,
-h4 span,
-h5 span,
-h6 span {
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  background: url(/images/speaker.svg?693b9eb52858a6d014b7eae81f47ceba);
-  background-position: center;
-  background-size: cover;
-  margin-left: 5px;
-  bottom: 5px;
-}
-
 .entry-content .alert {
   max-width: 1000px;
   text-align: center;
