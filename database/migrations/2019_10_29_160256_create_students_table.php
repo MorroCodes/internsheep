@@ -16,6 +16,7 @@ class CreateStudentsTable extends Migration
             $table->integer('user_id');
             $table->string('school')->nullable();
             $table->string('field_of_study')->nullable();
+            $table->string('cv');
             $table->timestamps();
         });
     }

@@ -166,7 +166,7 @@ class AccountController extends Controller
 
     public function InsertCV($newDirectory){
         $id = \Auth::user()->id;
-        $user = \App\User::where('id', $id);
+        $user = \App\Student::where('id', $id);
         $user->update(['cv' => $newDirectory]);
     }
 }

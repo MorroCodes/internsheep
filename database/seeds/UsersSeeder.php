@@ -15,7 +15,6 @@ class UsersSeeder extends Seeder
         $annelies->lastname = 'Bellon';
         $annelies->description = 'Ik ben Annelies';
         $annelies->profile_image = '/images/studiohyperdrive.png';
-        $annelies->cv = '';
         $annelies->email = 'annelies@hotmail.com';
         $annelies->email_verified_at = now();
         $annelies->password = bcrypt('annelies');
@@ -23,6 +22,7 @@ class UsersSeeder extends Seeder
         $annelies->save();
         $student1 = new \App\Student();
         $student1->user_id = $annelies->id;
+        $student1->cv = "";
         $student1->save();
         $survey1 = new \App\StudentSurvey();
         $survey1->user_id = $annelies->id;
@@ -38,7 +38,6 @@ class UsersSeeder extends Seeder
         $dielan->lastname = 'Ophals';
         $dielan->description = 'Ik ben Dielan';
         $dielan->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
-        $dielan->cv = '';
         $dielan->email = 'dielan@hotmail.com';
         $dielan->email_verified_at = now();
         $dielan->password = bcrypt('dielan');
@@ -46,6 +45,7 @@ class UsersSeeder extends Seeder
         $dielan->save();
         $student2 = new \App\Student();
         $student2->user_id = $dielan->id;
+        $student2->cv = "";
         $student2->save();
         $survey2 = new \App\StudentSurvey();
         $survey2->vibe = 2;
@@ -62,13 +62,13 @@ class UsersSeeder extends Seeder
         $aqsa->lastname = 'Intizar';
         $aqsa->description = 'Ik ben Aqsa';
         $aqsa->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
-        $aqsa->cv = '';
         $aqsa->email = 'aqsa@hotmail.com';
         $aqsa->email_verified_at = now();
         $aqsa->password = bcrypt('aqsa');
         $aqsa->type = 'student';
         $aqsa->save();
         $student3 = new \App\Student();
+        $student3->cv = "";
         $student3->user_id = $aqsa->id;
         $student3->save();
         $survey3 = new \App\StudentSurvey();
@@ -85,7 +85,6 @@ class UsersSeeder extends Seeder
         $mauro->lastname = 'Esposito';
         $mauro->description = 'Ik ben Mauro';
         $mauro->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
-        $mauro->cv = '';
         $mauro->email = 'mauro@hotmail.com';
         $mauro->email_verified_at = now();
         $mauro->password = bcrypt('mauro');
@@ -93,6 +92,7 @@ class UsersSeeder extends Seeder
         $mauro->save();
         $student4 = new \App\Student();
         $student4->user_id = $mauro->id;
+        $student4->cv = "";
         $student4->save();
         $survey4 = new \App\StudentSurvey();
         $survey4->user_id = $mauro->id;

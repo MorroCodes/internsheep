@@ -169,6 +169,7 @@ class EntryController extends Controller
         $student->user_id = $id;
         $student->school = $credentials['school'];
         $student->field_of_study = $credentials['field_of_study'];
+        $student->c = "";
         $student->save();
     }
 
