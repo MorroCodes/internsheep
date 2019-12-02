@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use \App\Company;
+use \App\Apply;
 use \App\Internship;
-use Faker\Generator as Faker;
 
 
 class vacatureCompany extends Controller
@@ -48,8 +48,18 @@ class vacatureCompany extends Controller
         $internship->aanbod = $request->input('aanbod');
         $title = $request->input('title');
         $internship->slug = $title;
+        $internship_id = $request->input('company');
+        $internship->company_survey_id = 4;
         $internship->save();
         return view('internship/create');
+    }
+
+    public function applicant(){
+
+        $id = \Auth::user()->id;
+        $applicants = Apply::where('student_id',$id)->get();
+    
+        return view('internship/applications',compact('applicants'));
     }
 
     

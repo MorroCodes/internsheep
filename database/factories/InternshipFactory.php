@@ -18,12 +18,6 @@ $factory->define(Internship::class, function (Faker $faker) {
         'functie_omschrijving' => $faker->realText(200),
         'aanbod' => $faker->realText(300),
         'address' => $faker->address,
-<<<<<<< HEAD
-        'img' => 'img/intr.png',
-||||||| merged common ancestors
-        'img' => $faker->imageUrl(382, 216, 'business'),
-=======
         'company_survey_id' => $company_id,
->>>>>>> master
     ];
 });

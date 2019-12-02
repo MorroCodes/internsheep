@@ -6,6 +6,7 @@
     Voeg een vacature toe
   </div>
   <form action="" method="post">
+  <input type="hidden" name="company" value="">
     <div class="card-body">
       <div class="form-group">
         <h3>Titel</h3>
