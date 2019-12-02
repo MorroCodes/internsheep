@@ -90,24 +90,6 @@ class AccountController extends Controller
         }
     }
 
-    public function handleCV(Request $request){
-        if ($request->hasFile('cv')) {
-            $cv_name = $request->file('cv')->getClientOriginalName();
-            $cv_size = $request->file('cv')->getSize();
-            $cv_path = $request->file('cv')->getPathName();
-
-            $this->checkTypePDF($cv_name);
-            $this->fileSize($cv_size);
-            $directory = $this->createDirectory($cv_name);
-            $newDirectory = $this->uploadFile($directory, $cv_name, $cv_path);
-
-            $this->InsertCV($newDirectory);
-            return redirect('/student');
-        } else {
-            echo 'no file!';
-        }
-    }
-
     public function checkType($picture){
         $imageFileType = strtolower(pathinfo($picture, PATHINFO_EXTENSION));
         if ($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'gif') {
