@@ -32,5 +32,8 @@
 </div>
 
 @yield('content')
+
+
 </body>
+<script src="{{asset('js/surveyResults.js')}}"></script>
 </html>

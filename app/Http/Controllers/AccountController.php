@@ -16,6 +16,10 @@ class AccountController extends Controller
     }
 
     public function handleStudentData(Request $request){
+        if(!empty($request->only(['firstname', 'lastname', 'email', 'bio']))){
+            $request->session()->flash('status', 'Gegevens zijn aangepast!');
+        }
+
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
         $email = $request->input('email');
@@ -29,6 +33,10 @@ class AccountController extends Controller
     }
 
     public function handleStudentNewPassword(Request $request){
+        if(!empty($request->only(['password1', 'password2']))){
+            $request->session()->flash('status', 'Gegevens zijn aangepast!');
+        }
+
         $password1 = $request->input('password1');
         $password2 = $request->input('password2');
         $id = \Auth::user()->id;
@@ -56,7 +64,119 @@ class AccountController extends Controller
         }else{
             return redirect('/');
         }
+    }
 
+    public function ApplyInternship(Request $request){
+        $user_id = \Auth::user()->id;
+        $reason = $request->input('reason');
+        $company_id = $request->input('company');
 
+        $apply = new \App\Apply;
+        $apply->student_id = $user_id;
+        $apply->company_id = $company_id;
+        $apply->reason = $reason;
+
+        $apply->save();
+        return redirect('/');
+    }
+
+    public function handleProfilePicture(Request $request){
+        if ($request->hasFile('profile')) {
+            $picture_name = $request->file('profile')->getClientOriginalName();
+            $picture_size = $request->file('profile')->getSize();
+            $picture_path = $request->file('profile')->getPathName();
+
+            $this->checkType($picture_name);
+            $this->fileSize($picture_size);
+            $directory = $this->createDirectory($picture_name);
+            $newDirectory = $this->uploadFile($directory, $picture_name, $picture_path);
+
+            $this->InsertProfileImage($newDirectory);
+            $request->session()->flash('status', 'Gegevens zijn aangepast');
+            return redirect('/change_student_data');
+        } else {
+            echo 'no file!';
+        }
+    }
+
+    public function handleCV(Request $request){
+        if ($request->hasFile('cv')) {
+            $cv_name = $request->file('cv')->getClientOriginalName();
+            $cv_size = $request->file('cv')->getSize();
+            $cv_path = $request->file('cv')->getPathName();
+
+            $this->checkTypePDF($cv_name);
+            $this->fileSize($cv_size);
+            $directory = $this->createDirectory($cv_name);
+            $newDirectory = $this->uploadFile($directory, $cv_name, $cv_path);
+
+            $this->InsertCV($newDirectory);
+            $request->session()->flash('status', 'Gegevens zijn aangepast');
+            return redirect('/change_student_data');
+        } else {
+            echo 'no file!';
+        }
+    }
+
+    public function checkType($picture){
+        $imageFileType = strtolower(pathinfo($picture, PATHINFO_EXTENSION));
+        if ($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'gif') {
+            echo "use an image!";
+        } else {
+            // echo $imageFileType;
+        }
+    }
+
+    public function checkTypePDF($cv){
+        $cvType = strtolower(pathinfo($cv, PATHINFO_EXTENSION));
+        if ($cvType != 'pdf') {
+            echo "use an image!";
+        } else {
+            echo $cvType;
+        }
+    }
+
+    public function fileSize($picture_size)
+    {
+        if ($picture_size > 500000) {
+            echo "File is too big!";
+        } else {
+            echo $picture_size;
+        }
+    }
+
+    public function createDirectory($dir)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = "";
+        for ($i = 0; $i < $charactersLength; ++$i) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        $newDirectory = 'uploads'.DIRECTORY_SEPARATOR.$randomString;
+        mkdir($newDirectory, 0777, true);
+
+        return $newDirectory;
+    }
+
+    public function uploadFile($directory, $picture_name, $picture_path)
+    {
+        $target_dir = $directory;
+        $target_file = $target_dir.DIRECTORY_SEPARATOR.basename($picture_name);
+        move_uploaded_file($picture_path, $target_file);
+
+        return $target_file;
+    }
+
+    public function InsertProfileImage($newDirectory){
+        $id = \Auth::user()->id;
+        $user = \App\User::where('id', $id);
+        $user->update(['profile_image' => $newDirectory]);
+    }
+
+    public function InsertCV($newDirectory){
+        $id = \Auth::user()->id;
+        $user = \App\Student::where('id', $id);
+        $user->update(['cv' => $newDirectory]);
     }
 }

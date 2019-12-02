@@ -200,10 +200,63 @@ a .edit {
     font-size: 1.3em;
 }
 
-.company-profile-internships-container a{
+.company-profile-internships-container a {
     text-decoration: none;
 }
 
-.company-profile-internships-container a:hover{
+.company-profile-internships-container a:hover {
     text-decoration: none;
+}
+
+.survey-result-container-flex {
+    display: flex;
+    align-items: center;
+}
+
+.survey-result-container-flex div:nth-child(1),
+.survey-result-container-flex div:nth-child(3) {
+    width: 45%;
+    padding: 0.4em;
+    font-size: 0.8em;
+}
+
+.survey-result-container-flex div:nth-child(3) {
+    text-align: right;
+}
+
+.survey-result-container {
+    width: 100%;
+    border: 1px solid grey;
+    background-color: red;
+    height: 10px;
+    border-radius: 1em;
+}
+
+.survey-slider {
+    background-color: $blue;
+    height: 100%;
+    width: 0%;
+    border-radius: 1em;
+}
+
+.company-profile-survey-container,
+.company-profile-internships-container {
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media(min-width:1160px) {
+    .company-profile-content-flex {
+        display: flex;
+    }
+
+    .company-profile-survey-container,
+    .company-profile-internships-container {
+        max-width: none;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1em;
+    }
 }

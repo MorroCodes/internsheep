@@ -65,7 +65,10 @@ Route::get('/student', 'AccountController@StudentProfile')->name('StudentProfile
 Route::get('/student/{id}', 'AccountController@StudentProfilePublic')->name('StudentProfilePublic');
 Route::get('/change_student_data', 'AccountController@changeStudentData')->name('changeStudentData');
 Route::post('/change_student_data/data', 'AccountController@handleStudentData');
+Route::post('/change_student_data/picture', 'AccountController@handleProfilePicture');
+Route::post('/change_student_data/cv', 'AccountController@handleCV');
 Route::post('/change_student_data/password', 'AccountController@handleStudentNewPassword');
+Route::post('/apply_internship', 'AccountController@ApplyInternship');
 //edit profile company
 Route::get('/companyaccount', 'AccountCompanyController@changeCompanyData')->name('changeCompanyData');
 Route::post('/companyaccount/data', 'AccountCompanyController@handleCompanyData');
