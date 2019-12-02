@@ -146,7 +146,6 @@ class EntryController extends Controller
         $user->lastname = $credentials['lastname'];
         $user->description = 'Dit is mijn beschrijving.';
         $user->profile_image = 'img/intr.png';
-        $user->cv = '';
         $user->email = $credentials['email'];
         $user->password = \Hash::make($credentials['password']);
         $user->type = $type;
@@ -168,7 +167,7 @@ class EntryController extends Controller
         $student->user_id = $id;
         $student->school = $credentials['school'];
         $student->field_of_study = $credentials['field_of_study'];
-        $student->c = "";
+        $student->cv = '';
         $student->save();
     }
 
