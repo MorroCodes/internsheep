@@ -15,7 +15,7 @@ class SurveyController extends Controller
     {
         $data = $request->only(['vibe', 'size', 'age', 'type', 'distance']);
         $survey = new \App\StudentSurvey();
-        $survey->user_id = session('id');
+        $survey->user_id = \Auth::user()->id;
         $survey->vibe = $data['vibe'];
         $survey->size = $data['size'];
         $survey->age = $data['age'];
@@ -35,7 +35,7 @@ class SurveyController extends Controller
     {
         $data = $request->only(['vibe', 'size', 'age', 'type', 'transport']);
         $survey = new \App\CompanySurvey();
-        $survey->user_id = session('id');
+        $survey->user_id = \Auth::user()->id;
         $survey->vibe = $data['vibe'];
         $survey->size = $data['size'];
         $survey->age = $data['age'];
