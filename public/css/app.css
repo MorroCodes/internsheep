@@ -11274,11 +11274,12 @@ a .edit {
   display: flex;
   -webkit-box-align: center;
           align-items: center;
+  width: 100%;
 }
 
-.survey-result-container-flex div:nth-child(1),
-.survey-result-container-flex div:nth-child(3) {
-  width: 45%;
+.survey-label,
+.survey-label {
+  width: 250px;
   padding: 0.4em;
   font-size: 0.8em;
 }
@@ -11289,16 +11290,28 @@ a .edit {
 
 .survey-result-container {
   width: 100%;
-  border: 1px solid grey;
-  background-color: red;
-  height: 10px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.circle {
+  width: 1em;
+  height: 1em;
   border-radius: 1em;
+  background-color: white;
+  border: 2px solid #12396A;
+}
+
+.circle-selected {
+  background-color: #12396A;
 }
 
 .survey-slider {
   background-color: #12396A;
   height: 100%;
-  width: 0%;
+  width: 100%;
   border-radius: 1em;
 }
 
@@ -11500,19 +11513,17 @@ a .edit {
   margin-right: auto;
 }
 
-.form-group div span {
+.form-group div .col {
   font-size: 0.8em;
 }
 
-.form-group div {
+.form-group .survey-flex {
   width: 100%;
   display: -webkit-box;
   display: flex;
-  -webkit-box-pack: justify;
-          justify-content: space-between;
 }
 
-.form-group div span:last-child {
+.form-group .survey-flex .col:last-child {
   text-align: right;
 }
 
@@ -11526,6 +11537,10 @@ a .edit {
 
 .survey-content .logo-entry-container {
   margin-bottom: 2em;
+}
+
+.survey-label:last-child {
+  text-align: right;
 }
 
 @media (min-width: 600px) {

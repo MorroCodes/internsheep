@@ -4,28 +4,47 @@ let ageSelector = document.querySelector(".age-check");
 let typeSelector = document.querySelector(".type-check");
 let transportSelector = document.querySelector(".transport-check");
 
-let selectorArray= [vibeSelector, sizeSelector, ageSelector, typeSelector, transportSelector];
+let selectorArray = [vibeSelector, sizeSelector, ageSelector, typeSelector, transportSelector];
 
 if (vibeSelector != null) {
     let score;
-    for(let i = 0; i<selectorArray.length; i++){
+    for (let i = 0; i < selectorArray.length; i++) {
+
+
         score = selectorArray[i].dataset.score;
-        selectorArray[i].style.width = getScore(score);
+        // selectorArray[i].style.width = getScore(score);
+        selectorArray[i].innerHTML=getScore(score);
     }
 }
 
 function getScore(score) {
-    let width;
+    let result;
     if (score == 1) {
-        width = "0%";
+        result = `<div class="circle circle-selected"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div>`;
     } else if (score == 2) {
-        width = "25%";
+        result = `<div class="circle"></div><div class="circle circle-selected"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div>`;
     } else if (score == 3) {
-        width = "50%";
+        result = `<div class="circle"></div><div class="circle"></div><div class="circle circle-selected"></div><div class="circle"></div><div class="circle"></div>`;
     } else if (score == 4) {
-        width = "75%";
+        result = `<div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle circle-selected"></div><div class="circle"></div>`;
     } else {
-        width = "100%";
+        result = `<div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle circle-selected"></div>`;
     }
-    return width;
+    return result;
 }
+
+// function getScore(score) {
+//     let width;
+//     if (score == 1) {
+//         width = "0%";
+//     } else if (score == 2) {
+//         width = "25%";
+//     } else if (score == 3) {
+//         width = "50%";
+//     } else if (score == 4) {
+//         width = "75%";
+//     } else {
+//         width = "100%";
+//     }
+//     return width;
+// }
