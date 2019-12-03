@@ -8,15 +8,18 @@ class AccountController extends Controller
 {
     public function changeStudentData()
     {
-        if(\Auth::user()->type == "student"){
-            return view('/student/studentData');
-        }else{
+        if (\Auth::user()->type == 'student') {
+            $data['surveyInfo'] = \App\StudentSurvey::where('user_id', \Auth::user()->id)->first();
+
+            return view('/student/studentData', $data);
+        } else {
             return redirect('/');
         }
     }
 
-    public function handleStudentData(Request $request){
-        if(!empty($request->only(['firstname', 'lastname', 'email', 'bio']))){
+    public function handleStudentData(Request $request)
+    {
+        if (!empty($request->only(['firstname', 'lastname', 'email', 'bio']))) {
             $request->session()->flash('status', 'Gegevens zijn aangepast!');
         }
 
@@ -32,8 +35,9 @@ class AccountController extends Controller
         return redirect('/change_student_data');
     }
 
-    public function handleStudentNewPassword(Request $request){
-        if(!empty($request->only(['password1', 'password2']))){
+    public function handleStudentNewPassword(Request $request)
+    {
+        if (!empty($request->only(['password1', 'password2']))) {
             $request->session()->flash('status', 'Gegevens zijn aangepast!');
         }
 
@@ -41,7 +45,7 @@ class AccountController extends Controller
         $password2 = $request->input('password2');
         $id = \Auth::user()->id;
 
-        if($password1 === $password2){
+        if ($password1 === $password2) {
             $user = \App\User::where('id', $id);
             $user->update(['password' => \Hash::make($request->input('password1'))]);
 
@@ -49,38 +53,43 @@ class AccountController extends Controller
         }
     }
 
-    public function StudentProfile(){
+    public function StudentProfile()
+    {
         $id = \Auth::user()->id;
         $data['user'] = \App\User::where('id', $id)->first();
 
         return view('student/student', $data);
     }
 
-    public function StudentProfilePublic($id){
+    public function StudentProfilePublic($id)
+    {
         $data['user'] = \App\User::where('id', $id)->first();
 
-        if($data['user']->type == "student"){
+        if ($data['user']->type == 'student') {
             return view('student/studentPublic', $data);
-        }else{
+        } else {
             return redirect('/');
         }
     }
 
-    public function ApplyInternship(Request $request){
+    public function ApplyInternship(Request $request)
+    {
         $user_id = \Auth::user()->id;
         $reason = $request->input('reason');
         $company_id = $request->input('company');
 
-        $apply = new \App\Apply;
+        $apply = new \App\Apply();
         $apply->student_id = $user_id;
         $apply->company_id = $company_id;
         $apply->reason = $reason;
 
         $apply->save();
+
         return redirect('/');
     }
 
-    public function handleProfilePicture(Request $request){
+    public function handleProfilePicture(Request $request)
+    {
         if ($request->hasFile('profile')) {
             $picture_name = $request->file('profile')->getClientOriginalName();
             $picture_size = $request->file('profile')->getSize();
@@ -93,13 +102,15 @@ class AccountController extends Controller
 
             $this->InsertProfileImage($newDirectory);
             $request->session()->flash('status', 'Gegevens zijn aangepast');
+
             return redirect('/change_student_data');
         } else {
             echo 'no file!';
         }
     }
 
-    public function handleCV(Request $request){
+    public function handleCV(Request $request)
+    {
         if ($request->hasFile('cv')) {
             $cv_name = $request->file('cv')->getClientOriginalName();
             $cv_size = $request->file('cv')->getSize();
@@ -112,25 +123,28 @@ class AccountController extends Controller
 
             $this->InsertCV($newDirectory);
             $request->session()->flash('status', 'Gegevens zijn aangepast');
+
             return redirect('/change_student_data');
         } else {
             echo 'no file!';
         }
     }
 
-    public function checkType($picture){
+    public function checkType($picture)
+    {
         $imageFileType = strtolower(pathinfo($picture, PATHINFO_EXTENSION));
         if ($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'gif') {
-            echo "use an image!";
+            echo 'use an image!';
         } else {
             // echo $imageFileType;
         }
     }
 
-    public function checkTypePDF($cv){
+    public function checkTypePDF($cv)
+    {
         $cvType = strtolower(pathinfo($cv, PATHINFO_EXTENSION));
         if ($cvType != 'pdf') {
-            echo "use an image!";
+            echo 'use an image!';
         } else {
             echo $cvType;
         }
@@ -139,7 +153,7 @@ class AccountController extends Controller
     public function fileSize($picture_size)
     {
         if ($picture_size > 500000) {
-            echo "File is too big!";
+            echo 'File is too big!';
         } else {
             echo $picture_size;
         }
@@ -149,7 +163,7 @@ class AccountController extends Controller
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
-        $randomString = "";
+        $randomString = '';
         for ($i = 0; $i < $charactersLength; ++$i) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
@@ -168,13 +182,15 @@ class AccountController extends Controller
         return $target_file;
     }
 
-    public function InsertProfileImage($newDirectory){
+    public function InsertProfileImage($newDirectory)
+    {
         $id = \Auth::user()->id;
         $user = \App\User::where('id', $id);
         $user->update(['profile_image' => $newDirectory]);
     }
 
-    public function InsertCV($newDirectory){
+    public function InsertCV($newDirectory)
+    {
         $id = \Auth::user()->id;
         $user = \App\Student::where('id', $id);
         $user->update(['cv' => $newDirectory]);

@@ -74,6 +74,20 @@
                         {{csrf_field()}}
                     </form>
                 </div>
+                @if($surveyInfo != null)  
+                        @component('components/student_survey_results')
+                        @slot('surveyInfo') {{$surveyInfo}} @endslot
+                        @slot('vibe') {{$surveyInfo->vibe}} @endslot
+                        @slot('size') {{$surveyInfo->size}} @endslot
+                        @slot('age') {{$surveyInfo->age}} @endslot
+                        @slot('type') {{$surveyInfo->type}} @endslot
+                        @slot('transport') {{$surveyInfo->distance}} @endslot
+                        @endcomponent
+                    @else
+                        @component('components/student_survey_results_empty')
+                            @slot('surveyInfo') {{$surveyInfo}} @endslot
+                        @endcomponent
+                    @endif
             </div>
         </div>
     </div>

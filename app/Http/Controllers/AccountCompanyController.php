@@ -8,7 +8,9 @@ class AccountCompanyController extends Controller
 {
     public function changeCompanyData()
     {
-        return view('company/companyAccount');
+        $data['surveyInfo'] = \App\CompanySurvey::where('user_id', \Auth::user()->id)->first();
+
+        return view('company/companyAccount', $data);
     }
 
     public function handleCompanyData(Request $request)
