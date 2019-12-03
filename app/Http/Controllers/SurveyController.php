@@ -8,7 +8,9 @@ class SurveyController extends Controller
 {
     public function studentSurvey()
     {
-        return view('survey/student');
+        $data['survey'] = \App\StudentSurvey::where('user_id', \Auth::user()->id)->first();
+
+        return view('survey/student', $data);
     }
 
     public function handleStudentSurvey(Request $request)
@@ -38,7 +40,9 @@ class SurveyController extends Controller
 
     public function companySurvey()
     {
-        return view('survey/company');
+        $data['survey'] = \App\CompanySurvey::where('user_id', \Auth::user()->id)->first();
+
+        return view('survey/company', $data);
     }
 
     public function handleCompanySurvey(Request $request)

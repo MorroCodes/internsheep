@@ -50,5 +50,5 @@
             <div class="survey-label">Verder</div>
         </div>
     </div>
-    <a href="/company_survey" class="btn btn-primary">Wijzig survey antwoorden</a>
+    <a href="/student_survey" class="btn btn-primary">Wijzig survey antwoorden</a>
 </div>

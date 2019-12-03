@@ -11513,19 +11513,17 @@ a .edit {
   margin-right: auto;
 }
 
-.form-group div span {
+.form-group div .col {
   font-size: 0.8em;
 }
 
-.form-group div {
+.form-group .survey-flex {
   width: 100%;
   display: -webkit-box;
   display: flex;
-  -webkit-box-pack: justify;
-          justify-content: space-between;
 }
 
-.form-group div span:last-child {
+.form-group .survey-flex .col:last-child {
   text-align: right;
 }
 
@@ -11539,6 +11537,10 @@ a .edit {
 
 .survey-content .logo-entry-container {
   margin-bottom: 2em;
+}
+
+.survey-label:last-child {
+  text-align: right;
 }
 
 @media (min-width: 600px) {
