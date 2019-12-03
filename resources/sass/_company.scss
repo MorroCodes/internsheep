@@ -211,11 +211,12 @@ a .edit {
 .survey-result-container-flex {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
-.survey-result-container-flex div:nth-child(1),
-.survey-result-container-flex div:nth-child(3) {
-    width: 45%;
+.survey-label,
+.survey-label {
+    width: 250px;
     padding: 0.4em;
     font-size: 0.8em;
 }
@@ -226,16 +227,30 @@ a .edit {
 
 .survey-result-container {
     width: 100%;
-    border: 1px solid grey;
-    background-color: red;
-    height: 10px;
+    display: flex;
+    justify-content: space-between;
+    // border: 1px solid grey;
+    // background-color: red;
+    // height: 10px;
+    // border-radius: 1em;
+}
+
+.circle{
+    width: 1em;
+    height: 1em;
     border-radius: 1em;
+    background-color: white;
+    border: 2px solid $blue;
+}
+
+.circle-selected{
+    background-color: $blue;
 }
 
 .survey-slider {
     background-color: $blue;
     height: 100%;
-    width: 0%;
+    width: 100%;
     border-radius: 1em;
 }
 

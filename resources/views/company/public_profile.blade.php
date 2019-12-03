@@ -31,22 +31,20 @@
             <div>
                 <p>Werksfeer</p>
                 <div class="survey-result-container-flex">
-                    <div>informeel</div>
-                    <div class="survey-result-container">
-                        <div class="vibe-check survey-slider" data-score="{{$surveyInfo->vibe}}"></div>
+                    <div class="survey-label">informeel</div>
+                    <div class="survey-result-container vibe-check" data-score="{{$surveyInfo->vibe}}">
                     </div>
-                    <div>formeel</div>
+                    <div class="survey-label">formeel</div>
                 </div>
             </div>
             
             <div>
                 <p>Bedrijfsgrootte</p>
                 <div class="survey-result-container-flex">
-                    <div>Kleine KMO</div>
-                    <div class="survey-result-container">
-                        <div class="size-check survey-slider" data-score="{{$surveyInfo->size}}"></div>
+                    <div class="survey-label">Kleine KMO</div>
+                    <div class="survey-result-container size-check" data-score="{{$surveyInfo->size}}">
                     </div>
-                    <div>Grote Multinational</div>
+                    <div class="survey-label">Grote Multinational</div>
                 </div>
             </div>
         
@@ -54,33 +52,30 @@
             <div>
                 <p>Omschrijving</p>
                 <div class="survey-result-container-flex">
-                    <div>Jong</div>
-                    <div class="survey-result-container">
-                        <div class="age-check survey-slider" data-score="{{$surveyInfo->age}}"></div>
+                    <div class="survey-label">Jong</div>
+                    <div class="survey-result-container age-check" data-score="{{$surveyInfo->age}}">
                     </div>
-                    <div>Established</div>
+                    <div class="survey-label">Established</div>
                 </div>
             </div>
 
             <div>
                 <p>Soort stages in aanbieding</p>
                 <div class="survey-result-container-flex">
-                    <div>Kijkstage</div>
-                    <div class="survey-result-container">
-                        <div class="type-check survey-slider" data-score="{{$surveyInfo->type}}"></div>
+                    <div class="survey-label">Kijkstage</div>
+                    <div class="survey-result-container type-check" data-score="{{$surveyInfo->type}}">
                     </div>
-                    <div>hands-on</div>
+                    <div class="survey-label">hands-on</div>
                 </div>
             </div>
 
             <div>
                 <p>Bereikbaaarheid openbaar vervoer</p>
                 <div class="survey-result-container-flex">
-                    <div>Makkelijk</div>
-                    <div class="survey-result-container">
-                        <div class="transport-check survey-slider" data-score="{{$surveyInfo->transport}}"></div>
+                    <div class="survey-label">Makkelijk</div>
+                    <div class="survey-result-container transport-check" data-score="{{$surveyInfo->transport}}">
                     </div>
-                    <div>moeilijker</div>
+                    <div class="survey-label">moeilijker</div>
                 </div>
             </div>
         </div>
