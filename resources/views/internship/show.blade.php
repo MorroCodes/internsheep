@@ -1,6 +1,22 @@
 @extends('layouts/company')
 
 @section('content')
+
+<div class="popup">
+    <form action="{{ action('AccountController@ApplyInternship') }}" method="post">
+
+        <input type="hidden" name="company" value="{{$internship->company_id}}">
+        <input type="hidden" name="internship" value="{{$internship->id}}">
+        <div class="form-group">
+            <label for="reason" class="popup-title"></label>
+            <textarea name="reason" class="form-control" id="reason"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Solliciteren</button>
+        {{csrf_field()}}
+    </form>
+    <img class="close" src="{{ asset('img/close.svg') }}">
+</div>
+
 <div class="card text-center">
   <div class="card-header">
     Flux
@@ -54,7 +70,7 @@
               </div>
 
               <div>
-                <button class="btn btn-primary">Antwoord</button>
+                <button class="btn btn-primary btn-message" data-applicationId="{{$a->id}}" data-applicant="{{$a->firstname}} {{$a->lastname}}">Start een gesprek</button>
               </div>
 
             </div>

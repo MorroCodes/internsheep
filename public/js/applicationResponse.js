@@ -6,33 +6,48 @@ if (applicationCards != null) {
     applicationCards.addEventListener("click", (e) => {
         let target = e.target;
         let container = target.parentNode;
-        console.log(container);
+        applicationId = target.getAttribute("data-applicationId");
+
         if (e.target.matches(".application-response-deny")) {
 
-            applicationId = target.getAttribute("data-applicationId");
             response = "denied";
             updateApplicationStatus(response, applicationId, container);
   
         } else if (e.target.matches(".application-response-maybe")) {
 
-            applicationId = target.getAttribute("data-applicationId");
             response = "maybe";
             updateApplicationStatus(response, applicationId, container);
 
         } else if (e.target.matches(".application-response-accept")) {
   
-            applicationId = target.getAttribute("data-applicationId");
             response = "accepted";
             updateApplicationStatus(response, applicationId, container);
 
+        } else if(e.target.matches(".btn-message")){
+            let messagePopup = document.querySelector(".popup");
+            let popupTitle = document.querySelector(".popup-title");
+            showMessagePopup(messagePopup, popupTitle, target);
+            closeMessagePopup(messagePopup);
         }
-
     })
 }
 
+function closeMessagePopup(messagePopup){
+    let closePopup = document.querySelector(".close");
+    closePopup.addEventListener("click", (e) =>{
+        messagePopup.style.display="none";
+    })
+}
+
+function showMessagePopup(messagePopup, popupTitle, target){
+    
+    let name = target.getAttribute("data-applicant");
+    messagePopup.style.display="flex";
+    messagePopup.style.position="fixed";
+    popupTitle.innerHTML=`Reageer op de sollicitatie van ${name}.`;
+}
+
 function updateApplicationStatus(response, applicationId, container) {
-    // ajax call naar route
-    // handle + change ui obv antwoord
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -47,7 +62,7 @@ function updateApplicationStatus(response, applicationId, container) {
             applicationId: applicationId
         },
         success: function (data) {
-            alert(data['applicationId']);
+       
             container.innerHTML = response;
         }
     });
