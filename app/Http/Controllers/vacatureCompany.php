@@ -54,12 +54,14 @@ class vacatureCompany extends Controller
         return view('internship/create');
     }
 
-    public function applicant(){
+   
 
+    public function applicant()
+    {
         $id = \Auth::user()->id;
-        $applicants = Apply::where('student_id',$id)->get();
-    
-        return view('internship/applications',compact('applicants'));
+        $applicants = Apply::has('students')->where('student_id', $id)->get();
+
+        return view('internship/applications', compact('applicants'));
     }
 
     

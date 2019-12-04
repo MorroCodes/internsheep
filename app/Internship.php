@@ -24,4 +24,15 @@ class Internship extends Model
     public function apply(){
         return $this->hasMany('App\Apply');
     }
+
+
+
+    public function users(){
+        return $this->belongsToMany('App\User');
+
+    }
+    public function students(){
+        return $this->belongsToMany('App\Student');
+
+    }
 }
