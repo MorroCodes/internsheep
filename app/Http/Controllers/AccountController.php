@@ -72,7 +72,6 @@ class AccountController extends Controller
         $user_id = \Auth::user()->id;
         // dd($request);
         $reason = $request->input('reason');
-        $internship_id = $request->input('internship');
         $company_id = $request->input('company');
 
         $internships_id = $request->input('internship');
