@@ -30,4 +30,10 @@ class CompanyController extends Controller
 
         return view('company/public_profile', $data);
     }
+    public function internshipDetail($internship)
+    {
+        $data['internship'] = \App\Internship::where('id', $internship)->first();
+
+        return view('internship/create', $data);
+    }
 }

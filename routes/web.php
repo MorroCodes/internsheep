@@ -41,11 +41,11 @@ Route::get('/company_survey', 'SurveyController@companySurvey');
 Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 //companie
 Route::get('/yourcompany', 'CompanyController@show')->name('yourcompany');
-
-
 Route::get('/company/{id}', 'CompanyController@publicCompanyProfile');
-
 Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('internship.show');
+
+//applications
+Route::get('/vacature2/applications', 'vacatureCompany@applicant');
 
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');

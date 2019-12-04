@@ -20,4 +20,19 @@ class Internship extends Model
     {
         return $this->belongsTo('\App\CompanySurvey');
     }
+
+    public function apply(){
+        return $this->hasMany('App\Apply');
+    }
+
+
+
+    public function users(){
+        return $this->belongsToMany('App\User');
+
+    }
+    public function students(){
+        return $this->belongsToMany('App\Student');
+
+    }
 }
