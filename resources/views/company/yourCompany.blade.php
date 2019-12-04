@@ -14,7 +14,7 @@
       <div class="card-body">
         <h5 class="card-title">{{$i->title}}</h5>
         <p class="card-text">{{$i->description}}</p>
-        <a href="{{route('internship.show',[$i->id,$i->slug])}}">
+        <a href="{{route('internship.show',[$i->id])}}">
         <button class="btn btn-primary">view</button>
         </a>
       </div>
