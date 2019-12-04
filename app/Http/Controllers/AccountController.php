@@ -92,6 +92,9 @@ class AccountController extends Controller
         $response = $request->input('response');
         $application_id = $request->input('applicationId');
 
+        $application = \App\Apply::where('id', $application_id);
+        $application->update(['response' => $response]);
+
         return response()->json([
             'response' => $response,
             'applicationId' => $application_id,
