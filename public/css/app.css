@@ -11682,6 +11682,7 @@ textarea {
 
 .application-card {
   width: 95%;
+  max-width: 500px;
   margin: 1em auto;
   border: 1px solid #12396A;
 }
@@ -11707,6 +11708,10 @@ textarea {
           justify-content: space-between;
   -webkit-box-align: baseline;
           align-items: baseline;
+}
+
+.application-card-content div p:first-child {
+  font-size: 0.9em;
 }
 
 .application-card-content div p:last-child {

@@ -36,7 +36,7 @@
             <div class="application-card">
 
               <div class="application-card-title">
-                <h4>{{$a->firstname}} {{$a->lastname}}</h4>
+                <a href="{{route('StudentProfilePublic',[$a->student_id])}}"><h4>{{$a->firstname}} {{$a->lastname}}</h4></a>
                 <div>
                   <button>Weiger</button>
                   <button>Misschien</button>
@@ -54,7 +54,7 @@
               </div>
 
               <div>
-                <button>Antwoord</button>
+                <button class="btn btn-primary">Antwoord</button>
               </div>
 
             </div>

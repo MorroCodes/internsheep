@@ -1,26 +1,31 @@
-.application-card{
+.application-card {
     width: 95%;
+    max-width: 500px;
     margin: 1em auto;
     border: 1px solid $blue;
 }
 
-.application-card-title{
+.application-card-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: grey;
 }
 
-.application-card-content{
+.application-card-content {
     text-align: left;
 }
 
-.application-card-content div{
+.application-card-content div {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
 }
 
-.application-card-content div p:last-child{
+.application-card-content div p:first-child {
+    font-size: 0.9em;
+}
+
+.application-card-content div p:last-child {
     font-size: 0.7em;
 }
