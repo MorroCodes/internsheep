@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Internship;
-
 class CompanyController extends Controller
 {
     public function show()
@@ -14,11 +12,15 @@ class CompanyController extends Controller
         return view('company/yourcompany', $data);
     }
 
-    public function index($id, $internship)
+    public function index($id)
     {
-        $internship = Internship::find($id);
+        $data['internship'] = \App\Internship::where('id', $id)->first();
+        $data['applications'] = \App\Apply::select('applies.id', 'applies.student_id', 'applies.internships_id', 'applies.company_id', 'applies.reason', 'applies.created_at', 'applies.response', 'users.firstname', 'users.lastname', 'users.email', 'users.profile_image')
+            ->where('internships_id', $id)
+            ->join('users', 'student_id', '=', 'users.id')
+            ->get();
 
-        return view('internship/show', compact('internship'));
+        return view('internship/show', $data);
     }
 
     public function publicCompanyProfile($id)
@@ -30,6 +32,7 @@ class CompanyController extends Controller
 
         return view('company/public_profile', $data);
     }
+
     public function internshipDetail($internship)
     {
         $data['internship'] = \App\Internship::where('id', $internship)->first();
