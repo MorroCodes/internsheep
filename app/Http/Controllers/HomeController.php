@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function internshipDetail($internship)
     {
         $data['internship'] = \App\Internship::where('id', $internship)->first();
+        // dd($data['internship']);
 
         return view('student/internshipData', $data);
     }
