@@ -17,6 +17,7 @@ class CreateAppliesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('student_id');
             $table->integer('internships_id');
+            $table->integer('company_id');
             $table->string('reason');
             $table->timestamps();
         });
