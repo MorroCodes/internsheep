@@ -14,8 +14,8 @@
                 <div class="alert alert-danger">{{$error}}</div>
             @endif
             <div class="form-group">
+                <div class="col-md-13 mb-3 mb-md-0">
                 <label for="firstname">Voornaam</label>
-                <div class="col-md-12">
                 <input type="text" name="firstname" class="form-control" value="{{$user['firstname'] ?? ''}}">
                 </div>
             </div>
@@ -65,9 +65,11 @@
 
             <a href="/login">Heb je al een profiel? Meld hier aan.</a>
 
-            <div class="form-group form-group-buttons">
+            <div class="row form-group">
+                <div class="col-md-12">
                 <a href="/signup" class="btn btn-light">Vorige</a>
-                <input type="submit" value="Registreer als bedrijf" class="btn btn-primary">
+                <input type="submit" value="Registreer als bedrijf" class="btn btn-primary  pill px-4 py-2">
+                </div>
             </div>
 
             {{csrf_field()}}
