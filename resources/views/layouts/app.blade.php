@@ -81,5 +81,6 @@
     </div>
     {{-- <script type="text/javascript" src="{{ URL::asset('js/components/voice_api.js') }}"></script> --}}
     <script src="{{ URL::asset('js/components/apply.js') }}"></script>
+    <script src="{{asset('js/surveyResults.js')}}"></script>
 </body>
 </html>
