@@ -4,6 +4,7 @@
 
 <div class="popup">
     <form action="{{ action('AccountController@ApplyInternship') }}" method="post">
+
         <input type="hidden" name="company" value="{{$internship->company_id}}">
         <input type="hidden" name="internship" value="{{$internship->id}}">
         <div class="form-group">

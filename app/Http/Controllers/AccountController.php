@@ -22,13 +22,11 @@ class AccountController extends Controller
         if (!empty($request->only(['firstname', 'lastname', 'email', 'bio']))) {
             $request->session()->flash('status', 'Gegevens zijn aangepast!');
         }
-
         $firstname = $request->input('firstname');
         $lastname = $request->input('lastname');
         $email = $request->input('email');
         $bio = $request->input('bio');
         $id = \Auth::user()->id;
-
         $user = \App\User::where('id', $id);
         $user->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'description' => $bio]);
 
@@ -40,11 +38,9 @@ class AccountController extends Controller
         if (!empty($request->only(['password1', 'password2']))) {
             $request->session()->flash('status', 'Gegevens zijn aangepast!');
         }
-
         $password1 = $request->input('password1');
         $password2 = $request->input('password2');
         $id = \Auth::user()->id;
-
         if ($password1 === $password2) {
             $user = \App\User::where('id', $id);
             $user->update(['password' => \Hash::make($request->input('password1'))]);
@@ -64,7 +60,6 @@ class AccountController extends Controller
     public function StudentProfilePublic($id)
     {
         $data['user'] = \App\User::where('id', $id)->first();
-
         if ($data['user']->type == 'student') {
             return view('student/studentPublic', $data);
         } else {
@@ -77,15 +72,17 @@ class AccountController extends Controller
         $user_id = \Auth::user()->id;
         // dd($request);
         $reason = $request->input('reason');
+        $internship_id = $request->input('internship');
         $company_id = $request->input('company');
+
         $internships_id = $request->input('internship');
 
         $apply = new \App\Apply();
         $apply->student_id = $user_id;
         $apply->company_id = $company_id;
         $apply->internships_id = $internships_id;
-        $apply->reason = $reason;
 
+        $apply->reason = $reason;
         $apply->save();
 
         return redirect('/');
@@ -97,12 +94,10 @@ class AccountController extends Controller
             $picture_name = $request->file('profile')->getClientOriginalName();
             $picture_size = $request->file('profile')->getSize();
             $picture_path = $request->file('profile')->getPathName();
-
             $this->checkType($picture_name);
             $this->fileSize($picture_size);
             $directory = $this->createDirectory($picture_name);
             $newDirectory = $this->uploadFile($directory, $picture_name, $picture_path);
-
             $this->InsertProfileImage($newDirectory);
             $request->session()->flash('status', 'Gegevens zijn aangepast');
 
@@ -118,12 +113,10 @@ class AccountController extends Controller
             $cv_name = $request->file('cv')->getClientOriginalName();
             $cv_size = $request->file('cv')->getSize();
             $cv_path = $request->file('cv')->getPathName();
-
             $this->checkTypePDF($cv_name);
             $this->fileSize($cv_size);
             $directory = $this->createDirectory($cv_name);
             $newDirectory = $this->uploadFile($directory, $cv_name, $cv_path);
-
             $this->InsertCV($newDirectory);
             $request->session()->flash('status', 'Gegevens zijn aangepast');
 
