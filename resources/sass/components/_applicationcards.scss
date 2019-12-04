@@ -12,6 +12,11 @@
     background-color: grey;
 }
 
+.application-response-selected{
+    background-color: $blue;
+    color: white,
+}
+
 .application-card-content {
     text-align: left;
 }
@@ -29,3 +34,4 @@
 .application-card-content div p:last-child {
     font-size: 0.7em;
 }
+

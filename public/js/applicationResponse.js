@@ -5,54 +5,32 @@ if (applicationCards != null) {
     let applicationId;
     applicationCards.addEventListener("click", (e) => {
         let target = e.target;
-        console.log(target);
+        let container = target.parentNode;
+        console.log(container);
         if (e.target.matches(".application-response-deny")) {
 
             applicationId = target.getAttribute("data-applicationId");
             response = "denied";
-            updateApplicationStatus(response, applicationId);
+            updateApplicationStatus(response, applicationId, container);
   
         } else if (e.target.matches(".application-response-maybe")) {
 
             applicationId = target.getAttribute("data-applicationId");
             response = "maybe";
-            updateApplicationStatus(response, applicationId);
+            updateApplicationStatus(response, applicationId, container);
 
         } else if (e.target.matches(".application-response-accept")) {
   
             applicationId = target.getAttribute("data-applicationId");
             response = "accepted";
-            updateApplicationStatus(response, applicationId);
+            updateApplicationStatus(response, applicationId, container);
 
         }
 
     })
 }
 
-// if (denyBtn != null) {
-//     // check if classes are available on page so it only works on pages that it needs to.
-//     let response;
-//     let applicationId;
-//     denyBtn.addEventListener("click", (e) => {
-//         applicationId = denyBtn.getAttribute("data-applicationId");
-//         response = "denied";
-//         updateApplicationStatus(response, applicationId);
-//     })
-
-//     maybeBtn.addEventListener("click", (e) => {
-//         applicationId = maybeBtn.getAttribute("data-applicationId");
-//         response = "maybe";
-//         updateApplicationStatus(response, applicationId);
-//     })
-
-//     acceptBtn.addEventListener("click", (e) => {
-//         applicationId = acceptBtn.getAttribute("data-applicationId");
-//         response = "accepted";
-//         updateApplicationStatus(response, applicationId);
-//     })
-// }
-
-function updateApplicationStatus(response, applicationId) {
+function updateApplicationStatus(response, applicationId, container) {
     // ajax call naar route
     // handle + change ui obv antwoord
     $.ajaxSetup({
@@ -70,16 +48,7 @@ function updateApplicationStatus(response, applicationId) {
         },
         success: function (data) {
             alert(data['applicationId']);
+            container.innerHTML = response;
         }
     });
-    // axios.post('homestead.test/company/application/response', {
-    //     response: response,
-    //     applicationId: applicationId
-    //   })
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
 }

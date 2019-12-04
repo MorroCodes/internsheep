@@ -15,7 +15,7 @@ class CompanyController extends Controller
     public function index($id)
     {
         $data['internship'] = \App\Internship::where('id', $id)->first();
-        $data['applications'] = \App\Apply::select('applies.id', 'applies.student_id', 'applies.internships_id', 'applies.company_id', 'applies.reason', 'applies.created_at', 'users.firstname', 'users.lastname', 'users.email', 'users.profile_image')
+        $data['applications'] = \App\Apply::select('applies.id', 'applies.student_id', 'applies.internships_id', 'applies.company_id', 'applies.reason', 'applies.created_at', 'applies.response', 'users.firstname', 'users.lastname', 'users.email', 'users.profile_image')
             ->where('internships_id', $id)
             ->join('users', 'student_id', '=', 'users.id')
             ->get();
