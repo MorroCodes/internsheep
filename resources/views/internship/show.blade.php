@@ -23,9 +23,48 @@
       </button>
     </a>
   </div>
+
+  <div class="internship-applications">
+    <h3>Sollicitaties</h3>
+      @if($applications == null)
+        <div>
+          <p>Er zijn nog geen sollicitaties voor deze vacature.</p>
+        </div>
+      @else
+        <div class="application-cards">
+            @foreach($applications as $a)
+            <div class="application-card">
+
+              <div class="application-card-title">
+                <a href="{{route('StudentProfilePublic',[$a->student_id])}}"><h4>{{$a->firstname}} {{$a->lastname}}</h4></a>
+                <div>
+                  <button class="application-response-deny {{ ($a->response == 'denied') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}">Weiger</button>
+                  <button class="application-response-maybe {{ ($a->response == 'maybe') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}">Misschien</button>
+                  <button class="application-response-accept {{ ($a->response == 'accepted') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}">Accepteer</button>
+                </div>
+              </div>
+
+              <div class="application-card-content">
+                <h5>Bericht</h5>
+                <p>{{$a->reason}}</p>
+                <div>
+                  <p>E-mail: {{$a->email}}</p>
+                  <p>Verzonden op: {{$a->created_at}}</p>
+                </div>
+              </div>
+
+              <div>
+                <button class="btn btn-primary">Antwoord</button>
+              </div>
+
+            </div>
+            @endforeach
+        </div>
+      @endif
+  </div>
+
   <div class="card-footer text-muted">
   {{$internship->created_at}}
   </div>
 </div>
 @endsection
-
