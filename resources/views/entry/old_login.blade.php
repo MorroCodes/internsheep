@@ -1,9 +1,9 @@
-@extends('layouts/main')
+@extends('layouts/entry')
 @section('content')
-<div class="site-section bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-lg-8 mb-5">
+    <div class="entry-content entry-content-login">
+        <div class=logo-entry-container>
+            <img src="/images/logo.svg" alt="Internsheep logo" class="logo logo-entry">
+        </div>
         <h2>Meld aan | <a href="{{ url('/auth/redirect/facebook') }}" class="btn-social">via face<span>bok</span></a></h2>
         
         <div class="login-container">
