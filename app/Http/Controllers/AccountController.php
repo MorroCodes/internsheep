@@ -1,17 +1,22 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+
 class AccountController extends Controller
 {
     public function changeStudentData()
     {
         if (\Auth::user()->type == 'student') {
             $data['surveyInfo'] = \App\StudentSurvey::where('user_id', \Auth::user()->id)->first();
+
             return view('/student/studentData', $data);
         } else {
             return redirect('/');
         }
     }
+
     public function handleStudentData(Request $request)
     {
         if (!empty($request->only(['firstname', 'lastname', 'email', 'bio']))) {
@@ -24,8 +29,10 @@ class AccountController extends Controller
         $id = \Auth::user()->id;
         $user = \App\User::where('id', $id);
         $user->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'description' => $bio]);
+
         return redirect('/change_student_data');
     }
+
     public function handleStudentNewPassword(Request $request)
     {
         if (!empty($request->only(['password1', 'password2']))) {
@@ -37,15 +44,19 @@ class AccountController extends Controller
         if ($password1 === $password2) {
             $user = \App\User::where('id', $id);
             $user->update(['password' => \Hash::make($request->input('password1'))]);
+
             return redirect('/change_student_data');
         }
     }
+
     public function StudentProfile()
     {
         $id = \Auth::user()->id;
         $data['user'] = \App\User::where('id', $id)->first();
+
         return view('student/student', $data);
     }
+
     public function StudentProfilePublic($id)
     {
         $data['user'] = \App\User::where('id', $id)->first();
@@ -55,20 +66,28 @@ class AccountController extends Controller
             return redirect('/');
         }
     }
+
     public function ApplyInternship(Request $request)
     {
         $user_id = \Auth::user()->id;
+        // dd($request);
         $reason = $request->input('reason');
         $internship_id = $request->input('internship');
         $company_id = $request->input('company');
+
+        $internships_id = $request->input('internship');
+
         $apply = new \App\Apply();
         $apply->student_id = $user_id;
         $apply->company_id = $company_id;
-        $apply->internships_id = $internship_id;
+        $apply->internships_id = $internships_id;
+
         $apply->reason = $reason;
         $apply->save();
+
         return redirect('/');
     }
+
     public function handleProfilePicture(Request $request)
     {
         if ($request->hasFile('profile')) {
@@ -81,11 +100,13 @@ class AccountController extends Controller
             $newDirectory = $this->uploadFile($directory, $picture_name, $picture_path);
             $this->InsertProfileImage($newDirectory);
             $request->session()->flash('status', 'Gegevens zijn aangepast');
+
             return redirect('/change_student_data');
         } else {
             echo 'no file!';
         }
     }
+
     public function handleCV(Request $request)
     {
         if ($request->hasFile('cv')) {
@@ -98,11 +119,13 @@ class AccountController extends Controller
             $newDirectory = $this->uploadFile($directory, $cv_name, $cv_path);
             $this->InsertCV($newDirectory);
             $request->session()->flash('status', 'Gegevens zijn aangepast');
+
             return redirect('/change_student_data');
         } else {
             echo 'no file!';
         }
     }
+
     public function checkType($picture)
     {
         $imageFileType = strtolower(pathinfo($picture, PATHINFO_EXTENSION));
@@ -112,6 +135,7 @@ class AccountController extends Controller
             // echo $imageFileType;
         }
     }
+
     public function checkTypePDF($cv)
     {
         $cvType = strtolower(pathinfo($cv, PATHINFO_EXTENSION));
@@ -121,6 +145,7 @@ class AccountController extends Controller
             echo $cvType;
         }
     }
+
     public function fileSize($picture_size)
     {
         if ($picture_size > 500000) {
@@ -129,6 +154,7 @@ class AccountController extends Controller
             echo $picture_size;
         }
     }
+
     public function createDirectory($dir)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -139,21 +165,26 @@ class AccountController extends Controller
         }
         $newDirectory = 'uploads'.DIRECTORY_SEPARATOR.$randomString;
         mkdir($newDirectory, 0777, true);
+
         return $newDirectory;
     }
+
     public function uploadFile($directory, $picture_name, $picture_path)
     {
         $target_dir = $directory;
         $target_file = $target_dir.DIRECTORY_SEPARATOR.basename($picture_name);
         move_uploaded_file($picture_path, $target_file);
+
         return $target_file;
     }
+
     public function InsertProfileImage($newDirectory)
     {
         $id = \Auth::user()->id;
         $user = \App\User::where('id', $id);
         $user->update(['profile_image' => $newDirectory]);
     }
+
     public function InsertCV($newDirectory)
     {
         $id = \Auth::user()->id;
