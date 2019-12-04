@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use \App\User;
 
 class MatchController extends Controller
 {
@@ -53,5 +52,24 @@ class MatchController extends Controller
         }
 
         return $companySurveys;
+    }
+
+    public function showGeoCode()
+    {
+        $address = 'Gladioolstraat 5';
+        $data = $this->getGeoCode($address);
+
+        return dd($data);
+    }
+
+    public function getGeoCode($address)
+    {
+        $token = 'pk.eyJ1IjoibW9ycm9jb2RlcyIsImEiOiJjazNyZm16b2EwOW94M2hwczlsNmJ4Nm45In0.-sQ-jrWzHe90UCnAw4ZSLA';
+        $address = rawurlencode($address);
+        $url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'.$address.'.json?access_token='.$token;
+        $data = file_get_contents($url);
+        $json = json_decode($data, true);
+
+        return $json['features'][0]['geometry']['coordinates'];
     }
 }
