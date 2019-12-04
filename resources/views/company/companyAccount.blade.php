@@ -62,6 +62,21 @@
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
+
+                    @if($surveyInfo != null)  
+                        @component('components/company_survey_results')
+                        @slot('surveyInfo') {{$surveyInfo}} @endslot
+                        @slot('vibe') {{$surveyInfo->vibe}} @endslot
+                        @slot('size') {{$surveyInfo->size}} @endslot
+                        @slot('age') {{$surveyInfo->age}} @endslot
+                        @slot('type') {{$surveyInfo->type}} @endslot
+                        @slot('transport') {{$surveyInfo->transport}} @endslot
+                        @endcomponent
+                    @else
+                        @component('components/company_survey_results_empty')
+                            @slot('surveyInfo') {{$surveyInfo}} @endslot
+                        @endcomponent
+                    @endif
                 </div>
             </div>
         </div>

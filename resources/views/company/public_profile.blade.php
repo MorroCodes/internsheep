@@ -15,76 +15,20 @@
     </div>
 
     <div class="company-profile-content-flex">
-        @if($surveyInfo == null)  
-        <div class="company-profile-survey-container">
-            <h2>Leer ons kennen!</h2>
-
-            <div>
-                <p>Dit bedrijf heeft nog geen survey ingevuld.</p>
-            </div>
-        </div>
-        @else
-
-        <div class="company-profile-survey-container">
-            <h2>Leer ons kennen!</h2>
-
-            <div>
-                <p>Werksfeer</p>
-                <div class="survey-result-container-flex">
-                    <div>informeel</div>
-                    <div class="survey-result-container">
-                        <div class="vibe-check survey-slider" data-score="{{$surveyInfo->vibe}}"></div>
-                    </div>
-                    <div>formeel</div>
-                </div>
-            </div>
-            
-            <div>
-                <p>Bedrijfsgrootte</p>
-                <div class="survey-result-container-flex">
-                    <div>Kleine KMO</div>
-                    <div class="survey-result-container">
-                        <div class="size-check survey-slider" data-score="{{$surveyInfo->size}}"></div>
-                    </div>
-                    <div>Grote Multinational</div>
-                </div>
-            </div>
-        
-            
-            <div>
-                <p>Omschrijving</p>
-                <div class="survey-result-container-flex">
-                    <div>Jong</div>
-                    <div class="survey-result-container">
-                        <div class="age-check survey-slider" data-score="{{$surveyInfo->age}}"></div>
-                    </div>
-                    <div>Established</div>
-                </div>
-            </div>
-
-            <div>
-                <p>Soort stages in aanbieding</p>
-                <div class="survey-result-container-flex">
-                    <div>Kijkstage</div>
-                    <div class="survey-result-container">
-                        <div class="type-check survey-slider" data-score="{{$surveyInfo->type}}"></div>
-                    </div>
-                    <div>hands-on</div>
-                </div>
-            </div>
-
-            <div>
-                <p>Bereikbaaarheid openbaar vervoer</p>
-                <div class="survey-result-container-flex">
-                    <div>Makkelijk</div>
-                    <div class="survey-result-container">
-                        <div class="transport-check survey-slider" data-score="{{$surveyInfo->transport}}"></div>
-                    </div>
-                    <div>moeilijker</div>
-                </div>
-            </div>
-        </div>
-        @endif
+    @if($surveyInfo != null)  
+        @component('components/company_survey_results')
+            @slot('surveyInfo') {{$surveyInfo}} @endslot
+            @slot('vibe') {{$surveyInfo->vibe}} @endslot
+            @slot('size') {{$surveyInfo->size}} @endslot
+            @slot('age') {{$surveyInfo->age}} @endslot
+            @slot('type') {{$surveyInfo->type}} @endslot
+            @slot('transport') {{$surveyInfo->transport}} @endslot
+        @endcomponent
+    @else
+        @component('components/company_survey_results_empty')
+            @slot('surveyInfo') {{$surveyInfo}} @endslot
+        @endcomponent
+    @endif
 
         @if($vacatures->isEmpty())  
 
