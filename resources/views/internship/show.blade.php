@@ -3,15 +3,16 @@
 @section('content')
 
 <div class="popup">
-    <form action="{{ action('AccountController@ApplyInternship') }}" method="post">
+    <form action="{{ action('MessageController@StartConversation') }}" method="post">
 
         <input type="hidden" name="company" value="{{$internship->company_id}}">
+        <input type="hidden" class="application-id" name="application" value="">
         <input type="hidden" name="internship" value="{{$internship->id}}">
         <div class="form-group">
-            <label for="reason" class="popup-title"></label>
-            <textarea name="reason" class="form-control" id="reason"></textarea>
+            <label for="message" class="popup-title"></label>
+            <textarea name="message" class="form-control message-input" id="message"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Solliciteren</button>
+        <button type="submit" class="btn btn-primary">Verstuur bericht</button>
         {{csrf_field()}}
     </form>
     <img class="close" src="{{ asset('img/close.svg') }}">

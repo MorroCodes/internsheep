@@ -48,6 +48,9 @@ Route::get('/vacature/{id}/overview', 'CompanyController@index')->name('internsh
 Route::get('/vacature2/applications', 'vacatureCompany@applicant');
 Route::post('/company/application/response', 'AccountController@replyToApplication');
 
+//messages
+Route::post('/application/start/conversation', 'MessageController@StartConversation');
+
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');
 Route::get('/vacature1/create', 'vacatureCompany@create')->name('internship.create');

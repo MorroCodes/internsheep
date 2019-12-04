@@ -12,39 +12,46 @@ if (applicationCards != null) {
 
             response = "denied";
             updateApplicationStatus(response, applicationId, container);
-  
+
         } else if (e.target.matches(".application-response-maybe")) {
 
             response = "maybe";
             updateApplicationStatus(response, applicationId, container);
 
         } else if (e.target.matches(".application-response-accept")) {
-  
+
             response = "accepted";
             updateApplicationStatus(response, applicationId, container);
 
-        } else if(e.target.matches(".btn-message")){
+        } else if (e.target.matches(".btn-message")) {
             let messagePopup = document.querySelector(".popup");
             let popupTitle = document.querySelector(".popup-title");
-            showMessagePopup(messagePopup, popupTitle, target);
-            closeMessagePopup(messagePopup);
+
+            showMessagePopup(messagePopup, popupTitle, target, applicationId);
+            closeMessagePopup(messagePopup, popupTitle);
         }
     })
 }
 
-function closeMessagePopup(messagePopup){
+function closeMessagePopup(messagePopup, popupTitle) {
     let closePopup = document.querySelector(".close");
-    closePopup.addEventListener("click", (e) =>{
-        messagePopup.style.display="none";
+    let messageInput = document.querySelector(".message-input");
+    closePopup.addEventListener("click", (e) => {
+        messagePopup.style.display = "none";
+        messageInput.innerHTML = "";
+        popupTitle.innerHTML = "";
     })
 }
 
-function showMessagePopup(messagePopup, popupTitle, target){
-    
+function showMessagePopup(messagePopup, popupTitle, target, applicationId) {
+
     let name = target.getAttribute("data-applicant");
-    messagePopup.style.display="flex";
-    messagePopup.style.position="fixed";
-    popupTitle.innerHTML=`Reageer op de sollicitatie van ${name}.`;
+    messagePopup.style.display = "flex";
+    messagePopup.style.position = "fixed";
+    popupTitle.innerHTML = `Reageer op de sollicitatie van ${name}.`;
+    let applicationIdInput = document.querySelector(".application-id");
+    applicationIdInput.value = applicationId;
+
 }
 
 function updateApplicationStatus(response, applicationId, container) {
@@ -62,7 +69,7 @@ function updateApplicationStatus(response, applicationId, container) {
             applicationId: applicationId
         },
         success: function (data) {
-       
+
             container.innerHTML = response;
         }
     });
