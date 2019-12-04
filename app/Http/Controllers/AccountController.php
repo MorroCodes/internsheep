@@ -87,6 +87,17 @@ class AccountController extends Controller
         return redirect('/');
     }
 
+    public function replyToApplication(Request $request)
+    {
+        $response = $request->input('response');
+        $application_id = $request->input('applicationId');
+
+        return response()->json([
+            'response' => $response,
+            'applicationId' => $application_id,
+        ]);
+    }
+
     public function handleProfilePicture(Request $request)
     {
         if ($request->hasFile('profile')) {
