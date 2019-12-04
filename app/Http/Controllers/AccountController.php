@@ -59,12 +59,12 @@ class AccountController extends Controller
     {
         $user_id = \Auth::user()->id;
         $reason = $request->input('reason');
-        $internship_id = $request->input('internship');
+        $internships_id = $request->input('internship');
         $company_id = $request->input('company');
         $apply = new \App\Apply();
         $apply->student_id = $user_id;
         $apply->company_id = $company_id;
-        $apply->internships_id = $internship_id;
+        $apply->internships_id = $internships_id;
         $apply->reason = $reason;
         $apply->save();
         return redirect('/');

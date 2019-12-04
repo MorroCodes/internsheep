@@ -37,12 +37,11 @@ class vacatureCompany extends Controller
     }
 
     public function store(Request $request){
-
-
+        $id = \Auth::user()->id;
         $internship = new \App\Internship();
         $internship->title = $request->input('title');
         $internship->description = $request->input('description');
-        $internship->company_id = session('id');
+        $internship->company_id = $id;
         $internship->address = $request->input('address');
         $internship->functie_omschrijving = $request->input('functie_omschrijving');
         $internship->aanbod = $request->input('aanbod');
