@@ -1,6 +1,6 @@
 @extends('layouts/main')
 @section('content')
-<<div class="site-section bg-light">
+<div class="site-section bg-light">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-8 mb-5">
@@ -27,11 +27,9 @@
                 </div>
             </div>
 
-            <div class="row form-group">
-                <div class="col-md-12 mb-3 mb-md-0">
+            <div class="form-group form-group-buttons">
                 <label for="email">E-mail</label>
                 <input type="email" name="email" class="form-control" value="{{$user['email'] ?? ''}}">
-                </div>
             </div>
 
             
@@ -71,12 +69,12 @@
                 <input type="submit" value="Registreer als bedrijf" class="btn btn-primary  pill px-4 py-2">
                 </div>
             </div>
-
             {{csrf_field()}}
         </form>
         </div>
-          </div>
+        </div>
         </div>
       </div>
     </div>
+
 @endsection
