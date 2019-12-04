@@ -75,12 +75,15 @@ class AccountController extends Controller
     public function ApplyInternship(Request $request)
     {
         $user_id = \Auth::user()->id;
+        // dd($request);
         $reason = $request->input('reason');
         $company_id = $request->input('company');
+        $internships_id = $request->input('internship');
 
         $apply = new \App\Apply();
         $apply->student_id = $user_id;
         $apply->company_id = $company_id;
+        $apply->internships_id = $internships_id;
         $apply->reason = $reason;
 
         $apply->save();
