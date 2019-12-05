@@ -6,6 +6,32 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
+    public function private($id)
+    {
+        if (session('type') == 'company') {
+            $data['conversations'] = \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
+            ->where('company_id', \Auth::user()->id)
+            ->join('users', 'student_id', '=', 'users.id')
+            ->get();
+
+            $data['messages'] = \App\Message::where([['conversation_id', $id], ['company_id', \Auth::user()->id]])
+                ->join('users', 'student_id', '=', 'users.id')
+                ->get();
+        // dd(\Auth::user()->id);
+        } else {
+            $data['conversations'] = \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
+            ->where('company_id', \Auth::user()->id)
+            ->join('users', 'company_id', '=', 'users.id')
+            ->get();
+
+            $data['messages'] = \App\Message::where([['conversation_id', $id], ['student_id', \Auth::user()->id]])
+                ->join('users', 'company_id', '=', 'users.id')
+                ->get();
+        }
+
+        return view('messages/private', $data);
+    }
+
     public function chat()
     {
         // get user id

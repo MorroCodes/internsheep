@@ -51,6 +51,7 @@ Route::post('/company/application/response', 'AccountController@replyToApplicati
 //messages
 Route::post('/application/start/conversation', 'MessageController@StartConversation');
 Route::get('/conversations', 'MessageController@chat');
+Route::get('/conversations/{id}', 'MessageController@private')->name('privateConvo');
 
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');
