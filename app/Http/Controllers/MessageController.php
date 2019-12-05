@@ -9,20 +9,12 @@ class MessageController extends Controller
     public function private($id)
     {
         if (session('type') == 'company') {
-            $data['conversations'] = \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
-            ->where('company_id', \Auth::user()->id)
-            ->join('users', 'student_id', '=', 'users.id')
-            ->get();
-
+            $data['conversations'] = $this->getCompanyConversations();
             $data['messages'] = \App\Message::where([['conversation_id', $id], ['company_id', \Auth::user()->id]])
                 ->join('users', 'student_id', '=', 'users.id')
                 ->get();
-        // dd(\Auth::user()->id);
         } else {
-            $data['conversations'] = \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
-            ->where('company_id', \Auth::user()->id)
-            ->join('users', 'company_id', '=', 'users.id')
-            ->get();
+            $data['conversations'] = $this->getStudentConversations();
 
             $data['messages'] = \App\Message::where([['conversation_id', $id], ['student_id', \Auth::user()->id]])
                 ->join('users', 'company_id', '=', 'users.id')
@@ -34,30 +26,29 @@ class MessageController extends Controller
 
     public function chat()
     {
-        // get user id
-        $user_id = \Auth::user()->id;
-        // check type of user
         if (session('type') == 'company') {
-            $company_id = $this->getCompanyIdFromUserId($user_id);
-
-            $data['messages'] = \App\Message::where('company_id', $company_id)->get();
-            // $data['conversations'] = \App\Conversation::where('company_id', $this->getUserIdFromCompanyId($company_id))->get();
-
-            $data['conversations'] = \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
-            ->where('company_id', $this->getUserIdFromCompanyId($company_id))
-            ->join('users', 'student_id', '=', 'users.id')
-            ->get();
+            $data['conversations'] = $this->getCompanyConversations();
         } else {
-            $student_id = $this->getStudentIdFromUserId($user_id);
-
-            $data['messages'] = \App\Message::where('student_id', $student_id)->get();
-            $data['conversations'] = \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
-            ->where('company_id', $this->getUserIdFromCompanyId($company_id))
-            ->join('users', 'company_id', '=', 'users.id')
-            ->get();
+            $data['conversations'] = $this->getStudentConversations();
         }
 
         return view('messages/show', $data);
+    }
+
+    public function getCompanyConversations()
+    {
+        return \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
+        ->where('company_id', \Auth::user()->id)
+        ->join('users', 'student_id', '=', 'users.id')
+        ->get();
+    }
+
+    public function getStudentConversations()
+    {
+        return \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
+            ->where('student_id', \Auth::user()->id)
+            ->join('users', 'company_id', '=', 'users.id')
+            ->get();
     }
 
     public function getStudentIdFromUserId($user_id)
