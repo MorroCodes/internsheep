@@ -20,6 +20,9 @@ class CompanyController extends Controller
             ->join('users', 'student_id', '=', 'users.id')
             ->get();
 
+        // get student_id from application
+        $data['conversations'] = \App\Conversation::where([['company_id', \Auth::user()->id]])->get();
+
         return view('internship/show', $data);
     }
 

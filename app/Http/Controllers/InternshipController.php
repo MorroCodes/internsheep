@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Internship;
 use Illuminate\Http\Request;
-use \App\Company;
-use \App\Internship;
+use App\Internship;
 
 class InternshipController extends Controller
 {
@@ -14,7 +13,6 @@ class InternshipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
 
     /**
      * Show the form for creating a new resource.
@@ -23,61 +21,58 @@ class InternshipController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Internship  $internship
+     * @param \App\Internship $internship
+     *
      * @return \Illuminate\Http\Response
      */
-
-
-    
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Internship  $internship
+     * @param \App\Internship $internship
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Internship $internship)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Internship  $internship
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Internship          $internship
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Internship $internship)
     {
-        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Internship  $internship
+     * @param \App\Internship $internship
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Internship $internship)
     {
-        //
     }
 }

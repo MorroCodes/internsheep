@@ -47,6 +47,13 @@ Route::get('/vacature/{id}/overview', 'CompanyController@index')->name('internsh
 //applications
 Route::get('/vacature2/applications', 'vacatureCompany@applicant');
 Route::post('/company/application/response', 'AccountController@replyToApplication');
+Route::get('/student/applications', 'AccountController@showStudentApplications');
+
+//messages
+Route::post('/application/start/conversation', 'MessageController@startConversation');
+Route::get('/conversations', 'MessageController@chat');
+Route::get('/conversations/{id}', 'MessageController@private')->name('privateConvo');
+Route::post('/conversations/{id}', 'MessageController@sendMessage')->name('sendMessage');
 
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');

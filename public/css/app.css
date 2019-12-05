@@ -11723,6 +11723,10 @@ textarea {
   font-size: 0.7em;
 }
 
+.own-message {
+  background-color: grey;
+}
+
 body {
   font-family: "Work Sans", sans-serif;
   color: #12396A;
