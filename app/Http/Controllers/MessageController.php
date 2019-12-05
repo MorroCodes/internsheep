@@ -114,11 +114,18 @@ class MessageController extends Controller
 
         // company_id == user_id of that company
 
-        $conversation = new \App\Conversation();
-        $conversation->student_id = $this->getUserIdFromStudentId($student_id);
-        $conversation->company_id = $company_id;
-        $conversation->save();
-        $conversation_id = $conversation->id;
+        // check if users have a conversation history
+        $history = \App\Conversation::where([['company_id', $company_id], ['student_id', $student_id]])->first();
+
+        if ($history == null) {
+            $conversation = new \App\Conversation();
+            $conversation->student_id = $this->getUserIdFromStudentId($student_id);
+            $conversation->company_id = $company_id;
+            $conversation->save();
+            $conversation_id = $conversation->id;
+        } else {
+            $conversation_id = $history->id;
+        }
 
         $message = new \App\Message();
         $message->conversation_id = $conversation_id;
