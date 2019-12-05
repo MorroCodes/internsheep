@@ -47,6 +47,7 @@ Route::get('/vacature/{id}/overview', 'CompanyController@index')->name('internsh
 //applications
 Route::get('/vacature2/applications', 'vacatureCompany@applicant');
 Route::post('/company/application/response', 'AccountController@replyToApplication');
+Route::get('/student/applications', 'AccountController@showStudentApplications');
 
 //messages
 Route::post('/application/start/conversation', 'MessageController@startConversation');
