@@ -6,6 +6,21 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
+    public function sendMessage(Request $request, $id)
+    {
+        $data = $request->only(['company', 'message', 'student']);
+
+        $message = new \App\Message();
+        $message->conversation_id = $id;
+        $message->student_id = $data['student'];
+        $message->company_id = $data['company'];
+        $message->message = $data['message'];
+
+        $message->save();
+
+        return redirect('/conversations/'.$id);
+    }
+
     public function private($id)
     {
         if (session('type') == 'company') {
@@ -79,7 +94,7 @@ class MessageController extends Controller
         return $user_id->user_id;
     }
 
-    public function StartConversation(Request $request)
+    public function startConversation(Request $request)
     {
         $data = $request->only(['application', 'company', 'internship', 'message', 'student']);
         $application_id = $data['application'];
@@ -97,11 +112,9 @@ class MessageController extends Controller
         $conversation_id = $conversation->id;
 
         $message = new \App\Message();
-        $message->application_id = $application_id;
         $message->conversation_id = $conversation_id;
         $message->student_id = $this->getUserIdFromStudentId($student_id);
         $message->company_id = $company_id;
-        $message->internship_id = $internship_id;
         $message->message = $message_text;
 
         $message->save();

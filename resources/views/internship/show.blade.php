@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="popup">
-    <form action="{{ action('MessageController@StartConversation') }}" method="post">
+    <form action="{{ action('MessageController@startConversation') }}" method="post">
 
         <input type="hidden" name="company" value="{{$internship->company_id}}">
         <input type="hidden" class="application-id" name="application" value="">
