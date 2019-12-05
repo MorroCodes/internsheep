@@ -17,6 +17,7 @@ class CreateMessagesTable extends Migration
             $table->integer('conversation_id')->nullable();
             $table->integer('company_id')->nullable();
             $table->integer('student_id')->nullable();
+            $table->integer('author_id')->nullable();
             $table->string('message')->nullable();
 
             $table->timestamps();

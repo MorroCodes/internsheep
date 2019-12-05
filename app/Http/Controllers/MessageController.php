@@ -15,6 +15,7 @@ class MessageController extends Controller
         $message->student_id = $data['student'];
         $message->company_id = $data['company'];
         $message->message = $data['message'];
+        $message->author_id = \Auth::user()->id;
 
         $message->save();
 
@@ -124,6 +125,7 @@ class MessageController extends Controller
         $message->student_id = $this->getUserIdFromStudentId($student_id);
         $message->company_id = $company_id;
         $message->message = $message_text;
+        $message->author_id = \Auth::user()->id;
 
         $message->save();
 

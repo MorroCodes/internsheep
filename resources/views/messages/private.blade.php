@@ -12,7 +12,7 @@
     <div class="messages-container">
     @foreach($messages as $m)
         <div class="convo-user">
-            @if($m->student_id == session('id') || $m->company_id == session('id'))
+            @if($m->author_id == session('id'))
             <p class="own-message">{{$m->message}}</p>
             @else 
             <p>{{$m->message}}</p>
