@@ -21,15 +21,9 @@
         </div>
         <apply-component :jobId={{$internship->id}}></apply-component>
         {{csrf_field()}}
-<<<<<<< HEAD
 
-||||||| merged common ancestors
     </form>
-    <img class="close" src="../img/close.svg">
-</div>
-=======
-    </form>
->>>>>>> feature/style
+
 
 
 
