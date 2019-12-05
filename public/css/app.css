@@ -11635,51 +11635,6 @@ textarea {
   resize: none;
 }
 
-.popup {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  background: rgba(255, 255, 255, 0.7);
-  z-index: 10;
-  top: 0;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-          align-items: center;
-  display: none;
-}
-
-.popup form {
-  width: 500px;
-  background: #F0F3F5;
-  padding: 20px;
-}
-
-.popup form .form-group {
-  margin-bottom: 0;
-}
-
-.popup form .form-group label {
-  margin-top: 0;
-}
-
-.popup form textarea {
-  height: 100px;
-}
-
-.popup form button {
-  margin-top: 10px;
-}
-
-.popup img {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  width: 30px;
-}
-
 .application-card {
   width: 95%;
   max-width: 500px;

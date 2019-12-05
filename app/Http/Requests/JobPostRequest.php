@@ -13,7 +13,7 @@ class JobPostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class JobPostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=> 'required',
+            'address'=> 'required',
+            'description'=>'required',
+            'functie_omschrijving'=> 'required',
+            'aanbod'=>'required'
+
         ];
     }
 }

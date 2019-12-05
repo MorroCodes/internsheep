@@ -37,6 +37,8 @@
 
             <div class="col-md-12 text-center mt-5">
               <a href="#" class="btn btn-primary rounded py-3 px-5"><span class="icon-plus-circle"></span> Show More Jobs</a>
+              <div class="container">
+    
             </div>
           </div>
           <div class="col-md-4 block-16" data-aos="fade-up" data-aos-delay="200">
@@ -56,43 +58,23 @@
         </div>
       </div>
     </div>
-
-    
-
     <div class="site-section site-block-feature bg-light">
       <div class="container">
         
         <div class="text-center mb-5 section-heading">
           <h2>Why Choose Us</h2>
         </div>
-
-        <div class="d-block d-md-flex border-bottom">
-          <div class="text-center p-4 item border-right" data-aos="fade">
-            <span class="flaticon-worker display-3 mb-3 d-block text-primary"></span>
-            <h2 class="h4">More Jobs Every Day</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
+      
+    
+        <div class="d-block border-bottom">
+        @foreach($companies as $c)
+          <div class=" p-4 item border-right" data-aos="fade">
+            <h2 class="h4">{{$c->company_name}}</h2>
+            <p>{{$c->company_bio}}</p>
             <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
           </div>
-          <div class="text-center p-4 item" data-aos="fade">
-            <span class="flaticon-wrench display-3 mb-3 d-block text-primary"></span>
-            <h2 class="h4">Creative Jobs</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
-            <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
-          </div>
-        </div>
-        <div class="d-block d-md-flex">
-          <div class="text-center p-4 item border-right" data-aos="fade">
-            <span class="flaticon-stethoscope display-3 mb-3 d-block text-primary"></span>
-            <h2 class="h4">Healthcare</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
-            <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
-          </div>
-          <div class="text-center p-4 item" data-aos="fade">
-            <span class="flaticon-calculator display-3 mb-3 d-block text-primary"></span>
-            <h2 class="h4">Finance &amp; Accounting</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit explicabo quos fugit vitae dolorum.</p>
-            <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
-          </div>
+          @endforeach
+          
         </div>
       </div>
     </div>
@@ -157,9 +139,6 @@
         <div class="row pt-5 mt-5 text-center">
           <div class="col-md-12">
             <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved | This template is made with <i class="icon-heart text-warning" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
           </div>
           
