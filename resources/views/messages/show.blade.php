@@ -5,7 +5,7 @@
     <div class="conversations-container">
         @foreach($conversations as $c)
         <div class="convo-user">
-            <h3>{{$c->firstname}} {{$c->lastname}}</h3>
+        <a href="/conversations/{{$c->id}}"><h3>{{$c->firstname}} {{$c->lastname}}</h3></a>
         </div>
         @endforeach
     </div>

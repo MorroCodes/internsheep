@@ -5,14 +5,18 @@
     <div class="conversations-container">
         @foreach($conversations as $c)
         <div class="convo-user">
-            <h3>{{$c->firstname}} {{$c->lastname}}</h3>
+            <a href="/conversations/{{$c->id}}"><h3>{{$c->firstname}} {{$c->lastname}}</h3></a>
         </div>
         @endforeach
     </div>
     <div class="messages-container">
     @foreach($messages as $m)
         <div class="convo-user">
+            @if($m->student_id == session('id') || $m->company_id == session('id'))
+            <p class="own-message">{{$m->message}}</p>
+            @else 
             <p>{{$m->message}}</p>
+            @endif
         </div>
         @endforeach
     </div>

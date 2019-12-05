@@ -31,9 +31,13 @@ class MessageController extends Controller
         } else {
             $data['conversations'] = $this->getStudentConversations();
 
-            $data['messages'] = \App\Message::where([['conversation_id', $id], ['student_id', \Auth::user()->id]])
+            $data['messages'] = \App\Message::where([['conversation_id', $id], ['student_id', $this->getStudentIdFromUserId(\Auth::user()->id)]])
                 ->join('users', 'company_id', '=', 'users.id')
                 ->get();
+        }
+
+        if ($data['messages']->count() == 0) {
+            return redirect('/conversations');
         }
 
         return view('messages/private', $data);
@@ -45,6 +49,10 @@ class MessageController extends Controller
             $data['conversations'] = $this->getCompanyConversations();
         } else {
             $data['conversations'] = $this->getStudentConversations();
+        }
+
+        if ($data['conversations']->count() == 0) {
+            return redirect('/home');
         }
 
         return view('messages/show', $data);
