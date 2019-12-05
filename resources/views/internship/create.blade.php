@@ -10,17 +10,43 @@
     <div class="card-body">
       <div class="form-group">
         <h3>Titel</h3>
-          <input type="text" class="form-control" id="title_vacature" value="" name='title'>
+          <input type="text" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" id="title_vacature" name='title'>
+          @error('title')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{$errors->first('title')}}</strong>
+            </span>
+          @enderror
               <h3>Plaats</h3>
-              <input type="text" class="form-control" value="" name='address'>
+          <input type="text" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" name='address'>
+          @error('address')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{$errors->first('address')}}</strong>
+            </span>
+          @enderror
           <h3 class="space">Beschrijving vacature</h3>
-          <input type="textarea" class="form-control" rows="8" cols="50" value="" name='description'>
+          <input type="textarea" class="form-control @error('description') is-invalid @enderror" value="{{ old('description') }}" rows="8" cols="50" name='description'>
+          @error('description')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{$errors->first('description')}}</strong>
+            </span>
+          @enderror
           <h3>Functieomschrijving</h3>
-          <input type="textarea" class="form-control" rows="8" cols="50" value="" name='functie_omschrijving'>
+          <input type="textarea" class="form-control  @error('functie_omschrijving') is-invalid @enderror" value="{{ old('functie_omschrijving') }}" rows="8" cols="50" name='functie_omschrijving'>
+          @error('functie_omschrijving')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{$errors->first('functie_omschrijving')}}</strong>
+            </span>
+          @enderror
           <h3>Ons aanbod?</h3>
-          <input type="textarea" class="form-control" rows="8" cols="50" value="" name='aanbod'>
+          <input type="textarea" class="form-control @error('aanbod') is-invalid @enderror" value="{{ old('aanbod') }}" rows="8" cols="50" name='aanbod'>
+          @error('aanbod')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{$errors->first('aanbod')}}</strong>
+            </span>
+          @enderror
       </div>
       <button type="submit" class="btn btn-primary">Maak deze vacature aan</button>
+      </div>
       {{csrf_field()}}
     </div>
   </form>

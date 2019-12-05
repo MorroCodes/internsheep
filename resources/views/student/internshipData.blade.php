@@ -1,8 +1,16 @@
-@extends('layouts/main')
+@extends('layouts/app')
 
 @section('content')
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8 mb-5">
+          <div class="container">
+    <h3>{{$internship->title}}</h3>
+    <h5>{{$internship->catch_phrase}}</h5>
+    <p>{{$internship->description}}</p>
+</div>
 
-<div class="popup">
     <form action="{{ action('AccountController@ApplyInternship') }}" method="post">
 
         <input type="hidden" name="company" value="{{$internship->company_id}}">
@@ -11,16 +19,18 @@
             <label for="reason">Waarom wil je hier stage doen?</label>
             <textarea name="reason" class="form-control" id="reason"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Solliciteren</button>
+        <apply-component :jobId={{$internship->id}}></apply-component>
         {{csrf_field()}}
+<<<<<<< HEAD
 
-
-<div class="container">
-    <h3>{{$internship->title}}</h3>
-    <h5>{{$internship->catch_phrase}}</h5>
-    <p>{{$internship->description}}</p>
-    @if(\Auth::user()->type == "student")
-        <a href="#" class="badge badge-dark apply">Solliciteren voor deze vacature</a>
-    @endif
+||||||| merged common ancestors
+    </form>
+    <img class="close" src="../img/close.svg">
 </div>
+=======
+    </form>
+>>>>>>> feature/style
+
+
+
 @endsection

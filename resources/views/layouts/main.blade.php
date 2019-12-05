@@ -5,6 +5,7 @@
     @include('partials.head')
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+   
 </head>
 <body class="entry-page">
 @include('partials.nav')
