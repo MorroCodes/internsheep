@@ -13,14 +13,23 @@ class MessageController extends Controller
         // check type of user
         if (session('type') == 'company') {
             $company_id = $this->getCompanyIdFromUserId($user_id);
-            // dd($company_id);
+
             $data['messages'] = \App\Message::where('company_id', $company_id)->get();
+            // $data['conversations'] = \App\Conversation::where('company_id', $this->getUserIdFromCompanyId($company_id))->get();
+
+            $data['conversations'] = \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
+            ->where('company_id', $this->getUserIdFromCompanyId($company_id))
+            ->join('users', 'student_id', '=', 'users.id')
+            ->get();
         } else {
             $student_id = $this->getStudentIdFromUserId($user_id);
-            // dd($student_id);
+
             $data['messages'] = \App\Message::where('student_id', $student_id)->get();
+            $data['conversations'] = \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
+            ->where('company_id', $this->getUserIdFromCompanyId($company_id))
+            ->join('users', 'company_id', '=', 'users.id')
+            ->get();
         }
-        // dd($data['messages']);
 
         return view('messages/show', $data);
     }
@@ -39,6 +48,20 @@ class MessageController extends Controller
         return $company_id->id;
     }
 
+    public function getUserIdFromStudentId($student_id)
+    {
+        $user_id = \App\Student::where('id', $student_id)->first();
+
+        return $user_id->user_id;
+    }
+
+    public function getUserIdFromCompanyId($company_id)
+    {
+        $user_id = \App\Company::where('id', $company_id)->first();
+
+        return $user_id->user_id;
+    }
+
     public function StartConversation(Request $request)
     {
         $data = $request->only(['application', 'company', 'internship', 'message', 'student']);
@@ -48,8 +71,10 @@ class MessageController extends Controller
         $internship_id = $data['internship'];
         $message_text = $data['message'];
 
+        // company_id == user_id of that company
+
         $conversation = new \App\Conversation();
-        $conversation->student_id = $student_id;
+        $conversation->student_id = $this->getUserIdFromStudentId($student_id);
         $conversation->company_id = $company_id;
         $conversation->save();
         $conversation_id = $conversation->id;
@@ -57,7 +82,7 @@ class MessageController extends Controller
         $message = new \App\Message();
         $message->application_id = $application_id;
         $message->conversation_id = $conversation_id;
-        $message->student_id = $student_id;
+        $message->student_id = $this->getUserIdFromStudentId($student_id);
         $message->company_id = $company_id;
         $message->internship_id = $internship_id;
         $message->message = $message_text;

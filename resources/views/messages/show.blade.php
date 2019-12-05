@@ -3,7 +3,11 @@
 
 <div class="messages-page-container">
     <div class="conversations-container">
-        /** loop convos */
+        @foreach($conversations as $c)
+        <div class="convo-user">
+            <h3>{{$c->firstname}} {{$c->lastname}}</h3>
+        </div>
+        @endforeach
     </div>
     <div class="messages-container">
         /** show messages of conversation */
