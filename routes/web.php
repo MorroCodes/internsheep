@@ -50,6 +50,7 @@ Route::post('/company/application/response', 'AccountController@replyToApplicati
 
 //messages
 Route::post('/application/start/conversation', 'MessageController@StartConversation');
+Route::get('/conversations', 'MessageController@chat');
 
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');
