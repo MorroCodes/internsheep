@@ -216,4 +216,16 @@ class AccountController extends Controller
         $user = \App\Student::where('id', $id);
         $user->update(['cv' => $newDirectory]);
     }
+
+    public function showStudentApplications()
+    {
+        $data['applications'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
+        ->where('student_id', \Auth::user()->id)
+        ->join('internships', 'applies.internships_id', '=', 'internships.id')
+        ->join('users', 'applies.company_id', '=', 'users.id')
+        ->join('companies', 'users.id', '=', 'companies.user_id')
+        ->get();
+
+        return view('/student/applications', $data);
+    }
 }
