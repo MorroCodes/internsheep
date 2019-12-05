@@ -8,6 +8,9 @@
     Flux
   </div>
   <form action="{{route('internship.update',[$internship->id])}}" method="post">
+  @if(!empty($error))
+      <div class="alert alert-danger">{{$error}}</div>
+   @endif
     <div class="card-body">
       <div class="form-group">
         <h3>Titel</h3>

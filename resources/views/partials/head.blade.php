@@ -11,8 +11,7 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
     
-    
-    
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="external/fonts/flaticon/font/flaticon.css">
   
     <link rel="stylesheet" href="{{asset('external/css/aos.css')}}">

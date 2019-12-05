@@ -53,7 +53,6 @@ class vacatureCompany extends Controller
         return view('internship/create');
     }
 
-   
 
     public function applicant()
     {
