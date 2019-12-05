@@ -8,7 +8,13 @@ class MessageController extends Controller
 {
     public function StartConversation(Request $request)
     {
-        dd($request->input('application'));
+        $data = $request->only(['application', 'company', 'internship', 'message', 'student']);
+        $application_id = $data['application'];
+        $company_id = $data['company'];
+        $student_id = $data['student'];
+        $internship_id = $data['internship'];
+        $message = $data['message'];
+
         // save message in database
             // application id
             // company_id
