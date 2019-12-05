@@ -13,9 +13,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Solliciteren</button>
         {{csrf_field()}}
-    </form>
-    <img class="close" src="../img/close.svg">
-</div>
+
 
 <div class="container">
     <h3>{{$internship->title}}</h3>
