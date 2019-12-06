@@ -78,7 +78,7 @@ class AccountController extends Controller
         $apply = new \App\Apply();
         $apply->student_id = $user_id;
         $apply->company_id = $company_id;
-        $apply->internships_id = $internship_id;
+        $apply->internships_id = $internships_id;
         $apply->reason = $reason;
         $apply->save();
 
