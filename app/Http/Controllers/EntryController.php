@@ -239,4 +239,10 @@ class EntryController extends Controller
 
         return redirect('/student_survey');
     }
+
+    public function logout () {
+        //logout user
+        auth()->logout();
+        return redirect('/');
+    }
 }
