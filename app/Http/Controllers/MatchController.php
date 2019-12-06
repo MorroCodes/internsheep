@@ -41,8 +41,10 @@ class MatchController extends Controller
                     $origin = $this->getGeoCode($internship->address);
                     $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
                 }
-                $companySurvey->company = $companySurvey->user->company;
             }
+        }
+        foreach ($companySurveys as $companySurvey) {
+            $companySurvey->company = $companySurvey->user->company;
         }
         $data['companySurveys'] = $companySurveys;
 
