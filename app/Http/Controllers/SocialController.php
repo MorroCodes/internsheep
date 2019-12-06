@@ -136,6 +136,7 @@ class SocialController extends Controller
     {
         $student = new \App\Student();
         $student->user_id = $id;
+        $student->cv = '';
         $student->save();
     }
 
