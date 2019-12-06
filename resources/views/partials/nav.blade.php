@@ -8,16 +8,16 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div> <!-- .site-mobile-menu -->
-    
-    
+
+
     <div class="site-navbar-wrap js-site-navbar bg-white">
-      
+
       <div class="container">
         <div class="site-navbar bg-light">
           <div class="py-1">
             <div class="row align-items-center">
               <div class="col-2">
-                <h2 class="mb-0 site-logo"><a href="index.html">Intern<strong class="font-weight-bold">Sheep</strong> </a></h2>
+                <h2 class="mb-0 site-logo"><a href="{{ action('HomeController@index') }}">Intern<strong class="font-weight-bold">Sheep</strong> </a></h2>
               </div>
               <div class="col-10">
                 <nav class="site-navigation text-right" role="navigation">
@@ -25,33 +25,30 @@
                     <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
 
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
-                      <li><a href="">Studenten</a></li>
+                        @if(Auth::user())
+                            @if(Auth::user()->type == "student")
+                                <li><a href="">Bedrijven</a></li>
+                            @elseif(Auth::user()->type == "company")
+                                <li><a href="">Studenten</a></li>
+                            @endif
+                        @endif
                       <li class="has-children">
-                        <a href="category.html">Bedrijven</a>
-                        <ul class="dropdown arrow-top">
-                          <li><a href="category.html">Category</a></li>
-                          <li><a href="#">Browse Candidates</a></li>
-                          <li><a href="new-post.html">Post a Job</a></li>
-                          <li><a href="#">Employeer Profile</a></li>
-                          <li class="has-children">
-                            <a href="#">More Links</a>
-                            <ul class="dropdown">
-                              <li><a href="#">Browse Candidates</a></li>
-                              <li><a href="#">Post a Job</a></li>
-                              <li><a href="#">Employeer Profile</a></li>
+
+                        <a href="{{ action('AccountController@StudentProfile') }}">
+                        @if(Auth::user())
+                            <span class="bg-primary text-white py-3 px-4 rounded">
+                                {{ Auth::user()->firstname . " " . Auth::user()->lastname }}
+                            </span>
+                        </a>
+
+                            <ul class="dropdown arrow-top">
+                                <li><a href="{{ action('AccountController@changeStudentData') }}">Instellingen</a></li>
+                                <li><a href="{{ action('EntryController@logout') }}">Logout</a></li>
                             </ul>
-                          </li>
+                        @else
+                            <span>Login</span>
+                        @endif
 
-                        </ul>
-                      </li>
-                      <li><a href="contact.html">Profile</a></li>
-                      <li>
-
-                        <a href="new-post.html">
-                          <span class="bg-primary text-white py-3 px-4 rounded">
-                          login
-                          </span
-                        ></a>
 
 
                       </li>
