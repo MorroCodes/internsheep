@@ -37,7 +37,6 @@
 
                         <a href="
                             @if(Auth::user())
-
                                 @if(Auth::user()->type == "student")
                                     {{ action('AccountController@StudentProfile') }}
                                 @elseif(Auth::user()->type == "company")
@@ -52,7 +51,13 @@
                         </a>
 
                             <ul class="dropdown arrow-top">
-                                <li><a href="{{ action('AccountController@changeStudentData') }}">Instellingen</a></li>
+                                @if(Auth::user())
+                                    @if(Auth::user()->type == "student")
+                                        <li><a href="{{ action('AccountController@changeStudentData') }}">Instellingen</a></li>
+                                    @elseif(Auth::user()->type == "company")
+                                        <li><a href="{{ action('AccountCompanyController@changeCompanyData') }}">Instellingen</a></li>
+                                    @endif
+                                @endif
                                 <li><a href="{{ action('EntryController@logout') }}">Logout</a></li>
                             </ul>
                         @else
