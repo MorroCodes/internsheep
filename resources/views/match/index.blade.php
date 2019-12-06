@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -21,8 +21,7 @@
     <div class="card-deck">
         @foreach ($companySurvey->internships as $internship)
         <div class="card">
-            {{$companySurvey->user->first()}}
-            <img src="{{$internship->img}}" alt="{{$internship->title}}" class="card-img-top">
+            <img src="{{$companySurvey->user->first()->profile_image}}" alt="{{$internship->title}}" class="card-img-top" width="300px">
             <div class="card-body">
                 <h2 class="card-title">{{$internship->title}}</h2>
                 @if ($internship->distance != null)
