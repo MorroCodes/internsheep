@@ -42,10 +42,18 @@ Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 //companie
 Route::get('/yourcompany', 'CompanyController@show')->name('yourcompany');
 Route::get('/company/{id}', 'CompanyController@publicCompanyProfile');
-Route::get('/vacature/{id}{internship}', 'CompanyController@index')->name('internship.show');
+Route::get('/vacature/{id}/overview', 'CompanyController@index')->name('internship.show');
 
 //applications
 Route::get('/vacature2/applications', 'vacatureCompany@applicant');
+Route::post('/company/application/response', 'AccountController@replyToApplication');
+Route::get('/student/applications', 'AccountController@showStudentApplications');
+
+//messages
+Route::post('/application/start/conversation', 'MessageController@startConversation');
+Route::get('/conversations', 'MessageController@chat');
+Route::get('/conversations/{id}', 'MessageController@private')->name('privateConvo');
+Route::post('/conversations/{id}', 'MessageController@sendMessage')->name('sendMessage');
 
 //edit vacature
 Route::get('/vacature', 'vacatureCompany@index');

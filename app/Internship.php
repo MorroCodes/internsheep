@@ -28,7 +28,7 @@ class Internship extends Model
 
 
     public function users(){
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany(User::class)->withTimeStamps();
 
     }
     public function students(){
