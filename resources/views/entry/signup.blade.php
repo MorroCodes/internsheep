@@ -1,4 +1,4 @@
-@extends('layouts/entry')
+@extends('layouts/main')
 @section('content')
 <div class="entry-content entry-content-signup">
     <div class=logo-entry-container>

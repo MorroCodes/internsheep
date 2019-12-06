@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use \App\Company;
 
 class HomeController extends Controller
 {
@@ -20,8 +21,9 @@ class HomeController extends Controller
     public function index()
     {
         $data['internship'] = \App\Internship::orderBy('id', 'desc')->take(6)->get();
+        $companies = Company::limit(6)->get();
 
-        return view('index/home', $data);
+        return view('index/home', $data, compact('companies'));
     }
 
     public function internshipDetail($internship)

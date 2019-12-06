@@ -3,36 +3,62 @@ let applicationCards = document.querySelector(".application-cards");
 if (applicationCards != null) {
     let response;
     let applicationId;
+    let studentId;
     applicationCards.addEventListener("click", (e) => {
         let target = e.target;
         let container = target.parentNode;
-        console.log(container);
+        applicationId = target.getAttribute("data-applicationId");
+        studentId = target.getAttribute("data-studentId");
+
         if (e.target.matches(".application-response-deny")) {
 
-            applicationId = target.getAttribute("data-applicationId");
             response = "denied";
-            updateApplicationStatus(response, applicationId, container);
-  
+            updateApplicationStatus(response, applicationId, container, studentId);
+
         } else if (e.target.matches(".application-response-maybe")) {
 
-            applicationId = target.getAttribute("data-applicationId");
             response = "maybe";
-            updateApplicationStatus(response, applicationId, container);
+            updateApplicationStatus(response, applicationId, container, studentId);
 
         } else if (e.target.matches(".application-response-accept")) {
-  
-            applicationId = target.getAttribute("data-applicationId");
+
             response = "accepted";
-            updateApplicationStatus(response, applicationId, container);
+            updateApplicationStatus(response, applicationId, container, studentId);
 
+        } else if (e.target.matches(".btn-message")) {
+            let messagePopup = document.querySelector(".popup");
+            let popupTitle = document.querySelector(".popup-title");
+
+            showMessagePopup(messagePopup, popupTitle, target, applicationId, studentId);
+            closeMessagePopup(messagePopup, popupTitle);
         }
-
     })
 }
 
+function closeMessagePopup(messagePopup, popupTitle) {
+    let closePopup = document.querySelector(".close");
+    let messageInput = document.querySelector(".message-input");
+    closePopup.addEventListener("click", (e) => {
+        messagePopup.style.display = "none";
+        messageInput.innerHTML = "";
+        popupTitle.innerHTML = "";
+    })
+}
+
+function showMessagePopup(messagePopup, popupTitle, target, applicationId, studentId) {
+
+    let name = target.getAttribute("data-applicant");
+    messagePopup.style.display = "flex";
+    messagePopup.style.position = "fixed";
+    popupTitle.innerHTML = `Reageer op de sollicitatie van ${name}.`;
+    let applicationIdInput = document.querySelector(".application-id");
+    applicationIdInput.value = applicationId;
+    let studentIdInput = document.querySelector(".student-id");
+    studentIdInput.value = studentId;
+
+}
+
 function updateApplicationStatus(response, applicationId, container) {
-    // ajax call naar route
-    // handle + change ui obv antwoord
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -47,7 +73,7 @@ function updateApplicationStatus(response, applicationId, container) {
             applicationId: applicationId
         },
         success: function (data) {
-            alert(data['applicationId']);
+
             container.innerHTML = response;
         }
     });

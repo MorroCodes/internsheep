@@ -13,7 +13,7 @@
         <h3>Titel</h3>
           <input type="text" class="form-control" id="title_vacature" value="{{$internship->title}}" name='title'>
               <h3>Plaats</h3>
-              <input type="text" class="form-control" value="{{$internship->address}}" name='address'>
+              <input type="text" class="form-control value="{{$internship->address}}" name='address'>
           <h3 class="space">bedrijfsbeschrijving</h3>
           <input type="textarea" class="form-control" rows="8" cols="50" value="{{$internship->description}}" name='description'>
           <h3>Functieomschrijving</h3>
