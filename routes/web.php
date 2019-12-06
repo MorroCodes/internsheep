@@ -23,7 +23,7 @@ Route::get('/facebook_signup', 'EntryController@facebookSignup');
 // auth routes redirect
 Route::get('login', 'EntryController@login')->name('login');
 Route::post('login', 'EntryController@handleLogin');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/logout', 'EntryController@logout')->name('logout');
 Route::get('signup', 'EntryController@signup')->name('signup');
 // facebook signup redirect and callback
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
