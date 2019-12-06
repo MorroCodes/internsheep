@@ -1,9 +1,10 @@
 @extends('layouts/main')
 @section('content')
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8 mb-5">
 <div class="entry-content entry-content-signup">
-    <div class=logo-entry-container>
-        <img src="/images/logo.svg" alt="Internsheep logo" class="logo logo-entry">
-    </div>
     <h2>Registreer</h2>
     <p>Ga mee op zoek naar de perfecte stage-match!</p>
 
