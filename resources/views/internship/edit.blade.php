@@ -1,12 +1,14 @@
 
 
-@extends('layouts/company')
+@extends('layouts/main')
 
 @section('content')
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8 mb-5">
 <div class="card text-center">
-  <div class="card-header">
-    Flux
-  </div>
+
   <form action="{{route('internship.update',[$internship->id])}}" method="post">
     <div class="card-body">
       <div class="form-group">
