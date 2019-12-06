@@ -35,15 +35,7 @@
                         @endif
                       <li class="has-children">
 
-                        <a href="
-                            @if(Auth::user())
-                                @if(Auth::user()->type == "student")
-                                    {{ action('AccountController@StudentProfile') }}
-                                @elseif(Auth::user()->type == "company")
-                                    {{ action('CompanyController@show') }}
-                                @endif
-                            @endif
-                        ">
+                        <a href="#">
                         @if(Auth::user())
                             <span class="bg-primary text-white py-3 px-4 rounded">
                                 {{ Auth::user()->firstname . " " . Auth::user()->lastname }}
@@ -53,15 +45,17 @@
                             <ul class="dropdown arrow-top">
                                 @if(Auth::user())
                                     @if(Auth::user()->type == "student")
+                                        <li><a href="{{ action('AccountController@StudentProfile') }}">Profiel</a></li>
                                         <li><a href="{{ action('AccountController@changeStudentData') }}">Instellingen</a></li>
                                     @elseif(Auth::user()->type == "company")
+                                        <li><a href="{{ action('CompanyController@show') }}">Profiel</a></li>
                                         <li><a href="{{ action('AccountCompanyController@changeCompanyData') }}">Instellingen</a></li>
                                     @endif
                                 @endif
                                 <li><a href="{{ action('EntryController@logout') }}">Logout</a></li>
                             </ul>
                         @else
-                            <span>Login</span>
+                            <a href="/login"><span>Login</span></a>
                         @endif
 
 
