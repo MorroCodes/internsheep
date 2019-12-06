@@ -16,10 +16,12 @@
         </div>
     </form>
     @foreach ($companySurveys as $companySurvey)
+    @if (!empty($companySurvey->internships) && $companySurvey->company != null)
+        <h2>{{$companySurvey->company->first()->company_name}}</h2>
+    @endif
     <div class="card-deck">
         @foreach ($companySurvey->internships as $internship)
             <div class="card">
-                {{$internship->img}}
                 <img src="{{$internship->img}}" alt="{{$internship->title}}" class="card-img-top">
                 <div class="card-body">
                     <h2 class="card-title">{{$internship->title}}</h2>
