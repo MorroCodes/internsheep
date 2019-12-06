@@ -34,7 +34,16 @@
                         @endif
                       <li class="has-children">
 
-                        <a href="{{ action('AccountController@StudentProfile') }}">
+                        <a href="
+                            @if(Auth::user())
+
+                                @if(Auth::user()->type == "student")
+                                    {{ action('AccountController@StudentProfile') }}
+                                @elseif(Auth::user()->type == "company")
+                                    {{ action('CompanyController@show') }}
+                                @endif
+                            @endif
+                        ">
                         @if(Auth::user())
                             <span class="bg-primary text-white py-3 px-4 rounded">
                                 {{ Auth::user()->firstname . " " . Auth::user()->lastname }}
