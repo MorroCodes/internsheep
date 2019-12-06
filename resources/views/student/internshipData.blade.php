@@ -19,7 +19,7 @@
             <label for="reason">Waarom wil je hier stage doen?</label>
             <textarea name="reason" class="form-control" id="reason"></textarea>
         </div>
-        <apply-component :jobId={{$internship->id}}></apply-component>
+        <button type="submit" class="btn btn-primary">Solliciteren</button>
         {{csrf_field()}}
 
     </form>
