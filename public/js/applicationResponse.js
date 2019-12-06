@@ -26,35 +26,42 @@ if (applicationCards != null) {
             updateApplicationStatus(response, applicationId, container, studentId);
 
         } else if (e.target.matches(".btn-message")) {
-            let messagePopup = document.querySelector(".popup");
+            let messagePopup = document.querySelector(".popup-message");
+            let messagePopupBg = document.querySelector(".popup-overlay");
+            console.log(messagePopupBg);
             let popupTitle = document.querySelector(".popup-title");
 
-            showMessagePopup(messagePopup, popupTitle, target, applicationId, studentId);
-            closeMessagePopup(messagePopup, popupTitle);
+            showMessagePopup(messagePopup, popupTitle, target, applicationId, studentId,messagePopupBg);
+            closeMessagePopup(messagePopup, popupTitle, messagePopupBg);
         }
     })
 }
 
-function closeMessagePopup(messagePopup, popupTitle) {
+function closeMessagePopup(messagePopup, popupTitle,messagePopupBg) {
     let closePopup = document.querySelector(".close");
     let messageInput = document.querySelector(".message-input");
     closePopup.addEventListener("click", (e) => {
         messagePopup.style.display = "none";
         messageInput.innerHTML = "";
         popupTitle.innerHTML = "";
+        messagePopupBg.style.display="none";
+
     })
 }
 
-function showMessagePopup(messagePopup, popupTitle, target, applicationId, studentId) {
+function showMessagePopup(messagePopup, popupTitle, target, applicationId, studentId, messagePopupBg) {
 
     let name = target.getAttribute("data-applicant");
-    messagePopup.style.display = "flex";
+  
     messagePopup.style.position = "fixed";
+    messagePopupBg.style.display="block";
+    messagePopup.style.display="block";
     popupTitle.innerHTML = `Reageer op de sollicitatie van ${name}.`;
     let applicationIdInput = document.querySelector(".application-id");
     applicationIdInput.value = applicationId;
     let studentIdInput = document.querySelector(".student-id");
     studentIdInput.value = studentId;
+
 
 }
 
