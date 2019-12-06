@@ -17,7 +17,7 @@
           <div class="py-1">
             <div class="row align-items-center">
               <div class="col-2">
-                <h2 class="mb-0 site-logo"><a href="{{ action('HomeController@index') }}">Intern<strong class="font-weight-bold">Sheep</strong> </a></h2>
+                <h2 class="mb-0 site-logo"><a href="/">Intern<strong class="font-weight-bold">Sheep</strong> </a></h2>
               </div>
               <div class="col-10">
                 <nav class="site-navigation text-right" role="navigation">
