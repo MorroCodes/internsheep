@@ -72,17 +72,17 @@ class MatchController extends Controller
         return $companySurveys;
     }
 
-    public function showGeoCode()
-    {
-        $address = 'Gladioolstraat 5';
-        $p1 = $this->getGeoCode($address);
-        $data['p1'] = $p1;
-        $p2 = $this->getGeoCode('Nieuwstraat Geel');
-        $data['p2'] = $p2;
-        $data['distance'] = $this->getDistance($p1, $p2, 'cycling');
+    // public function showGeoCode()
+    // {
+    //     $address = 'Gladioolstraat 5';
+    //     $p1 = $this->getGeoCode($address);
+    //     $data['p1'] = $p1;
+    //     $p2 = $this->getGeoCode('Nieuwstraat Geel');
+    //     $data['p2'] = $p2;
+    //     $data['distance'] = $this->getDistance($p1, $p2, 'cycling');
 
-        return dd($data);
-    }
+    //     return dd($data);
+    // }
 
     public function getGeoCode($address)
     {
