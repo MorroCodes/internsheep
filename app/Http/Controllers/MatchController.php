@@ -32,7 +32,6 @@ class MatchController extends Controller
         $companySurveys = $companySurveys->sortByDesc('match');
         $data['request'] = $request->address;
         if ($request->address != null) {
-            $data['request'] = $this->getGeoCode($request->address);
             if ($request->tranport_method == null) {
                 $request->transport_method = 'driving';
             }

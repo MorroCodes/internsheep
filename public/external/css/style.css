@@ -213,11 +213,12 @@ a {
 /* Navbar */
 .site-navbar-wrap {
   background: #fff !important;
-  position: fixed;
+  position: sticky;
   z-index: 99;
   width: 100%;
   padding: 20px 0;
   margin-bottom: 113px;
+  top: 0;
   left: 0;
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
