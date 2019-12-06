@@ -1,19 +1,21 @@
 
 
-@extends('layouts/company')
+@extends('layouts/main')
 
 @section('content')
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8 mb-5">
 <div class="card text-center">
-  <div class="card-header">
-    Flux
-  </div>
+
   <form action="{{route('internship.update',[$internship->id])}}" method="post">
     <div class="card-body">
       <div class="form-group">
         <h3>Titel</h3>
           <input type="text" class="form-control" id="title_vacature" value="{{$internship->title}}" name='title'>
               <h3>Plaats</h3>
-              <input type="text" class="form-control value="{{$internship->address}}" name='address'>
+              <input type="text" class="form-control" value="{{$internship->address}}" name='address'>
           <h3 class="space">bedrijfsbeschrijving</h3>
           <input type="textarea" class="form-control" rows="8" cols="50" value="{{$internship->description}}" name='description'>
           <h3>Functieomschrijving</h3>

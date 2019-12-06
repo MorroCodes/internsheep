@@ -1,10 +1,12 @@
-@extends('layouts/company')
+@extends('layouts/main')
 
 @section('content')
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8 mb-5">
 <div class="flex">
 <h1>Jouw vacatures</h1>
-  <img src="/img/bg.png" alt="bg" class="bg">
-</div>
 <a href="{{route('internship.create')}}">
         <button class="btn btn-primary">Toevoegen</button>
         </a>

@@ -23,7 +23,7 @@ Route::get('/facebook_signup', 'EntryController@facebookSignup');
 // auth routes redirect
 Route::get('login', 'EntryController@login')->name('login');
 Route::post('login', 'EntryController@handleLogin');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/logout', 'EntryController@logout')->name('logout');
 Route::get('signup', 'EntryController@signup')->name('signup');
 // facebook signup redirect and callback
 Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
@@ -83,4 +83,4 @@ Route::post('/companyaccount/data', 'AccountCompanyController@handleCompanyData'
 Route::post('/companyaccount/data2', 'AccountCompanyController@handleCompanyData2');
 Route::post('/companyaccount/password', 'AccountCompanyController@handleCompanyNewPassword');
 //match students with companies
-Route::get('/testMatching', 'MatchController@matchStudentWithCompanies')->name('Match with company');
+Route::get('/match', 'MatchController@matchStudentWithCompanies')->name('menu');

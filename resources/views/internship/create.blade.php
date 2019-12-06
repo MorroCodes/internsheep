@@ -1,14 +1,18 @@
-@extends('layouts/company')
+@extends('layouts/main')
 
 @section('content')
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8 mb-5">
 <div class="card text-center">
   <div class="card-header">
     Voeg een vacature toe
   </div>
   <form action="" method="post">
   <input type="hidden" name="company" value="">
-    <div class="card-body">
       <div class="form-group">
+        <div class="col-md-13 mb-3 mb-md-0">
         <h3>Titel</h3>
           <input type="text" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" id="title_vacature" name='title'>
           @error('title')
@@ -16,6 +20,8 @@
               <strong>{{$errors->first('title')}}</strong>
             </span>
           @enderror
+          </div>
+          </div>
               <h3>Plaats</h3>
           <input type="text" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" name='address'>
           @error('address')

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Jnternsheep</title>
+    <title>Internsheep</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @include('partials.head')
-    
+
   </head>
   <body>
-  
+
   @include('partials.nav')
-  
+
   @include('partials.search')
-    
+
     <div class="site-section bg-light">
       <div class="container">
         <div class="row">
@@ -38,7 +38,7 @@
             <div class="col-md-12 text-center mt-5">
               <a href="#" class="btn btn-primary rounded py-3 px-5"><span class="icon-plus-circle"></span> Show More Jobs</a>
               <div class="container">
-    
+
             </div>
           </div>
           <div class="col-md-4 block-16" data-aos="fade-up" data-aos-delay="200">
@@ -53,19 +53,19 @@
             <h1 class="h3 mb-0">Your Dream Job</h1>
             <p class="h3 text-white mb-5">Is Waiting For You</p>
             <p><a href="#" class="btn btn-outline-warning py-3 px-4">Find Jobs</a> <a href="#" class="btn btn-warning py-3 px-4">Apply For A Job</a></p>
-            
+
           </div>
         </div>
       </div>
     </div>
     <div class="site-section site-block-feature bg-light">
       <div class="container">
-        
+
         <div class="text-center mb-5 section-heading">
           <h2>Why Choose Us</h2>
         </div>
-      
-    
+
+
         <div class="d-block border-bottom">
         @foreach($companies as $c)
           <div class=" p-4 item border-right" data-aos="fade">
@@ -74,22 +74,22 @@
             <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
           </div>
           @endforeach
-          
+
         </div>
       </div>
     </div>
 
-    
 
 
-  
-    
 
 
-    
+
+
+
+
     <footer class="site-footer">
       <div class="container">
-        
+
 
         <div class="row">
           <div class="col-md-4">
@@ -122,7 +122,7 @@
             </div>
           </div>
 
-          
+
           <div class="col-md-2">
             <div class="col-md-12"><h3 class="footer-heading mb-4 text-white">Social Icons</h3></div>
               <div class="col-md-12">
@@ -141,7 +141,7 @@
             <p>
             </p>
           </div>
-          
+
         </div>
       </div>
     </footer>
@@ -159,11 +159,11 @@
   <script src="{{asset('external/js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{asset('external/js/aos.js')}}"></script>
 
-  
+
   <script src="{{asset('external/js/mediaelement-and-player.min.js')}}"></script>
 
   <script src="{{asset('external/js/main.js')}}"></script>
-    
+
 
   <script>
       document.addEventListener('DOMContentLoaded', function() {
