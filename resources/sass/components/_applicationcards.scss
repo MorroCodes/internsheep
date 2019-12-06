@@ -1,3 +1,32 @@
+.popup-message {
+    display: none;
+    background-color: white;
+
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    z-index: 69;
+    padding: 2em;
+}
+
+.popup-overlay{
+    display: none;
+    z-index: 3;
+    height: 100vh;
+    width: 100vw;
+    position:fixed;
+    top: 0;
+    left:0;
+    background-color:rgba(151, 151, 151, 0.4);
+}
+
+.close {
+    width: 50px;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+}
+
 .application-card {
     width: 95%;
     max-width: 500px;
@@ -12,7 +41,7 @@
     background-color: grey;
 }
 
-.application-response-selected{
+.application-response-selected {
     background-color: $blue;
     color: white,
 }
@@ -34,4 +63,3 @@
 .application-card-content div p:last-child {
     font-size: 0.7em;
 }
-

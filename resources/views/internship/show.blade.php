@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="popup">
+<div class="popup-message">
     <form action="{{ action('MessageController@startConversation') }}" method="post">
 
         <input type="hidden" name="company" value="{{$internship->company_id}}">
@@ -19,6 +19,7 @@
     <img class="close" src="{{ asset('img/close.svg') }}">
 </div>
 
+<div class="popup-overlay"></div>
 <div class="card text-center">
   <div class="card-header">
     Flux
