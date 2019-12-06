@@ -72,43 +72,13 @@ class AccountController extends Controller
         $user_id = \Auth::user()->id;
         // dd($request);
         $reason = $request->input('reason');
-<<<<<<< HEAD
-||||||| merged common ancestors
-<<<<<<< HEAD
-||||||| merged common ancestors
-        $internship_id = $request->input('internship');
-=======
         $internships_id = $request->input('internship');
->>>>>>> feature/vue
-=======
-        $internship_id = $request->input('internship');
-
->>>>>>> feature/style
         $company_id = $request->input('company');
-
-        $internships_id = $request->input('internship');
 
         $apply = new \App\Apply();
         $apply->student_id = $user_id;
         $apply->company_id = $company_id;
-<<<<<<< HEAD
-        $apply->internships_id = $internships_id;
-||||||| merged common ancestors
-<<<<<<< HEAD
-        $apply->internships_id = $internships_id;
-
-||||||| merged common ancestors
         $apply->internships_id = $internship_id;
-=======
-        $apply->internships_id = $internships_id;
->>>>>>> feature/vue
-=======
-
-        $apply->internships_id = $internships_id;
-
-        $apply->internships_id = $internship_id;
-
->>>>>>> feature/style
         $apply->reason = $reason;
         $apply->save();
 
