@@ -3,7 +3,7 @@
 
 Welcome to InternSheep!
 
-@component('mail::button', ['url' => ''])
+@component('mail::button', ['url' => 'https://internsheep.weareimd.be/login'])
 Welcome
 @endcomponent
 
