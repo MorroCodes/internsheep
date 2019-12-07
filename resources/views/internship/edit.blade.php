@@ -4,12 +4,12 @@
 <div class="site-section bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 col-lg-8 mb-5">
+      <div class="internship-form-container">
         <div class="card text-center">
           <div class="card-header">
             Wijzig vacature {{$internship->title}}
           </div>
-          <form action="{{route('internship.update',[$internship->id])}}" method="post">
+          <form action="{{route('internship.update',[$internship->id])}}" method="post" class="internship-create-form-control">
             @if(!empty($error))
                 @component('components/alert')
                   @slot('message') {{$error}} @endslot

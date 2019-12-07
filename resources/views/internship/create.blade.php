@@ -4,12 +4,12 @@
 <div class="site-section bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 col-lg-8 mb-5">
+      <div class="internship-form-container">
         <div class="card text-center">
           <div class="card-header">
             Voeg een vacature toe
           </div>
-          <form action="{{ action('VacatureController@store') }}" method="post">
+          <form action="{{ action('VacatureController@store') }}" method="post" class="internship-create-form-control"
             @if(!empty($error))
                 @component('components/alert')
                   @slot('message') {{$error}} @endslot
