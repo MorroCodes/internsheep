@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use \App\Company;
+
+use App\Company;
 
 class HomeController extends Controller
 {
@@ -22,7 +23,7 @@ class HomeController extends Controller
     {
         $data['internship'] = \App\Internship::orderBy('id', 'desc')->take(6)->get();
         $companies = Company::limit(6)->get();
-
+        // dd(\App\Internship::orderBy('id', 'desc')->where('created_at', '>=', \Carbon\Carbon::today()->subWeek().' 00:00:00')->count());
         return view('index/home', $data, compact('companies'));
     }
 
