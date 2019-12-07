@@ -97,17 +97,19 @@
   resize: none;
 }
 
-.site-navbar-wrap .align-items-center {
-  -webkit-box-pack: justify;
-          justify-content: space-between;
-}
+@media (max-width: 768px) {
+  .site-navbar-wrap .align-items-center {
+    -webkit-box-pack: justify;
+            justify-content: space-between;
+  }
 
-.site-navbar-wrap .col-2 {
-  max-width: 50%;
-}
+  .site-navbar-wrap .col-2 {
+    max-width: 50%;
+  }
 
-.site-navbar-wrap .col-10 {
-  max-width: 50%;
+  .site-navbar-wrap .col-10 {
+    max-width: 50%;
+  }
 }
 
 body {
