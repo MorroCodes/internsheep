@@ -8,5 +8,6 @@ Welcome
 @endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
+InternSheep
+<!-- {{ config('app.name') }} -->
 @endcomponent
