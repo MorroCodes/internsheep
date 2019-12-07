@@ -63,15 +63,18 @@ class VacatureController extends Controller
         $internship->functie_omschrijving = $request->input('functie_omschrijving');
         $internship->aanbod = $request->input('aanbod');
         $internship->slug = $request->input('title');
-        $internship->company_survey_id = 4;
+        $internship->company_survey_id = $this->getCompanySurveyIdFromUserId($id);
         $internship->save();
 
         // redirect naar detail pagina vacature
         return view('internship/create')->with('message', 'Vacature is toegevoegd!');
     }
 
-    public function getCompanySurveyIdFromUserId()
+    public function getCompanySurveyIdFromUserId($id)
     {
+        $survey = \App\CompanySurvey::where('user_id', $id)->first();
+
+        return $survey->id;
     }
 
     public function applicant()
