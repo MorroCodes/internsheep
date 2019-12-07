@@ -15,3 +15,6 @@
 </body>
 </html>
 <script src="{{ URL::asset('js/responsive-menu.js') }}"></script>
+<script src="{{asset('js/internshipFormPlaceholders.js')}}"></script>
+
+</html>
