@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('external/css/aos.css')}}">
 
     <link rel="stylesheet" href="{{asset('external/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ URL::asset('js/components/apply.js') }}"></script>
     

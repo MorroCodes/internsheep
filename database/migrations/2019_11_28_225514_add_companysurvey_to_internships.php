@@ -12,7 +12,7 @@ class AddCompanysurveyToInternships extends Migration
     public function up()
     {
         Schema::table('internships', function (Blueprint $table) {
-            $table->integer('company_survey_id');
+            $table->integer('company_survey_id')->nullable();
         });
     }
 

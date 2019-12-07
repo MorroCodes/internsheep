@@ -1,0 +1,23 @@
+.internship-form-container{
+    width: 80%;
+    margin:auto;
+    max-width: 750px;
+}
+
+.create-internship-title{
+    text-align: left;
+    font-size: 0.8em;
+    padding: 1.5em 0 0.5em 0;
+    width: 90%;
+    margin: auto;
+    color: $darkgrey;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.create-internship-input{
+    width: 90%;
+    margin: auto;
+    height: 2em;
+    resize: none;
+}

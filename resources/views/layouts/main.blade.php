@@ -13,4 +13,6 @@
 @yield('content')
 
 </body>
+<script src="{{asset('js/internshipFormPlaceholders.js')}}"></script>
+
 </html>

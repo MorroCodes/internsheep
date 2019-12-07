@@ -1,33 +1,42 @@
-
-
 @extends('layouts/main')
 
 @section('content')
 <div class="site-section bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-lg-8 mb-5">
-<div class="card text-center">
+  <div class="container">
+    <div class="row">
+      <div class="internship-form-container">
+        <div class="card text-center">
+          <div class="card-header">
+            Wijzig vacature {{$internship->title}}
+          </div>
+          <form action="{{route('internship.update',[$internship->id])}}" method="post" class="internship-create-form-control">
+            @if(!empty($error))
+                @component('components/alert')
+                  @slot('message') {{$error}} @endslot
+                  @slot('alert_type') alert-primary @endslot
+                @endcomponent
+            @endif
 
-  <form action="{{route('internship.update',[$internship->id])}}" method="post">
-    <div class="card-body">
-      <div class="form-group">
-        <h3>Titel</h3>
-          <input type="text" class="form-control" id="title_vacature" value="{{$internship->title}}" name='title'>
-              <h3>Plaats</h3>
-              <input type="text" class="form-control" value="{{$internship->address}}" name='address'>
-          <h3 class="space">bedrijfsbeschrijving</h3>
-          <input type="textarea" class="form-control" rows="8" cols="50" value="{{$internship->description}}" name='description'>
-          <h3>Functieomschrijving</h3>
-          <input type="textarea" class="form-control" rows="8" cols="50" value="{{$internship->functie_omschrijving}}" name='functie_omschrijving'>
-          <h3>Wat bieden wij aan ?</h3>
-          <input type="textarea" class="form-control" rows="8" cols="50" value="{{$internship->aanbod}}" name='aanbod'>
-      </div>
-      <button type="submit" class="btn btn-primary">Aanpassen</button>
-      {{csrf_field()}}
-    </div>
-  </form>
-        <div class="card-footer text-muted">
-        {{$internship->created_at}}
+            @component('components/vacature_form')
+              @if(!empty($values))
+                @slot('title') {{$values['title']}} @endslot
+                @slot('address') {{$values['address']}} @endslot
+                @slot('description') {{$values['description']}} @endslot
+                @slot('functie_omschrijving') {{$values['functie_omschrijving']}} @endslot
+                @slot('aanbod') {{$values['aanbod']}} @endslot
+              @endif
+            @endcomponent
+            <button type="submit" class="btn btn-primary">Wijzig vacature</button>
+            {{csrf_field()}}
+          </form>
+
+          <div class="card-footer text-muted">
+          Aangemaakt op: {{$internship->created_at}}
+          </div>
+
         </div>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
