@@ -16,6 +16,12 @@
         <input type="hidden" name="company" value="{{$internship->company_id}}">
         <input type="hidden" name="internship" value="{{$internship->id}}">
         <div class="form-group">
+            @if(!empty($error))
+                @component('components/alert')
+                @slot('message') {{$error}} @endslot
+                @slot('alert_type') alert-primary @endslot
+                @endcomponent
+            @endif
             <label for="reason">Waarom wil je hier stage doen?</label>
             <textarea name="reason" class="form-control" id="reason"></textarea>
         </div>
