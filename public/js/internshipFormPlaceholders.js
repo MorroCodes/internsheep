@@ -11,16 +11,16 @@ if (formControl != null) {
 
     let placeholderArray = [
         [
-            'Front-End Developer', 'Lange Ridderstraat 89, 2800 Mechelen','Flexiebele Front-Ender gezocht', 'Kan werken met PHP, HTML en CSS.', 'Hands-on stage met kans op vaste job.'
+            'Bv. Front-End Developer', 'Bv. Lange Ridderstraat 89, 2800 Mechelen','Bv. Flexiebele Front-Ender gezocht', 'Bv. Kan werken met PHP, HTML en CSS.', 'Bv. Hands-on stage met kans op vaste job.'
         ],
         [
-            'Motion Designer', 'Meir 6, 2000 Antwerpen', 'Enthousiaste motion designer gezocht', 'Ervaring met After Effects en CSS animaties', 'Hands-on stage met mogelijkheid tot werken aan eigen projecten.'
+            'Bv. Motion Designer', 'Bv. Meir 6, 2000 Antwerpen', 'Bv. Enthousiaste motion designer gezocht', 'Bv. Ervaring met After Effects en CSS animaties', 'Bv. Hands-on stage met mogelijkheid tot werken aan eigen projecten.'
         ],
         [
-            'Back-End Developer', 'Mechelstraat 92, 3000 Muizen', 'Drie plaatsen voor die-hard back-enders.', 'We zoeken naar mensen met een passie voor Laravel en CodeIgniter. Veel ervaring is niet nodig, ruimte om te leren.', 'Hands-on stage.'
+            'Bv. Back-End Developer', 'Bv. Mechelstraat 92, 3000 Muizen', 'Bv. Drie plaatsen voor die-hard back-enders.', 'Bv. We zoeken naar mensen met een passie voor Laravel en CodeIgniter. Veel ervaring is niet nodig, ruimte om te leren.', 'Bv. Hands-on stage.'
         ],
         [
-            'Laravel Expert', 'Steenhuffelstraat 1, 1840 Londerzeel', 'Ervaren Laravel developer.', 'We willen graag ons team uitbreiden met Laravel kenners.', 'Betaalde stage met job aanbieding.'
+            'Bv. Laravel Expert', 'Bv. Steenhuffelstraat 1, 1840 Londerzeel', 'Bv. Ervaren Laravel developer.', 'Bv. We willen graag ons team uitbreiden met Laravel kenners.', 'Bv. Betaalde stage met job aanbieding.'
         ]
     ]
 

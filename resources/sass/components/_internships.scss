@@ -6,11 +6,13 @@
 
 .create-internship-title{
     text-align: left;
-    font-size: 1.1em;
+    font-size: 0.8em;
     padding: 1.5em 0 0.5em 0;
     width: 90%;
     margin: auto;
-    color: $blue;
+    color: $darkgrey;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .create-internship-input{
