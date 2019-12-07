@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Apply;
-use App\Internship;
 
 class VacatureController extends Controller
 {
@@ -32,10 +31,11 @@ class VacatureController extends Controller
 
             return view('internship/edit', $data);
         }
-        $internship = Internship::find($id);
-        $internship->update($request->all());
 
-        return redirect()->back()->with('message', 'succes!');
+        $internship = \App\Internship::where('id', $id);
+        $internship->update(['title' => $credentials['title'], 'description' => $credentials['description'], 'address' => $credentials['address'], 'functie_omschrijving' => $credentials['functie_omschrijving'], 'aanbod' => $credentials['aanbod']]);
+
+        return redirect('/vacature/'.$id.'/overview');
     }
 
     public function create()
