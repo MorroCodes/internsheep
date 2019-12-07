@@ -45,7 +45,7 @@ Route::get('/company/{id}', 'CompanyController@publicCompanyProfile');
 Route::get('/vacature/{id}/overview', 'CompanyController@index')->name('internship.show');
 
 //applications
-Route::get('/vacature2/applications', 'vacatureCompany@applicant');
+Route::get('/vacature2/applications', 'VacatureController@applicant');
 Route::post('/company/application/response', 'AccountController@replyToApplication');
 Route::get('/student/applications', 'AccountController@showStudentApplications');
 
@@ -56,11 +56,11 @@ Route::get('/conversations/{id}', 'MessageController@private')->name('privateCon
 Route::post('/conversations/{id}', 'MessageController@sendMessage')->name('sendMessage');
 
 //edit vacature
-Route::get('/vacature', 'vacatureCompany@index');
-Route::get('/vacature1/create', 'vacatureCompany@create')->name('internship.create');
-Route::post('/vacature1/create', 'vacatureCompany@store')->name('internship.store');
-Route::get('/vacature/{id}/edit', 'vacatureCompany@edit')->name('internship.edit');
-Route::post('/vacature/{id}/edit', 'vacatureCompany@update')->name('internship.update');
+Route::get('/vacature', 'VacatureController@index');
+Route::get('/vacature1/create', 'VacatureController@create')->name('internship.create');
+Route::post('/vacature1/create', 'VacatureController@store')->name('internship.store');
+Route::get('/vacature/{id}/edit', 'VacatureController@edit')->name('internship.edit');
+Route::post('/vacature/{id}/edit', 'VacatureController@update')->name('internship.update');
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
