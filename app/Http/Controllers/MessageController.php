@@ -10,9 +10,9 @@ class MessageController extends Controller
     {
         $data = $request->only(['company', 'message', 'student']);
 
-        if ($data['message'] == '') {
-            return redirect('/conversations/'.$id);
-        }
+        // if ($data['message'] == '') {
+        //     return redirect('/conversations/'.$id);
+        // }
 
         $message = new \App\Message();
         $message->conversation_id = $id;
