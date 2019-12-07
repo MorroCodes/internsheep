@@ -15,6 +15,5 @@
         <h3 class="create-internship-title">Ons aanbod</h3>
         <input type="textarea" class="form-control" value="{{ $aanbod ?? '' }}" rows="8" cols="50" name='aanbod'>
 
-        <button type="submit" class="btn btn-primary">Maak deze vacature aan</button>
     </div>
 </div>

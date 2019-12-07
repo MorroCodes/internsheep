@@ -17,21 +17,23 @@
                 @endcomponent
             @endif
 
-              @component('components/vacature_form')
-                @if(!empty($internship))
-                  @slot('title') {{$internship['title']}} @endslot
-                  @slot('address') {{$internship['address']}} @endslot
-                  @slot('description') {{$internship['description']}} @endslot
-                  @slot('functie_omschrijving') {{$internship['functie_omschrijving']}} @endslot
-                  @slot('aanbod') {{$internship['aanbod']}} @endslot
-                @endif
-              @endcomponent
-        
-              {{csrf_field()}}
+            @component('components/vacature_form')
+              @if(!empty($values))
+                @slot('title') {{$values['title']}} @endslot
+                @slot('address') {{$values['address']}} @endslot
+                @slot('description') {{$values['description']}} @endslot
+                @slot('functie_omschrijving') {{$values['functie_omschrijving']}} @endslot
+                @slot('aanbod') {{$values['aanbod']}} @endslot
+              @endif
+            @endcomponent
+            <button type="submit" class="btn btn-primary">Wijzig vacature</button>
+            {{csrf_field()}}
           </form>
+
           <div class="card-footer text-muted">
-          {{$internship->created_at}}
-        </div>
+          Aangemaakt op: {{$internship->created_at}}
+          </div>
+
         </div>
       </div>
     </div>

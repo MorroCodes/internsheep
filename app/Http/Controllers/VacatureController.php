@@ -16,12 +16,22 @@ class VacatureController extends Controller
     public function edit($id)
     {
         $data['internship'] = \App\Internship::where('id', $id)->first();
+        $data['values'] = \App\Internship::where('id', $id)->first();
 
         return view('internship.edit', $data);
     }
 
     public function update(Request $request, $id)
     {
+        $credentials = $request->only(['title', 'description', 'address', 'functie_omschrijving', 'aanbod']);
+
+        if (in_array(null, $credentials, true)) {
+            $data['error'] = 'Gelieve geen velden leeg te laten.';
+            $data['values'] = $credentials;
+            $data['internship'] = \App\Internship::where('id', $id)->first();
+
+            return view('internship/edit', $data);
+        }
         $internship = Internship::find($id);
         $internship->update($request->all());
 
