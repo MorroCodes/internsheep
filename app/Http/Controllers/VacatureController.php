@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Apply;
 use App\Internship;
-use App\Http\Requests\JobPostRequest;
 
 class VacatureController extends Controller
 {
@@ -16,9 +15,9 @@ class VacatureController extends Controller
 
     public function edit($id)
     {
-        $internship = Internship::find($id);
+        $data['internship'] = \App\Internship::where('id', $id)->first();
 
-        return view('internship.edit', compact('internship'));
+        return view('internship.edit', $data);
     }
 
     public function update(Request $request, $id)
@@ -34,8 +33,17 @@ class VacatureController extends Controller
         return view('internship/create');
     }
 
-    public function store(JobPostRequest $request)
+    public function store(Request $request)
     {
+        $credentials = $request->only(['title', 'description', 'address', 'functie_omschrijving', 'aanbod']);
+
+        if (in_array(null, $credentials, true)) {
+            $data['error'] = 'Gelieve geen velden leeg te laten.';
+            $data['values'] = $credentials;
+
+            return view('internship/create', $data);
+        }
+
         $id = \Auth::user()->id;
         $internship = new \App\Internship();
         $internship->title = $request->input('title');
@@ -44,13 +52,16 @@ class VacatureController extends Controller
         $internship->address = $request->input('address');
         $internship->functie_omschrijving = $request->input('functie_omschrijving');
         $internship->aanbod = $request->input('aanbod');
-        $title = $request->input('title');
-        $internship->slug = $title;
-        $internship_id = $request->input('company');
+        $internship->slug = $request->input('title');
         $internship->company_survey_id = 4;
         $internship->save();
 
+        // redirect naar detail pagina vacature
         return view('internship/create')->with('message', 'Vacature is toegevoegd!');
+    }
+
+    public function getCompanySurveyIdFromUserId()
+    {
     }
 
     public function applicant()
