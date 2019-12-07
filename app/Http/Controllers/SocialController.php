@@ -6,6 +6,7 @@ use Redirect;
 use Socialite;
 use App\User;
 use Request;
+use App\Jobs\WelcomeEmailJob;
 
 class SocialController extends Controller
 {
@@ -116,6 +117,8 @@ class SocialController extends Controller
          'provider_id' => $getInfo->id,
      ]);
         }
+        // send email
+        dispatch(new WelcomeEmailJob($user));
 
         return $user;
     }
