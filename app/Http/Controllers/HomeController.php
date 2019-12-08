@@ -38,10 +38,18 @@ class HomeController extends Controller
 
     public function internshipRating(Request $request)
     {
-        $input = $request->all();
-        $name = $request->input('name');
+        $student_id = \Auth::user()->id;
+        $rate = $request->input('rating');
+        $internship_id = $request->input('internship');
+
+        $rating = new \App\Rating();
+        $rating->rating = $rate;
+        $rating->student_id = $student_id;
+        $rating->internship_id = $internship_id;
+        $rating->save();
+
         return response()->json([
-            'success'=>$name
+            'success' => $rate . $internship_id
         ]);
     }
 
