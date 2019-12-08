@@ -42,15 +42,23 @@ class HomeController extends Controller
         $rate = $request->input('rating');
         $internship_id = $request->input('internship');
 
-        $rating = new \App\Rating();
-        $rating->rating = $rate;
-        $rating->student_id = $student_id;
-        $rating->internship_id = $internship_id;
-        $rating->save();
+        $row = \App\Rating::where('student_id', $student_id)->where('internship_id', $internship_id)->first();
+        if ($row === null) {
+            $rating = new \App\Rating();
+            $rating->rating = $rate;
+            $rating->student_id = $student_id;
+            $rating->internship_id = $internship_id;
+            $rating->save();
+        }else{
+            $row->rating = $rate;
+            $row->save();
+        }
 
         return response()->json([
-            'success' => $rate . $internship_id
+            'success' => $internship_id
         ]);
+
+
     }
 
     public function redirect()
