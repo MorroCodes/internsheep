@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    @if(!empty($error))
+        <div class="alert alert-danger">{{$error}}</div>
+    @endif
     <form action="" method="GET">
         <div class="form-group">
             <label for="location_filter">Zoek op locatie:</label>

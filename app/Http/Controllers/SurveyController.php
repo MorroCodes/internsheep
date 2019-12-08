@@ -35,7 +35,7 @@ class SurveyController extends Controller
 
         // if record -> update
 
-        return redirect('/');
+        return redirect('/change_student_data');
     }
 
     public function companySurvey()
@@ -58,11 +58,14 @@ class SurveyController extends Controller
             $survey->type = $data['type'];
             $survey->transport = $data['transport'];
             $survey->save();
+            $survey_id = $survey->id;
+
+            \App\Internship::where('company_id', \Auth::user()->id)->update(['company_survey_id' => $survey_id]);
         } else {
             $user = \App\CompanySurvey::where('user_id', \Auth::user()->id);
             $user->update(['vibe' => $data['vibe'], 'size' => $data['size'], 'age' => $data['age'], 'type' => $data['type'], 'transport' => $data['transport']]);
         }
 
-        return redirect('/');
+        return redirect('/companyaccount');
     }
 }

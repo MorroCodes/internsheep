@@ -35,12 +35,16 @@ class MatchController extends Controller
             if ($request->tranport_method == null) {
                 $request->transport_method = 'driving';
             }
-            $destination = $this->getGeoCode($request->address);
-            foreach ($companySurveys as $companySurvey) {
-                foreach ($companySurvey->internships as $internship) {
-                    $origin = $this->getGeoCode($internship->address);
-                    $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
+            $origin = $this->getGeoCode($request->address);
+            if (!isset($origin['error'])) {
+                foreach ($companySurveys as $companySurvey) {
+                    foreach ($companySurvey->internships as $internship) {
+                        $destination = $this->getGeoCode($internship->address);
+                        $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
+                    }
                 }
+            } else {
+                $data['error'] = $origin['error'];
             }
         }
         foreach ($companySurveys as $companySurvey) {
@@ -92,7 +96,13 @@ class MatchController extends Controller
         $url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'.$address.'.json?access_token='.$this->token;
         $data = file_get_contents($url);
         $json = json_decode($data, true);
-        $coordinates = $json['features'][0]['geometry']['coordinates'][0].','.$json['features'][0]['geometry']['coordinates'][1];
+        if (isset($json['features'][0])) {
+            $coordinates = $json['features'][0]['geometry']['coordinates'][0].','.$json['features'][0]['geometry']['coordinates'][1];
+        } else {
+            $result['error'] = 'Kon deze locatie niet vinden';
+
+            return $result;
+        }
 
         return $coordinates;
     }
@@ -102,7 +112,7 @@ class MatchController extends Controller
         $url = 'https://api.mapbox.com/optimized-trips/v1/mapbox/'.$transport_method.'/'.$p1.';'.$p2.'?access_token='.$this->token;
         $data = file_get_contents($url);
         $json = json_decode($data, true);
-        if (isset($json['trips'])) {
+        if (isset($json['trips'][0])) {
             $result['distance'] = $this->metersToKm($json['trips'][0]['distance']);
             $result['duration'] = $this->minutesToTime($json['trips'][0]['duration']);
 

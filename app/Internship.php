@@ -35,4 +35,8 @@ class Internship extends Model
         return $this->belongsToMany('App\Student');
 
     }
+
+    public function ratings(){
+        return $this->hasMany('App\Rating');
+    }
 }

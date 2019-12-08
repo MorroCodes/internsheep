@@ -5,7 +5,7 @@
     @include('partials.head')
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-   
+
 </head>
 <body class="entry-page">
 @include('partials.nav')
@@ -13,4 +13,8 @@
 @yield('content')
 
 </body>
+</html>
+<script src="{{ URL::asset('js/responsive-menu.js') }}"></script>
+<script src="{{asset('js/internshipFormPlaceholders.js')}}"></script>
+
 </html>

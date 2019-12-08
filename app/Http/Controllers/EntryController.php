@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\WelcomeEmailJob;
 use Illuminate\Http\Request;
 
 class EntryController extends Controller
@@ -103,6 +104,9 @@ class EntryController extends Controller
             // The user is being remembered...
         }
 
+        // send email
+        dispatch(new WelcomeEmailJob($user));
+
         return redirect('/company_survey');
     }
 
@@ -136,6 +140,9 @@ class EntryController extends Controller
         if (\Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']], $user)) {
             // The user is being remembered...
         }
+
+        // send email
+        dispatch(new WelcomeEmailJob($user));
 
         return redirect('/student_survey');
     }
@@ -240,9 +247,11 @@ class EntryController extends Controller
         return redirect('/student_survey');
     }
 
-    public function logout () {
+    public function logout()
+    {
         //logout user
         auth()->logout();
+
         return redirect('/');
     }
 }

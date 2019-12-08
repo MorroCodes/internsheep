@@ -19,6 +19,7 @@ php artisan cache:clear
     # cache clearen
 php artisan up
     # website terug online plaatsen
+
 @endtask
 
 

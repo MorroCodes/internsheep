@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
-
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 .popup-message {
   display: none;
   background-color: white;
@@ -37,10 +36,13 @@
 
 .application-card-title {
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
+      -ms-flex-align: center;
           align-items: center;
   background-color: grey;
 }
@@ -56,10 +58,13 @@
 
 .application-card-content div {
   display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
           align-items: baseline;
 }
 
@@ -99,65 +104,22 @@
   resize: none;
 }
 
-.rate {
-  float: left;
-  height: 46px;
-  padding: 0 10px;
-}
-
-.rate:not(:checked) > input {
-  position: absolute;
-  top: -9999px;
-}
-
-.rate:not(:checked) > label {
-  float: right;
-  width: 1em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: pointer;
-  font-size: 30px;
-  color: #ccc;
-}
-
-.rate:not(:checked) > label:before {
-  content: "\2605   ";
-}
-
-.rate > input:checked ~ label {
-  color: #ffc700;
-}
-
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-  color: #deb217;
-}
-
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-  color: #c59b08;
-}
-
 @media (max-width: 768px) {
   .site-navbar-wrap .align-items-center {
     -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
             justify-content: space-between;
   }
-
   .site-navbar-wrap .col-2 {
     max-width: 50%;
   }
-
   .site-navbar-wrap .col-10 {
     max-width: 50%;
   }
 }
 
 body {
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   color: #12396A;
 }
-
+/*# sourceMappingURL=app.css.map */

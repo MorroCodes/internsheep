@@ -6,18 +6,20 @@
 
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import 'company';
-@import 'components/entry';
-@import 'components/home';
-@import 'components/survey';
-@import 'components/buttons';
-@import 'components/texttospeech';
-@import 'components/alerts';
-@import 'components/studentdata';
+// @import '~bootstrap/scss/bootstrap';
+// @import 'company';
+// @import 'components/entry';
+// @import 'components/home';
+// @import 'components/survey';
+// @import 'components/buttons';
+// @import 'components/texttospeech';
+// @import 'components/alerts';
+// @import 'components/studentdata';
 @import 'components/popup';
 @import 'components/applicationcards';
 @import 'components/messages';
+@import 'components/internships';
+@import 'components/navigation';
 
 body{
     font-family: 'Work Sans', sans-serif;

@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use \App\Company;
+
+use App\Company;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -22,7 +24,7 @@ class HomeController extends Controller
     {
         $data['internship'] = \App\Internship::orderBy('id', 'desc')->take(6)->get();
         $companies = Company::limit(6)->get();
-
+        // dd(\App\Internship::orderBy('id', 'desc')->where('created_at', '>=', \Carbon\Carbon::today()->subWeek().' 00:00:00')->count());
         return view('index/home', $data, compact('companies'));
     }
 
@@ -31,7 +33,44 @@ class HomeController extends Controller
         $data['internship'] = \App\Internship::where('id', $internship)->first();
         // dd($data['internship']);
 
+        $mid = 0;
+        $count = 0;
+        foreach ($data['internship']['ratings'] as $r) {
+            $mid += $r['rating'];
+            $count++;
+        }
+        if($mid !== 0){
+            $mid = $mid / $count;
+        }
+
+        $data['internship']['mid'] = $mid;
+
         return view('student/internshipData', $data);
+    }
+
+    public function internshipRating(Request $request)
+    {
+        $student_id = \Auth::user()->id;
+        $rate = $request->input('rating');
+        $internship_id = $request->input('internship');
+
+        $row = \App\Rating::where('student_id', $student_id)->where('internship_id', $internship_id)->first();
+        if ($row === null) {
+            $rating = new \App\Rating();
+            $rating->rating = $rate;
+            $rating->student_id = $student_id;
+            $rating->internship_id = $internship_id;
+            $rating->save();
+        }else{
+            $row->rating = $rate;
+            $row->save();
+        }
+
+        return response()->json([
+            'success' => $internship_id
+        ]);
+
+
     }
 
     public function redirect()

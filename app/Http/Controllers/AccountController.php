@@ -69,6 +69,15 @@ class AccountController extends Controller
 
     public function ApplyInternship(Request $request)
     {
+        $credentials = $request->only(['reason', 'internship', 'company']);
+
+        if (in_array(null, $credentials, true)) {
+            $data['error'] = 'Gelieve korte omschrijving in te vullen.';
+            $data['internship'] = \App\Internship::where('id', $credentials['internship'])->first();
+
+            return view('student/internshipData', $data);
+        }
+
         $user_id = \Auth::user()->id;
         // dd($request);
         $reason = $request->input('reason');
@@ -82,7 +91,10 @@ class AccountController extends Controller
         $apply->reason = $reason;
         $apply->save();
 
-        return redirect('/');
+        $data['error'] = 'Je sollicitatie is verzonden!';
+        $data['internship'] = \App\Internship::where('id', $credentials['internship'])->first();
+
+        return view('student/internshipData', $data);
     }
 
     public function replyToApplication(Request $request)
@@ -193,14 +205,14 @@ class AccountController extends Controller
     {
         $id = \Auth::user()->id;
         $user = \App\User::where('id', $id);
-        $user->update(['profile_image' => $newDirectory]);
+        $user->update(['profile_image' => DIRECTORY_SEPARATOR.$newDirectory]);
     }
 
     public function InsertCV($newDirectory)
     {
         $id = \Auth::user()->id;
         $user = \App\Student::where('id', $id);
-        $user->update(['cv' => $newDirectory]);
+        $user->update(['cv' => DIRECTORY_SEPARATOR.$newDirectory]);
     }
 
     public function showStudentApplications()
