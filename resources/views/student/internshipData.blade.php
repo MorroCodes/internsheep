@@ -6,18 +6,23 @@
         <div class="row">
             <div class="col-md-12 col-lg-8 mb-5">
                 <div class="container">
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                    </div>
+                        <form action="{{route('rating')}}" method="post">
+                            <div class="rate">
+                            <input type="radio" id="star5" class="star" name="rate" value="5" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" class="star" name="rate" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" class="star" name="rate" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" class="star" name="rate" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" class="star" name="rate" value="1" />
+                            <label for="star1" title="text">1 star</label>
+                        </div>
+                        {{csrf_field()}}
+                        </form>
+
+
                     <h3>{{$internship->title}}</h3>
                     <h5>{{$internship->catch_phrase}}</h5>
                     <p>{{$internship->description}}</p>

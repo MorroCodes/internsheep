@@ -35,6 +35,12 @@ class HomeController extends Controller
         return view('student/internshipData', $data);
     }
 
+    public function internshipRating(PostRequest $request)
+    {
+        $response = $request->input('data');
+        return $response;
+    }
+
     public function redirect()
     {
         $type = \Auth::user()->type;
