@@ -30,6 +30,6 @@ class WeeklyInternshipMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.user.weekly-internship')->with('amount', $this->amount)->with('user', $this->user);
+        return $this->markdown('emails.user.weekly-internship')->subject('Nieuwe vacatures beschikbaar!')->with('amount', $this->amount)->with('user', $this->user);
     }
 }

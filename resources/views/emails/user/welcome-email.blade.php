@@ -1,5 +1,5 @@
 @component('mail::message')
-# Thanks for signing up
+# Bedankt om te registreren!
 
 We zijn blij dat je hebt gekozen om lid te worden van InternSheep!
 Laten we samen op zoek gaan naar de juiste match!
