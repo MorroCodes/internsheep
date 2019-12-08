@@ -1,12 +1,14 @@
 @component('mail::message')
-# Thanks for signing up
+# Bedankt om te registreren!
 
-Welcome to InternSheep!
+We zijn blij dat je hebt gekozen om lid te worden van InternSheep!
+Laten we samen op zoek gaan naar de juiste match!
 
 @component('mail::button', ['url' => 'https://internsheep.weareimd.be/login'])
-Welcome
+Ga naar InternSheep
 @endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
+InternSheep
+<!-- {{ config('app.name') }} -->
 @endcomponent
