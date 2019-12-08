@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -35,10 +36,13 @@ class HomeController extends Controller
         return view('student/internshipData', $data);
     }
 
-    public function internshipRating(PostRequest $request)
+    public function internshipRating(Request $request)
     {
-        $response = $request->input('data');
-        return $response;
+        $input = $request->all();
+        $name = $request->input('name');
+        return response()->json([
+            'success'=>$name
+        ]);
     }
 
     public function redirect()

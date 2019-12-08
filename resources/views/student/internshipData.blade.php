@@ -8,7 +8,7 @@
                 <div class="container">
                         <form action="{{route('rating')}}" method="post">
                             <div class="rate">
-                            <input type="radio" id="star5" class="star" name="rate" value="5" />
+                            <input data-token="{{ csrf_token() }}" type="radio" id="star5" class="star" name="rate" value="5" />
                             <label for="star5" title="text">5 stars</label>
                             <input type="radio" id="star4" class="star" name="rate" value="4" />
                             <label for="star4" title="text">4 stars</label>
