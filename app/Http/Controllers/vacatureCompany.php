@@ -57,7 +57,7 @@ class vacatureCompany extends Controller
 
     public function applicant()
     {
-        $id = \Auth::user()->id;
+         $id = \Auth::user()->id;
         $applicants = Apply::where('company_id', $id)->get();
 
         return view('internship/applications', compact('applicants'));
