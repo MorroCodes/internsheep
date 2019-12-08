@@ -22,7 +22,7 @@ function rating(int, rate) {
                rating: rate
            },
            success:function(data){
-              alert(data.success);
+              console.log(data.success);
            }
 
         });

@@ -33,6 +33,17 @@ class HomeController extends Controller
         $data['internship'] = \App\Internship::where('id', $internship)->first();
         // dd($data['internship']);
 
+        $mid = 0;
+        $count = 0;
+        foreach ($data['internship']['ratings'] as $r) {
+            $mid += $r['rating'];
+            $count++;
+        }
+
+        $mid = $mid / $count;
+
+        $data['internship']['mid'] = $mid;
+
         return view('student/internshipData', $data);
     }
 

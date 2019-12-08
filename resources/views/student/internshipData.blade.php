@@ -8,20 +8,29 @@
                 <div class="container">
                         <form action="{{route('rating')}}" method="post">
                             <div class="rate">
-                            <input data-rate="5" data-int="{{$internship->id}}" type="radio" id="star5" class="star" name="rate" value="5" />
+                            <input @if ($internship->mid <= "5" && $internship->mid > "4")
+                                checked
+                            @endif data-rate="5" data-int="{{$internship->id}}" type="radio" id="star5" class="star" name="rate" value="5" />
                             <label for="star5" title="text">5 stars</label>
-                            <input data-rate="4" data-int="{{$internship->id}}" type="radio" id="star4" class="star" name="rate" value="4" />
+                            <input @if ($internship->mid <= "4" && $internship->mid > "3")
+                                checked
+                            @endif data-rate="4" data-int="{{$internship->id}}" type="radio" id="star4" class="star" name="rate" value="4" />
                             <label for="star4" title="text">4 stars</label>
-                            <input data-rate="3" data-int="{{$internship->id}}" type="radio" id="star3" class="star" name="rate" value="3" />
+                            <input @if ($internship->mid <= "3" && $internship->mid > "2")
+                                checked
+                            @endif data-rate="3" data-int="{{$internship->id}}" type="radio" id="star3" class="star" name="rate" value="3" />
                             <label for="star3" title="text">3 stars</label>
-                            <input data-rate="2" data-int="{{$internship->id}}" type="radio" id="star2" class="star" name="rate" value="2" />
+                            <input @if ($internship->mid <= "2" && $internship->mid > "1")
+                                checked
+                            @endif data-rate="2" data-int="{{$internship->id}}" type="radio" id="star2" class="star" name="rate" value="2" />
                             <label for="star2" title="text">2 stars</label>
-                            <input data-rate="1" data-int="{{$internship->id}}" type="radio" id="star1" class="star" name="rate" value="1" />
+                            <input @if ($internship->mid <= "1" && $internship->mid > "0")
+                                checked
+                            @endif data-rate="1" data-int="{{$internship->id}}" type="radio" id="star1" class="star" name="rate" value="1" />
                             <label for="star1" title="text">1 star</label>
                         </div>
                         {{csrf_field()}}
                         </form>
-
 
                     <h3>{{$internship->title}}</h3>
                     <h5>{{$internship->catch_phrase}}</h5>

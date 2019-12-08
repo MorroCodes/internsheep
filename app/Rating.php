@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    //
+    public function internships(){
+        return $this->belongsTo('App\Internship');
+    }
 }
