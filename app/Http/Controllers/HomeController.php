@@ -39,8 +39,9 @@ class HomeController extends Controller
             $mid += $r['rating'];
             $count++;
         }
-
-        $mid = $mid / $count;
+        if($mid !== 0){
+            $mid = $mid / $count;
+        }
 
         $data['internship']['mid'] = $mid;
 
