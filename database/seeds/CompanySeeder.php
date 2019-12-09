@@ -66,7 +66,7 @@ class CompanySeeder extends Seeder
         $survey4->save();
 
         $company5 = new \App\Company();
-        $company5->user_id = 8;
+        $company5->user_id = 9;
         $company5->company_name = 'Cegeka';
         $company5->slug = 'cegeka';
         $company5->company_bio = 'Cegeka is een groot IT-bedrijf met meerdere vestigingen in België.';
