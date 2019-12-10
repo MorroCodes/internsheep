@@ -8,12 +8,12 @@
     <form action="" method="GET">
         <div class="form-group">
             <label for="location_filter">Zoek op locatie:</label>
-            <input class="form-control" type="search" name="address" id="location_filter" value="{{$request}}">
+            <input class="form-control" type="search" name="address" id="location_filter" value="{{$request->address}}">
             <label for="tranports_method">Ik ga</label>
             <select class="form-control" name="transport_method" id="transport_method">
                 <option value="driving">met de auto</option>
-                <option value="cycling">met de fiets</option>
-                <option value="walking">te voet</option>
+                <option value="cycling" @if ($request->transport_method == "cycling") selected="selected" @endif>met de fiets</option>
+                <option value="walking" @if ($request->transport_method == "walking") selected="selected" @endif>te voet</option>
             </select>
             <button type="submit" class="btn btn-primary">Zoek op locatie</button>
         </div>
@@ -21,6 +21,7 @@
     @foreach ($companySurveys as $companySurvey)
     @if (!empty($companySurvey->internships->first()) && $companySurvey->company != null)
     <h2>{{$companySurvey->company->first()->company_name}}</h2>
+    <h5 class="card-text">{{$companySurvey->match}}% overeenkomst</h5>
     <div class="d-flex flex-wrap">
         @foreach ($companySurvey->internships as $internship)
         <div class="col-sm-4">
@@ -33,7 +34,6 @@
                     <h5 class="card-text">{{$internship->distance["distance"]}}</h5>
                     <h5 class="card-text">{{$internship->distance["duration"]}}</h5>
                     @endif
-                    <h5 class="card-text">{{$companySurvey->match}}% overeenkomst</h5>
                     <p>{{ Str::limit($internship->description, 50) }}</p>
                     <a href="/internship/{{$internship->id}}" class="btn btn-secondary">Bekijk deze vacature</a>
                 </div>

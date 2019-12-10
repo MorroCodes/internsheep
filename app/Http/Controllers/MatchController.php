@@ -30,9 +30,9 @@ class MatchController extends Controller
         $percentages = $this->countPercentages($userSurvey, $companySurveys);
         $companySurveys = $this->addMatchPercentages($companySurveys, $percentages);
         $companySurveys = $companySurveys->sortByDesc('match');
-        $data['request'] = $request->address;
+        $data['request'] = $request;
         if ($request->address != null) {
-            if ($request->tranport_method == null) {
+            if ($request->transport_method == null) {
                 $request->transport_method = 'driving';
             }
             $origin = $this->getGeoCode($request->address);
@@ -42,6 +42,7 @@ class MatchController extends Controller
                         $destination = $this->getGeoCode($internship->address);
                         $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
                     }
+                    $companySurvey->internships = $companySurvey->internships->sortByDesc('distance');
                 }
             } else {
                 $data['error'] = $origin['error'];
