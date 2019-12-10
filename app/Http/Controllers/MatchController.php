@@ -109,12 +109,12 @@ class MatchController extends Controller
 
     public function getDistance($p1, $p2, $transport_method)
     {
-        $url = 'https://api.mapbox.com/optimized-trips/v1/mapbox/'.$transport_method.'/'.$p1.';'.$p2.'?access_token='.$this->token;
+        $url = 'https://api.mapbox.com/optimized-trips/v1/mapbox/'.$transport_method.'/'.$p1.';'.$p2.'?roundtrip=false&source=first&destination=last&access_token='.$this->token;
         $data = file_get_contents($url);
         $json = json_decode($data, true);
         if (isset($json['trips'][0])) {
             $result['distance'] = $this->metersToKm($json['trips'][0]['distance']);
-            $result['duration'] = $this->minutesToTime($json['trips'][0]['duration']);
+            $result['duration'] = $this->secondsToTime($json['trips'][0]['duration']);
 
             return $result;
         }
@@ -122,8 +122,9 @@ class MatchController extends Controller
         return null;
     }
 
-    public function minutesToTime($mins)
+    public function secondsToTime($secs)
     {
+        $mins = $secs / 60;
         $mins = round($mins);
         if ($mins < 60) {
             $mins = $mins.' minuten';
