@@ -32,6 +32,27 @@ class MatchController extends Controller
         return view('match/empty', $data);
     }
 
+    public function matchBasedOnLocation($request)
+    {
+        $internships = \App\Internship::latest()->with('company')->take(10)->get();
+        $origin = $this->getGeoCode($request->address);
+        if (!isset($request->transport_method)) {
+            $request->transport_method = 'driving';
+        }
+        foreach ($internships as $internship) {
+            $destination = $this->getGeoCode($internship->address);
+            $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
+        }
+        foreach ($internships as $internship) {
+            $internship->user = $internship->company->user;
+        }
+        $internships = $internships->sortBy('distance');
+        $data['internships'] = $internships;
+        $data['request'] = $request;
+
+        return view('match/location', $data);
+    }
+
     public function matchStudentWithCompanies($userSurvey, $request)
     {
         //Get survey of student
@@ -62,7 +83,7 @@ class MatchController extends Controller
                         $destination = $this->getGeoCode($internship->address);
                         $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
                     }
-                    $companySurvey->internships = $companySurvey->internships->sortByDesc('distance');
+                    $companySurvey->internships = $companySurvey->internships->sortBy('distance');
                 }
             } else {
                 $data['error'] = $origin['error'];
@@ -124,6 +145,8 @@ class MatchController extends Controller
         if (isset($json['trips'][0])) {
             $result['distance'] = $this->metersToKm($json['trips'][0]['distance']);
             $result['duration'] = $this->secondsToTime($json['trips'][0]['duration']);
+            $result['raw_duration'] = $json['trips'][0]['duration'];
+            $result['raw_distance'] = $json['trips'][0]['distance'];
 
             return $result;
         }
