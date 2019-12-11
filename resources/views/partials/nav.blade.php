@@ -28,7 +28,7 @@
                         @if(Auth::user())
                             @if(Auth::user()->type == "student")
                                 <li><a href="">Bedrijven</a></li>
-                                <li><a href="{{ action('MatchController@matchStudentWithCompanies') }}">Stages op maat</a></li>
+                                <li><a href="/match">Stages op maat</a></li>
                             @elseif(Auth::user()->type == "company")
                                 <li><a href="">Studenten</a></li>
                             @endif

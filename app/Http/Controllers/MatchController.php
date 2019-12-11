@@ -8,13 +8,33 @@ class MatchController extends Controller
 {
     private $token = 'pk.eyJ1IjoibW9ycm9jb2RlcyIsImEiOiJjazNyZm16b2EwOW94M2hwczlsNmJ4Nm45In0.-sQ-jrWzHe90UCnAw4ZSLA';
 
-    public function matchStudentWithCompanies(Request $request)
+    public function show(Request $request)
     {
-        if (session('id') == null) {
-            return view('entry/login');
-        }
-        //Get survey of student
         $userSurvey = \App\StudentSurvey::where('user_id', session('id'))->first();
+        if (session('id') != null && !empty($userSurvey)) {
+            return $this->matchStudentWithCompanies($userSurvey, $request);
+        }
+        if ($request->address != null) {
+            return $this->matchBasedOnLocation($request);
+        } else {
+            return $this->showRecent();
+        }
+    }
+
+    public function showRecent()
+    {
+        $internships = \App\Internship::latest()->with('company')->take(8)->get();
+        foreach ($internships as $internship) {
+            $internship->user = $internship->company->user;
+        }
+        $data['internships'] = $internships;
+
+        return view('match/empty', $data);
+    }
+
+    public function matchStudentWithCompanies($userSurvey, $request)
+    {
+        //Get survey of student
         //Get surveys of companies with similar results
         $vibe = $userSurvey->vibe;
         $size = $userSurvey->size;
@@ -78,18 +98,6 @@ class MatchController extends Controller
 
         return $companySurveys;
     }
-
-    // public function showGeoCode()
-    // {
-    //     $address = 'Gladioolstraat 5';
-    //     $p1 = $this->getGeoCode($address);
-    //     $data['p1'] = $p1;
-    //     $p2 = $this->getGeoCode('Nieuwstraat Geel');
-    //     $data['p2'] = $p2;
-    //     $data['distance'] = $this->getDistance($p1, $p2, 'cycling');
-
-    //     return dd($data);
-    // }
 
     public function getGeoCode($address)
     {
