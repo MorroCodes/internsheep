@@ -30,16 +30,22 @@ class HomeController extends Controller
 
     public function internshipDetail($internship)
     {
-        $data['internship'] = \App\Internship::where('id', $internship)->first();
-        // dd($data['internship']);
+        $internship = \App\Internship::where('id', $internship)->with('company')->first();
+        $company = $internship->company;
+        $user = $company->user;
+        $others_by_company = \App\Internship::where('company_id', $company->id)->where('id', '!=', $internship->id)->take(3)->get();
 
+        $data['internship'] = $internship;
+        $data['company'] = $company;
+        $data['others_by_company'] = $others_by_company;
+        $data['user'] = $user;
         $mid = 0;
         $count = 0;
         foreach ($data['internship']['ratings'] as $r) {
             $mid += $r['rating'];
-            $count++;
+            ++$count;
         }
-        if($mid !== 0){
+        if ($mid !== 0) {
             $mid = $mid / $count;
         }
 
@@ -61,16 +67,14 @@ class HomeController extends Controller
             $rating->student_id = $student_id;
             $rating->internship_id = $internship_id;
             $rating->save();
-        }else{
+        } else {
             $row->rating = $rate;
             $row->save();
         }
 
         return response()->json([
-            'success' => $internship_id
+            'success' => $internship_id,
         ]);
-
-
     }
 
     public function redirect()
