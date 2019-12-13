@@ -23,7 +23,10 @@
                 </div>
 
                 <div class="link-redirect-container">
-                    <a href="/signup" class="link-redirect">Heb je nog geen profiel? Registreer hier.</a>
+                    <!-- <a href="/signup" class="link-redirect">Heb je nog geen profiel? Registreer hier.</a> -->
+                    <span>Heb je nog geen profiel?</span><br>
+                    <a href="/student_signup" class="link-redirect">Registreer als student</a> OF 
+                          <a href="/company_signup" class="link-redirect">Registreer als bedrijf</a>
                 </div>
 
                 <div class="form-group btn-container">
