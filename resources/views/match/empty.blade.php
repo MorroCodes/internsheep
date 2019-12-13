@@ -7,7 +7,9 @@
     @endif
     <form action="" method="GET">
         <div class="form-group">
-            <label for="location_filter">Zoek op locatie:</label>
+            <label for="search_term">Zoekterm</label>
+            <input class="form-control" type="search" name="searchFor" id="search_term" value="">
+            <label for="location_filter">Locatie</label>
             <input class="form-control" type="search" name="address" id="location_filter" value="">
             <label for="tranports_method">Ik ga</label>
             <select class="form-control" name="transport_method" id="transport_method">
@@ -17,6 +19,7 @@
             </select>
             <button type="submit" class="btn btn-primary">Zoek op locatie</button>
         </div>
+        {{ csrf_field() }}
     </form>
     <div class="d-flex flex-wrap">
         @foreach ($internships as $internship)

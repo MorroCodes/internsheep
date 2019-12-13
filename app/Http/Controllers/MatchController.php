@@ -14,6 +14,9 @@ class MatchController extends Controller
         if (session('id') != null && !empty($userSurvey)) {
             return $this->matchStudentWithCompanies($userSurvey, $request);
         }
+        if ($request->searchFor != null) {
+            return $this->searchByQuery($request);
+        }
         if ($request->address != null) {
             return $this->matchBasedOnLocation($request);
         } else {
@@ -51,6 +54,27 @@ class MatchController extends Controller
         $data['request'] = $request;
 
         return view('match/location', $data);
+    }
+
+    public function searchByQuery($request)
+    {
+        $query = $request->searchFor;
+        $internships = \App\Internship::select('internships.*', 'companies.*')
+                                        ->join('companies', 'internships.company_id', '=', 'companies.id')
+                                        ->where('title', 'like', '%'.$query.'%')
+                                        ->orWhere('catch_phrase', 'like', '%'.$query.'%')
+                                        ->orWhere('description', 'like', '%'.$query.'%')
+                                        ->orWhere('aanbod', 'like', '%'.$query.'%')
+                                        ->orWhere('companies.company_name', 'like', '%'.$query.'%')
+                                        ->orWhere('companies.company_bio', 'like', '%'.$query.'%')
+                                        ->with('company')
+                                        ->get();
+        foreach ($internships as $internship) {
+            $internship->user = $internship->company->user;
+        }
+        $data['internships'] = $internships;
+
+        return view('match/empty', $data);
     }
 
     public function matchStudentWithCompanies($userSurvey, $request)
