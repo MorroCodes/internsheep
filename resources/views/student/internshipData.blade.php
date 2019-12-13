@@ -42,8 +42,22 @@
 </div>
 <button type="submit" class="btn btn-primary">Verstuur</button>
 {{csrf_field()}}
-
 </form>
+<h5 id="space">Meer vacatures van {{$company->company_name}}</h5>
+                    <div class="d-flex flex-wrap">
+                        @foreach ($others_by_company as $suggestion)
+                        <div class="col-sm-4" id="card-internship">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title">{{$suggestion->title}}</h6>
+                                    <p>{{ Str::limit($suggestion->description, 50) }}</p>
+                                    <a href="/internship/{{$suggestion->id}}">Bekijk deze
+                                        vacature</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
           </div>
 
           <div class="col-lg-4">
@@ -52,6 +66,7 @@
             <div class="p-4 mb-3 bg-white">
             <h3>Over {{$company->company_name}}</h3>
             <p>{{$company->company_bio}}</p>
+            <img src="../{{$user->profile_image}}" alt="{{$internship->title}}" class="card-img-student" width="150">
             <form action="{{route('rating')}}" method="post">
                         <div class="rate">
                             <input @if ($internship->mid <= "5" && $internship->mid > "4")
