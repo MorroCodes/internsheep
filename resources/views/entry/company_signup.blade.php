@@ -32,7 +32,7 @@
                 <input type="email" name="email" class="form-control" value="{{$user['email'] ?? ''}}">
             </div>
 
-            
+
             <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                 <label for="company_name">Bedrijfsnaam</label>
@@ -43,11 +43,11 @@
             <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                 <label for="company_bio">Korte bedrijfsomschrijving</label>
-                <input type="text" name="company_bio" class="form-control" value="{{$user['company_bio'] ?? ''}}">
+                <textarea name="company_bio" class="form-control" cols="8">{{$user['company_bio'] ?? ''}}</textarea>
                 </div>
             </div>
 
-            
+
             <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
                 <label for="password">Wachtwoord (min. 7 karakters)</label>
