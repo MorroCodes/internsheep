@@ -30,6 +30,10 @@ class HomeController extends Controller
 
     public function internshipDetail($internship)
     {
+        $type = \Auth::user()->type;
+        if ($type != 'student') {
+            return redirect('/yourcompany');
+        }
         $internship = \App\Internship::where('id', $internship)->with('company')->first();
         $user_id = $internship->company_id;
         $user = \App\User::where('id', $user_id)->first();
