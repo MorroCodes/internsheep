@@ -49539,8 +49539,16 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
+__webpack_require__(/*! D:\laravelapp\internsheep\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laravelapp\internsheep\resources\sass\app.scss */"./resources/sass/app.scss");
+||||||| merged common ancestors
+__webpack_require__(/*! /Users/anneliesbellon/Desktop/internsheep/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/anneliesbellon/Desktop/internsheep/resources/sass/app.scss */"./resources/sass/app.scss");
+=======
 __webpack_require__(/*! /Users/dielan/Desktop/internsheep/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /Users/dielan/Desktop/internsheep/resources/sass/app.scss */"./resources/sass/app.scss");
+>>>>>>> 53edda167c55fcd7edfddac9ac9ddfb42985d636
 
 
 /***/ })

@@ -6,4 +6,5 @@
     <h3>{{ $user->firstname }} {{ $user->lastname }}</h3>
     <p>{{ $user->description }}</p>
 </div>
+
 @endsection
