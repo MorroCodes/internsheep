@@ -33,44 +33,56 @@ class HomeController extends Controller
         $data['internship'] = \App\Internship::where('id', $internship)->first();
         // dd($data['internship']);
 
-        $mid = 0;
-        $count = 0;
-        foreach ($data['internship']['ratings'] as $r) {
-            $mid += $r['rating'];
-            $count++;
-        }
-        if($mid !== 0){
-            $mid = $mid / $count;
-        }
+        $mid = $this->getAverage($data['internship']['ratings']);
 
         $data['internship']['mid'] = $mid;
 
         return view('student/internshipData', $data);
     }
 
+    public function getAverage($rating){
+        $mid = 0;
+        $count = 0;
+        foreach ($rating as $r) {
+            $mid += $r['rating'];
+            $count++;
+        }
+        if($mid !== 0){
+            return $mid = $mid / $count;
+        }else{
+            return $mid;
+        }
+    }
+
     public function internshipRating(Request $request)
     {
-        $student_id = \Auth::user()->id;
         $rate = $request->input('rating');
+        $student_id = \Auth::user()->id;
         $internship_id = $request->input('internship');
 
         $row = \App\Rating::where('student_id', $student_id)->where('internship_id', $internship_id)->first();
         if ($row === null) {
-            $rating = new \App\Rating();
-            $rating->rating = $rate;
-            $rating->student_id = $student_id;
-            $rating->internship_id = $internship_id;
-            $rating->save();
+            $this->insertRating($rate, $student_id, $internship_id);
         }else{
-            $row->rating = $rate;
-            $row->save();
+            $this->updateRating($row, $rate);
         }
 
         return response()->json([
             'success' => $internship_id
         ]);
+    }
 
+    public function insertRating($rate, $student_id, $internship_id){
+        $rating = new \App\Rating();
+        $rating->rating = $rate;
+        $rating->student_id = $student_id;
+        $rating->internship_id = $internship_id;
+        $rating->save();
+    }
 
+    public function updateRating($row, $rate){
+        $row->rating = $rate;
+        $row->save();
     }
 
     public function redirect()
