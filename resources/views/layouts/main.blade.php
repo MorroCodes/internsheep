@@ -16,5 +16,6 @@
 </html>
 <script src="{{ URL::asset('js/responsive-menu.js') }}"></script>
 <script src="{{asset('js/internshipFormPlaceholders.js')}}"></script>
+<script src="{{asset('js/surveyResults.js')}}"></script>
 
 </html>

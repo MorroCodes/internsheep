@@ -1,7 +1,7 @@
 <div>
     <h2>Survey antwoorden</h2>
     <div>
-        <p>Werksfeer</p>
+        <p class="survey-question">Werksfeer</p>
         <div class="survey-result-container-flex">
             <div class="survey-label">informeel</div>
             <div class="survey-result-container vibe-check" data-score="{{$vibe}}">
@@ -11,7 +11,7 @@
     </div>
             
     <div>
-        <p>Bedrijfsgrootte</p>
+        <p class="survey-question">Bedrijfsgrootte</p>
         <div class="survey-result-container-flex">
             <div class="survey-label">Kleine KMO</div>
             <div class="survey-result-container size-check" data-score="{{$size}}">
@@ -22,7 +22,7 @@
         
 
     <div>
-        <p>Omschrijving</p>
+        <p class="survey-question">Omschrijving</p>
         <div class="survey-result-container-flex">
             <div class="survey-label">Jong</div>
             <div class="survey-result-container age-check" data-score="{{$age}}">
@@ -32,7 +32,7 @@
     </div>
 
     <div>
-        <p>Soort stages in aanbieding</p>
+        <p class="survey-question">Soort stages in aanbieding</p>
         <div class="survey-result-container-flex">
             <div class="survey-label">Kijkstage</div>
             <div class="survey-result-container type-check" data-score="{{$type}}">
@@ -42,7 +42,7 @@
     </div>
 
     <div>
-        <p>Afstand</p>
+        <p class="survey-question">Afstand</p>
         <div class="survey-result-container-flex">
             <div class="survey-label">Dichtbij</div>
             <div class="survey-result-container transport-check" data-score="{{$transport}}">
