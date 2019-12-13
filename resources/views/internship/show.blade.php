@@ -69,7 +69,7 @@
                   </a>
 
                   <div>
-                      <button class="application-response-deny {{ ($a->response == 'denied') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->student_id}}" >Weiger</button>
+                      <button class="application-response-deny {{ ($a->response == 'denied') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}" >Weiger</button>
                       <button class="application-response-maybe {{ ($a->response == 'maybe') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}" >Misschien</button>
                       <button class="application-response-accept {{ ($a->response == 'accepted') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}">Accepteer</button>
                   </div>

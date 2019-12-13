@@ -6,6 +6,10 @@ class CompanyController extends Controller
 {
     public function show()
     {
+        $type = \Auth::user()->type;
+        if ($type == 'student') {
+            return redirect('/home');
+        }
         $id = \Auth::user()->id;
         $data['internship'] = \App\Internship::where('company_id', $id)->take(6)->get();
 
