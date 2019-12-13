@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-lg-8 mb-5">
-                <img src="../{{$user->profile_image}}" alt="{{$internship->title}}" class="card-img-top" width="200px">
+                <img src="../{{$user->profile_image}}" alt="{{$internship->title}}" class="card-img-student" width="200">
                 <div class="container">
                     <form action="{{route('rating')}}" method="post">
                         <div class="rate">
@@ -43,7 +43,7 @@
                     <p>{{$internship->description}}</p>
                 </div>
 
-                <form action="{{ action('AccountController@ApplyInternship') }}" method="post">
+                <form action="{{ action('AccountController@ApplyInternship') }}" method="post" id="fomu">
 
                     <input type="hidden" name="company" value="{{$internship->company_id}}">
                     <input type="hidden" name="internship" value="{{$internship->id}}">
@@ -56,21 +56,19 @@
                         @endslot
                         @endcomponent
                         @endif
-                        @if(Auth::user()->type == "student")
                         <label for="reason">Waarom wil je hier stage doen?</label>
                         <textarea name="reason" class="form-control" id="reason"></textarea>
                     </div>
-                        <button type="submit" class="btn btn-primary">Solliciteren</button>
-                    @endif
+                    <button type="submit" class="btn btn-primary">Solliciteren</button>
                     {{csrf_field()}}
 
                 </form>
             </div>
-            <div class="col-md-12 col-lg-8 mb-5">
-                <div class="container">
+            <div class="col-md-12 col-lg-8 mb-5" id="space">
+                <div class="container" id="card-internship">
                     <h3>Over {{$company->company_name}}</h3>
                     <p>{{$company->company_bio}}</p>
-                    <h5>Meer vacatures van {{$company->company_name}}</h5>
+                    <h5 id="space">Meer vacatures van {{$company->company_name}}</h5>
                     <div class="d-flex flex-wrap">
                         @foreach ($others_by_company as $suggestion)
                         <div class="col-sm-4">

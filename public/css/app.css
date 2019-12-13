@@ -141,6 +141,27 @@
   color: #c59b08;
 }
 
+#card-internship {
+  height: 900px;
+}
+
+#space {
+  margin-top: 70px;
+}
+
+#bg-white {
+  height: 400px;
+  background-color: white;
+}
+
+#fomu {
+  margin-bottom: 70px;
+}
+
+.ful {
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .site-navbar-wrap .align-items-center {
     -webkit-box-pack: justify;
@@ -154,6 +175,10 @@
   .site-navbar-wrap .col-10 {
     max-width: 50%;
   }
+}
+
+.profile img {
+  width: 30%;
 }
 
 body {

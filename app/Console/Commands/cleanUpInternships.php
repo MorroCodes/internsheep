@@ -37,7 +37,7 @@ class cleanUpInternships extends Command
     public function handle()
     {
         $date = new DateTime();
-        $date->modify('-8 months');
+        $date->modify('-3 months');
         $formatted = $date->format('Y-m-d H:i:s');
         $this->info('Removing records older than '.$formatted);
         $count = \App\Internship::where('updated_at', '<=', $formatted)->delete();

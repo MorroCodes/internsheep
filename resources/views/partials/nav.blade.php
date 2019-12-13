@@ -29,8 +29,6 @@
                             @if(Auth::user()->type == "student")
                                 <li><a href="">Bedrijven</a></li>
                                 <li><a href="/match">Stages op maat</a></li>
-                            @elseif(Auth::user()->type == "company")
-                                <li><a href="">Studenten</a></li>
                             @endif
                         @endif
                       <li class="has-children">
@@ -45,10 +43,10 @@
                             <ul class="dropdown arrow-top">
                                 @if(Auth::user())
                                     @if(Auth::user()->type == "student")
-                                        <li><a href="{{ action('AccountController@StudentProfile') }}">Profiel</a></li>
+                                        <li><a href="{{ action('AccountController@StudentProfile') }}">Bekijk Profiel</a></li>
                                         <li><a href="{{ action('AccountController@changeStudentData') }}">Instellingen</a></li>
                                     @elseif(Auth::user()->type == "company")
-                                        <li><a href="{{ action('CompanyController@show') }}">Profiel</a></li>
+                                        <li><a href="{{ action('CompanyController@show') }}">Bekijk Profiel</a></li>
                                         <li><a href="{{ action('AccountCompanyController@changeCompanyData') }}">Instellingen</a></li>
                                     @endif
                                 @endif

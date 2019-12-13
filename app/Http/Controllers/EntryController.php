@@ -58,6 +58,13 @@ class EntryController extends Controller
         }
 
         // check if email address is available
+        if (strlen($credentials['password']) < 7) {
+            $data['error'] = 'Je wachtwoord is te kort. Gelieve een langer wachtwoord in te geven.';
+
+            return $data;
+        }
+
+        // check if email address is available
         if ($this->checkEmailAvailability($credentials['email']) == false) {
             $data['error'] = 'Dit e-mail adres is reeds in gebruik. Probeer opnieuw.';
 

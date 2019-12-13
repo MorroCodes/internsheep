@@ -92,7 +92,13 @@ class AccountController extends Controller
         $apply->save();
 
         $data['error'] = 'Je sollicitatie is verzonden!';
-        $data['internship'] = \App\Internship::where('id', $credentials['internship'])->first();
+        $data['internship'] = \App\Internship::where('id', $credentials['internship'])->with('company')->first();
+        $data['user'] = $data['internship']['company'];
+        $data['company'] = $data['internship']['company'];
+        $others_by_company = \App\Internship::where('company_id', $data['company']->id)->where('id', '!=', $data['internship']->id)->take(3)->get();
+        $data['others_by_company'] = $others_by_company;
+        // $user = $company['company_name'];
+        // $data['user'] = $user;
 
         return view('student/internshipData', $data);
     }
