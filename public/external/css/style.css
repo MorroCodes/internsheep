@@ -53,6 +53,7 @@ a {
   opacity: 0;
   visibility: hidden; }
 
+
 .offcanvas-menu .site-wrap {
   position: absolute;
   height: 100%;
@@ -942,6 +943,9 @@ a {
     -webkit-transform-origin: top;
     -ms-transform-origin: top;
     transform-origin: top; }
+    .card-img-student{
+      width:150;
+    }
     .unit-7 .pricing-table__item-header-bg-inner:before {
       content: '';
       position: absolute;
