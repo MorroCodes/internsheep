@@ -106,11 +106,10 @@ class AccountController extends Controller
 
     public function replyToApplication(Request $request)
     {
-        $response = $request->input('response');
-        $application_id = $request->input('applicationId');
+        $response = $request->response;
+        $application_id = $request->applicationId;
 
-        $application = \App\Apply::where('id', $application_id);
-        $application->update(['response' => $response]);
+        $application = \App\Apply::where('id', $application_id)->update(['response' => $response]);
 
         return response()->json([
             'response' => $response,

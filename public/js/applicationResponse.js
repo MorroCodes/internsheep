@@ -9,7 +9,7 @@ if (applicationCards != null) {
         let container = target.parentNode;
         applicationId = target.getAttribute("data-applicationId");
         studentId = target.getAttribute("data-studentId");
-
+      
         if (e.target.matches(".application-response-deny")) {
 
             response = "denied";
@@ -66,6 +66,7 @@ function showMessagePopup(messagePopup, popupTitle, target, applicationId, stude
 }
 
 function updateApplicationStatus(response, applicationId, container) {
+   
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -73,6 +74,7 @@ function updateApplicationStatus(response, applicationId, container) {
     });
 
     $.ajax({
+       
         url: base_url + "/company/application/response",
         method: "POST",
         data: {
@@ -80,7 +82,7 @@ function updateApplicationStatus(response, applicationId, container) {
             applicationId: applicationId
         },
         success: function (data) {
-
+            alert(data['response']);
             container.innerHTML = response;
         }
     });
