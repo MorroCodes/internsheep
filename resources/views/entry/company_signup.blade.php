@@ -65,7 +65,7 @@
 
             <div class="row form-group">
                 <div class="col-md-12">
-                <a href="/signup" class="btn btn-light">Vorige</a>
+                <a href="/login" class="btn btn-light">Vorige</a>
                 <input type="submit" value="Registreer als bedrijf" class="btn btn-primary  pill px-4 py-2">
                 </div>
             </div>

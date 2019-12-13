@@ -162,6 +162,18 @@
   width: 100%;
 }
 
+.card-body-show-internship p {
+  text-align: left;
+  width: 90%;
+  margin: auto;
+}
+
+#title_vacature {
+  text-align: left;
+  width: 90%;
+  margin: auto;
+}
+
 @media (max-width: 768px) {
   .site-navbar-wrap .align-items-center {
     -webkit-box-pack: justify;
@@ -181,6 +193,23 @@
   width: 30%;
 }
 
+.entry-header {
+  text-align: center;
+}
+
+.btn-social span {
+  text-decoration: underline;
+}
+
+.signup-container-buttons {
+  display: -webkit-box;
+  display: flex;
+}
+
+.signup-container-buttons div {
+  margin: 0.5em 1em;
+}
+
 @media (min-width: 780px) {
   .signup-container {
     display: -webkit-box;
@@ -191,6 +220,60 @@
     width: 50%;
     padding: 0.5em;
   }
+}
+
+.survey-result-container-flex {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.survey-question {
+  font-weight: 600;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.form-group .survey-flex {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+}
+
+.form-group .survey-flex .survey-label:last-child {
+  text-align: right;
+}
+
+.survey-label {
+  width: 250px;
+  padding: 0.4em;
+  font-size: 0.8em;
+}
+
+.survey-result-container-flex div:nth-child(3) {
+  text-align: right;
+}
+
+.survey-result-container {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.circle {
+  width: 1em;
+  height: 1em;
+  border-radius: 1em;
+  background-color: white;
+  border: 2px solid #12396A;
+}
+
+.circle-selected {
+  background-color: #12396A;
 }
 
 body {

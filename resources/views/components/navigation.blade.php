@@ -2,7 +2,7 @@
     <nav>
         <a href="/login">Login</a>
         or
-        <a href="/signup" class="btn btn-primary">Signup</a>
+        <a href="/login" class="btn btn-primary">Signup</a>
     </nav>
 @endguest
 

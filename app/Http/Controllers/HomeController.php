@@ -31,9 +31,12 @@ class HomeController extends Controller
     public function internshipDetail($internship)
     {
         $internship = \App\Internship::where('id', $internship)->with('company')->first();
-        $company = $internship->company;
-        $user = $company->user;
-        $others_by_company = \App\Internship::where('company_id', $company->id)->where('id', '!=', $internship->id)->take(3)->get();
+        $user_id = $internship->company_id;
+        $user = \App\User::where('id', $user_id)->first();
+
+        $company = \App\Company::where('user_id', $user_id)->first();
+        // companuy_id was saved wrong, user_id was saved instead
+        $others_by_company = \App\Internship::where('company_id', $user_id)->where('id', '!=', $internship->id)->take(3)->get();
         $data['internship'] = $internship;
         $data['company'] = $company;
         $data['others_by_company'] = $others_by_company;
@@ -46,16 +49,17 @@ class HomeController extends Controller
         return view('student/internshipData', $data);
     }
 
-    public function getAverage($rating){
+    public function getAverage($rating)
+    {
         $mid = 0;
         $count = 0;
         foreach ($rating as $r) {
             $mid += $r['rating'];
-            $count++;
+            ++$count;
         }
-        if($mid !== 0){
+        if ($mid !== 0) {
             return $mid = $mid / $count;
-        }else{
+        } else {
             return $mid;
         }
     }
@@ -69,7 +73,7 @@ class HomeController extends Controller
         $row = \App\Rating::where('student_id', $student_id)->where('internship_id', $internship_id)->first();
         if ($row === null) {
             $this->insertRating($rate, $student_id, $internship_id);
-        }else{
+        } else {
             $this->updateRating($row, $rate);
         }
 
@@ -78,7 +82,8 @@ class HomeController extends Controller
         ]);
     }
 
-    public function insertRating($rate, $student_id, $internship_id){
+    public function insertRating($rate, $student_id, $internship_id)
+    {
         $rating = new \App\Rating();
         $rating->rating = $rate;
         $rating->student_id = $student_id;
@@ -86,7 +91,8 @@ class HomeController extends Controller
         $rating->save();
     }
 
-    public function updateRating($row, $rate){
+    public function updateRating($row, $rate)
+    {
         $row->rating = $rate;
         $row->save();
     }
