@@ -162,6 +162,18 @@
   width: 100%;
 }
 
+.card-body-show-internship p {
+  text-align: left;
+  width: 90%;
+  margin: auto;
+}
+
+#title_vacature {
+  text-align: left;
+  width: 90%;
+  margin: auto;
+}
+
 @media (max-width: 768px) {
   .site-navbar-wrap .align-items-center {
     -webkit-box-pack: justify;
