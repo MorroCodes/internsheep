@@ -456,25 +456,25 @@
 					left: 0;
 				}
 				&[aria-expanded="true"] {
-					&:before {
-						font-family: 'icomoon';
-						position: absolute;
-						content: "\e316";
-						transition: .3s all ease;
-						background: $primary;
-						color: $white;
-						border: 1px solid $primary;
-					}
+					// &:before {
+					// 	font-family: 'icomoon';
+					// 	position: absolute;
+					// 	content: "\e316";
+					// 	transition: .3s all ease;
+					// 	background: $primary;
+					// 	color: $white;
+					// 	border: 1px solid $primary;
+					// }
 				}
 				&[aria-expanded="false"] {
-					&:before {
-						content: "\e313";
-						color: #ccc;	
-						font-family: 'icomoon';
-						position: absolute;
+					// &:before {
+					// 	content: "\e313";
+					// 	color: #ccc;	
+					// 	font-family: 'icomoon';
+					// 	position: absolute;
 				
-						transition: .3s all ease;
-					}
+					// 	transition: .3s all ease;
+					// }
 				}
 				
 			}

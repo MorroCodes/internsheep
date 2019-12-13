@@ -53,6 +53,8 @@
                                 <li><a href="{{ action('EntryController@logout') }}">Logout</a></li>
                             </ul>
                         @else
+                          <a href="/student_signup">Registreer als student</a>
+                          <a href="/company_signup">Registreer als bedrijf</a>
                             <a href="/login"><span>Login</span></a>
                         @endif
 

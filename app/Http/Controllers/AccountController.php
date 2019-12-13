@@ -93,9 +93,10 @@ class AccountController extends Controller
 
         $data['error'] = 'Je sollicitatie is verzonden!';
         $data['internship'] = \App\Internship::where('id', $credentials['internship'])->with('company')->first();
-        $data['user'] = $data['internship']['company'];
-        $data['company'] = $data['internship']['company'];
-        $others_by_company = \App\Internship::where('company_id', $data['company']->id)->where('id', '!=', $data['internship']->id)->take(3)->get();
+        $user_id = $data['internship']->company_id;
+        $data['user'] = \App\User::where('id', $user_id)->first();
+        $data['company'] = \App\Company::where('user_id', $user_id)->first();
+        $others_by_company = \App\Internship::where('company_id', $user_id)->where('id', '!=', $data['internship']->id)->take(3)->get();
         $data['others_by_company'] = $others_by_company;
         // $user = $company['company_name'];
         // $data['user'] = $user;
@@ -105,11 +106,10 @@ class AccountController extends Controller
 
     public function replyToApplication(Request $request)
     {
-        $response = $request->input('response');
-        $application_id = $request->input('applicationId');
+        $response = $request->response;
+        $application_id = $request->applicationId;
 
-        $application = \App\Apply::where('id', $application_id);
-        $application->update(['response' => $response]);
+        $application = \App\Apply::where('id', $application_id)->update(['response' => $response]);
 
         return response()->json([
             'response' => $response,
