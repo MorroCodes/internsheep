@@ -8,13 +8,54 @@ class MatchController extends Controller
 {
     private $token = 'pk.eyJ1IjoibW9ycm9jb2RlcyIsImEiOiJjazNyZm16b2EwOW94M2hwczlsNmJ4Nm45In0.-sQ-jrWzHe90UCnAw4ZSLA';
 
-    public function matchStudentWithCompanies(Request $request)
+    public function show(Request $request)
     {
-        if (session('id') == null) {
-            return view('entry/login');
-        }
-        //Get survey of student
         $userSurvey = \App\StudentSurvey::where('user_id', session('id'))->first();
+        if (session('id') != null && !empty($userSurvey)) {
+            return $this->matchStudentWithCompanies($userSurvey, $request);
+        }
+        if ($request->address != null) {
+            return $this->matchBasedOnLocation($request);
+        } else {
+            return $this->showRecent();
+        }
+    }
+
+    public function showRecent()
+    {
+        $internships = \App\Internship::latest()->with('company')->take(8)->get();
+        foreach ($internships as $internship) {
+            $internship->user = $internship->company->user;
+        }
+        $data['internships'] = $internships;
+
+        return view('match/empty', $data);
+    }
+
+    public function matchBasedOnLocation($request)
+    {
+        $internships = \App\Internship::latest()->with('company')->take(10)->get();
+        $origin = $this->getGeoCode($request->address);
+        if (!isset($request->transport_method)) {
+            $request->transport_method = 'driving';
+        }
+        foreach ($internships as $internship) {
+            $destination = $this->getGeoCode($internship->address);
+            $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
+        }
+        foreach ($internships as $internship) {
+            $internship->user = $internship->company->user;
+        }
+        $internships = $internships->sortBy('distance');
+        $data['internships'] = $internships;
+        $data['request'] = $request;
+
+        return view('match/location', $data);
+    }
+
+    public function matchStudentWithCompanies($userSurvey, $request)
+    {
+        //Get survey of student
         //Get surveys of companies with similar results
         $vibe = $userSurvey->vibe;
         $size = $userSurvey->size;
@@ -30,9 +71,9 @@ class MatchController extends Controller
         $percentages = $this->countPercentages($userSurvey, $companySurveys);
         $companySurveys = $this->addMatchPercentages($companySurveys, $percentages);
         $companySurveys = $companySurveys->sortByDesc('match');
-        $data['request'] = $request->address;
+        $data['request'] = $request;
         if ($request->address != null) {
-            if ($request->tranport_method == null) {
+            if ($request->transport_method == null) {
                 $request->transport_method = 'driving';
             }
             $origin = $this->getGeoCode($request->address);
@@ -42,6 +83,7 @@ class MatchController extends Controller
                         $destination = $this->getGeoCode($internship->address);
                         $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
                     }
+                    $companySurvey->internships = $companySurvey->internships->sortBy('distance');
                 }
             } else {
                 $data['error'] = $origin['error'];
@@ -78,18 +120,6 @@ class MatchController extends Controller
         return $companySurveys;
     }
 
-    // public function showGeoCode()
-    // {
-    //     $address = 'Gladioolstraat 5';
-    //     $p1 = $this->getGeoCode($address);
-    //     $data['p1'] = $p1;
-    //     $p2 = $this->getGeoCode('Nieuwstraat Geel');
-    //     $data['p2'] = $p2;
-    //     $data['distance'] = $this->getDistance($p1, $p2, 'cycling');
-
-    //     return dd($data);
-    // }
-
     public function getGeoCode($address)
     {
         $address = rawurlencode($address);
@@ -109,12 +139,14 @@ class MatchController extends Controller
 
     public function getDistance($p1, $p2, $transport_method)
     {
-        $url = 'https://api.mapbox.com/optimized-trips/v1/mapbox/'.$transport_method.'/'.$p1.';'.$p2.'?access_token='.$this->token;
+        $url = 'https://api.mapbox.com/optimized-trips/v1/mapbox/'.$transport_method.'/'.$p1.';'.$p2.'?roundtrip=false&source=first&destination=last&access_token='.$this->token;
         $data = file_get_contents($url);
         $json = json_decode($data, true);
         if (isset($json['trips'][0])) {
             $result['distance'] = $this->metersToKm($json['trips'][0]['distance']);
-            $result['duration'] = $this->minutesToTime($json['trips'][0]['duration']);
+            $result['duration'] = $this->secondsToTime($json['trips'][0]['duration']);
+            $result['raw_duration'] = $json['trips'][0]['duration'];
+            $result['raw_distance'] = $json['trips'][0]['distance'];
 
             return $result;
         }
@@ -122,8 +154,9 @@ class MatchController extends Controller
         return null;
     }
 
-    public function minutesToTime($mins)
+    public function secondsToTime($secs)
     {
+        $mins = $secs / 60;
         $mins = round($mins);
         if ($mins < 60) {
             $mins = $mins.' minuten';

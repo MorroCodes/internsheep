@@ -18,15 +18,11 @@
             <button type="submit" class="btn btn-primary">Zoek op locatie</button>
         </div>
     </form>
-    @foreach ($companySurveys as $companySurvey)
-    @if (!empty($companySurvey->internships->first()) && $companySurvey->company != null)
-    <h2>{{$companySurvey->company->first()->company_name}}</h2>
-    <h5 class="card-text">{{$companySurvey->match}}% overeenkomst</h5>
     <div class="d-flex flex-wrap">
-        @foreach ($companySurvey->internships as $internship)
+        @foreach ($internships as $internship)
         <div class="col-sm-4">
             <div class="card">
-                <img src="{{$companySurvey->user->first()->profile_image}}" alt="{{$internship->title}}"
+                <img src="{{$internship->user->first()->profile_image}}" alt="{{$internship->title}}"
                     class="card-img-top" width="200px">
                 <div class="card-body">
                     <h2 class="card-title">{{$internship->title}}</h2>
@@ -41,8 +37,5 @@
         </div>
         @endforeach
     </div>
-    @endif
-
-    @endforeach
 </div>
 @endsection
