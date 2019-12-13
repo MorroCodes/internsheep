@@ -65,7 +65,7 @@
                 <a href="/login">Heb je al een profiel? Meld hier aan.</a>
 
                 <div class="form-group form-group-buttons">
-                    <a href="/signup" class="btn btn-light">Vorige</a>
+                    <a href="/login" class="btn btn-light">Vorige</a>
                     <input type="submit" value="Registreer als student" class="btn btn-primary">
                 </div>
 

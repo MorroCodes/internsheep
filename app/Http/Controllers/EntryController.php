@@ -14,7 +14,8 @@ class EntryController extends Controller
 
     public function signup()
     {
-        return view('entry/signup');
+        return redirect('/login');
+        // return view('entry/signup');
     }
 
     public function studentSignup()
