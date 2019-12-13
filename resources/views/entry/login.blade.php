@@ -1,6 +1,7 @@
 @extends('layouts/main')
 @section('content')
 <div class="site-section bg-light">
+ 
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-8 mb-5">
@@ -25,8 +26,8 @@
                 <div class="link-redirect-container">
                     <!-- <a href="/signup" class="link-redirect">Heb je nog geen profiel? Registreer hier.</a> -->
                     <span>Heb je nog geen profiel?</span><br>
-                    <a href="/student_signup" class="link-redirect">Registreer als student</a> OF 
-                          <a href="/company_signup" class="link-redirect">Registreer als bedrijf</a>
+                    <a href="/student_signup" class="link-redirect">Registreer als student</a> of 
+                          <a href="/company_signup" class="link-redirect">registreer als bedrijf</a>
                 </div>
 
                 <div class="form-group btn-container">
