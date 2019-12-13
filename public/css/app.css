@@ -177,6 +177,10 @@
   }
 }
 
+.profile img {
+  width: 30%;
+}
+
 body {
   font-family: "Work Sans", sans-serif;
   color: #12396A;
