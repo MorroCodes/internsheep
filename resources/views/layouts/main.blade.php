@@ -14,8 +14,11 @@
 
 </body>
 </html>
+<script>let base_url = window.location.origin;</script>
 <script src="{{ URL::asset('js/responsive-menu.js') }}"></script>
 <script src="{{asset('js/internshipFormPlaceholders.js')}}"></script>
 <script src="{{asset('js/surveyResults.js')}}"></script>
+<script src="{{asset('js/applicationResponse.js')}}"></script>
+
 
 </html>
