@@ -82,7 +82,7 @@ function updateApplicationStatus(response, applicationId, container) {
             applicationId: applicationId
         },
         success: function (data) {
-            alert(data['response']);
+      
             container.innerHTML = response;
         }
     });
