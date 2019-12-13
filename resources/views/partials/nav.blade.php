@@ -45,7 +45,7 @@
                             <ul class="dropdown arrow-top">
                                 @if(Auth::user())
                                     @if(Auth::user()->type == "student")
-                                        <li><a href="{{ action('AccountController@StudentProfile') }}">Profiel</a></li>
+                                        <li><a href="{{ action('AccountController@StudentProfile') }}">Bekijk Profiel</a></li>
                                         <li><a href="{{ action('AccountController@changeStudentData') }}">Instellingen</a></li>
                                     @elseif(Auth::user()->type == "company")
                                         <li><a href="{{ action('CompanyController@show') }}">Profiel</a></li>
