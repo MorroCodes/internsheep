@@ -1,6 +1,7 @@
 @extends('layouts/main')
 @section('content')
 <div class="site-section bg-light">
+{{dd($campaign)}}
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-8 mb-5">
