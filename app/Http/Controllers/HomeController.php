@@ -22,6 +22,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $type = \Auth::user()->type;
+        if ($type != 'student') {
+            return redirect('/yourcompany');
+        }
         $data['internship'] = \App\Internship::orderBy('id', 'desc')->take(6)->get();
         $companies = Company::limit(6)->get();
         // dd(\App\Internship::orderBy('id', 'desc')->where('created_at', '>=', \Carbon\Carbon::today()->subWeek().' 00:00:00')->count());
