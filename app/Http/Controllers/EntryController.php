@@ -4,18 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Jobs\WelcomeEmailJob;
 use Illuminate\Http\Request;
-use DateTime;
 
 class EntryController extends Controller
 {
     public function login()
     {
-        $date = new DateTime();
-        $date->modify('-7 days');
-        $formatted = $date->format('Y-m-d H:i:s');
-        $data['campaign'] = \App\Campaign::where([['user_id', '1'], ['created_at', '>=', $formatted]])->latest()->first();
-
-        return view('entry/login', $data);
+        return view('entry/login');
     }
 
     public function signup()
