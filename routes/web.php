@@ -56,7 +56,7 @@ Route::get('/conversations/{id}', 'MessageController@private')->name('privateCon
 Route::post('/conversations/{id}', 'MessageController@sendMessage')->name('sendMessage');
 
 //edit vacature
-Route::get('/vacature', 'VacatureController@index');
+// Route::get('/vacature', 'VacatureController@index');
 Route::get('/vacature1/create', 'VacatureController@create')->name('internship.create');
 Route::post('/vacature1/create', 'VacatureController@store')->name('internship.store');
 Route::get('/vacature/{id}/edit', 'VacatureController@edit')->name('internship.edit');
