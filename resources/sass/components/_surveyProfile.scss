@@ -9,6 +9,15 @@
     margin-bottom: 0.5em;
 }
 
+.form-group .survey-flex{
+    width: 100%;
+    display: flex;
+}
+
+.form-group .survey-flex .survey-label:last-child{
+    text-align: right;
+}
+
 .survey-label{
     width: 250px;
     padding: 0.4em;

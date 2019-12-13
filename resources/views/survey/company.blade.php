@@ -17,7 +17,7 @@
                                 <label for="vibe">Welk type werksfeer leeft er op de werkvloer?</label>
                                 <div class="survey-flex">
                                 <div class="survey-label">informeel</div>
-                                    <div class="survey-result-container vibe-check">
+                                    <div class="survey-result-container">
                                         <input type="radio" name="vibe" value="1" {{ ($survey != null && $survey->vibe == 1) ? "checked" : "" }}>
                                         <input type="radio" name="vibe" value="2" {{ ($survey != null && $survey->vibe == 2) ? "checked" : "" }}>
                                         <input type="radio" name="vibe" value="3" {{ ($survey != null && $survey->vibe == 3) ? "checked" : "" }}>
@@ -32,7 +32,7 @@
                                 <label for="size">Hoe zou je de bedrijfsgrootte omschrijven?</label>
                                 <div class="survey-flex">
                                 <div class="survey-label">Klein (KMO)</div>
-                                    <div class="survey-result-container vibe-check">
+                                    <div class="survey-result-container">
                                         <input type="radio" name="size" value="1" {{ ($survey != null && $survey->size == 1) ? "checked" : "" }}>
                                         <input type="radio" name="size" value="2" {{ ($survey != null && $survey->size == 2) ? "checked" : "" }}>
                                         <input type="radio" name="size" value="3" {{ ($survey != null && $survey->size == 3) ? "checked" : "" }}>
@@ -47,7 +47,7 @@
                             <label for="age">Hoe zou je jouw bedrijf beschrijven?</label>
                                 <div class="survey-flex">
                                 <div class="survey-label">Jong</div>
-                                    <div class="survey-result-container vibe-check">
+                                    <div class="survey-result-container">
                                         <input type="radio" name="age" value="1" {{ ($survey != null && $survey->age == 1) ? "checked" : "" }}>
                                         <input type="radio" name="age" value="2" {{ ($survey != null && $survey->age == 2) ? "checked" : "" }}>
                                         <input type="radio" name="age" value="3" {{ ($survey != null && $survey->age == 3) ? "checked" : "" }}>
@@ -62,7 +62,7 @@
                                 <label for="type">Welke stages bied je aan?</label>
                                 <div class="survey-flex">
                                 <div class="survey-label">Kijkstage</div>
-                                    <div class="survey-result-container vibe-check">
+                                    <div class="survey-result-container">
                                         <input type="radio" name="type" value="1" {{ ($survey != null && $survey->type == 1) ? "checked" : "" }}>
                                         <input type="radio" name="type" value="2" {{ ($survey != null && $survey->type == 2) ? "checked" : "" }}>
                                         <input type="radio" name="type" value="3" {{ ($survey != null && $survey->type == 3) ? "checked" : "" }}>
@@ -78,7 +78,7 @@
 
                                 <div class="survey-flex">
                                 <div class="survey-label">Makkelijk bereikbaar</div>
-                                    <div class="survey-result-container vibe-check">
+                                    <div class="survey-result-container">
                                         <input type="radio" name="transport" value="1" {{ ($survey != null && $survey->transport == 1) ? "checked" : "" }}>
                                         <input type="radio" name="transport" value="2" {{ ($survey != null && $survey->transport == 2) ? "checked" : "" }}>
                                         <input type="radio" name="transport" value="3" {{ ($survey != null && $survey->transport == 3) ? "checked" : "" }}>

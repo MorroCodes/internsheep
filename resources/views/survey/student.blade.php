@@ -20,7 +20,7 @@
                                 <label for="vibe">Welk type werksfeer heeft jouw voorkeur?</label>
                                 <div class="survey-flex">
                                 <div class="survey-label">informeel</div>
-                                    <div class="survey-result-container vibe-check">
+                                    <div class="survey-result-container">
                                         <input type="radio" name="vibe" value="1" {{ ($survey != null && $survey->vibe == 1) ? "checked" : "" }}>
                                         <input type="radio" name="vibe" value="2" {{ ($survey != null && $survey->vibe == 2) ? "checked" : "" }}>
                                         <input type="radio" name="vibe" value="3" {{ ($survey != null && $survey->vibe == 3) ? "checked" : "" }}>
@@ -35,7 +35,7 @@
                                 <label for="size">Welke bedrijfsgrootte krijgt jouw voorkeur?</label>
                                 <div class="survey-flex">
                                 <div class="survey-label">Klein (KMO)</div>
-                                    <div class="survey-result-container vibe-check">
+                                    <div class="survey-result-container">
                                         <input type="radio" name="size" value="1" {{ ($survey != null && $survey->size == 1) ? "checked" : "" }}>
                                         <input type="radio" name="size" value="2" {{ ($survey != null && $survey->size == 2) ? "checked" : "" }}>
                                         <input type="radio" name="size" value="3" {{ ($survey != null && $survey->size == 3) ? "checked" : "" }}>
@@ -50,7 +50,7 @@
                             <label for="age">Wat voor bedrijf zoek je?</label>
                                 <div class="survey-flex">
                                 <div class="survey-label">Jong</div>
-                                    <div class="survey-result-container vibe-check">
+                                    <div class="survey-result-container">
                                         <input type="radio" name="age" value="1" {{ ($survey != null && $survey->age == 1) ? "checked" : "" }}>
                                         <input type="radio" name="age" value="2" {{ ($survey != null && $survey->age == 2) ? "checked" : "" }}>
                                         <input type="radio" name="age" value="3" {{ ($survey != null && $survey->age == 3) ? "checked" : "" }}>
@@ -65,7 +65,7 @@
                             <label for="type">Wat voor stage zoek je?</label>
                                 <div class="survey-flex">
                                 <div class="survey-label">Kijkstage</div>
-                                    <div class="survey-result-container vibe-check">
+                                    <div class="survey-result-container">
                                         <input type="radio" name="type" value="1" {{ ($survey != null && $survey->type == 1) ? "checked" : "" }}>
                                         <input type="radio" name="type" value="2" {{ ($survey != null && $survey->type == 2) ? "checked" : "" }}>
                                         <input type="radio" name="type" value="3" {{ ($survey != null && $survey->type == 3) ? "checked" : "" }}>
@@ -81,7 +81,7 @@
 
                                 <div class="survey-flex">
                                 <div class="survey-label">In de buurt (&lt; 10km)</div>
-                                    <div class="survey-result-container vibe-check">
+                                    <div class="survey-result-container">
                                         <input type="radio" name="distance" value="1" {{ ($survey != null && $survey->distance == 1) ? "checked" : "" }}>
                                         <input type="radio" name="distance" value="2" {{ ($survey != null && $survey->distance == 2) ? "checked" : "" }}>
                                         <input type="radio" name="distance" value="3" {{ ($survey != null && $survey->distance == 3) ? "checked" : "" }}>
