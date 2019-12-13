@@ -56,10 +56,12 @@
                         @endslot
                         @endcomponent
                         @endif
+                        @if(Auth::user()->type == "student")
                         <label for="reason">Waarom wil je hier stage doen?</label>
                         <textarea name="reason" class="form-control" id="reason"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Solliciteren</button>
+                        <button type="submit" class="btn btn-primary">Solliciteren</button>
+                    @endif
                     {{csrf_field()}}
 
                 </form>
