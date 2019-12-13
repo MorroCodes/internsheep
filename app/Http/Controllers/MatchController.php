@@ -10,12 +10,12 @@ class MatchController extends Controller
 
     public function show(Request $request)
     {
+        if ($request->searchFor != null) {
+            return $this->searchByQuery($request);
+        }
         $userSurvey = \App\StudentSurvey::where('user_id', session('id'))->first();
         if (session('id') != null && !empty($userSurvey)) {
             return $this->matchStudentWithCompanies($userSurvey, $request);
-        }
-        if ($request->searchFor != null) {
-            return $this->searchByQuery($request);
         }
         if ($request->address != null) {
             return $this->matchBasedOnLocation($request);
@@ -69,10 +69,26 @@ class MatchController extends Controller
                                         ->orWhere('companies.company_bio', 'like', '%'.$query.'%')
                                         ->with('company')
                                         ->get();
+        if (isset($request->address)) {
+            $origin = $this->getGeoCode($request->address);
+            if (!isset($request->transport_method)) {
+                $request->transport_method = 'driving';
+            }
+            foreach ($internships as $internship) {
+                $destination = $this->getGeoCode($internship->address);
+                $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
+            }
+        }
+
         foreach ($internships as $internship) {
             $internship->user = $internship->company->user;
         }
+
         $data['internships'] = $internships;
+        $data['request'] = $request;
+        if (!empty($request->address)) {
+            return view('match/location', $data);
+        }
 
         return view('match/empty', $data);
     }
