@@ -6,6 +6,14 @@
     text-decoration: underline;
 }
 
+.signup-container-buttons{
+    display: flex;
+}
+
+.signup-container-buttons div{
+    margin: 0.5em 1em;
+}
+
 
 @media(min-width: 780px){
     .signup-container{
