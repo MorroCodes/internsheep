@@ -29,8 +29,6 @@
                             @if(Auth::user()->type == "student")
                                 <li><a href="">Bedrijven</a></li>
                                 <li><a href="/match">Stages op maat</a></li>
-                            @elseif(Auth::user()->type == "company")
-                                <li><a href="">Studenten</a></li>
                             @endif
                         @endif
                       <li class="has-children">
