@@ -57,10 +57,12 @@ class MessageController extends Controller
             $data['conversations'] = $this->getStudentConversations();
         }
 
-        if ($data['conversations']->count() == 0) {
+        if ($data['conversations']->count() == 0 && session('type') == 'company') {
             $data['applications'] = \App\Apply::where('company_id', \Auth::user()->id)->get();
 
             return view('messages/show', $data);
+        } elseif ($data['conversations']->count() == 0 && session('type') == 'student') {
+            return redirect('/home');
         }
         // there are messages, get messages of last conversation
         $latestMessage = \App\Message::where('company_id', \Auth::user()->id)->orWhere('student_id', \Auth::user()->id)->latest()->first();
