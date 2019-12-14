@@ -58,8 +58,7 @@ class MessageController extends Controller
         }
 
         if ($data['conversations']->count() == 0) {
-            // no messages => show empty state TODO!
-            return redirect('/home');
+            return view('messages/show', $data);
         }
         // there are messages, get messages of last conversation
         $latestMessage = \App\Message::where('company_id', \Auth::user()->id)->orWhere('student_id', \Auth::user()->id)->latest()->first();

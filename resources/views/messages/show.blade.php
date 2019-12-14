@@ -2,16 +2,11 @@
 @section('content')
 
 <div class="messages-page-container">
-    <div class="conversations-container">
-        @foreach($conversations as $c)
-        <div class="convo-user">
-        <a href="/conversations/{{$c->id}}"><h3>{{$c->firstname}} {{$c->lastname}}</h3></a>
-        </div>
-        @endforeach
-    </div>
-    <div class="messages-container">
-        /** show messages of conversation */
-    </div>
+
+    <p>Je hebt nog geen berichten gestuurd. Ga even kijken of er sollicitaties zijn waarop je kan reageren.</p>
+ 
+    <!-- button to applications overview page -->
+    
 </div>
 
 
