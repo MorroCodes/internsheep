@@ -59,38 +59,21 @@
           </div>
           @else
           <div class="application-cards">
-          @foreach($applications as $a)
-              <div class="application-card">
-
-              <div class="application-card-title">
-
-                  <a href="{{route('StudentProfilePublic',[$a->student_id])}}">
-                      <h4>{{$a->firstname}} {{$a->lastname}}</h4>
-                  </a>
-
-                  <div>
-                      <button class="application-response-deny {{ ($a->response == 'denied') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}" >Weiger</button>
-                      <button class="application-response-maybe {{ ($a->response == 'maybe') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}" >Misschien</button>
-                      <button class="application-response-accept {{ ($a->response == 'accepted') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}">Accepteer</button>
-                  </div>
-              </div>
-
-                  <div class="application-card-content">
-                      <h5>Bericht</h5>
-                      <p>{{$a->reason}}</p>
-                      <div>
-                          <p>E-mail: {{$a->email}}</p>
-                          <p>Verzonden op: {{$a->created_at}}</p>
-                      </div>
-                  </div>
-
-                  <div>
-                      <button class="btn btn-primary btn-message" data-applicationId="{{$a->id}}" data-applicant="{{$a->firstname}} {{$a->lastname}}" data-studentId="{{$a->student_id}}">Start een gesprek</button>
-                      <a href="/conversations" class="btn btn-primary">Toon berichten</a>
-                  </div>
-
-              </div>
-          @endforeach
+            
+            @foreach($applications as $a)
+                @component('components/applications')
+                    @slot('firstname') {{$a->firstname}} @endslot
+                    @slot('lastname') {{$a->lastname}} @endslot
+                    @slot('reason') {{$a->reason}} @endslot
+                    @slot('response') {{$a->response}} @endslot
+                    @slot('email') {{$a->email}} @endslot
+                    @slot('created_at') {{$a->created_at}} @endslot
+                    @slot('id') {{$a->id}} @endslot
+                    @slot('student_id') {{$a->student_id}} @endslot
+                @endcomponent
+            @endforeach
+        
+          
           </div>
         @endif
         </div>
