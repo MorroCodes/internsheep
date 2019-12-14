@@ -6,27 +6,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-lg-8 mb-5">
-        <div class="popup-message">
-            <form action="{{ action('MessageController@startConversation') }}" method="post">
 
-                <input type="hidden" name="company" value="{{$internship->company_id}}">
-                <input type="hidden" class="application-id" name="application" value="">
-                <input type="hidden" class="student-id" name="student" value="">
-                <input type="hidden" name="internship" value="{{$internship->id}}">
+        @component('components/message_popup')
+            @slot('internship_id') {{$internship->id}} @endslot
+            @slot('company_id') {{$internship->company_id}} @endslot
+        @endcomponent
 
-                <div class="form-group">
-                    <label for="message" class="popup-title"></label>
-                    <textarea name="message" class="form-control message-input" id="message"></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Verstuur bericht</button>
-            {{csrf_field()}}
-            </form>
-
-            <img class="close" src="{{ asset('img/close.svg') }}">
-        </div>
-
-        <div class="popup-overlay"></div>
 
         <div class="card text-center">
             <div class="card-header">
@@ -70,6 +55,8 @@
                     @slot('created_at') {{$a->created_at}} @endslot
                     @slot('id') {{$a->id}} @endslot
                     @slot('student_id') {{$a->student_id}} @endslot
+                    @slot('class') message-btn @endslot
+                    @slot('internship_id') {{$a->internships_id}} @endslot
                 @endcomponent
             @endforeach
         

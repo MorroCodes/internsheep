@@ -24,7 +24,7 @@
     </div>
 
     <div>
-        <button class="btn btn-primary btn-message" data-applicationId="{{$id}}" data-applicant="{{$firstname}} {{$lastname}}" data-studentId="{{$student_id}}">Start een gesprek</button>
+        <button class="btn btn-primary btn-message {{ $class }}" data-applicationId="{{$id}}" data-applicant="{{$firstname}} {{$lastname}}" data-studentId="{{$student_id}}" data-internshipId="{{$internship_id}}">Start een gesprek</button>
         <a href="/conversations" class="btn btn-primary">Toon berichten</a>
     </div>
 

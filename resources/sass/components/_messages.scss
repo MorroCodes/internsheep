@@ -1,16 +1,16 @@
-.messages-page-container{
+.messages-page-container {
 
     padding: 0.5em;
     max-width: 600px;
     margin: auto;
 }
 
-.messages-container{
+.messages-container {
     height: 60vh;
     overflow: scroll;
 }
 
-.message-text{
+.message-text {
     padding: 0.2em;
 }
 
@@ -22,7 +22,7 @@
 
 .other-message {
     background-color: $palegrey;
-    border-radius:0.5em 1em 1em 0.7em;
+    border-radius: 0.5em 1em 1em 0.7em;
     margin-left: 0.5em;
 }
 
@@ -34,8 +34,8 @@
 
 .contacts-dropdown {
     width: 100%;
-    text-align: right; 
-    border:1px solid $blue;
+    text-align: right;
+    border: 1px solid $blue;
     color: $blue;
     background-color: white;
     height: 2em;
@@ -44,29 +44,29 @@
 
 .message-picture {
     max-height: 30px;
-    border-radius:0.3em;
+    border-radius: 0.3em;
 }
 
-.single-message-container{
-    display:flex;
+.single-message-container {
+    display: flex;
     max-width: 100%;
     padding: 0.2em 1em;
 }
 
-.own-message-container{
+.own-message-container {
     justify-content: flex-end;
 }
 
-.other-message-container{
+.other-message-container {
     justify-content: flex-start;
 }
 
-.convo-message-input-container{
+.convo-message-input-container {
     display: flex;
     justify-content: flex-end;
 }
 
-.convo-message-input{
+.convo-message-input {
     border: 1px solid $blue;
     border-radius: 0.5em;
     width: 100%;
