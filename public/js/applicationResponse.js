@@ -87,3 +87,9 @@ function updateApplicationStatus(response, applicationId, container) {
         }
     });
 }
+var objDiv = document.querySelector(".messages-container");
+if(objDiv != null){
+    objDiv.scrollTop = objDiv.scrollHeight;
+}
+
+console.log("test");
