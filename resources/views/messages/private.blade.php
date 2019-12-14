@@ -3,11 +3,14 @@
 
 <div class="messages-page-container">
     <div class="conversations-container">
+       
+
+        <select name="forma" onchange="location = this.value;">
         @foreach($conversations as $c)
-        <div class="convo-user">
-            <a href="/conversations/{{$c->id}}"><h3>{{$c->firstname}} {{$c->lastname}}</h3></a>
-        </div>
-        @endforeach
+            <option value="/conversations/{{$c->id}}" @if($current == $c->id) selected @endif >{{$c->firstname}} {{$c->lastname}}</option>
+            @endforeach
+        </select>
+    
     </div>
     <div class="messages-container">
     @foreach($messages as $m)

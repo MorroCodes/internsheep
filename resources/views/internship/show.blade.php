@@ -85,7 +85,7 @@
                   </div>
 
                   <div>
-                      <button class="btn btn-primary btn-message" data-applicationId="{{$a->id}}" data-applicant="{{$a->firstname}} {{$a->lastname}}" data-studentId="{{$a->id}}">Start een gesprek</button>
+                      <button class="btn btn-primary btn-message" data-applicationId="{{$a->id}}" data-applicant="{{$a->firstname}} {{$a->lastname}}" data-studentId="{{$a->student_id}}">Start een gesprek</button>
                       <a href="/conversations" class="btn btn-primary">Toon berichten</a>
                   </div>
 

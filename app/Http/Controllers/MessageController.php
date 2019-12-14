@@ -28,6 +28,7 @@ class MessageController extends Controller
 
     public function private($id)
     {
+        $data['current'] = $id;
         if (session('type') == 'company') {
             $data['conversations'] = $this->getCompanyConversations();
             $data['messages'] = \App\Message::where([['conversation_id', $id], ['company_id', \Auth::user()->id]])
@@ -57,10 +58,15 @@ class MessageController extends Controller
         }
 
         if ($data['conversations']->count() == 0) {
+            // no messages => show empty state TODO!
             return redirect('/home');
         }
+        // there are messages, get messages of last conversation
+        $latestMessage = \App\Message::where('company_id', \Auth::user()->id)->orWhere('student_id', \Auth::user()->id)->latest()->first();
 
-        return view('messages/show', $data);
+        return redirect('/conversations/'.$latestMessage->conversation_id);
+
+        // return view('messages/show', $data);
     }
 
     public function getCompanyConversations()
