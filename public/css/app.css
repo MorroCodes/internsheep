@@ -71,8 +71,82 @@
   font-size: 0.7em;
 }
 
+.messages-page-container {
+  padding: 0.5em;
+  max-width: 600px;
+  margin: auto;
+}
+
+.messages-container {
+  height: 60vh;
+  overflow: scroll;
+}
+
+.message-text {
+  padding: 0.2em;
+}
+
 .own-message {
-  background-color: grey;
+  background-color: #c9ddf6;
+  border-radius: 1em 0.5em 0.7em 1em;
+  margin-right: 0.5em;
+}
+
+.other-message {
+  background-color: #e4e7e7;
+  border-radius: 0.5em 1em 1em 0.7em;
+  margin-left: 0.5em;
+}
+
+.conversations-container {
+  max-width: 500px;
+  margin-bottom: 1em;
+  margin-top: -2em;
+}
+
+.contacts-dropdown {
+  width: 100%;
+  text-align: right;
+  border: 1px solid #12396A;
+  color: #12396A;
+  background-color: white;
+  height: 2em;
+}
+
+.message-picture {
+  max-height: 30px;
+  border-radius: 0.3em;
+}
+
+.single-message-container {
+  display: -webkit-box;
+  display: flex;
+  max-width: 100%;
+  padding: 0.2em 1em;
+}
+
+.own-message-container {
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+.other-message-container {
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+}
+
+.convo-message-input-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+.convo-message-input {
+  border: 1px solid #12396A;
+  border-radius: 0.5em;
+  width: 100%;
+  max-width: 600px;
 }
 
 .internship-form-container {
