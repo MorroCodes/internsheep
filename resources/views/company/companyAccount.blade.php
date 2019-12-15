@@ -8,10 +8,8 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    @if(session('message'))
+                        <div class="alert alert-success">{{session('message')}}</div>
                     @endif
                     <form action="{{ action('AccountCompanyController@handleCompanyData2') }}" method="post">
                         <div class="form-group">

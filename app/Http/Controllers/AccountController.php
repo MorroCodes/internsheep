@@ -58,8 +58,9 @@ class AccountController extends Controller
         $user = \App\User::where('id', \Auth::user()->id)->update(['password' => \Hash::make($req['pass1'])]);
         $data['error'] = 'Je wachtwoord is ge-update!';
         $data['error-type'] = 'alert-success';
+        $data['message'] = 'Je gegevens zijn aangepast.';
 
-        return redirect('/change_student_data')->with('error', $data['error'])->with('error-type', $data['error-type']);
+        return redirect('/change_student_data')->with('error', $data['error'])->with('error-type', $data['error-type'])->with('message', $data['message']);
     }
 
     public function StudentProfile()

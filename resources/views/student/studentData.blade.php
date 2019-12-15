@@ -13,6 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if(session('message'))
+                        <div class="alert alert-success">{{session('message')}}</div>
+                    @endif
                     <form action="{{ action('AccountController@handleStudentData') }}" method="post">
                         <h2>Wijzig gegevens</h2>
                         <div class="form-group">

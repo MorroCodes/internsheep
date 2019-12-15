@@ -22,8 +22,9 @@ class AccountCompanyController extends Controller
         $id = \Auth::user()->id;
 
         $user = \App\User::where('id', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
+        $data['message'] = 'Je gegevens zijn aangepast.';
 
-        return redirect('/companyaccount');
+        return redirect('/companyaccount')->with('message', $data['message']);
     }
 
     public function handleCompanyData2(Request $request)
@@ -34,7 +35,9 @@ class AccountCompanyController extends Controller
 
         $data['user'] = \App\Company::where('user_id', $id)->update(['company_name' => $nameCompany, 'company_bio' => $description]);
 
-        return redirect('/companyaccount');
+        $data['message'] = 'Je gegevens zijn aangepast.';
+
+        return redirect('/companyaccount')->with('message', $data['message']);
     }
 
     public function handleCompanyNewPassword(Request $request)
@@ -63,7 +66,8 @@ class AccountCompanyController extends Controller
         $user = \App\User::where('id', \Auth::user()->id)->update(['password' => \Hash::make($req['pass1'])]);
         $data['error'] = 'Je wachtwoord is ge-update!';
         $data['error-type'] = 'alert-success';
+        $data['message'] = 'Je gegevens zijn aangepast.';
 
-        return redirect('/companyaccount')->with('error', $data['error'])->with('error-type', $data['error-type']);
+        return redirect('/companyaccount')->with('error', $data['error'])->with('error-type', $data['error-type'])->with('message', $data['message']);
     }
 }
