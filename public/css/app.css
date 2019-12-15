@@ -355,3 +355,7 @@ body {
   color: #12396A;
 }
 
+.hidden {
+  display: none;
+}
+

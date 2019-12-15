@@ -39,14 +39,31 @@ class AccountCompanyController extends Controller
 
     public function handleCompanyNewPassword(Request $request)
     {
-        $password1 = $request->input('password1');
-        $password2 = $request->input('password2');
-        $id = \Auth::user()->id;
+        $req = $request->only(['pass1', 'pass2', 'password', 'email']);
+        $credentials = $request->only(['email', 'password']);
 
-        if ($password1 === $password2) {
-            $user = \App\User::where('id', $id)->update(['password' => \Hash::make($request->input('password1'))]);
+        $data['surveyInfo'] = \App\CompanySurvey::where('user_id', \Auth::user()->id)->first();
+        $data['company'] = \App\Company::where('user_id', \Auth::user()->id)->first();
 
-            return redirect('/companyaccount');
+        if (\Auth::validate($credentials) == false) {
+            $data['error'] = 'Je wachtwoord is incorrect. Probeer opnieuw.';
+            $data['type'] = 'alert-danger';
+
+            return view('company/companyAccount', $data);
         }
+
+        if ($req['pass1'] !== $req['pass2']) {
+            $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
+            $data['type'] = 'alert-danger';
+
+            return view('company/companyAccount', $data);
+        }
+
+        // update pass
+        $user = \App\User::where('id', \Auth::user()->id)->update(['password' => \Hash::make($req['pass1'])]);
+        $data['error'] = 'Je wachtwoord is ge-update!';
+        $data['type'] = 'alert-success';
+
+        return view('company/companyAccount', $data);
     }
 }
