@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts.main')
 
 @section('content')
 
@@ -10,14 +10,18 @@
             <div class="p-5 bg-white">
 
               <div class="mb-4 mb-md-5 mr-5">
+              @if(session('message'))
+                    <div class="alert {{session('error-type')}}">{{session('message')}}</div>
+                @endif
                <div class="job-post-item-header d-flex align-items-center">
+               
                  <h2 class="mr-3 text-black h4">{{$internship->title}}</h2>
                </div>
                <div class="job-post-item-body d-block d-md-flex">
                  <div class="mr-3">{{$internship->address}}</div>
                </div>
               </div>          
-              <h5>Bescrijving</h5>
+              <h5>Beschrijving</h5>
               <p>{{$internship->description}}</p>
               <h5>Functie omschrijving</h5>
               <p>{{$internship->functie_omschrijving}}</p>
