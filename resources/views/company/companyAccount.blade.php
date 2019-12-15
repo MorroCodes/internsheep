@@ -15,13 +15,13 @@
                     @endif
                     <form action="{{ action('AccountCompanyController@handleCompanyData2') }}" method="post">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="company_name" class="form-control" id="company_name" value="">
+                            <label for="name">Naam bedrijf</label>
+                            <input type="text" name="company_name" class="form-control" id="company_name" value="{{$company['company_name']}}">
                         </div>
                         <div class="form-row">
                             <div class="col">
                                 <label for="firstname">Omschrijving</label>
-                                <input type="text" name="company_bio" class="form-control" id="company_bio" value="">
+                                <input type="text" name="company_bio" class="form-control" id="company_bio" value="{{$company['company_bio']}}">
                             </div>
                         </div>
                         <br>

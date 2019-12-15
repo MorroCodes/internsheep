@@ -9,6 +9,7 @@ class AccountCompanyController extends Controller
     public function changeCompanyData()
     {
         $data['surveyInfo'] = \App\CompanySurvey::where('user_id', \Auth::user()->id)->first();
+        $data['company'] = \App\Company::where('user_id', \Auth::user()->id)->first();
 
         return view('company/companyAccount', $data);
     }
@@ -32,7 +33,6 @@ class AccountCompanyController extends Controller
         $id = \Auth::user()->id;
 
         $data['user'] = \App\Company::where('user_id', $id)->update(['company_name' => $nameCompany, 'company_bio' => $description]);
-        // $data['user'] = \App\Company::where('user_id', $id)->first();
 
         return redirect('/companyaccount');
     }
