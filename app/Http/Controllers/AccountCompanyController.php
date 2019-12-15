@@ -31,10 +31,10 @@ class AccountCompanyController extends Controller
         $description = $request->input('company_bio');
         $id = \Auth::user()->id;
 
-        $data['user'] = \App\Company::where('user_id', $id);
-        $user->update(['company_name' => $nameCompany, 'company_bio' => $description]);
+        $data['user'] = \App\Company::where('user_id', $id)->update(['company_name' => $nameCompany, 'company_bio' => $description]);
+        // $data['user'] = \App\Company::where('user_id', $id)->first();
 
-        return redirect('/companyaccount', $data);
+        return redirect('/companyaccount');
     }
 
     public function handleCompanyNewPassword(Request $request)
