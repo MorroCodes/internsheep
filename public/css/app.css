@@ -359,3 +359,7 @@ body {
   display: none;
 }
 
+textarea {
+  resize: none;
+}
+
