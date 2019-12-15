@@ -11,6 +11,9 @@
                     <p>Door onderstaande vragen in te vullen kunnen wij studenten beter met jouw bedrijf matchen.</p>
     
                     <div class=survey-container>
+                        @if(!empty($error))
+                            <div class="alert alert-danger">{{$error}}</div>
+                        @endif
                         <form action="{{action('SurveyController@handleCompanySurvey')}}" method="post">
 
                             <div class="form-group">
