@@ -84,12 +84,14 @@ class AccountController extends Controller
     public function ApplyInternship(Request $request)
     {
         $credentials = $request->only(['reason', 'internship', 'company']);
-
+        // dd($credentials['internship']);
         if (in_array(null, $credentials, true)) {
             $data['error'] = 'Gelieve korte omschrijving in te vullen.';
-            $data['internship'] = \App\Internship::where('id', $credentials['internship'])->first();
+            $data['error-type'] = 'alert-danger';
 
-            return view('student/internshipData', $data);
+            return redirect('/internship/'.$credentials['internship'])->with('message', $data['error'])->with('error-type', $data['error-type']);
+
+            // return view('student/internshipData', $data);
         }
 
         $user_id = \Auth::user()->id;
@@ -115,7 +117,9 @@ class AccountController extends Controller
         // $user = $company['company_name'];
         // $data['user'] = $user;
 
-        return view('student/internshipData', $data);
+        $data['error-type'] = 'alert-success';
+
+        return redirect('/internship/'.$credentials['internship'])->with('message', $data['error'])->with('error-type', $data['error-type']);
     }
 
     public function replyToApplication(Request $request)
