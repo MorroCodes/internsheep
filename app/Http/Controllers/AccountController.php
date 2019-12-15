@@ -35,18 +35,32 @@ class AccountController extends Controller
 
     public function handleStudentNewPassword(Request $request)
     {
-        if (!empty($request->only(['password1', 'password2']))) {
-            $request->session()->flash('status', 'Gegevens zijn aangepast!');
-        }
-        $password1 = $request->input('password1');
-        $password2 = $request->input('password2');
-        $id = \Auth::user()->id;
-        if ($password1 === $password2) {
-            $user = \App\User::where('id', $id);
-            $user->update(['password' => \Hash::make($request->input('password1'))]);
+        $req = $request->only(['pass1', 'pass2', 'password', 'email']);
+        $credentials = $request->only(['email', 'password']);
 
-            return redirect('/change_student_data');
+        $data['surveyInfo'] = \App\StudentSurvey::where('user_id', \Auth::user()->id)->first();
+
+        if (\Auth::validate($credentials) == false) {
+            $data['error'] = 'Je wachtwoord is incorrect. Probeer opnieuw.';
+            $data['error-type'] = 'alert-danger';
+
+            return redirect('/change_student_data')->with('error', $data['error'])->with('error-type', $data['error-type']);
         }
+
+        if ($req['pass1'] !== $req['pass2']) {
+            $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
+            $data['error-type'] = 'alert-danger';
+
+            return redirect('/change_student_data')->with('error', $data['error'])->with('error-type', $data['error-type']);
+        }
+
+        // update pass
+        $user = \App\User::where('id', \Auth::user()->id)->update(['password' => \Hash::make($req['pass1'])]);
+        $data['error'] = 'Je wachtwoord is ge-update!';
+        $data['error-type'] = 'alert-success';
+        $data['message'] = 'Je gegevens zijn aangepast.';
+
+        return redirect('/change_student_data')->with('error', $data['error'])->with('error-type', $data['error-type'])->with('message', $data['message']);
     }
 
     public function StudentProfile()

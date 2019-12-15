@@ -8,20 +8,18 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    @if(session('message'))
+                        <div class="alert alert-success">{{session('message')}}</div>
                     @endif
                     <form action="{{ action('AccountCompanyController@handleCompanyData2') }}" method="post">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="company_name" class="form-control" id="company_name" value="">
+                            <label for="name">Naam bedrijf</label>
+                            <input type="text" name="company_name" class="form-control" id="company_name" value="{{$company['company_name']}}">
                         </div>
                         <div class="form-row">
                             <div class="col">
                                 <label for="firstname">Omschrijving</label>
-                                <input type="text" name="company_bio" class="form-control" id="company_bio" value="">
+                                <input type="text" name="company_bio" class="form-control" id="company_bio" value="{{$company['company_bio']}}">
                             </div>
                         </div>
                         <br>
@@ -47,18 +45,15 @@
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
-                    <form>
+                    <form action="{{ action('AccountCompanyController@handleCompanyNewPassword') }}" method="post">
                         <br>
                         <br>
                         <h2>Nieuw wachtwoord instellen</h2>
-                        <div class="form-group">
-                            <label for="inputPassword1">Nieuw wachtwoord</label>
-                            <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword2">Herhaal nieuw wachtwoord</label>
-                            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-                        </div>
+                        @if(session('error'))
+                            <div class="alert {{session('error-type')}}">{{session('error')}}</div>
+                        @endif
+                        @component('components/password_update')
+                        @endcomponent
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
