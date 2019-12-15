@@ -13,6 +13,9 @@
                     <p>Door onderstaande vragen in te vullen kunnen wij jou matchen met het perfecte bedrijf.🚀</p>
                 
                     <div class=survey-container>
+                        @if(!empty($error))
+                            <div class="alert alert-danger">{{$error}}</div>
+                        @endif
                         <form action="{{action('SurveyController@handleStudentSurvey')}}" method="post">
 
 
