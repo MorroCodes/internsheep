@@ -47,23 +47,23 @@ class AccountCompanyController extends Controller
 
         if (\Auth::validate($credentials) == false) {
             $data['error'] = 'Je wachtwoord is incorrect. Probeer opnieuw.';
-            $data['type'] = 'alert-danger';
+            $data['error-type'] = 'alert-danger';
 
-            return view('company/companyAccount', $data);
+            return redirect('/companyaccount')->with('error', $data['error'])->with('error-type', $data['error-type']);
         }
 
         if ($req['pass1'] !== $req['pass2']) {
             $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
-            $data['type'] = 'alert-danger';
+            $data['error-type'] = 'alert-danger';
 
-            return view('company/companyAccount', $data);
+            return redirect('/companyaccount')->with('error', $data['error'])->with('error-type', $data['error-type']);
         }
 
         // update pass
         $user = \App\User::where('id', \Auth::user()->id)->update(['password' => \Hash::make($req['pass1'])]);
         $data['error'] = 'Je wachtwoord is ge-update!';
-        $data['type'] = 'alert-success';
+        $data['error-type'] = 'alert-success';
 
-        return view('company/companyAccount', $data);
+        return redirect('/companyaccount')->with('error', $data['error'])->with('error-type', $data['error-type']);
     }
 }

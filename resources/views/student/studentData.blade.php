@@ -62,14 +62,11 @@
                         <br>
                         <br>
                         <h2>Nieuw wachtwoord instellen</h2>
-                        <div class="form-group">
-                            <label for="inputPassword1">Nieuw wachtwoord</label>
-                            <input type="password" name="password1" class="form-control" id="inputPassword1" placeholder="Password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword2">Herhaal nieuw wachtwoord</label>
-                            <input type="password"  name="password2" class="form-control" id="inputPassword2" placeholder="Password" required>
-                        </div>
+                        @if(session('error'))
+                            <div class="alert {{session('error-type')}}">{{session('error')}}</div>
+                        @endif
+                        @component('components/password_update')
+                        @endcomponent
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
