@@ -13,13 +13,16 @@
                     <p>Door onderstaande vragen in te vullen kunnen wij jou matchen met het perfecte bedrijf.🚀</p>
                 
                     <div class=survey-container>
+                        @if(!empty($error))
+                            <div class="alert alert-danger">{{$error}}</div>
+                        @endif
                         <form action="{{action('SurveyController@handleStudentSurvey')}}" method="post">
 
 
                         <div class="form-group">
                                 <label for="vibe">Welk type werksfeer heeft jouw voorkeur?</label>
                                 <div class="survey-flex">
-                                <div class="survey-label">informeel</div>
+                                <div class="survey-label">Informeel</div>
                                     <div class="survey-result-container">
                                         <input type="radio" name="vibe" value="1" {{ ($survey != null && $survey->vibe == 1) ? "checked" : "" }}>
                                         <input type="radio" name="vibe" value="2" {{ ($survey != null && $survey->vibe == 2) ? "checked" : "" }}>
@@ -27,7 +30,7 @@
                                         <input type="radio" name="vibe" value="4" {{ ($survey != null && $survey->vibe == 4) ? "checked" : "" }}>
                                         <input type="radio" name="vibe" value="5" {{ ($survey != null && $survey->vibe == 5) ? "checked" : "" }}>
                                     </div>
-                                    <div class="survey-label">formeel</div>
+                                    <div class="survey-label">Formeel</div>
                                 </div>
                             </div>
 

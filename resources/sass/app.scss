@@ -11,7 +11,7 @@
 // @import 'components/entry';
 // @import 'components/home';
 // @import 'components/survey';
-// @import 'components/buttons';
+@import 'components/buttons';
 // @import 'components/texttospeech';
 // @import 'components/alerts';
 // @import 'components/studentdata';
@@ -23,8 +23,18 @@
 @import 'components/studentdata';
 @import 'components/signup';
 @import 'components/surveyProfile';
+@import 'components/profile';
+@import 'components/company';
 
 body{
     font-family: 'Work Sans', sans-serif;
     color: $blue;
+}
+
+.hidden{
+    display: none;
+}
+
+textarea{
+    resize: none;
 }
