@@ -19,12 +19,13 @@
           <div class="col-md-12 mb-5 mb-md-0" data-aos="fade-up" data-aos-delay="100">
             <h2 class="mb-5 h3">Recent Jobs</h2>
             <div class="rounded border jobs-wrap">
+      
             @foreach($internship as $i)
               <div class="card internship_container">
                 <div class="card-body">
                     <h3 class="card-title">{{ $i->title }}</h3>
                     <div class="d-block d-lg-flex">
-                      <div class="mr-3"><span class="icon-suitcase mr-1"></span>{{ $i->company['company_name']}}</div>
+                      <div class="mr-3"><span class="icon-suitcase mr-1"></span>{{ $i->company_name}}</div>
                       <div class="mr-3"><span class="icon-room mr-1"></span>{{ $i->address}}</div>
                     </div>
                     <p>{{ $i->catch_phrase}}</p>
@@ -59,7 +60,7 @@
           <div class=" p-4 item border-right" data-aos="fade">
             <h2 class="h4">{{$c->company_name}}</h2>
             <p>{{$c->company_bio}}</p>
-            <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+            <p><a href="/company/{{$c->id}}">Read More <span class="icon-arrow-right small"></span></a></p>
           </div>
           @endforeach
 

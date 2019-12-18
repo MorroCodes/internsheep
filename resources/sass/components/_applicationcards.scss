@@ -4,7 +4,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-top:-115.5px;
+    margin-top: -115.5px;
     margin-left: -212px;
     z-index: 69;
     padding: 2em;
@@ -54,7 +54,7 @@
     color: white,
 }
 
-.application-response-unselected{
+.application-response-unselected {
     opacity: 0.5;
 }
 
@@ -113,5 +113,13 @@
 }
 
 .internship-page-student h3 {
+    text-align: center;
+}
+
+.internship-page-student div p {
+    // text-align: center;
+}
+
+.empty-applications{
     text-align: center;
 }

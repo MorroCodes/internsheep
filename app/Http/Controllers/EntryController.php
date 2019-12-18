@@ -208,6 +208,10 @@ class EntryController extends Controller
 
     public function setSessionData($user)
     {
+        if ($user->type == 'company') {
+            $company_id = \App\Company::where('user_id', $user->id)->first();
+            session(['company_id' => $company_id->id]);
+        }
         session(['id' => $user->id, 'type' => $user->type]);
     }
 

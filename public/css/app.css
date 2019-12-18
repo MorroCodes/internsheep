@@ -134,6 +134,10 @@
   text-align: center;
 }
 
+.empty-applications {
+  text-align: center;
+}
+
 .messages-page-container {
   padding: 0.5em;
   max-width: 600px;
