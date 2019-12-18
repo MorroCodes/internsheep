@@ -32,10 +32,10 @@ class CompanyController extends Controller
 
     public function publicCompanyProfile($id)
     {
-        $data['companyInfo'] = \App\Company::where('id', $id)->first();
-        $data['userInfo'] = \App\User::where('id', $data['companyInfo']->user_id)->first();
-        $data['surveyInfo'] = \App\CompanySurvey::where('user_id', $data['userInfo']->id)->first();
-        $data['vacatures'] = \App\Internship::where('company_id', $id)->get();
+        $data['userInfo'] = \App\User::where('id', $id)->first();
+        $data['companyInfo'] = \App\Company::where('user_id', $data['userInfo']->id)->first();
+        $data['surveyInfo'] = \App\CompanySurvey::where('user_id', $id)->first();
+        $data['vacatures'] = \App\Internship::where('company_id', $data['companyInfo']->id)->get();
 
         return view('company/public_profile', $data);
     }

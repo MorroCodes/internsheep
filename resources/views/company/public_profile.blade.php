@@ -20,7 +20,7 @@
 
                     <div class="company-profile-content-flex">
 
-                    @if($vacatures->isEmpty())  
+                    @if($vacatures->isEmpty())
                         <div class="company-profile-internships-container">
                             <h2>Vacatures</h2>
                             <div>
@@ -48,7 +48,7 @@
                         </div>
                         @endif
 
-                    @if($surveyInfo != null)  
+                    @if($surveyInfo != null)
                         @component('components/company_survey_results')
                             @slot('surveyInfo') {{$surveyInfo}} @endslot
                             @slot('vibe') {{$surveyInfo->vibe}} @endslot
@@ -63,7 +63,7 @@
                         @endcomponent
                     @endif
 
-                   
+
                     </div>
                 </div>
             </div>
@@ -71,4 +71,3 @@
     </div>
 </div>
 @endsection
-
