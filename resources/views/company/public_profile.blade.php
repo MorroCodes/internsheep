@@ -1,64 +1,69 @@
-@extends('layouts/company')
+@extends('layouts/main')
 
 @section('content')
-<div>
-    <div class="company-profile-image-container">
-        <img src="{{$userInfo->profile_image}}" alt="{{$companyInfo->company_name}} logo">
-    </div>
-    <div class="company-profile-title-container">
-        <h1>{{$companyInfo->company_name}}</h1>
-    </div>
 
-    <div class="company-profile-description-container">
-        <h2>Wie zijn we?</h2>
-        <p>{{$companyInfo->company_bio}}</p>
-    </div>
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8 mb-5">
 
-    <div class="company-profile-content-flex">
-    @if($surveyInfo != null)  
-        @component('components/company_survey_results')
-            @slot('surveyInfo') {{$surveyInfo}} @endslot
-            @slot('vibe') {{$surveyInfo->vibe}} @endslot
-            @slot('size') {{$surveyInfo->size}} @endslot
-            @slot('age') {{$surveyInfo->age}} @endslot
-            @slot('type') {{$surveyInfo->type}} @endslot
-            @slot('transport') {{$surveyInfo->transport}} @endslot
-        @endcomponent
-    @else
-        @component('components/company_survey_results_empty')
-            @slot('surveyInfo') {{$surveyInfo}} @endslot
-        @endcomponent
-    @endif
 
-        @if($vacatures->isEmpty())  
+        <div class="card text-center">
+            <div class="card-header">
+            </div>
+            <h1 class="profile-title">{{$companyInfo->company_name}}</h1>
+            <div class="company-profile-image-container">
+                        <img src="{{$userInfo->profile_image}}" alt="{{$companyInfo->company_name}} logo">
+            </div>
+            
+            <div class="card-body card-body-show-internship">
+                  <h2 class="create-internship-title">Bio</h2>
+                  <p class="location">{{$companyInfo->company_bio}}</p>
+            </div>
 
-        <div class="company-profile-internships-container">
-            <h2>Vacatures</h2>
-            <div>
-                <p>Dit bedrijf heeft momenteel geen vacatures.</p>
+            @if($vacatures->isEmpty())
+                        <div class="company-profile-internships-container">
+                            <h3 class="profile-title">Vacatures</h3>
+                            <div>
+                                <p>Dit bedrijf heeft momenteel geen vacatures.</p>
+                            </div>
+                        </div>
+                        @else
+
+                        <div class="company-profile-internships-container">
+                            <h3 class="profile-title">Vacatures</h3>
+
+                            @foreach($vacatures as $v)
+                                <div class="card internship_container">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{$v->title}}</h5>
+                                        <p class="card-text">{{$v->description}}</p>
+                                        <a href="/internship/{{ $v->id }}">
+                                         <button class="btn btn-primary">view</button>
+                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        @endif
+
+                        @if($surveyInfo != null)
+                        @component('components/company_survey_results')
+                            @slot('surveyInfo') {{$surveyInfo}} @endslot
+                            @slot('vibe') {{$surveyInfo->vibe}} @endslot
+                            @slot('size') {{$surveyInfo->size}} @endslot
+                            @slot('age') {{$surveyInfo->age}} @endslot
+                            @slot('type') {{$surveyInfo->type}} @endslot
+                            @slot('transport') {{$surveyInfo->transport}} @endslot
+                        @endcomponent
+                   
+                    @endif
+
+            <div class="card-footer text-muted">
             </div>
         </div>
-        @else
-    
-        <div class="company-profile-internships-container">
-            <h2>Vacatures</h2>
-
-            @foreach($vacatures as $v)
-            <a href="/internship/{{ $v->id }}">
-                    <div class="company-internships-card">
-                        <div>
-                            <img src="/{{ $v->img }}" class="card-img-side">
-                        </div>
-                        <div class="company-internship-description">
-                                <h3>{{ $v->title }}</h3>
-                            <p>{{ substr($v->functie_omschrijving, 0, 95) . '...' }}</p>
-                        </div>
-                    </div>
-                </a>
-            @endforeach
-        </div>
-        @endif
+      </div>
     </div>
+  </div>
 </div>
 @endsection
-

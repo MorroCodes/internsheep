@@ -1,27 +1,27 @@
-@extends('layouts/company')
+@extends('layouts/main')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Profiel instellingen</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    @if(session('message'))
+                        <div class="alert alert-success">{{session('message')}}</div>
                     @endif
                     <form action="{{ action('AccountCompanyController@handleCompanyData2') }}" method="post">
+                    <br>
+                    <h2 class="profile-title">Bedrijfsgegevens</h2>
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="company_name" class="form-control" id="company_name" value="">
+                            <label for="name">Naam bedrijf</label>
+                            <input type="text" name="company_name" class="form-control" id="company_name" value="{{$company['company_name']}}">
                         </div>
                         <div class="form-row">
                             <div class="col">
                                 <label for="firstname">Omschrijving</label>
-                                <input type="text" name="company_bio" class="form-control" id="company_bio" value="">
+                                <input type="text" name="company_bio" class="form-control" id="company_bio" value="{{$company['company_bio']}}">
                             </div>
                         </div>
                         <br>
@@ -29,6 +29,8 @@
                         {{csrf_field()}}
                     </form>
                     <form action="{{ action('AccountCompanyController@handleCompanyData') }}" method="post">
+                    <br>
+                    <h2 class="profile-title">Gebruiker gegevens</h2>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email adres</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->email}}">
@@ -47,23 +49,21 @@
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
-                    <form>
+                    <form action="{{ action('AccountCompanyController@handleCompanyNewPassword') }}" method="post">
                         <br>
-                        <br>
-                        <h2>Nieuw wachtwoord instellen</h2>
-                        <div class="form-group">
-                            <label for="inputPassword1">Nieuw wachtwoord</label>
-                            <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword2">Herhaal nieuw wachtwoord</label>
-                            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-                        </div>
+                        <h2 class="profile-title">Nieuw wachtwoord instellen</h2>
+                        @if(session('error'))
+                            <div class="alert {{session('error-type')}}">{{session('error')}}</div>
+                        @endif
+                        @component('components/password_update')
+                        @endcomponent
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
 
-                    @if($surveyInfo != null)  
+                  
+                </div>
+                @if($surveyInfo != null)  
                         @component('components/company_survey_results')
                         @slot('surveyInfo') {{$surveyInfo}} @endslot
                         @slot('vibe') {{$surveyInfo->vibe}} @endslot
@@ -77,7 +77,6 @@
                             @slot('surveyInfo') {{$surveyInfo}} @endslot
                         @endcomponent
                     @endif
-                </div>
             </div>
         </div>
     </div>

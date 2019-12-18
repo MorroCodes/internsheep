@@ -6,6 +6,10 @@ class CompanyController extends Controller
 {
     public function show()
     {
+        $type = \Auth::user()->type;
+        if ($type == 'student') {
+            return redirect('/home');
+        }
         $id = \Auth::user()->id;
         $data['internship'] = \App\Internship::where('company_id', $id)->take(6)->get();
 
@@ -29,11 +33,20 @@ class CompanyController extends Controller
     public function publicCompanyProfile($id)
     {
         $data['companyInfo'] = \App\Company::where('id', $id)->first();
-        $data['userInfo'] = \App\User::where('id', $data['companyInfo']->user_id)->first();
-        $data['surveyInfo'] = \App\CompanySurvey::where('user_id', $data['userInfo']->id)->first();
-        $data['vacatures'] = \App\Internship::where('company_id', $id)->get();
+
+        $data['userInfo'] = \App\User::where('id', $data['companyInfo']->id)->first();
+
+        $data['surveyInfo'] = \App\CompanySurvey::where('user_id', $data['userInfo']->$id)->first();
+
+        $data['vacatures'] = \App\Internship::where('company_id', $data['companyInfo']->id)->get();
 
         return view('company/public_profile', $data);
+    }
+    public function publicStudentProfile($id)
+    {
+        $data['userInfo'] = \App\User::where('id', $id)->first();
+        $data['studentInfo'] = \App\Student::where('user_id', $data['userInfo']->id)->first();
+        return view('student/student', $data);
     }
 
     public function internshipDetail($internship)

@@ -27,10 +27,7 @@
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
                         @if(Auth::user())
                             @if(Auth::user()->type == "student")
-                                <li><a href="">Bedrijven</a></li>
                                 <li><a href="/match">Stages op maat</a></li>
-                            @elseif(Auth::user()->type == "company")
-                                <li><a href="">Studenten</a></li>
                             @endif
                         @endif
                       <li class="has-children">
@@ -46,15 +43,22 @@
                                 @if(Auth::user())
                                     @if(Auth::user()->type == "student")
                                         <li><a href="{{ action('AccountController@StudentProfile') }}">Bekijk Profiel</a></li>
+                                        <li><a href="/student/applications">Sollicitaties</a></li>
+                                        <li><a href="/conversations">Gesprekken</a></li>
                                         <li><a href="{{ action('AccountController@changeStudentData') }}">Instellingen</a></li>
                                     @elseif(Auth::user()->type == "company")
-                                        <li><a href="{{ action('CompanyController@show') }}">Profiel</a></li>
+                                        @if (session('company_id'))
+                                        <li><a href="/company/{{session('company_id')}} ">Bekijk jouw bedrijf</a></li>
+                                        @endif
+                                        <li><a href="/conversations">Gesprekken</a></li>
                                         <li><a href="{{ action('AccountCompanyController@changeCompanyData') }}">Instellingen</a></li>
                                     @endif
                                 @endif
                                 <li><a href="{{ action('EntryController@logout') }}">Logout</a></li>
                             </ul>
                         @else
+                          <a href="/student_signup">Registreer als student</a>
+                          <a href="/company_signup">Registreer als bedrijf</a>
                             <a href="/login"><span>Login</span></a>
                         @endif
 

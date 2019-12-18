@@ -1,13 +1,75 @@
-@extends('layouts/app')
+@extends('layouts.main')
 
 @section('content')
+
 <div class="site-section bg-light">
-    <div class="container">
+      <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-8 mb-5">
-                <img src="../{{$user->profile_image}}" alt="{{$internship->title}}" class="card-img-top" width="200px">
-                <div class="container">
-                    <form action="{{route('rating')}}" method="post">
+       
+          <div class="col-md-12 col-lg-8 mb-5">
+            <div class="p-5 bg-white">
+
+              @if(session('message'))
+                    <div class="alert {{session('error-type')}}">{{session('message')}}</div>
+              @endif
+           
+              <h5 class="main-title main-title-big">{{$internship->title}}</h5>
+              <h5 class="main-title">Adres</h5>
+              <p>{{$internship->address}}</p>
+
+              <h5 class="main-title">Beschrijving</h5>
+              <p>{{$internship->description}}</p>
+
+              <h5 class="main-title">Functie omschrijving</h5>
+              <p>{{$internship->functie_omschrijving}}</p>
+
+              <h5 class="main-title">Aanbod</h5>
+              <p>{{$internship->aanbod}}</p>
+            </div>
+            <form action="{{ action('AccountController@ApplyInternship') }}" method="post" id="fomu">
+
+<input type="hidden" name="company" value="{{$internship->company_id}}">
+<input type="hidden" name="internship" value="{{$internship->id}}">
+<div class="form-group">
+    @if(!empty($error))
+    @component('components/alert')
+    @slot('message') {{$error}}
+    @endslot
+    @slot('alert_type') alert-primary
+    @endslot
+    @endcomponent
+    @endif
+    <label for="reason">Interesse in een stage? Solliciteer hier!</label>
+    <textarea name="reason" class="form-control" id="reason"></textarea>
+</div>
+<button type="submit" class="btn btn-primary">Verstuur</button>
+{{csrf_field()}}
+</form>
+<h5 id="space">Meer vacatures van {{$company->company_name}}</h5>
+                    <div class="d-flex flex-wrap">
+                        @foreach ($others_by_company as $suggestion)
+                        <div class="col-sm-4" id="card-internship">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title">{{$suggestion->title}}</h6>
+                                    <p>{{ Str::limit($suggestion->description, 50) }}</p>
+                                    <a href="/internship/{{$suggestion->id}}">Bekijk deze
+                                        vacature</a>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+          </div>
+
+          <div class="col-lg-4">
+            
+            
+            <div class="p-4 mb-3 bg-white">
+            <h3>Over {{$company->company_name}}</h3>
+            <p>{{$company->company_bio}}</p>
+            <img src="../{{$user->profile_image}}" alt="{{$internship->title}}" class="card-img-student" width="150">
+            <form action="{{route('rating')}}" method="post">
                         <div class="rate">
                             <input @if ($internship->mid <= "5" && $internship->mid > "4")
                                 checked
@@ -37,58 +99,12 @@
                         </div>
                         {{csrf_field()}}
                     </form>
-
-                    <h3>{{$internship->title}}</h3>
-                    <h5>{{$internship->catch_phrase}}</h5>
-                    <p>{{$internship->description}}</p>
-                </div>
-
-                <form action="{{ action('AccountController@ApplyInternship') }}" method="post">
-
-                    <input type="hidden" name="company" value="{{$internship->company_id}}">
-                    <input type="hidden" name="internship" value="{{$internship->id}}">
-                    <div class="form-group">
-                        @if(!empty($error))
-                        @component('components/alert')
-                        @slot('message') {{$error}}
-                        @endslot
-                        @slot('alert_type') alert-primary
-                        @endslot
-                        @endcomponent
-                        @endif
-                        <label for="reason">Waarom wil je hier stage doen?</label>
-                        <textarea name="reason" class="form-control" id="reason"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Solliciteren</button>
-                    {{csrf_field()}}
-
-                </form>
+                    
             </div>
-            <div class="col-md-12 col-lg-8 mb-5">
-                <div class="container">
-                    <h3>Over {{$company->company_name}}</h3>
-                    <p>{{$company->company_bio}}</p>
-                    <h5>Meer vacatures van {{$company->company_name}}</h5>
-                    <div class="d-flex flex-wrap">
-                        @foreach ($others_by_company as $suggestion)
-                        <div class="col-sm-4">
-                            <div class="card">
-                            <img src="../{{$user->profile_image}}" alt="{{$suggestion->title}}"
-                                    class="card-img-top" width="200px">
-                                <div class="card-body">
-                                    <h2 class="card-title">{{$suggestion->title}}</h2>
-                                    <p>{{ Str::limit($suggestion->description, 50) }}</p>
-                                    <a href="/internship/{{$suggestion->id}}" class="btn btn-secondary">Bekijk deze
-                                        vacature</a>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
+  </div>
 @endsection

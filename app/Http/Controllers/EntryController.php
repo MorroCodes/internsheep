@@ -14,7 +14,8 @@ class EntryController extends Controller
 
     public function signup()
     {
-        return view('entry/signup');
+        return redirect('/login');
+        // return view('entry/signup');
     }
 
     public function studentSignup()
@@ -53,6 +54,13 @@ class EntryController extends Controller
         // check if any fields were left empty
         if (in_array(null, $credentials, true)) {
             $data['error'] = 'Gelieve geen velden leeg te laten.';
+
+            return $data;
+        }
+
+        // check if email address is available
+        if (strlen($credentials['password']) < 7) {
+            $data['error'] = 'Je wachtwoord is te kort. Gelieve een langer wachtwoord in te geven.';
 
             return $data;
         }
@@ -200,6 +208,10 @@ class EntryController extends Controller
 
     public function setSessionData($user)
     {
+        if ($user->type == 'company') {
+            $company_id = \App\Company::where('user_id', $user->id)->first();
+            session(['company_id' => $company_id->id]);
+        }
         session(['id' => $user->id, 'type' => $user->type]);
     }
 

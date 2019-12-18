@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                 <div class="col-md-13 mb-3 mb-md-0">
-                    <label for="password">Wachtwoord</label>
+                    <label for="password">Wachtwoord (min. 7 karakters)</label>
                     <input type="password" name="password" class="form-control">
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                 <a href="/login">Heb je al een profiel? Meld hier aan.</a>
 
                 <div class="form-group form-group-buttons">
-                    <a href="/signup" class="btn btn-light">Vorige</a>
+                    <a href="/login" class="btn btn-light">Vorige</a>
                     <input type="submit" value="Registreer als student" class="btn btn-primary">
                 </div>
 

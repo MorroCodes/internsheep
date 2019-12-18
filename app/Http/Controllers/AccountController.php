@@ -35,25 +35,39 @@ class AccountController extends Controller
 
     public function handleStudentNewPassword(Request $request)
     {
-        if (!empty($request->only(['password1', 'password2']))) {
-            $request->session()->flash('status', 'Gegevens zijn aangepast!');
-        }
-        $password1 = $request->input('password1');
-        $password2 = $request->input('password2');
-        $id = \Auth::user()->id;
-        if ($password1 === $password2) {
-            $user = \App\User::where('id', $id);
-            $user->update(['password' => \Hash::make($request->input('password1'))]);
+        $req = $request->only(['pass1', 'pass2', 'password', 'email']);
+        $credentials = $request->only(['email', 'password']);
 
-            return redirect('/change_student_data');
+        $data['surveyInfo'] = \App\StudentSurvey::where('user_id', \Auth::user()->id)->first();
+
+        if (\Auth::validate($credentials) == false) {
+            $data['error'] = 'Je wachtwoord is incorrect. Probeer opnieuw.';
+            $data['error-type'] = 'alert-danger';
+
+            return redirect('/change_student_data')->with('error', $data['error'])->with('error-type', $data['error-type']);
         }
+
+        if ($req['pass1'] !== $req['pass2']) {
+            $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
+            $data['error-type'] = 'alert-danger';
+
+            return redirect('/change_student_data')->with('error', $data['error'])->with('error-type', $data['error-type']);
+        }
+
+        // update pass
+        $user = \App\User::where('id', \Auth::user()->id)->update(['password' => \Hash::make($req['pass1'])]);
+        $data['error'] = 'Je wachtwoord is ge-update!';
+        $data['error-type'] = 'alert-success';
+        $data['message'] = 'Je gegevens zijn aangepast.';
+
+        return redirect('/change_student_data')->with('error', $data['error'])->with('error-type', $data['error-type'])->with('message', $data['message']);
     }
 
     public function StudentProfile()
     {
         $id = \Auth::user()->id;
         $data['user'] = \App\User::where('id', $id)->first();
-
+        $data['studentInfo'] = \App\Student::where('user_id', $data['user']->id)->first();
         return view('student/student', $data);
     }
 
@@ -70,12 +84,14 @@ class AccountController extends Controller
     public function ApplyInternship(Request $request)
     {
         $credentials = $request->only(['reason', 'internship', 'company']);
-
+        // dd($credentials['internship']);
         if (in_array(null, $credentials, true)) {
             $data['error'] = 'Gelieve korte omschrijving in te vullen.';
-            $data['internship'] = \App\Internship::where('id', $credentials['internship'])->first();
+            $data['error-type'] = 'alert-danger';
 
-            return view('student/internshipData', $data);
+            return redirect('/internship/'.$credentials['internship'])->with('message', $data['error'])->with('error-type', $data['error-type']);
+
+            // return view('student/internshipData', $data);
         }
 
         $user_id = \Auth::user()->id;
@@ -93,23 +109,25 @@ class AccountController extends Controller
 
         $data['error'] = 'Je sollicitatie is verzonden!';
         $data['internship'] = \App\Internship::where('id', $credentials['internship'])->with('company')->first();
-        $data['user'] = $data['internship']['company'];
-        $data['company'] = $data['internship']['company'];
-        $others_by_company = \App\Internship::where('company_id', $data['company']->id)->where('id', '!=', $data['internship']->id)->take(3)->get();
+        $user_id = $data['internship']->company_id;
+        $data['user'] = \App\User::where('id', $user_id)->first();
+        $data['company'] = \App\Company::where('user_id', $user_id)->first();
+        $others_by_company = \App\Internship::where('company_id', $user_id)->where('id', '!=', $data['internship']->id)->take(3)->get();
         $data['others_by_company'] = $others_by_company;
         // $user = $company['company_name'];
         // $data['user'] = $user;
 
-        return view('student/internshipData', $data);
+        $data['error-type'] = 'alert-success';
+
+        return redirect('/internship/'.$credentials['internship'])->with('message', $data['error'])->with('error-type', $data['error-type']);
     }
 
     public function replyToApplication(Request $request)
     {
-        $response = $request->input('response');
-        $application_id = $request->input('applicationId');
+        $response = $request->response;
+        $application_id = $request->applicationId;
 
-        $application = \App\Apply::where('id', $application_id);
-        $application->update(['response' => $response]);
+        $application = \App\Apply::where('id', $application_id)->update(['response' => $response]);
 
         return response()->json([
             'response' => $response,
@@ -225,6 +243,27 @@ class AccountController extends Controller
     {
         $data['applications'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
         ->where('student_id', \Auth::user()->id)
+        ->join('internships', 'applies.internships_id', '=', 'internships.id')
+        ->join('users', 'applies.company_id', '=', 'users.id')
+        ->join('companies', 'users.id', '=', 'companies.user_id')
+        ->get();
+        $data['denied'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
+        ->where('student_id', \Auth::user()->id)
+        ->where('response', 'denied')
+        ->join('internships', 'applies.internships_id', '=', 'internships.id')
+        ->join('users', 'applies.company_id', '=', 'users.id')
+        ->join('companies', 'users.id', '=', 'companies.user_id')
+        ->get();
+        $data['maybe'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
+        ->where('student_id', \Auth::user()->id)
+        ->where('response', 'maybe')
+        ->join('internships', 'applies.internships_id', '=', 'internships.id')
+        ->join('users', 'applies.company_id', '=', 'users.id')
+        ->join('companies', 'users.id', '=', 'companies.user_id')
+        ->get();
+        $data['accepted'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
+        ->where('student_id', \Auth::user()->id)
+        ->where('response', 'accepted')
         ->join('internships', 'applies.internships_id', '=', 'internships.id')
         ->join('users', 'applies.company_id', '=', 'users.id')
         ->join('companies', 'users.id', '=', 'companies.user_id')

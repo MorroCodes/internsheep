@@ -75,7 +75,11 @@ class VacatureController extends Controller
     {
         $survey = \App\CompanySurvey::where('user_id', $id)->first();
 
-        return $survey->id;
+        if ($survey != null) {
+            return $survey->id;
+        } else {
+            return null;
+        }
     }
 
     public function applicant()

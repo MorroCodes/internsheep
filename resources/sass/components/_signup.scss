@@ -1,0 +1,27 @@
+.entry-header{
+    text-align: center;
+}
+
+.btn-social span{
+    text-decoration: underline;
+}
+
+.signup-container-buttons{
+    display: flex;
+}
+
+.signup-container-buttons div{
+    margin: 0.5em 1em;
+}
+
+
+@media(min-width: 780px){
+    .signup-container{
+        display: flex;
+    }
+    
+    .signup-section{
+        width: 50%;
+        padding: 0.5em;
+    }
+}

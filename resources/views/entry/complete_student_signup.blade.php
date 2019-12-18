@@ -1,9 +1,10 @@
-@extends('layouts/entry')
+@extends('layouts/main')
 @section('content')
+<div class="site-section bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8 mb-5">
     <div class="entry-content entry-content-complete">
-        <div class=logo-entry-container>
-            <img src="/images/logo.svg" alt="Internsheep logo" class="logo logo-entry">
-        </div>
         <h2>Vervolledig registratie als student</h2>
         <div class="manual-signup-container">
             <form action="{{action('EntryController@handleCompleteStudentSignup')}}" method="post">

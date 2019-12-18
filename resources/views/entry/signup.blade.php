@@ -14,8 +14,6 @@
             <ul class="list-group">
                 <li class="list-group-item">Creëer een digitale CV</li>
                 <li class="list-group-item">Personaliseer de resultaten</li>
-                <li class="list-group-item">Bla</li>
-                <li class="list-group-item">Bla</li>
             </ul>
             <div class="btn-container">
                 <a href="/student_signup" class="btn btn-primary">Registreer als student</a>
@@ -27,8 +25,6 @@
             <ul class="list-group">
                 <li class="list-group-item">Bekijk de applicaties</li>
                 <li class="list-group-item">Voeg vacatures toe</li>
-                <li class="list-group-item">Bla</li>
-                <li class="list-group-item">Bla</li>
             </ul>
             <div class="btn-container">
                 <a href="/company_signup" class="btn btn-primary">Registreer als bedrijf</a>
