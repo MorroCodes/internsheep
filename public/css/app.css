@@ -182,6 +182,10 @@
   max-width: 600px;
 }
 
+.internships {
+  margin-top: 1em;
+}
+
 .internship-form-container {
   width: 80%;
   margin: auto;
@@ -424,6 +428,18 @@
 
 .btn-profile-edit {
   margin-top: 0.5em;
+}
+
+.title-flex {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.title-flex h1 {
+  padding-right: 1em;
 }
 
 body {
