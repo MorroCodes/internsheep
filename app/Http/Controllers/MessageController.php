@@ -59,7 +59,9 @@ class MessageController extends Controller
         }
 
         if ($data['conversations']->count() == 0) {
-            $data['applications'] = \App\Apply::where('company_id', \Auth::user()->id)->join('users', 'student_id', '=', 'users.id')->get();
+            $data['applications'] = \App\Apply::select('applies.*', 'users.firstname', 'users.lastname', 'users.email', 'users.id as users_table_id')
+            ->where('company_id', \Auth::user()->id)
+            ->join('users', 'student_id', '=', 'users.id')->get();
 
             $data['internships'] = \App\Internship::latest()->limit(6)->get();
 
