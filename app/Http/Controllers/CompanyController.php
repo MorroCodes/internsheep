@@ -39,6 +39,12 @@ class CompanyController extends Controller
 
         return view('company/public_profile', $data);
     }
+    public function publicStudentProfile($id)
+    {
+        $data['userInfo'] = \App\User::where('id', $id)->first();
+        $data['studentInfo'] = \App\Student::where('user_id', $data['userInfo']->id)->first();
+        return view('student/student', $data);
+    }
 
     public function internshipDetail($internship)
     {

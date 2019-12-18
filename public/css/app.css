@@ -460,6 +460,10 @@
   margin-top: 0.5em;
 }
 
+.cv {
+  margin-left: 30px;
+}
+
 .title-flex {
   display: -webkit-box;
   display: flex;

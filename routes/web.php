@@ -42,6 +42,8 @@ Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 //companie
 Route::get('/yourcompany', 'CompanyController@show')->name('yourcompany');
 Route::get('/company/{id}', 'CompanyController@publicCompanyProfile');
+Route::get('/student', 'CompanyController@publicStudentProfile');
+
 Route::get('/vacature/{id}/overview', 'CompanyController@index')->name('internship.show');
 
 //applications
@@ -71,7 +73,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/internship/{internship}', 'HomeController@internshipDetail')->name('home');
 Route::post('/internship/rating', 'HomeController@internshipRating')->name('rating');
 Route::get('/student', 'AccountController@StudentProfile')->name('StudentProfile');
-Route::get('/student/{id}', 'AccountController@StudentProfilePublic')->name('StudentProfilePublic');
+Route::get('/student/{id}', 'AccountController@StudentProfilePublic');
 Route::get('/change_student_data', 'AccountController@changeStudentData')->name('changeStudentData');
 Route::post('/change_student_data/data', 'AccountController@handleStudentData');
 Route::post('/change_student_data/picture', 'AccountController@handleProfilePicture');

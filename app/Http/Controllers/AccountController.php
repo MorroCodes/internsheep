@@ -67,7 +67,7 @@ class AccountController extends Controller
     {
         $id = \Auth::user()->id;
         $data['user'] = \App\User::where('id', $id)->first();
-
+        $data['studentInfo'] = \App\Student::where('user_id', $data['user']->id)->first();
         return view('student/student', $data);
     }
 
