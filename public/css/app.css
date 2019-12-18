@@ -484,6 +484,24 @@
   padding-top: 0.4em;
 }
 
+.public-company-container {
+  width: 90%;
+  margin: auto;
+}
+
+.public-company-container h2 {
+  text-align: left;
+  font-size: 0.8em;
+  padding: 1.5em 0 0.5em 0;
+  color: #646464;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.company-info-desc {
+  margin-bottom: 4em;
+}
+
 body {
   font-family: "Work Sans", sans-serif;
   color: #12396A;
