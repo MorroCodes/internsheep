@@ -12,6 +12,7 @@
                         <div class="alert alert-success">{{session('message')}}</div>
                     @endif
                     <form action="{{ action('AccountCompanyController@handleCompanyData2') }}" method="post">
+                    <br>
                     <h2 class="profile-title">Bedrijfsgegevens</h2>
                         <div class="form-group">
                             <label for="name">Naam bedrijf</label>
@@ -28,6 +29,7 @@
                         {{csrf_field()}}
                     </form>
                     <form action="{{ action('AccountCompanyController@handleCompanyData') }}" method="post">
+                    <br>
                     <h2 class="profile-title">Gebruiker gegevens</h2>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email adres</label>
@@ -48,7 +50,6 @@
                         {{csrf_field()}}
                     </form>
                     <form action="{{ action('AccountCompanyController@handleCompanyNewPassword') }}" method="post">
-                        <br>
                         <br>
                         <h2 class="profile-title">Nieuw wachtwoord instellen</h2>
                         @if(session('error'))

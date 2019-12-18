@@ -41,7 +41,6 @@
                     </form>
                     <form action="{{ action('AccountController@handleCV') }}" method="post" enctype="multipart/form-data">
                         <br>
-                        <br>
                         <h2 class="profile-title">CV uploaden</h2>
                         <div class="form-group">
                             <label for="cv">CV</label>
@@ -52,7 +51,6 @@
                     </form>
                     <form action="{{ action('AccountController@handleProfilePicture') }}" method="post" enctype="multipart/form-data">
                         <br>
-                        <br>
                         <h2 class="profile-title">Profielfoto wijzigen</h2>
                         <div class="form-group">
                             <label for="profile">Profielfoto</label>
@@ -62,7 +60,6 @@
                         {{csrf_field()}}
                     </form>
                     <form action="{{ action('AccountController@handleStudentNewPassword') }}" method="post">
-                        <br>
                         <br>
                         <h2 class="profile-title">Nieuw wachtwoord instellen</h2>
                         @if(session('error'))
