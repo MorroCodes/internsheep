@@ -3,7 +3,7 @@
 
     <div class="application-card-title">
 
-        <a href="{{route('StudentProfilePublic',[$student_id])}}">
+        <a href="/student/{{$id}}">
             <h4>{{$firstname}} {{$lastname}}</h4>
         </a>
 
