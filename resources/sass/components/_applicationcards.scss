@@ -9,15 +9,15 @@
     padding: 2em;
 }
 
-.popup-overlay{
+.popup-overlay {
     display: none;
     z-index: 3;
     height: 100vh;
     width: 100vw;
-    position:fixed;
+    position: fixed;
     top: 0;
-    left:0;
-    background-color:rgba(151, 151, 151, 0.4);
+    left: 0;
+    background-color: rgba(151, 151, 151, 0.4);
 }
 
 .close {
@@ -43,7 +43,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.application-card-title a h4{
+.application-card-title a h4 {
     text-align: left;
     font-size: 1.2em;
 }
@@ -53,7 +53,11 @@
     color: white,
 }
 
-.application-response-btn{
+.application-response-unselected{
+    opacity: 0.5;
+}
+
+.application-response-btn {
     font-size: 0.9em;
     background-color: white;
     border: none;
@@ -64,12 +68,18 @@
     // opacity: 0.5;
 }
 
-.response-btn-container{
+.application-response-status-container {
+    font-size: 0.8em;
+    color: $blue;
+    font-weight: bold;
+}
+
+.response-btn-container {
     display: flex;
 }
 
 .application-card-content {
-    padding:1em 0;
+    padding: 1em 0;
     text-align: left;
 
 }
@@ -88,7 +98,19 @@
     font-size: 0.7em;
 }
 
-.application-btn-container{
+.application-btn-container {
     display: flex;
     justify-content: space-around;
+}
+
+.internship-page-student .application-cards {
+    //    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    // flex-direction: row;
+    // justify-content: flex-start;
+}
+
+.internship-page-student h3 {
+    text-align: center;
 }

@@ -247,6 +247,27 @@ class AccountController extends Controller
         ->join('users', 'applies.company_id', '=', 'users.id')
         ->join('companies', 'users.id', '=', 'companies.user_id')
         ->get();
+        $data['denied'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
+        ->where('student_id', \Auth::user()->id)
+        ->where('response', 'denied')
+        ->join('internships', 'applies.internships_id', '=', 'internships.id')
+        ->join('users', 'applies.company_id', '=', 'users.id')
+        ->join('companies', 'users.id', '=', 'companies.user_id')
+        ->get();
+        $data['maybe'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
+        ->where('student_id', \Auth::user()->id)
+        ->where('response', 'maybe')
+        ->join('internships', 'applies.internships_id', '=', 'internships.id')
+        ->join('users', 'applies.company_id', '=', 'users.id')
+        ->join('companies', 'users.id', '=', 'companies.user_id')
+        ->get();
+        $data['accepted'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
+        ->where('student_id', \Auth::user()->id)
+        ->where('response', 'accepted')
+        ->join('internships', 'applies.internships_id', '=', 'internships.id')
+        ->join('users', 'applies.company_id', '=', 'users.id')
+        ->join('companies', 'users.id', '=', 'companies.user_id')
+        ->get();
 
         return view('/student/applications', $data);
     }

@@ -106,7 +106,26 @@ function updateApplicationStatus(response, applicationId, container) {
         },
         success: function (data) {
       
-            container.innerHTML = response;
+            if(response == "denied"){
+                container.innerHTML = `
+                <button class="application-response-btn application-response-deny application-response-selected" data-applicationId="${applicationId}" >👎</button>
+                <button class="application-response-btn application-response-maybe application-response-unselected" data-applicationId="${applicationId}" >🤔</button>
+                <button class="application-response-btn application-response-accept application-response-unselected" data-applicationId="${applicationId}">👍</button>
+                `;
+            }else if(response == "maybe"){
+                container.innerHTML = `
+                <button class="application-response-btn application-response-deny application-response-unselected" data-applicationId="${applicationId}" >👎</button>
+                <button class="application-response-btn application-response-maybe application-response-selected" data-applicationId="${applicationId}" >🤔</button>
+                <button class="application-response-btn application-response-accept application-response-unselected" data-applicationId="${applicationId}">👍</button>
+                `;
+            } else {
+                container.innerHTML = `
+                <button class="application-response-btn application-response-deny application-response-unselected" data-applicationId="${applicationId}" >👎</button>
+                <button class="application-response-btn application-response-maybe application-response-unselected" data-applicationId="${applicationId}" >🤔</button>
+                <button class="application-response-btn application-response-accept application-response-selected" data-applicationId="${applicationId}">👍</button>
+                `;
+            }
+           
         }
     });
 }
