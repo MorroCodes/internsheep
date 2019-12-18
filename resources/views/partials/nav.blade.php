@@ -27,7 +27,6 @@
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
                         @if(Auth::user())
                             @if(Auth::user()->type == "student")
-                                <li><a href="">Bedrijven</a></li>
                                 <li><a href="/match">Stages op maat</a></li>
                             @endif
                         @endif
