@@ -37,6 +37,7 @@
                         <p>Je hebt nog geen berichten gestuurd. Hier een overzicht van alle sollicitaties waarop je kan reageren.</p>
                         
                         <h3>Sollicitaties</h3>
+                  
                         @foreach($applications as $a)
                             @component('components/applications')
                                 @slot('firstname') {{$a->firstname}} @endslot
