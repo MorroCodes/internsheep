@@ -19,7 +19,7 @@
                             <div class="form-group">
                                 <label for="vibe">Welk type werksfeer leeft er op de werkvloer?</label>
                                 <div class="survey-flex">
-                                <div class="survey-label">informeel</div>
+                                <div class="survey-label">Informeel</div>
                                     <div class="survey-result-container">
                                         <input type="radio" name="vibe" value="1" {{ ($survey != null && $survey->vibe == 1) ? "checked" : "" }}>
                                         <input type="radio" name="vibe" value="2" {{ ($survey != null && $survey->vibe == 2) ? "checked" : "" }}>
@@ -27,7 +27,7 @@
                                         <input type="radio" name="vibe" value="4" {{ ($survey != null && $survey->vibe == 4) ? "checked" : "" }}>
                                         <input type="radio" name="vibe" value="5" {{ ($survey != null && $survey->vibe == 5) ? "checked" : "" }}>
                                     </div>
-                                    <div class="survey-label">formeel</div>
+                                    <div class="survey-label">Formeel</div>
                                 </div>
                             </div>
 

@@ -348,6 +348,10 @@
   }
 }
 
+.profile-survey-container {
+  padding: 0 1.25rem;
+}
+
 .survey-result-container-flex {
   display: -webkit-box;
   display: flex;
@@ -357,7 +361,7 @@
 }
 
 .survey-question {
-  font-weight: 600;
+  font-weight: 500;
   margin-top: 2em;
   margin-bottom: 0.5em;
 }
@@ -376,6 +380,7 @@
   width: 250px;
   padding: 0.4em;
   font-size: 0.8em;
+  color: black;
 }
 
 .survey-result-container-flex div:nth-child(3) {
@@ -395,11 +400,30 @@
   height: 1em;
   border-radius: 1em;
   background-color: white;
-  border: 2px solid #12396A;
+  border: 2px solid #333333;
 }
 
 .circle-selected {
-  background-color: #12396A;
+  background-color: #333333;
+}
+
+.profile-survey-container {
+  margin-bottom: 2em;
+}
+
+.profile-survey-container div:last-child {
+  margin-bottom: 0.5em;
+}
+
+.profile-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.3em;
+  margin: 1em 0;
+}
+
+.btn-profile-edit {
+  margin-top: 0.5em;
 }
 
 body {

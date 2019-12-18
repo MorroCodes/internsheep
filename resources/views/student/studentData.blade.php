@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Profiel instellingen</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,7 +17,7 @@
                         <div class="alert alert-success">{{session('message')}}</div>
                     @endif
                     <form action="{{ action('AccountController@handleStudentData') }}" method="post">
-                        <h2>Wijzig gegevens</h2>
+                        <h2 class="profile-title">Wijzig gegevens</h2>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email adres</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->email}}" required>
@@ -36,41 +36,41 @@
                                 <textarea name="bio" class="form-control" id="bio" required>{{Auth::user()->description}}</textarea>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Aanpassen</button>
+                        <button type="submit" class="btn btn-primary btn-profile-edit">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
                     <form action="{{ action('AccountController@handleCV') }}" method="post" enctype="multipart/form-data">
                         <br>
                         <br>
-                        <h2>CV uploaden</h2>
+                        <h2 class="profile-title">CV uploaden</h2>
                         <div class="form-group">
                             <label for="cv">CV</label>
                             <input type="file" class="form-control-file" name="cv" id="cv" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Uploaden</button>
+                        <button type="submit" class="btn btn-primary btn-profile-edit">Uploaden</button>
                         {{csrf_field()}}
                     </form>
                     <form action="{{ action('AccountController@handleProfilePicture') }}" method="post" enctype="multipart/form-data">
                         <br>
                         <br>
-                        <h2>Profielfoto wijzigen</h2>
+                        <h2 class="profile-title">Profielfoto wijzigen</h2>
                         <div class="form-group">
                             <label for="profile">Profielfoto</label>
                             <input type="file" class="form-control-file" name="profile" id="profile" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Aanpassen</button>
+                        <button type="submit" class="btn btn-primary btn-profile-edit">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
                     <form action="{{ action('AccountController@handleStudentNewPassword') }}" method="post">
                         <br>
                         <br>
-                        <h2>Nieuw wachtwoord instellen</h2>
+                        <h2 class="profile-title">Nieuw wachtwoord instellen</h2>
                         @if(session('error'))
                             <div class="alert {{session('error-type')}}">{{session('error')}}</div>
                         @endif
                         @component('components/password_update')
                         @endcomponent
-                        <button type="submit" class="btn btn-primary">Aanpassen</button>
+                        <button type="submit" class="btn btn-primary btn-profile-edit">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
                 </div>

@@ -5,13 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Profiel instellingen</div>
 
                 <div class="card-body">
                     @if(session('message'))
                         <div class="alert alert-success">{{session('message')}}</div>
                     @endif
                     <form action="{{ action('AccountCompanyController@handleCompanyData2') }}" method="post">
+                    <h2 class="profile-title">Bedrijfsgegevens</h2>
                         <div class="form-group">
                             <label for="name">Naam bedrijf</label>
                             <input type="text" name="company_name" class="form-control" id="company_name" value="{{$company['company_name']}}">
@@ -27,6 +28,7 @@
                         {{csrf_field()}}
                     </form>
                     <form action="{{ action('AccountCompanyController@handleCompanyData') }}" method="post">
+                    <h2 class="profile-title">Gebruiker gegevens</h2>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email adres</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{Auth::user()->email}}">
@@ -48,7 +50,7 @@
                     <form action="{{ action('AccountCompanyController@handleCompanyNewPassword') }}" method="post">
                         <br>
                         <br>
-                        <h2>Nieuw wachtwoord instellen</h2>
+                        <h2 class="profile-title">Nieuw wachtwoord instellen</h2>
                         @if(session('error'))
                             <div class="alert {{session('error-type')}}">{{session('error')}}</div>
                         @endif
@@ -58,7 +60,9 @@
                         {{csrf_field()}}
                     </form>
 
-                    @if($surveyInfo != null)  
+                  
+                </div>
+                @if($surveyInfo != null)  
                         @component('components/company_survey_results')
                         @slot('surveyInfo') {{$surveyInfo}} @endslot
                         @slot('vibe') {{$surveyInfo->vibe}} @endslot
@@ -72,7 +76,6 @@
                             @slot('surveyInfo') {{$surveyInfo}} @endslot
                         @endcomponent
                     @endif
-                </div>
             </div>
         </div>
     </div>
