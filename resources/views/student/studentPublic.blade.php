@@ -14,7 +14,7 @@
           <div class="col-md-12 col-lg-8 mb-5">
             <div class="p-5 bg-white">
 
-            <img src="{{ $user->profile_image }}" class="user-profile-pic">
+              <div class="profile-picture-container" style="background-image: url({{asset($user->profile_image)}})"></div>
               <h5 class="main-title main-title-big">{{$user->firstname}} {{$user->lastname}}</h5>
 
               <h5 class="main-title">Beschrijving</h5>
