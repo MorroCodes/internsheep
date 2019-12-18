@@ -9,7 +9,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@redirect');
+Route::get('/', 'MatchController@show');
 // login routes
 Route::get('/login', 'EntryController@login');
 Route::post('/login', 'EntryController@handleLogin');
@@ -86,4 +86,3 @@ Route::post('/companyaccount/data', 'AccountCompanyController@handleCompanyData'
 Route::post('/companyaccount/data2', 'AccountCompanyController@handleCompanyData2');
 Route::post('/companyaccount/password', 'AccountCompanyController@handleCompanyNewPassword');
 //match students with companies
-Route::get('/match', 'MatchController@show')->name('menu');

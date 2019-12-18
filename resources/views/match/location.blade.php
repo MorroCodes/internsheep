@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
     @if(!empty($error))
         <div class="alert alert-danger">{{$error}}</div>
     @endif
@@ -22,6 +21,8 @@
             @endslot
         @endif
     @endcomponent
+    <div class="container">
+
     <div class="d-flex flex-wrap">
         @foreach ($internships as $internship)
         <div class="col-sm-4">
@@ -42,4 +43,5 @@
         @endforeach
     </div>
 </div>
+@include('partials.scripts')
 @endsection

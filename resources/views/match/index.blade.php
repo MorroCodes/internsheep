@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
     @if(!empty($error))
         <div class="alert alert-danger">{{$error}}</div>
     @endif
@@ -22,6 +21,8 @@
             @endslot
         @endif
     @endcomponent
+    <div class="container">
+
     @foreach ($companySurveys as $companySurvey)
     @if (!empty($companySurvey->internships->first()) && $companySurvey->company != null)
     <h2>{{$companySurvey->company->first()->company_name}}</h2>
@@ -49,4 +50,5 @@
 
     @endforeach
 </div>
+@include('partials.scripts')
 @endsection

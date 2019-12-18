@@ -42,7 +42,7 @@ class MatchController extends Controller
         if (!isset($request->transport_method)) {
             $request->transport_method = 'driving';
         }
-        $internships = $this->getDistanceForInternships($internships, $origin);
+        $internships = $this->getDistanceForInternships($internships, $origin, $request);
         $internships = $this->addUserToInternships($internships);
         $internships = $internships->sortBy('distance');
         $data['internships'] = $internships;
@@ -69,7 +69,7 @@ class MatchController extends Controller
             if (!isset($request->transport_method)) {
                 $request->transport_method = 'driving';
             }
-            $internships = $this->getDistanceForInternships($internships, $origin);
+            $internships = $this->getDistanceForInternships($internships, $origin, $request);
         }
         $internships = $this->addUserToInternships($internships);
         $data['internships'] = $internships;
@@ -107,7 +107,7 @@ class MatchController extends Controller
             $origin = $this->getGeoCode($request->address);
             if (!isset($origin['error'])) {
                 foreach ($companySurveys as $companySurvey) {
-                    $companySuvey->internships = $this->getDistanceForInternships($companysurvey->internships, $origin);
+                    $companySurvey->internships = $this->getDistanceForInternships($companySurvey->internships, $origin, $request);
                     $companySurvey->internships = $companySurvey->internships->sortBy('distance');
                 }
             } else {
@@ -154,12 +154,14 @@ class MatchController extends Controller
         return $internships;
     }
 
-    public function getDistanceForInternships($internships, $origin)
+    public function getDistanceForInternships($internships, $origin, $request)
     {
         foreach ($internships as $internship) {
             $destination = $this->getGeoCode($internship->address);
             $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
         }
+
+        return $internships;
     }
 
     public function getGeoCode($address)
