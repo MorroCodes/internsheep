@@ -1,10 +1,11 @@
 .popup-message {
     display: none;
     background-color: white;
-
     position: fixed;
-    top: 40%;
-    left: 40%;
+    top: 50%;
+    left: 50%;
+    margin-top:-115.5px;
+    margin-left: -212px;
     z-index: 69;
     padding: 2em;
 }
