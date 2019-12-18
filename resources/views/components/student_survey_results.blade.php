@@ -1,12 +1,12 @@
-<div>
-    <h2>Survey antwoorden</h2>
+<div class="profile-survey-container">
+    <h2 class="profile-title">Survey antwoorden</h2>
     <div>
         <p class="survey-question">Werksfeer</p>
         <div class="survey-result-container-flex">
-            <div class="survey-label">informeel</div>
+            <div class="survey-label">Informeel</div>
             <div class="survey-result-container vibe-check" data-score="{{$vibe}}">
             </div>
-            <div class="survey-label">formeel</div>
+            <div class="survey-label">Formeel</div>
         </div>
     </div>
             
@@ -50,5 +50,5 @@
             <div class="survey-label">Verder</div>
         </div>
     </div>
-    <a href="/student_survey" class="btn btn-primary">Wijzig survey antwoorden</a>
+    <a href="/student_survey" class="btn btn-primary btn-profile-edit">Wijzig survey antwoorden</a>
 </div>

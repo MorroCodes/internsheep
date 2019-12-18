@@ -1,0 +1,13 @@
+.title-flex{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.title-flex h1{
+    text-transform: uppercase;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-right: 1em;
+    padding-top: 0.4em;
+}

@@ -17,6 +17,14 @@ class SurveyController extends Controller
     {
         $data = $request->only(['vibe', 'size', 'age', 'type', 'distance']);
         // check if user already has a record
+
+        if (empty($data)) {
+            $data['survey'] = \App\StudentSurvey::where('user_id', \Auth::user()->id)->first();
+            $data['error'] = 'Gelieve overal een antwoord aan te duiden.';
+
+            return view('survey/student', $data);
+        }
+
         $survey = \App\StudentSurvey::where('user_id', \Auth::user()->id)->first();
         if ($survey == null) {
             // if no record -> insert
@@ -48,6 +56,13 @@ class SurveyController extends Controller
     public function handleCompanySurvey(Request $request)
     {
         $data = $request->only(['vibe', 'size', 'age', 'type', 'transport']);
+        if (empty($data)) {
+            $data['error'] = 'Gelieve overal een antwoord aan te duiden.';
+            $data['survey'] = \App\CompanySurvey::where('user_id', \Auth::user()->id)->first();
+
+            return view('survey/company', $data);
+        }
+
         $survey = \App\CompanySurvey::where('user_id', \Auth::user()->id)->first();
         if ($survey == null) {
             $survey = new \App\CompanySurvey();

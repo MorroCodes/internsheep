@@ -265,6 +265,15 @@ a .edit {
     margin-right: auto;
 }
 
+.title-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.title-flex .page-title-flex{
+    display: inline-block;
+}
+
 @media(min-width:1160px) {
     .company-profile-content-flex {
         display: flex;

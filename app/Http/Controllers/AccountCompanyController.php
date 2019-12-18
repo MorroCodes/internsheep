@@ -9,6 +9,7 @@ class AccountCompanyController extends Controller
     public function changeCompanyData()
     {
         $data['surveyInfo'] = \App\CompanySurvey::where('user_id', \Auth::user()->id)->first();
+        $data['company'] = \App\Company::where('user_id', \Auth::user()->id)->first();
 
         return view('company/companyAccount', $data);
     }
@@ -21,8 +22,9 @@ class AccountCompanyController extends Controller
         $id = \Auth::user()->id;
 
         $user = \App\User::where('id', $id)->update(['firstname' => $firstname, 'lastname' => $lastname, 'email' => $email]);
+        $data['message'] = 'Je gegevens zijn aangepast.';
 
-        return redirect('/companyaccount');
+        return redirect('/companyaccount')->with('message', $data['message']);
     }
 
     public function handleCompanyData2(Request $request)
@@ -31,22 +33,41 @@ class AccountCompanyController extends Controller
         $description = $request->input('company_bio');
         $id = \Auth::user()->id;
 
-        $data['user'] = \App\Company::where('user_id', $id);
-        $user->update(['company_name' => $nameCompany, 'company_bio' => $description]);
+        $data['user'] = \App\Company::where('user_id', $id)->update(['company_name' => $nameCompany, 'company_bio' => $description]);
 
-        return redirect('/companyaccount', $data);
+        $data['message'] = 'Je gegevens zijn aangepast.';
+
+        return redirect('/companyaccount')->with('message', $data['message']);
     }
 
     public function handleCompanyNewPassword(Request $request)
     {
-        $password1 = $request->input('password1');
-        $password2 = $request->input('password2');
-        $id = \Auth::user()->id;
+        $req = $request->only(['pass1', 'pass2', 'password', 'email']);
+        $credentials = $request->only(['email', 'password']);
 
-        if ($password1 === $password2) {
-            $user = \App\User::where('id', $id)->update(['password' => \Hash::make($request->input('password1'))]);
+        $data['surveyInfo'] = \App\CompanySurvey::where('user_id', \Auth::user()->id)->first();
+        $data['company'] = \App\Company::where('user_id', \Auth::user()->id)->first();
 
-            return redirect('/companyaccount');
+        if (\Auth::validate($credentials) == false) {
+            $data['error'] = 'Je wachtwoord is incorrect. Probeer opnieuw.';
+            $data['error-type'] = 'alert-danger';
+
+            return redirect('/companyaccount')->with('error', $data['error'])->with('error-type', $data['error-type']);
         }
+
+        if ($req['pass1'] !== $req['pass2']) {
+            $data['error'] = 'Je wachtwoorden komen niet overeen. Probeer opnieuw.';
+            $data['error-type'] = 'alert-danger';
+
+            return redirect('/companyaccount')->with('error', $data['error'])->with('error-type', $data['error-type']);
+        }
+
+        // update pass
+        $user = \App\User::where('id', \Auth::user()->id)->update(['password' => \Hash::make($req['pass1'])]);
+        $data['error'] = 'Je wachtwoord is ge-update!';
+        $data['error-type'] = 'alert-success';
+        $data['message'] = 'Je gegevens zijn aangepast.';
+
+        return redirect('/companyaccount')->with('error', $data['error'])->with('error-type', $data['error-type'])->with('message', $data['message']);
     }
 }

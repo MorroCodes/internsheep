@@ -6,27 +6,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-lg-8 mb-5">
-        <div class="popup-message">
-            <form action="{{ action('MessageController@startConversation') }}" method="post">
 
-                <input type="hidden" name="company" value="{{$internship->company_id}}">
-                <input type="hidden" class="application-id" name="application" value="">
-                <input type="hidden" class="student-id" name="student" value="">
-                <input type="hidden" name="internship" value="{{$internship->id}}">
+        @component('components/message_popup')
+            @slot('internship_id') {{$internship->id}} @endslot
+            @slot('company_id') {{$internship->company_id}} @endslot
+        @endcomponent
 
-                <div class="form-group">
-                    <label for="message" class="popup-title"></label>
-                    <textarea name="message" class="form-control message-input" id="message"></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Verstuur bericht</button>
-            {{csrf_field()}}
-            </form>
-
-            <img class="close" src="{{ asset('img/close.svg') }}">
-        </div>
-
-        <div class="popup-overlay"></div>
 
         <div class="card text-center">
             <div class="card-header">
@@ -47,50 +32,36 @@
                     <p>{{$internship->aanbod}}</p>
                 
                 <a href="{{route('internship.edit', [$internship->id])}}">
-                    <button>Aanpassen</button>
+                    <button class="btn btn-primary btn-edit">Aanpassen</button>
                 </a>
             </div>
 
           <div class="internship-applications">
-          <h3>Sollicitaties</h3>
-          @if($applications == null)
+          <h3 class="create-internship-title">Sollicitaties</h3>
+        
+          @if($applications->count() == 0)
           <div>
           <p>Er zijn nog geen sollicitaties voor deze vacature.</p>
           </div>
           @else
           <div class="application-cards">
-          @foreach($applications as $a)
-              <div class="application-card">
-
-              <div class="application-card-title">
-
-                  <a href="{{route('StudentProfilePublic',[$a->student_id])}}">
-                      <h4>{{$a->firstname}} {{$a->lastname}}</h4>
-                  </a>
-
-                  <div>
-                      <button class="application-response-deny {{ ($a->response == 'denied') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}" >Weiger</button>
-                      <button class="application-response-maybe {{ ($a->response == 'maybe') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}" >Misschien</button>
-                      <button class="application-response-accept {{ ($a->response == 'accepted') ? 'application-response-selected' : '' }}" data-applicationId="{{$a->id}}">Accepteer</button>
-                  </div>
-              </div>
-
-                  <div class="application-card-content">
-                      <h5>Bericht</h5>
-                      <p>{{$a->reason}}</p>
-                      <div>
-                          <p>E-mail: {{$a->email}}</p>
-                          <p>Verzonden op: {{$a->created_at}}</p>
-                      </div>
-                  </div>
-
-                  <div>
-                      <button class="btn btn-primary btn-message" data-applicationId="{{$a->id}}" data-applicant="{{$a->firstname}} {{$a->lastname}}" data-studentId="{{$a->id}}">Start een gesprek</button>
-                      <a href="/conversations" class="btn btn-primary">Toon berichten</a>
-                  </div>
-
-              </div>
-          @endforeach
+            
+            @foreach($applications as $a)
+                @component('components/applications')
+                    @slot('firstname') {{$a->firstname}} @endslot
+                    @slot('lastname') {{$a->lastname}} @endslot
+                    @slot('reason') {{$a->reason}} @endslot
+                    @slot('response') {{$a->response}} @endslot
+                    @slot('email') {{$a->email}} @endslot
+                    @slot('created_at') {{$a->created_at}} @endslot
+                    @slot('id') {{$a->id}} @endslot
+                    @slot('student_id') {{$a->student_id}} @endslot
+                    @slot('class') message-btn @endslot
+                    @slot('internship_id') {{$a->internships_id}} @endslot
+                @endcomponent
+            @endforeach
+        
+          
           </div>
         @endif
         </div>
