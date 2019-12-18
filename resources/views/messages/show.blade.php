@@ -9,7 +9,7 @@
             @endcomponent
 
                 <div class="messages-page-container messages-page-container-convos">
-                    <h2>Berichten</h2>
+                    <h2 class="main-title">Berichten</h2>
 
                     @if($applications->count() == 0 && session('type') == 'company')
                    
@@ -21,7 +21,7 @@
                         <p>Je hebt nog geen berichten ontvangen. Solliciteer nu voor een vacature en wacht op een antwoord.</p>
                         <a href="/home" class="btn btn-primary">Terug naar startpagina</a>
 
-                        <h3>Vacatures</h3>
+                        <h3 class="main-title">Vacatures</h3>
 
                         @foreach($internships as $i)
                             @component('components/vacatures')
@@ -36,7 +36,7 @@
                     @else
                         <p>Je hebt nog geen berichten gestuurd. Hier een overzicht van alle sollicitaties waarop je kan reageren.</p>
                         
-                        <h3>Sollicitaties</h3>
+                        <h3 class="main-title">Sollicitaties</h3>
                   
                         @foreach($applications as $a)
                             @component('components/applications')
