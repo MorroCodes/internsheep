@@ -32,13 +32,14 @@
                     <p>{{$internship->aanbod}}</p>
                 
                 <a href="{{route('internship.edit', [$internship->id])}}">
-                    <button>Aanpassen</button>
+                    <button class="btn btn-primary btn-edit">Aanpassen</button>
                 </a>
             </div>
 
           <div class="internship-applications">
-          <h3>Sollicitaties</h3>
-          @if($applications == null)
+          <h3 class="create-internship-title">Sollicitaties</h3>
+        
+          @if($applications->count() == 0)
           <div>
           <p>Er zijn nog geen sollicitaties voor deze vacature.</p>
           </div>
