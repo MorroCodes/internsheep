@@ -84,6 +84,7 @@ Route::post('/apply_internship', 'AccountController@ApplyInternship');
 Route::get('/companyaccount', 'AccountCompanyController@changeCompanyData')->name('changeCompanyData');
 Route::post('/companyaccount/data', 'AccountCompanyController@handleCompanyData');
 Route::post('/companyaccount/data2', 'AccountCompanyController@handleCompanyData2');
+Route::post('/companyaccount/data3', 'AccountController@handleProfilePicture2');
 Route::post('/companyaccount/password', 'AccountCompanyController@handleCompanyNewPassword');
 //match students with companies
 Route::get('/match', 'MatchController@show')->name('menu');

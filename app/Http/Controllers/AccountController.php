@@ -153,6 +153,24 @@ class AccountController extends Controller
             echo 'no file!';
         }
     }
+    public function handleProfilePicture2(Request $request)
+    {
+        if ($request->hasFile('profile')) {
+            $picture_name = $request->file('profile')->getClientOriginalName();
+            $picture_size = $request->file('profile')->getSize();
+            $picture_path = $request->file('profile')->getPathName();
+            $this->checkType($picture_name);
+            $this->fileSize($picture_size);
+            $directory = $this->createDirectory($picture_name);
+            $newDirectory = $this->uploadFile($directory, $picture_name, $picture_path);
+            $this->InsertProfileImage($newDirectory);
+            $request->session()->flash('status', 'Gegevens zijn aangepast');
+
+            return redirect('/companyaccount');
+        } else {
+            echo 'no file!';
+        }
+    }
 
     public function handleCV(Request $request)
     {
