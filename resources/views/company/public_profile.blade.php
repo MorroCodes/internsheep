@@ -56,10 +56,7 @@
                             @slot('type') {{$surveyInfo->type}} @endslot
                             @slot('transport') {{$surveyInfo->transport}} @endslot
                         @endcomponent
-                    @else
-                        @component('components/company_survey_results_empty')
-                            @slot('surveyInfo') {{$surveyInfo}} @endslot
-                        @endcomponent
+                   
                     @endif
 
             <div class="card-footer text-muted">
