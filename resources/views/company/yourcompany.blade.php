@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 @empty
-                <h1>Je hebt nog geen vacatures!</h1>
+                <p>Je hebt nog geen vacatures.</p>
               @endforelse
             </div>
 

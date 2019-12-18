@@ -3,7 +3,7 @@
 @section('content')
 <div class="internship-applications internship-page-student">
     <h3 class="profile-title">Jouw sollicitaties</h3>
-      @if($applications == null)
+      @if($applications->count() == 0)
         <div>
           <p>Je hebt nog niet gesolliciteerd.</p>
         </div>
