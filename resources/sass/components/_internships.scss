@@ -1,10 +1,17 @@
-.internship-form-container{
+.internships{
+    margin-top: 1em;
+}
+
+
+.internship-form-container {
     width: 80%;
-    margin:auto;
+    margin: auto;
     max-width: 750px;
 }
 
-.create-internship-title{
+// algemene styling titels
+.create-internship-title,
+.main-title {
     text-align: left;
     font-size: 0.8em;
     padding: 1.5em 0 0.5em 0;
@@ -15,7 +22,20 @@
     text-transform: uppercase;
 }
 
-.create-internship-input{
+.main-title-big {
+    font-size: 1.3em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    color: #181818;
+}
+
+// algemene styling paragrafen in combo met .mail-title
+.main-title+p {
+    padding: 0.5em 0 0.5em 0;
+    width: 90%;
+    margin: auto;
+}
+
+.create-internship-input {
     width: 90%;
     margin: auto;
     height: 2em;
@@ -27,61 +47,77 @@
     height: 46px;
     padding: 0 10px;
 }
-.rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
+
+.rate:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
 }
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
+
+.rate:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
 }
-.rate:not(:checked) > label:before {
+
+.rate:not(:checked)>label:before {
     content: '★ ';
 }
-.rate > input:checked ~ label {
+
+.rate>input:checked~label {
     color: #ffc700;
 }
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
     color: #deb217;
 }
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
     color: #c59b08;
 }
-#card-internship{
-    height:900px;
-}
-#space{
-    margin-top:70px;
-}
-#bg-white{
-    height:400px;
-    background-color:white;
-}
-#fomu{
-    margin-bottom:70px;
-}
-.ful{
-    width:100%;
+
+#card-internship {
+    height: 900px;
 }
 
-.card-body-show-internship p{
+#space {
+    margin-top: 70px;
+}
+
+#bg-white {
+    height: 400px;
+    background-color: white;
+}
+
+#fomu {
+    margin-bottom: 70px;
+}
+
+.ful {
+    width: 100%;
+}
+
+.card-body-show-internship p {
     text-align: left;
     width: 90%;
     margin: auto;
 }
 
-#title_vacature{
+#title_vacature {
     text-align: left;
     width: 90%;
     margin: auto;
+}
+
+.internship-applications {
+    flex: 1 1 auto;
+    padding: 1.25rem;
 }

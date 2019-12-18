@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.btn-edit {
+  margin-top: 3em;
+}
+
 .popup-message {
   display: none;
   background-color: white;
@@ -32,7 +36,9 @@
   width: 95%;
   max-width: 500px;
   margin: 1em auto;
-  border: 1px solid #12396A;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 0.5em;
+  border-radius: 0.2em;
 }
 
 .application-card-title {
@@ -42,7 +48,12 @@
           justify-content: space-between;
   -webkit-box-align: center;
           align-items: center;
-  background-color: grey;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.application-card-title a h4 {
+  text-align: left;
+  font-size: 1.2em;
 }
 
 .application-response-selected {
@@ -50,7 +61,23 @@
   color: white;
 }
 
+.application-response-btn {
+  font-size: 0.9em;
+  background-color: white;
+  border: none;
+  margin: 0 0.2em;
+  padding: 0 0.8em;
+  border-radius: 1em;
+  text-align: center;
+}
+
+.response-btn-container {
+  display: -webkit-box;
+  display: flex;
+}
+
 .application-card-content {
+  padding: 1em 0;
   text-align: left;
 }
 
@@ -69,6 +96,12 @@
 
 .application-card-content div p:last-child {
   font-size: 0.7em;
+}
+
+.application-btn-container {
+  display: -webkit-box;
+  display: flex;
+  justify-content: space-around;
 }
 
 .messages-page-container {
@@ -149,13 +182,18 @@
   max-width: 600px;
 }
 
+.internships {
+  margin-top: 1em;
+}
+
 .internship-form-container {
   width: 80%;
   margin: auto;
   max-width: 750px;
 }
 
-.create-internship-title {
+.create-internship-title,
+.main-title {
   text-align: left;
   font-size: 0.8em;
   padding: 1.5em 0 0.5em 0;
@@ -164,6 +202,18 @@
   color: #646464;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.main-title-big {
+  font-size: 1.3em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  color: #181818;
+}
+
+.main-title + p {
+  padding: 0.5em 0 0.5em 0;
+  width: 90%;
+  margin: auto;
 }
 
 .create-internship-input {
@@ -248,6 +298,12 @@
   margin: auto;
 }
 
+.internship-applications {
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
 @media (max-width: 768px) {
   .site-navbar-wrap .align-items-center {
     -webkit-box-pack: justify;
@@ -296,6 +352,10 @@
   }
 }
 
+.profile-survey-container {
+  padding: 0 1.25rem;
+}
+
 .survey-result-container-flex {
   display: -webkit-box;
   display: flex;
@@ -305,7 +365,7 @@
 }
 
 .survey-question {
-  font-weight: 600;
+  font-weight: 500;
   margin-top: 2em;
   margin-bottom: 0.5em;
 }
@@ -324,6 +384,7 @@
   width: 250px;
   padding: 0.4em;
   font-size: 0.8em;
+  color: black;
 }
 
 .survey-result-container-flex div:nth-child(3) {
@@ -343,11 +404,46 @@
   height: 1em;
   border-radius: 1em;
   background-color: white;
-  border: 2px solid #12396A;
+  border: 2px solid #333333;
 }
 
 .circle-selected {
-  background-color: #12396A;
+  background-color: #333333;
+}
+
+.profile-survey-container {
+  margin-bottom: 2em;
+}
+
+.profile-survey-container div:last-child {
+  margin-bottom: 0.5em;
+}
+
+.profile-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.3em;
+  margin: 1em 0;
+}
+
+.btn-profile-edit {
+  margin-top: 0.5em;
+}
+
+.title-flex {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.title-flex h1 {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding-right: 1em;
+  padding-top: 0.4em;
 }
 
 body {

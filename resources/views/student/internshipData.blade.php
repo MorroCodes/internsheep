@@ -9,23 +9,21 @@
           <div class="col-md-12 col-lg-8 mb-5">
             <div class="p-5 bg-white">
 
-              <div class="mb-4 mb-md-5 mr-5">
               @if(session('message'))
                     <div class="alert {{session('error-type')}}">{{session('message')}}</div>
-                @endif
-               <div class="job-post-item-header d-flex align-items-center">
-               
-                 <h2 class="mr-3 text-black h4">{{$internship->title}}</h2>
-               </div>
-               <div class="job-post-item-body d-block d-md-flex">
-                 <div class="mr-3">{{$internship->address}}</div>
-               </div>
-              </div>          
-              <h5>Beschrijving</h5>
+              @endif
+           
+              <h5 class="main-title main-title-big">{{$internship->title}}</h5>
+              <h5 class="main-title">Adres</h5>
+              <p>{{$internship->address}}</p>
+
+              <h5 class="main-title">Beschrijving</h5>
               <p>{{$internship->description}}</p>
-              <h5>Functie omschrijving</h5>
+
+              <h5 class="main-title">Functie omschrijving</h5>
               <p>{{$internship->functie_omschrijving}}</p>
-              <h5>Aanbod</h5>
+
+              <h5 class="main-title">Aanbod</h5>
               <p>{{$internship->aanbod}}</p>
             </div>
             <form action="{{ action('AccountController@ApplyInternship') }}" method="post" id="fomu">

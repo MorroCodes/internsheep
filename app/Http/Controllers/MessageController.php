@@ -58,8 +58,10 @@ class MessageController extends Controller
         }
 
         if ($data['conversations']->count() == 0) {
-            $data['applications'] = \App\Apply::where('company_id', \Auth::user()->id)->get();
+            $data['applications'] = \App\Apply::where('company_id', \Auth::user()->id)->join('users', 'student_id', '=', 'users.id')->get();
+
             $data['internships'] = \App\Internship::latest()->limit(6)->get();
+
             return view('messages/show', $data);
         }
         // there are messages, get messages of last conversation
