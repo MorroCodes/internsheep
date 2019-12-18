@@ -71,6 +71,12 @@
   text-align: center;
 }
 
+.application-response-status-container {
+  font-size: 0.8em;
+  color: #12396A;
+  font-weight: bold;
+}
+
 .response-btn-container {
   display: -webkit-box;
   display: flex;
@@ -102,6 +108,16 @@
   display: -webkit-box;
   display: flex;
   justify-content: space-around;
+}
+
+.internship-page-student .application-cards {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.internship-page-student h3 {
+  text-align: center;
 }
 
 .messages-page-container {
