@@ -42,13 +42,8 @@ class MatchController extends Controller
         if (!isset($request->transport_method)) {
             $request->transport_method = 'driving';
         }
-        foreach ($internships as $internship) {
-            $destination = $this->getGeoCode($internship->address);
-            $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
-        }
-        foreach ($internships as $internship) {
-            $internship->user = $internship->company->user;
-        }
+        $internships = $this->getDistanceForInternships($internships, $origin);
+        $internships = $this->addUserToInternships($internships);
         $internships = $internships->sortBy('distance');
         $data['internships'] = $internships;
         $data['request'] = $request;
@@ -74,16 +69,9 @@ class MatchController extends Controller
             if (!isset($request->transport_method)) {
                 $request->transport_method = 'driving';
             }
-            foreach ($internships as $internship) {
-                $destination = $this->getGeoCode($internship->address);
-                $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
-            }
+            $internships = $this->getDistanceForInternships($internships, $origin);
         }
-
-        foreach ($internships as $internship) {
-            $internship->user = $internship->company->user;
-        }
-
+        $internships = $this->addUserToInternships($internships);
         $data['internships'] = $internships;
         $data['request'] = $request;
         if (!empty($request->address)) {
@@ -119,10 +107,7 @@ class MatchController extends Controller
             $origin = $this->getGeoCode($request->address);
             if (!isset($origin['error'])) {
                 foreach ($companySurveys as $companySurvey) {
-                    foreach ($companySurvey->internships as $internship) {
-                        $destination = $this->getGeoCode($internship->address);
-                        $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
-                    }
+                    $companySuvey->internships = $this->getDistanceForInternships($companysurvey->internships, $origin);
                     $companySurvey->internships = $companySurvey->internships->sortBy('distance');
                 }
             } else {
@@ -158,6 +143,23 @@ class MatchController extends Controller
         }
 
         return $companySurveys;
+    }
+
+    public function addUserToInternships($internships)
+    {
+        foreach ($internships as $internship) {
+            $internship->user = $internship->company->user;
+        }
+
+        return $internships;
+    }
+
+    public function getDistanceForInternships($internships, $origin)
+    {
+        foreach ($internships as $internship) {
+            $destination = $this->getGeoCode($internship->address);
+            $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
+        }
     }
 
     public function getGeoCode($address)
