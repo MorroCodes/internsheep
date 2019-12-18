@@ -68,12 +68,16 @@ class AccountController extends Controller
         $id = \Auth::user()->id;
         $data['user'] = \App\User::where('id', $id)->first();
         $data['studentInfo'] = \App\Student::where('user_id', $data['user']->id)->first();
+
         return view('student/student', $data);
     }
 
     public function StudentProfilePublic($id)
     {
-        $data['user'] = \App\User::where('id', $id)->first();
+        $data['user'] = \App\User::select('users.*', 'students.user_id', 'students.school', 'students.field_of_study')
+        ->where('users.id', $id)
+        ->join('students', 'users.id', 'students.user_id')
+        ->first();
         if ($data['user']->type == 'student') {
             return view('student/studentPublic', $data);
         } else {
