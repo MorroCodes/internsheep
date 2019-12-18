@@ -6,11 +6,30 @@ if(convoPage != null){
         let target = e.target;
         let container = target.parentNode;
         let applicationId = target.getAttribute("data-applicationId");
+        console.log(applicationId);
         let studentId = target.getAttribute("data-studentId");
         let internshipId = target.getAttribute("data-internshipId");
         if (e.target.matches(".send-message--convo")) {
             sendNewMessageEvent(target, applicationId, studentId, internshipId);
-        }
+        } else if (e.target.matches(".application-response-deny")) {
+
+            response = "denied";
+            updateApplicationStatus(response, applicationId, container, studentId);
+
+        } else if (e.target.matches(".application-response-maybe")) {
+
+            response = "maybe";
+            updateApplicationStatus(response, applicationId, container, studentId);
+
+        } else if (e.target.matches(".application-response-accept")) {
+
+            response = "accepted";
+            updateApplicationStatus(response, applicationId, container, studentId);
+
+        } else if (e.target.matches(".btn-message")) {
+            internshipId = target.getAttribute("data-internshipId");
+            sendNewMessageEvent(target, applicationId, studentId, internshipId);
+        } 
     })
 }
 
@@ -24,7 +43,7 @@ if (applicationCards != null) {
         let container = target.parentNode;
         applicationId = target.getAttribute("data-applicationId");
         studentId = target.getAttribute("data-studentId");
-      
+        console.lof("click");
         if (e.target.matches(".application-response-deny")) {
 
             response = "denied";
