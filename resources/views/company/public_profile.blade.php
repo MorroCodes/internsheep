@@ -14,7 +14,7 @@
             <div class="public-company-container">
                 <h1 class="profile-title">{{$companyInfo->company_name}}</h1>
                 <div class="company-profile-image-container">
-                    <img src="{{$userInfo->profile_image}}" alt="{{$companyInfo->company_name}} logo">
+                    <img src="{{asset($userInfo->profile_image)}}" alt="{{$companyInfo->company_name}} logo">
                 </div>
                 
                 <div class="company-info-desc">
