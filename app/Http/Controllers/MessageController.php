@@ -35,11 +35,13 @@ class MessageController extends Controller
                 ->join('users', 'student_id', '=', 'users.id')
                 ->get();
         } else {
+            $data['conversationInfo'] = \App\Conversation::where('id', $id)->first();
             $data['conversations'] = $this->getStudentConversations();
 
             $data['messages'] = \App\Message::where([['conversation_id', $id], ['student_id', $this->getStudentIdFromUserId(\Auth::user()->id)]])
                 ->join('users', 'company_id', '=', 'users.id')
                 ->get();
+            $data['companyInfo'] = \App\Company::where('user_id', $data['conversationInfo']->company_id)->first();
         }
 
         if ($data['messages']->count() == 0) {

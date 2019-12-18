@@ -12,7 +12,7 @@
                         <label>Selecteer een gesprek:</label>
                         <select class="contacts-dropdown" name="forma" onchange="location = this.value;">
                             @foreach($conversations as $c)
-                                <option value="/conversations/{{$c->id}}" @if($current == $c->id) selected class="selected-convo-option" @endif >{{$c->firstname}} {{$c->lastname}}</option>
+                                <option value="/conversations/{{$c->id}}" @if($current == $c->id) selected class="selected-convo-option" @endif >{{$c->firstname}} {{$c->lastname}} @if($companyInfo)- {{$companyInfo->company_name}} @endif</option>
                             @endforeach
                         </select>
                     
