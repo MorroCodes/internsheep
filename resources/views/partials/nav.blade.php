@@ -43,9 +43,12 @@
                                 @if(Auth::user())
                                     @if(Auth::user()->type == "student")
                                         <li><a href="{{ action('AccountController@StudentProfile') }}">Bekijk Profiel</a></li>
+                                        <li><a href="/student/applications">Sollicitaties</a></li>
+                                        <li><a href="/conversations">Gesprekken</a></li>
                                         <li><a href="{{ action('AccountController@changeStudentData') }}">Instellingen</a></li>
                                     @elseif(Auth::user()->type == "company")
-                                        <li><a href="{{ action('CompanyController@show') }}">Bekijk jouw bedrijf</a></li>
+                                        <li><a href="/company/{{Auth::user()->id}}">Bekijk jouw bedrijf</a></li>
+                                        <li><a href="/conversations">Gesprekken</a></li>
                                         <li><a href="{{ action('AccountCompanyController@changeCompanyData') }}">Instellingen</a></li>
                                     @endif
                                 @endif
