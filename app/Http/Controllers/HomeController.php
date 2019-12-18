@@ -26,7 +26,7 @@ class HomeController extends Controller
         if ($type != 'student') {
             return redirect('/yourcompany');
         }
-        $data['internship'] = \App\Internship::select('internships.*', 'companies.id as company_table_id', 'companies.company_name')->orderBy('id', 'desc')->join('companies', 'company_id', '=', 'companies.id')->take(6)->get();
+        $data['internship'] = \App\Internship::select('internships.*', 'companies.id as company_table_id', 'companies.company_name', 'companies.user_id')->orderBy('id', 'desc')->join('companies', 'internships.company_id', '=', 'companies.user_id')->take(6)->get();
         $companies = Company::limit(6)->get();
         // dd(\App\Internship::orderBy('id', 'desc')->where('created_at', '>=', \Carbon\Carbon::today()->subWeek().' 00:00:00')->count());
         return view('index/home', $data, compact('companies'));
