@@ -60,7 +60,7 @@
           <div class=" p-4 item border-right" data-aos="fade">
             <h2 class="h4">{{$c->company_name}}</h2>
             <p>{{$c->company_bio}}</p>
-            <p><a href="#">Read More <span class="icon-arrow-right small"></span></a></p>
+            <p><a href="/company/{{$c->id}}">Read More <span class="icon-arrow-right small"></span></a></p>
           </div>
           @endforeach
 
