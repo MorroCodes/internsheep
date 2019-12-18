@@ -61,6 +61,10 @@
   color: white;
 }
 
+.application-response-unselected {
+  opacity: 0.5;
+}
+
 .application-response-btn {
   font-size: 0.9em;
   background-color: white;
