@@ -11,16 +11,17 @@
         <div class="card text-center">
             <div class="card-header">
             </div>
-            <div class="company-profile-image-container">
-                        <img src="{{Auth::user()->profile_image}}" alt="{{$companyInfo->company_name}} logo">
-            </div>
             <h1 class="profile-title">{{$companyInfo->company_name}}</h1>
+            <div class="company-profile-image-container">
+                        <img src="{{$userInfo->profile_image}}" alt="{{$companyInfo->company_name}} logo">
+            </div>
+            
             <div class="card-body card-body-show-internship">
                   <h2 class="create-internship-title">Bio</h2>
                   <p class="location">{{$companyInfo->company_bio}}</p>
             </div>
 
-            @if($vacatures->isEmpty())  
+            @if($vacatures->isEmpty())
                         <div class="company-profile-internships-container">
                             <h3 class="profile-title">Vacatures</h3>
                             <div>
@@ -46,7 +47,7 @@
                         </div>
                         @endif
 
-                        @if($surveyInfo != null)  
+                        @if($surveyInfo != null)
                         @component('components/company_survey_results')
                             @slot('surveyInfo') {{$surveyInfo}} @endslot
                             @slot('vibe') {{$surveyInfo->vibe}} @endslot
