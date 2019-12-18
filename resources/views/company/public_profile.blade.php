@@ -11,10 +11,11 @@
         <div class="card text-center">
             <div class="card-header">
             </div>
-            <div class="company-profile-image-container">
-                        <img src="{{Auth::user()->profile_image}}" alt="{{$companyInfo->company_name}} logo">
-            </div>
             <h1 class="profile-title">{{$companyInfo->company_name}}</h1>
+            <div class="company-profile-image-container">
+                        <img src="{{$userInfo->profile_image}}" alt="{{$companyInfo->company_name}} logo">
+            </div>
+            
             <div class="card-body card-body-show-internship">
                   <h2 class="create-internship-title">Bio</h2>
                   <p class="location">{{$companyInfo->company_bio}}</p>
