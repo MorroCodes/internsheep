@@ -25,6 +25,7 @@
 <script src="{{asset('js/internshipFormPlaceholders.js')}}"></script>
 <script src="{{asset('js/surveyResults.js')}}"></script>
 <script src="{{asset('js/applicationResponse.js')}}"></script>
+<script src="{{asset('js/rating.js')}}"></script>
 
 
 </html>
