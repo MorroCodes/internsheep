@@ -26,7 +26,7 @@ class MatchController extends Controller
 
     public function showRecent()
     {
-        $internships = \App\Internship::latest()->with('company')->take(8)->get();
+        $internships = \App\Internship::latest()->take(8)->with('company')->get();
         foreach ($internships as $internship) {
             $internship->user = $internship->company->user;
         }
@@ -37,7 +37,7 @@ class MatchController extends Controller
 
     public function matchBasedOnLocation($request)
     {
-        $internships = \App\Internship::latest()->with('company')->take(10)->get();
+        $internships = \App\Internship::latest()->take(10)->with('company')->get();
         $origin = $this->getGeoCode($request->address);
         if (!isset($request->transport_method)) {
             $request->transport_method = 'driving';
