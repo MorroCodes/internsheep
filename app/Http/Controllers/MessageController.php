@@ -109,8 +109,8 @@ class MessageController extends Controller
     public function getUserIdFromStudentId($student_id)
     {
         $user_id = \App\Student::where('id', $student_id)->first();
-        if($user_id == null){
-            return redirect('/');
+        if ($user_id == null) {
+            return false;
         }
 
         return $user_id->user_id;
@@ -149,6 +149,9 @@ class MessageController extends Controller
 
         $message = new \App\Message();
         $message->conversation_id = $conversation_id;
+        if ($this->getUserIdFromStudentId($student_id) == false) {
+            return redirect('/');
+        }
         $message->student_id = $this->getUserIdFromStudentId($student_id);
         $message->company_id = $company_id;
         $message->message = $message_text;
