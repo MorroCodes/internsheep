@@ -77,7 +77,9 @@ class HomeController extends Controller
     public function internshipRating(Request $request)
     {
         $rate = $request->input('rating');
-        $student_id = \Auth::user()->id;
+        $user = \Auth::user();
+        $student = $user->student->first();
+        $student_id = $student->id;
         $internship_id = $request->input('internship');
 
         $row = \App\Rating::where('student_id', $student_id)->where('internship_id', $internship_id)->first();
