@@ -111,26 +111,31 @@ class MatchController extends Controller
                     ->orWhere('age', '=', $age)
                     ->orWhere('type', '=', $type);
         })->with('user', 'internships')->get();
-        $percentages = $this->countPercentages($userSurvey, $companySurveys);
-        $companySurveys = $this->addMatchPercentages($companySurveys, $percentages);
-        $companySurveys = $companySurveys->sortByDesc('match');
-        $data['request'] = $request;
-        if ($request->address != null) {
-            if ($request->transport_method == null) {
-                $request->transport_method = 'driving';
-            }
-            $origin = $this->getGeoCode($request->address);
-            if (!isset($origin['error'])) {
-                foreach ($companySurveys as $companySurvey) {
-                    $companySurvey->internships = $this->getDistanceForInternships($companySurvey->internships, $origin, $request);
-                    $companySurvey->internships = $companySurvey->internships->sortBy('distance');
+        if (!empty($companySurveys->first())) {
+            $percentages = $this->countPercentages($userSurvey, $companySurveys);
+
+            $companySurveys = $this->addMatchPercentages($companySurveys, $percentages);
+            $companySurveys = $companySurveys->sortByDesc('match');
+            $data['request'] = $request;
+            if ($request->address != null) {
+                if ($request->transport_method == null) {
+                    $request->transport_method = 'driving';
                 }
-            } else {
-                $data['error'] = $origin['error'];
+                $origin = $this->getGeoCode($request->address);
+                if (!isset($origin['error'])) {
+                    foreach ($companySurveys as $companySurvey) {
+                        $companySurvey->internships = $this->getDistanceForInternships($companySurvey->internships, $origin, $request);
+                        $companySurvey->internships = $companySurvey->internships->sortBy('distance');
+                    }
+                } else {
+                    $data['error'] = $origin['error'];
+                }
             }
-        }
-        foreach ($companySurveys as $companySurvey) {
-            $companySurvey->company = $companySurvey->user->company;
+            foreach ($companySurveys as $companySurvey) {
+                $companySurvey->company = $companySurvey->user->company;
+            }
+        } else {
+            $data['error'] = 'Oeps, nog geen vacatures gevonden!';
         }
         $data['companySurveys'] = $companySurveys;
 
