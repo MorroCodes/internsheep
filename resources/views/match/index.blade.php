@@ -43,7 +43,7 @@
                                     <h3 class="card-title">{{ $internship->title }}</h3>
                                     <div class="d-block d-lg-flex">
                                         <div class="mr-3"><span
-                                                class="icon-suitcase mr-1"></span>{{ $internship->company_name}}
+                                                class="icon-suitcase mr-1"></span>{{ $internship->company->company_name}}
                                         </div>
                                         <div class="mr-3"><span class="icon-room mr-1"></span>{{ $internship->address}}
                                         </div>
