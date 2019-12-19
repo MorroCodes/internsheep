@@ -157,6 +157,7 @@ class AccountController extends Controller
             echo 'no file!';
         }
     }
+
     public function handleProfilePicture2(Request $request)
     {
         if ($request->hasFile('profile')) {
@@ -232,8 +233,8 @@ class AccountController extends Controller
         for ($i = 0; $i < $charactersLength; ++$i) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
-        $newDirectory = 'uploads'.DIRECTORY_SEPARATOR.$randomString;
-        mkdir($newDirectory, 0777, true);
+        $newDirectory = './public/uploads'.DIRECTORY_SEPARATOR.$randomString;
+        mkdir($newDirectory, 0755, true);
 
         return $newDirectory;
     }
