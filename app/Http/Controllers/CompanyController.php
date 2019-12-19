@@ -10,8 +10,9 @@ class CompanyController extends Controller
         if ($type == 'student') {
             return redirect('/home');
         }
-        $id = \Auth::user()->id;
-        $data['internship'] = \App\Internship::where('company_id', $id)->take(6)->get();
+        $user = \Auth::user();
+        $company = $user->company->first();
+        $data['internship'] = \App\Internship::where('company_id', $company->id)->take(6)->get();
 
         return view('company/yourcompany', $data);
     }
