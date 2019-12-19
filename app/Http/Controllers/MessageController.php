@@ -60,9 +60,15 @@ class MessageController extends Controller
 
         if ($data['conversations']->count() == 0) {
             $user = \Auth::user();
-            $company = $user->company->first();
+            if (session('type') == 'company') {
+                $company = $user->company->first();
+                $id = $company->id;
+            } else {
+                $student = $user->student->first();
+                $id = $student->id;
+            }
             $data['applications'] = \App\Apply::select('applies.*', 'students.*', 'users.firstname', 'users.lastname', 'users.email', 'users.id as users_table_id')
-            ->where('company_id', $company->id)
+            ->where('company_id', $id)
             ->join('students', 'applies.student_id', '=', 'students.id')
             ->join('users', 'students.user_id', '=', 'users.id')->get();
 
