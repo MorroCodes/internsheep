@@ -13,6 +13,13 @@ class MatchController extends Controller
         if ($request->searchFor != null) {
             return $this->searchByQuery($request);
         }
+        if (\Auth::user() != null) {
+            $type = \Auth::user()->type;
+            if ($type != 'student') {
+                return redirect('/yourcompany');
+            }
+        }
+
         $userSurvey = \App\StudentSurvey::where('user_id', session('id'))->first();
         if (session('id') != null && !empty($userSurvey)) {
             return $this->matchStudentWithCompanies($userSurvey, $request);

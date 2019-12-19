@@ -263,6 +263,7 @@ class EntryController extends Controller
     {
         //logout user
         auth()->logout();
+        Session()->flush();
 
         return redirect('/');
     }
