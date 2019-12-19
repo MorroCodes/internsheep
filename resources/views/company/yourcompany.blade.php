@@ -19,13 +19,13 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$i->title}}</h5>
                         <p class="card-text">{{$i->description}}</p>
-                        <a href="{{route('internship.show',[$i->id])}}">
+                        <a href="/vacature/{{$i->id}}/overview">
                             <button class="btn btn-primary">view</button>
                         </a>
                     </div>
                 </div>
                 @empty
-                <h1>Je hebt nog geen vacatures!</h1>
+                <p>Je hebt nog geen vacatures.</p>
               @endforelse
             </div>
 

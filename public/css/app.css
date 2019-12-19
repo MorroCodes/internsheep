@@ -4,12 +4,22 @@
   margin-top: 3em;
 }
 
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  cursor: pointer;
+}
+
 .popup-message {
   display: none;
   background-color: white;
   position: fixed;
-  top: 40%;
-  left: 40%;
+  top: 50%;
+  left: 50%;
+  margin-top: -115.5px;
+  margin-left: -212px;
   z-index: 69;
   padding: 2em;
 }
@@ -61,6 +71,10 @@
   color: white;
 }
 
+.application-response-unselected {
+  opacity: 0.5;
+}
+
 .application-response-btn {
   font-size: 0.9em;
   background-color: white;
@@ -69,6 +83,12 @@
   padding: 0 0.8em;
   border-radius: 1em;
   text-align: center;
+}
+
+.application-response-status-container {
+  font-size: 0.8em;
+  color: #12396A;
+  font-weight: bold;
 }
 
 .response-btn-container {
@@ -102,6 +122,20 @@
   display: -webkit-box;
   display: flex;
   justify-content: space-around;
+}
+
+.internship-page-student .application-cards {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.internship-page-student h3 {
+  text-align: center;
+}
+
+.empty-applications {
+  text-align: center;
 }
 
 .messages-page-container {
@@ -430,6 +464,20 @@
   margin-top: 0.5em;
 }
 
+.cv {
+  margin-left: 30px;
+}
+
+.profile-picture-container {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-radius: 2em;
+  margin: 0 1em;
+}
+
 .title-flex {
   display: -webkit-box;
   display: flex;
@@ -444,6 +492,24 @@
   font-weight: bold;
   padding-right: 1em;
   padding-top: 0.4em;
+}
+
+.public-company-container {
+  width: 90%;
+  margin: auto;
+}
+
+.public-company-container h2 {
+  text-align: left;
+  font-size: 0.8em;
+  padding: 1.5em 0 0.5em 0;
+  color: #646464;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.company-info-desc {
+  margin-bottom: 4em;
 }
 
 body {

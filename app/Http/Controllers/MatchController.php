@@ -10,6 +10,9 @@ class MatchController extends Controller
 
     public function show(Request $request)
     {
+        if ($request->searchFor != null) {
+            return $this->searchByQuery($request);
+        }
         $userSurvey = \App\StudentSurvey::where('user_id', session('id'))->first();
         if (session('id') != null && !empty($userSurvey)) {
             return $this->matchStudentWithCompanies($userSurvey, $request);
@@ -23,7 +26,7 @@ class MatchController extends Controller
 
     public function showRecent()
     {
-        $internships = \App\Internship::latest()->with('company')->take(8)->get();
+        $internships = \App\Internship::latest()->take(8)->with('company')->get();
         foreach ($internships as $internship) {
             $internship->user = $internship->company->user;
         }
@@ -34,23 +37,48 @@ class MatchController extends Controller
 
     public function matchBasedOnLocation($request)
     {
-        $internships = \App\Internship::latest()->with('company')->take(10)->get();
+        $internships = \App\Internship::latest()->take(10)->with('company')->get();
         $origin = $this->getGeoCode($request->address);
         if (!isset($request->transport_method)) {
             $request->transport_method = 'driving';
         }
-        foreach ($internships as $internship) {
-            $destination = $this->getGeoCode($internship->address);
-            $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
-        }
-        foreach ($internships as $internship) {
-            $internship->user = $internship->company->user;
-        }
+        $internships = $this->getDistanceForInternships($internships, $origin, $request);
+        $internships = $this->addUserToInternships($internships);
         $internships = $internships->sortBy('distance');
         $data['internships'] = $internships;
         $data['request'] = $request;
 
         return view('match/location', $data);
+    }
+
+    public function searchByQuery($request)
+    {
+        $query = $request->searchFor;
+        $internships = \App\Internship::select('internships.*', 'companies.*')
+                                        ->join('companies', 'internships.company_id', '=', 'companies.id')
+                                        ->where('title', 'like', '%'.$query.'%')
+                                        ->orWhere('catch_phrase', 'like', '%'.$query.'%')
+                                        ->orWhere('description', 'like', '%'.$query.'%')
+                                        ->orWhere('aanbod', 'like', '%'.$query.'%')
+                                        ->orWhere('companies.company_name', 'like', '%'.$query.'%')
+                                        ->orWhere('companies.company_bio', 'like', '%'.$query.'%')
+                                        ->with('company')
+                                        ->get();
+        if (isset($request->address)) {
+            $origin = $this->getGeoCode($request->address);
+            if (!isset($request->transport_method)) {
+                $request->transport_method = 'driving';
+            }
+            $internships = $this->getDistanceForInternships($internships, $origin, $request);
+        }
+        $internships = $this->addUserToInternships($internships);
+        $data['internships'] = $internships;
+        $data['request'] = $request;
+        if (!empty($request->address)) {
+            return view('match/location', $data);
+        }
+
+        return view('match/empty', $data);
     }
 
     public function matchStudentWithCompanies($userSurvey, $request)
@@ -79,10 +107,7 @@ class MatchController extends Controller
             $origin = $this->getGeoCode($request->address);
             if (!isset($origin['error'])) {
                 foreach ($companySurveys as $companySurvey) {
-                    foreach ($companySurvey->internships as $internship) {
-                        $destination = $this->getGeoCode($internship->address);
-                        $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
-                    }
+                    $companySurvey->internships = $this->getDistanceForInternships($companySurvey->internships, $origin, $request);
                     $companySurvey->internships = $companySurvey->internships->sortBy('distance');
                 }
             } else {
@@ -118,6 +143,25 @@ class MatchController extends Controller
         }
 
         return $companySurveys;
+    }
+
+    public function addUserToInternships($internships)
+    {
+        foreach ($internships as $internship) {
+            $internship->user = $internship->company->user;
+        }
+
+        return $internships;
+    }
+
+    public function getDistanceForInternships($internships, $origin, $request)
+    {
+        foreach ($internships as $internship) {
+            $destination = $this->getGeoCode($internship->address);
+            $internship->distance = $this->getDistance($origin, $destination, $request->transport_method);
+        }
+
+        return $internships;
     }
 
     public function getGeoCode($address)

@@ -3,14 +3,14 @@
 
     <div class="application-card-title">
 
-        <a href="{{route('StudentProfilePublic',[$student_id])}}">
+        <a href="/student/{{$id}}">
             <h4>{{$firstname}} {{$lastname}}</h4>
         </a>
 
         <div class="response-btn-container">
-            <button class="application-response-btn application-response-deny {{ ($response == 'denied') ? 'application-response-selected' : '' }}" data-applicationId="{{$id}}" >👎</button>
-            <button class="application-response-btn application-response-maybe {{ ($response == 'maybe') ? 'application-response-selected' : '' }}" data-applicationId="{{$id}}" >🤔</button>
-            <button class="application-response-btn application-response-accept {{ ($response == 'accepted') ? 'application-response-selected' : '' }}" data-applicationId="{{$id}}">👍</button>
+            <button class="application-response-btn application-response-deny {{ ($response == 'denied') ? 'application-response-selected' : 'application-response-unselected' }}" data-applicationId="{{$id}}" >👎</button>
+            <button class="application-response-btn application-response-maybe {{ ($response == 'maybe') ? 'application-response-selected' : 'application-response-unselected' }}" data-applicationId="{{$id}}" >🤔</button>
+            <button class="application-response-btn application-response-accept {{ ($response == 'accepted') ? 'application-response-selected' : 'application-response-unselected' }}" data-applicationId="{{$id}}">👍</button>
         </div>
     </div>
 

@@ -9,7 +9,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@redirect');
+Route::get('/', 'MatchController@show');
 // login routes
 Route::get('/login', 'EntryController@login');
 Route::post('/login', 'EntryController@handleLogin');
@@ -42,6 +42,8 @@ Route::post('/company_survey', 'SurveyController@handleCompanySurvey');
 //companie
 Route::get('/yourcompany', 'CompanyController@show')->name('yourcompany');
 Route::get('/company/{id}', 'CompanyController@publicCompanyProfile');
+Route::get('/student', 'CompanyController@publicStudentProfile');
+
 Route::get('/vacature/{id}/overview', 'CompanyController@index')->name('internship.show');
 
 //applications
@@ -71,7 +73,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/internship/{internship}', 'HomeController@internshipDetail')->name('home');
 Route::post('/internship/rating', 'HomeController@internshipRating')->name('rating');
 Route::get('/student', 'AccountController@StudentProfile')->name('StudentProfile');
-Route::get('/student/{id}', 'AccountController@StudentProfilePublic')->name('StudentProfilePublic');
+Route::get('/student/{id}', 'AccountController@StudentProfilePublic');
 Route::get('/change_student_data', 'AccountController@changeStudentData')->name('changeStudentData');
 Route::post('/change_student_data/data', 'AccountController@handleStudentData');
 Route::post('/change_student_data/picture', 'AccountController@handleProfilePicture');
@@ -82,6 +84,6 @@ Route::post('/apply_internship', 'AccountController@ApplyInternship');
 Route::get('/companyaccount', 'AccountCompanyController@changeCompanyData')->name('changeCompanyData');
 Route::post('/companyaccount/data', 'AccountCompanyController@handleCompanyData');
 Route::post('/companyaccount/data2', 'AccountCompanyController@handleCompanyData2');
+Route::post('/companyaccount/data3', 'AccountController@handleProfilePicture2');
 Route::post('/companyaccount/password', 'AccountCompanyController@handleCompanyNewPassword');
 //match students with companies
-Route::get('/match', 'MatchController@show')->name('menu');

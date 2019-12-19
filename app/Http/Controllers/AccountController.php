@@ -67,13 +67,17 @@ class AccountController extends Controller
     {
         $id = \Auth::user()->id;
         $data['user'] = \App\User::where('id', $id)->first();
+        $data['studentInfo'] = \App\Student::where('user_id', $data['user']->id)->first();
 
         return view('student/student', $data);
     }
 
     public function StudentProfilePublic($id)
     {
-        $data['user'] = \App\User::where('id', $id)->first();
+        $data['user'] = \App\User::select('users.*', 'students.user_id', 'students.school', 'students.field_of_study')
+        ->where('users.id', $id)
+        ->join('students', 'users.id', 'students.user_id')
+        ->first();
         if ($data['user']->type == 'student') {
             return view('student/studentPublic', $data);
         } else {
@@ -149,6 +153,24 @@ class AccountController extends Controller
             $request->session()->flash('status', 'Gegevens zijn aangepast');
 
             return redirect('/change_student_data');
+        } else {
+            echo 'no file!';
+        }
+    }
+    public function handleProfilePicture2(Request $request)
+    {
+        if ($request->hasFile('profile')) {
+            $picture_name = $request->file('profile')->getClientOriginalName();
+            $picture_size = $request->file('profile')->getSize();
+            $picture_path = $request->file('profile')->getPathName();
+            $this->checkType($picture_name);
+            $this->fileSize($picture_size);
+            $directory = $this->createDirectory($picture_name);
+            $newDirectory = $this->uploadFile($directory, $picture_name, $picture_path);
+            $this->InsertProfileImage($newDirectory);
+            $request->session()->flash('status', 'Gegevens zijn aangepast');
+
+            return redirect('/companyaccount');
         } else {
             echo 'no file!';
         }
@@ -243,6 +265,27 @@ class AccountController extends Controller
     {
         $data['applications'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
         ->where('student_id', \Auth::user()->id)
+        ->join('internships', 'applies.internships_id', '=', 'internships.id')
+        ->join('users', 'applies.company_id', '=', 'users.id')
+        ->join('companies', 'users.id', '=', 'companies.user_id')
+        ->get();
+        $data['denied'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
+        ->where('student_id', \Auth::user()->id)
+        ->where('response', 'denied')
+        ->join('internships', 'applies.internships_id', '=', 'internships.id')
+        ->join('users', 'applies.company_id', '=', 'users.id')
+        ->join('companies', 'users.id', '=', 'companies.user_id')
+        ->get();
+        $data['maybe'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
+        ->where('student_id', \Auth::user()->id)
+        ->where('response', 'maybe')
+        ->join('internships', 'applies.internships_id', '=', 'internships.id')
+        ->join('users', 'applies.company_id', '=', 'users.id')
+        ->join('companies', 'users.id', '=', 'companies.user_id')
+        ->get();
+        $data['accepted'] = \App\Apply::select('applies.*', 'internships.*', 'users.id', 'users.firstname', 'users.lastname', 'companies.*')
+        ->where('student_id', \Auth::user()->id)
+        ->where('response', 'accepted')
         ->join('internships', 'applies.internships_id', '=', 'internships.id')
         ->join('users', 'applies.company_id', '=', 'users.id')
         ->join('companies', 'users.id', '=', 'companies.user_id')

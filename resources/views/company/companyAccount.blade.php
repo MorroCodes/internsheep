@@ -49,6 +49,16 @@
                         <button type="submit" class="btn btn-primary">Aanpassen</button>
                         {{csrf_field()}}
                     </form>
+                    <form action="{{ action('AccountController@handleProfilePicture2') }}" method="post" enctype="multipart/form-data">
+                        <br>
+                        <h2 class="profile-title">Profielfoto wijzigen</h2>
+                        <div class="form-group">
+                            <label for="profile">Profielfoto</label>
+                            <input type="file" class="form-control-file" name="profile" id="profile" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-profile-edit">Aanpassen</button>
+                        {{csrf_field()}}
+                    </form>
                     <form action="{{ action('AccountCompanyController@handleCompanyNewPassword') }}" method="post">
                         <br>
                         <h2 class="profile-title">Nieuw wachtwoord instellen</h2>

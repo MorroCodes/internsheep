@@ -39,6 +39,7 @@ class MessageController extends Controller
 
             $data['messages'] = \App\Message::where([['conversation_id', $id], ['student_id', $this->getStudentIdFromUserId(\Auth::user()->id)]])
                 ->join('users', 'company_id', '=', 'users.id')
+                ->join('companies', 'messages.company_id', 'companies.user_id')
                 ->get();
         }
 
@@ -58,7 +59,9 @@ class MessageController extends Controller
         }
 
         if ($data['conversations']->count() == 0) {
-            $data['applications'] = \App\Apply::where('company_id', \Auth::user()->id)->join('users', 'student_id', '=', 'users.id')->get();
+            $data['applications'] = \App\Apply::select('applies.*', 'users.firstname', 'users.lastname', 'users.email', 'users.id as users_table_id')
+            ->where('company_id', \Auth::user()->id)
+            ->join('users', 'student_id', '=', 'users.id')->get();
 
             $data['internships'] = \App\Internship::latest()->limit(6)->get();
 
@@ -82,9 +85,10 @@ class MessageController extends Controller
 
     public function getStudentConversations()
     {
-        return \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname')
+        return \App\Conversation::select('conversations.id', 'conversations.student_id', 'conversations.company_id', 'users.firstname', 'users.lastname', 'companies.company_name')
             ->where('student_id', \Auth::user()->id)
             ->join('users', 'company_id', '=', 'users.id')
+            ->join('companies', 'conversations.company_id', 'companies.user_id')
             ->get();
     }
 
