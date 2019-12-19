@@ -17,7 +17,7 @@ class SurveyController extends Controller
     {
         $data = $request->only(['vibe', 'size', 'age', 'type', 'distance']);
         // check if user already has a record
-        dd($data['vibe']);
+
         if (empty($data) || empty($data['vibe']) || empty($data['size']) || empty($data['age']) || empty($data['type']) || empty($data['distance'])) {
             $data['survey'] = \App\StudentSurvey::where('user_id', \Auth::user()->id)->first();
             $data['error'] = 'Gelieve overal een antwoord aan te duiden.';
