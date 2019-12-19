@@ -22,7 +22,7 @@ class UsersSeeder extends Seeder
         $annelies->save();
         $student1 = new \App\Student();
         $student1->user_id = $annelies->id;
-        $student1->cv = "";
+        $student1->cv = '';
         $student1->save();
         $survey1 = new \App\StudentSurvey();
         $survey1->user_id = $annelies->id;
@@ -45,7 +45,7 @@ class UsersSeeder extends Seeder
         $dielan->save();
         $student2 = new \App\Student();
         $student2->user_id = $dielan->id;
-        $student2->cv = "";
+        $student2->cv = '';
         $student2->save();
         $survey2 = new \App\StudentSurvey();
         $survey2->vibe = 2;
@@ -68,7 +68,7 @@ class UsersSeeder extends Seeder
         $aqsa->type = 'student';
         $aqsa->save();
         $student3 = new \App\Student();
-        $student3->cv = "";
+        $student3->cv = '';
         $student3->user_id = $aqsa->id;
         $student3->save();
         $survey3 = new \App\StudentSurvey();
@@ -92,7 +92,7 @@ class UsersSeeder extends Seeder
         $mauro->save();
         $student4 = new \App\Student();
         $student4->user_id = $mauro->id;
-        $student4->cv = "";
+        $student4->cv = '';
         $student4->save();
         $survey4 = new \App\StudentSurvey();
         $survey4->user_id = $mauro->id;
@@ -103,6 +103,59 @@ class UsersSeeder extends Seeder
         $survey4->distance = 2;
         $survey4->save();
 
-        factory(\App\User::class, 20)->create();
+        $dirk = new \App\User();
+        $dirk->firstname = 'Dirk';
+        $dirk->lastname = 'Peeters';
+        $dirk->description = 'Ik ben dirk';
+        $dirk->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
+        $dirk->email = 'dirk@hotmail.com';
+        $dirk->email_verified_at = now();
+        $dirk->password = bcrypt('dirk');
+        $dirk->type = 'company';
+        $dirk->save();
+
+        $yasmine = new \App\User();
+        $yasmine->firstname = 'yasmine';
+        $yasmine->lastname = 'Peeters';
+        $yasmine->description = 'Ik ben yasmine';
+        $yasmine->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
+        $yasmine->email = 'yasmine@hotmail.com';
+        $yasmine->email_verified_at = now();
+        $yasmine->password = bcrypt('yasmine');
+        $yasmine->type = 'company';
+        $yasmine->save();
+
+        $omar = new \App\User();
+        $omar->firstname = 'omar';
+        $omar->lastname = 'Peeters';
+        $omar->description = 'Ik ben omar';
+        $omar->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
+        $omar->email = 'omar@hotmail.com';
+        $omar->email_verified_at = now();
+        $omar->password = bcrypt('omar');
+        $omar->type = 'company';
+        $omar->save();
+
+        $margriet = new \App\User();
+        $margriet->firstname = 'margriet';
+        $margriet->lastname = 'Peeters';
+        $margriet->description = 'Ik ben margriet';
+        $margriet->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
+        $margriet->email = 'margriet@hotmail.com';
+        $margriet->email_verified_at = now();
+        $margriet->password = bcrypt('margriet');
+        $margriet->type = 'company';
+        $margriet->save();
+
+        $timothy = new \App\User();
+        $timothy->firstname = 'timothy';
+        $timothy->lastname = 'Peeters';
+        $timothy->description = 'Ik ben timothy';
+        $timothy->profile_image = 'https://ichef.bbci.co.uk/news/660/cpsprodpb/E9DF/production/_96317895_gettyimages-164067218.jpg';
+        $timothy->email = 'timothy@hotmail.com';
+        $timothy->email_verified_at = now();
+        $timothy->password = bcrypt('timothy');
+        $timothy->type = 'company';
+        $timothy->save();
     }
 }
