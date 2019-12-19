@@ -26,7 +26,7 @@
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
                         @if(Auth::user())
                             @if(Auth::user()->type == "student")
-                                <li><a href="/match">Stages op maat</a></li>
+                                <li><a href="/">Home</a></li>
                             @endif
                         @endif
                       <li class="has-children">
