@@ -14,7 +14,9 @@ composer install
 php composer.phar dump-autoload
     # dependencies updaten
 
+php artisan migrate:reset
 php artisan migrate --force
+php artisan db:seed
     # databank updaten
 php artisan cache:clear
     # cache clearen
