@@ -6,7 +6,7 @@
 
     @include('partials.head')
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>InternSheep</title>
 
 </head>
 <body class="entry-page">
