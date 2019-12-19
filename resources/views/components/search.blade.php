@@ -9,7 +9,7 @@
                         <div class="col-md-9">
                             <div class="row">
                                 <div class="col-md-4 mb-4 mb-md-0">
-                                    <label for="search_term">Zoekterm</label>
+                                    <label style="color: #fff;" for="search_term">Zoekterm</label>
                                     <input class="mr-3 form-control border-0 px-4" type="search" name="searchFor"
                                         id="search_term" value="@if (isset($searchFor)) {{$searchFor}} @endif"
                                         placeholder="naam van bedrijf, soort werk of andere">
@@ -17,7 +17,7 @@
                                 <div class="col-md-5 mb-4 mb-md-0">
                                     <div class="input-wrap">
                                         <span class="icon icon-room"></span>
-                                        <label for="location_filter">Zoek op locatie</label>
+                                        <label style="color: #fff;" for="location_filter">Zoek op locatie</label>
                                         <input class="form-control form-control-block search-input  border-0 px-4"
                                             type="search" name="address" id="location_filter"
                                             value="@if (isset($address)) {{$address}}@endif"
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="col-md-3 mb-4 mb-md-0">
                                     <div class="input-wrap">
-                                        <label for="tranports_method">Ik ga</label>
+                                        <label style="color: #fff" for="tranports_method">Ik ga</label>
                                         <select class="form-control" name="transport_method" id="transport_method">
                                             <option value="driving">met de auto</option>
                                             <option value="cycling" @if (isset($transport_method) &&
