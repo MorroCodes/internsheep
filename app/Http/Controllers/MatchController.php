@@ -42,7 +42,11 @@ class MatchController extends Controller
         if (!isset($request->transport_method)) {
             $request->transport_method = 'driving';
         }
-        $internships = $this->getDistanceForInternships($internships, $origin, $request);
+        if (!isset($origin['error'])) {
+            $internships = $this->getDistanceForInternships($internships, $origin, $request);
+        } else {
+            $data['error'] = $origin['error'];
+        }
         $internships = $this->addUserToInternships($internships);
         $internships = $internships->sortBy('distance');
         $data['internships'] = $internships;
@@ -69,7 +73,11 @@ class MatchController extends Controller
             if (!isset($request->transport_method)) {
                 $request->transport_method = 'driving';
             }
-            $internships = $this->getDistanceForInternships($internships, $origin, $request);
+            if (!isset($origin['error'])) {
+                $internships = $this->getDistanceForInternships($internships, $origin, $request);
+            } else {
+                $data['error'] = $origin['error'];
+            }
         }
         $internships = $this->addUserToInternships($internships);
         $data['internships'] = $internships;
