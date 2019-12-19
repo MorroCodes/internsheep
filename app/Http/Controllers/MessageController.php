@@ -44,7 +44,7 @@ class MessageController extends Controller
         }
 
         if ($data['messages']->count() == 0) {
-            return redirect('/');
+            return redirect('/conversations');
         }
 
         return view('messages/private', $data);
@@ -108,7 +108,10 @@ class MessageController extends Controller
 
     public function getUserIdFromStudentId($student_id)
     {
-        $user_id = \App\Student::where('user_id', $student_id)->first();
+        $user_id = \App\Student::where('id', $student_id)->first();
+        if($user_id == null){
+            return redirect('/');
+        }
 
         return $user_id->user_id;
     }
