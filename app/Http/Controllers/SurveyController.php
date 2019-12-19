@@ -56,7 +56,8 @@ class SurveyController extends Controller
     public function handleCompanySurvey(Request $request)
     {
         $data = $request->only(['vibe', 'size', 'age', 'type', 'transport']);
-        if (empty($data) || empty($data['vibe']) || empty($data['size']) || empty($data['age']) || empty($data['type']) || empty($data['distance'])) {
+
+        if (empty($data) || empty($data['vibe']) || empty($data['size']) || empty($data['age']) || empty($data['type']) || empty($data['transport'])) {
             $data['error'] = 'Gelieve overal een antwoord aan te duiden.';
             $data['survey'] = \App\CompanySurvey::where('user_id', \Auth::user()->id)->first();
 
