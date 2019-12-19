@@ -42,11 +42,13 @@ class HomeController extends Controller
         $user_id = $internship->company_id;
         $user = \App\User::where('id', $user_id)->first();
 
-        $company = \App\Company::where('user_id', $user_id)->first();
+        $company = \App\Company::where('id', $user_id)->first();
         // companuy_id was saved wrong, user_id was saved instead
         $others_by_company = \App\Internship::where('company_id', $user_id)->where('id', '!=', $internship->id)->take(3)->get();
         $data['internship'] = $internship;
+
         $data['company'] = $company;
+        // dd($user);
         $data['others_by_company'] = $others_by_company;
         $data['user'] = $user;
 
