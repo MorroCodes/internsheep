@@ -34,18 +34,20 @@ class CompanyController extends Controller
     {
         $data['companyInfo'] = \App\Company::where('id', $id)->first();
 
-        $data['userInfo'] = \App\User::where('id', $data['companyInfo']->id)->first();
+        $data['userInfo'] = \App\User::where('id', $data['companyInfo']->user_id)->first();
 
-        $data['surveyInfo'] = \App\CompanySurvey::where('user_id', $data['userInfo']->$id)->first();
+        $data['surveyInfo'] = \App\CompanySurvey::where('user_id', $data['userInfo']->id)->first();
 
-        $data['vacatures'] = \App\Internship::where('company_id', $data['companyInfo']->id)->get();
+        $data['vacatures'] = \App\Internship::where('company_id', $data['companyInfo']->user_id)->get();
 
         return view('company/public_profile', $data);
     }
+
     public function publicStudentProfile($id)
     {
         $data['userInfo'] = \App\User::where('id', $id)->first();
         $data['studentInfo'] = \App\Student::where('user_id', $data['userInfo']->id)->first();
+
         return view('student/student', $data);
     }
 
