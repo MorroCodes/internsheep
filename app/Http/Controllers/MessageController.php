@@ -44,7 +44,7 @@ class MessageController extends Controller
         }
 
         if ($data['messages']->count() == 0) {
-            return redirect('/conversations');
+            return redirect('/');
         }
 
         return view('messages/private', $data);
