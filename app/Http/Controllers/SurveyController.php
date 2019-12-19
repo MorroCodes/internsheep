@@ -18,7 +18,7 @@ class SurveyController extends Controller
         $data = $request->only(['vibe', 'size', 'age', 'type', 'distance']);
         // check if user already has a record
 
-        if (empty($data)) {
+        if (empty($data) || !isset($data['vibe']) || !isset($data['size']) || !isset($data['age']) || !isset($data['type']) || !isset($data['distance'])) {
             $data['survey'] = \App\StudentSurvey::where('user_id', \Auth::user()->id)->first();
             $data['error'] = 'Gelieve overal een antwoord aan te duiden.';
 
@@ -56,7 +56,7 @@ class SurveyController extends Controller
     public function handleCompanySurvey(Request $request)
     {
         $data = $request->only(['vibe', 'size', 'age', 'type', 'transport']);
-        if (empty($data)) {
+        if (empty($data) || !isset($data['vibe']) || !isset($data['size']) || !isset($data['age']) || !isset($data['type']) || !isset($data['distance'])) {
             $data['error'] = 'Gelieve overal een antwoord aan te duiden.';
             $data['survey'] = \App\CompanySurvey::where('user_id', \Auth::user()->id)->first();
 
