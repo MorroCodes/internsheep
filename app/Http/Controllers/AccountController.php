@@ -264,8 +264,11 @@ class AccountController extends Controller
 
     public function showStudentApplications()
     {
+        $user = \Auth::user();
+        $student = $user->student->first();
+
         $data['applications'] = \App\Apply::select('applies.*', 'internships.*', 'companies.*')
-        ->where('student_id', \Auth::user()->id)
+        ->where('student_id', $student->id)
         ->join('internships', 'applies.internships_id', '=', 'internships.id')
         ->join('companies', 'applies.company_id', '=', 'companies.id')
         ->get();

@@ -43,11 +43,11 @@ class User extends Authenticatable
 
     public function companySurvey()
     {
-        return $this->hasOne(\App\CompanySurvey);
+        return $this->hasOne("\App\CompanySurvey");
     }
 
     public function student()
     {
-        return $this->hasOne(\App\Student);
+        return $this->hasOne("\App\Student");
     }
 }
