@@ -39,7 +39,7 @@ class CompanyController extends Controller
 
         $data['surveyInfo'] = \App\CompanySurvey::where('user_id', $data['userInfo']->id)->first();
 
-        $data['vacatures'] = \App\Internship::where('company_id', $data['companyInfo']->user_id)->get();
+        $data['vacatures'] = \App\Internship::where('company_id', $data['companyInfo']->id)->get();
 
         return view('company/public_profile', $data);
     }
